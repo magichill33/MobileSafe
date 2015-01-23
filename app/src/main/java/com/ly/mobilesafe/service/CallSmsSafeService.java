@@ -1,16 +1,21 @@
 package com.ly.mobilesafe.service;
 
 import java.lang.reflect.Method;
+import java.net.URI;
 
 import com.android.internal.telephony.ITelephony;
 import com.ly.mobilesafe.dao.BlackNumberDao;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources.Theme;
+import android.database.ContentObserver;
+import android.net.Uri;
+import android.os.Handler;
 import android.os.IBinder;
 import android.telephony.PhoneStateListener;
 import android.telephony.SmsMessage;
@@ -54,6 +59,28 @@ public class CallSmsSafeService extends Service {
         super.onDestroy();
     }
 
+    public void endCall() {
+        //加载servicemanager的字节码
+        try {
+            Class clazz = CallSmsSafeService.this.getClassLoader().
+                    loadClass("android.os.ServiceManager");
+            Method method = clazz.getDeclaredMethod("getService",
+                    String.class);
+            IBinder ibinder = (IBinder) method.invoke(null, TELEPHONY_SERVICE);
+            ITelephony.Stub.asInterface(ibinder).endCall();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteCallLog(String incomingNumber)
+    {
+        ContentResolver resolver = getContentResolver();
+        Uri uri = Uri.parse("content://call_log/calls");
+        resolver.delete(uri, "number=?", new String[]{incomingNumber});
+    }
+
     private class InnerSmsReceiver extends BroadcastReceiver
     {
         @Override
@@ -85,6 +112,10 @@ public class CallSmsSafeService extends Service {
                     if("1".equals(result)||"3".equals(result))
                     {
                         Log.i(TAG, "挂断电话……");
+                        //观察呼叫记录数据库内容的变化
+                        Uri uri = Uri.parse("content://call_log/calls");
+                        getContentResolver().registerContentObserver(uri,
+                                true,new CallLogObserver(incomingNumber,new Handler()));
                         endCall();
                     }
                     break;
@@ -93,18 +124,22 @@ public class CallSmsSafeService extends Service {
         }
     }
 
-    public void endCall() {
-        //加载servicemanager的字节码
-        try {
-            Class clazz = CallSmsSafeService.this.getClassLoader().
-                    loadClass("android.os.ServiceManager");
-            Method method = clazz.getDeclaredMethod("getService",
-                    String.class);
-            IBinder ibinder = (IBinder) method.invoke(null, TELEPHONY_SERVICE);
-            ITelephony.Stub.asInterface(ibinder).endCall();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+    private class CallLogObserver extends ContentObserver
+    {
+        private String incomingNumber;
+
+        public CallLogObserver(String incomingNumber,Handler handler)
+        {
+            super(handler);
+            this.incomingNumber = incomingNumber;
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            Log.i(TAG,"数据库的内容变化了，产生了呼叫记录");
+            getContentResolver().unregisterContentObserver(this);
+            deleteCallLog(incomingNumber);
+            super.onChange(selfChange);
         }
     }
 
