@@ -21,7 +21,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Vibrator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -33,8 +32,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.drm.DrmStore.Action;
-import android.text.style.SuperscriptSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -102,18 +99,18 @@ public class SplashActivity extends Activity {
 
                 case URL_ERROR:// URL错误
                     enterHome();
-                    Toast.makeText(getApplicationContext(), "URL错误", 0).show();
+                    Toast.makeText(getApplicationContext(), "URL错误",Toast.LENGTH_SHORT).show();
 
                     break;
 
                 case NETWORK_ERROR:// 网络异常
                     enterHome();
-                    Toast.makeText(SplashActivity.this, "网络异常", 0).show();
+                    Toast.makeText(SplashActivity.this, "网络异常", Toast.LENGTH_SHORT).show();
                     break;
 
                 case JSON_ERROR:// JSON解析出错
                     enterHome();
-                    Toast.makeText(SplashActivity.this, "JSON解析出错", 0).show();
+                    Toast.makeText(SplashActivity.this, "JSON解析出错", Toast.LENGTH_SHORT).show();
                     break;
 
                 default:
@@ -223,7 +220,7 @@ public class SplashActivity extends Activity {
                                                       String strMsg) {
                                     t.printStackTrace();
                                     Toast.makeText(getApplicationContext(),
-                                            "下载失败", 1).show();
+                                            "下载失败", Toast.LENGTH_LONG).show();
                                     super.onFailure(t, errorNo, strMsg);
                                 }
 

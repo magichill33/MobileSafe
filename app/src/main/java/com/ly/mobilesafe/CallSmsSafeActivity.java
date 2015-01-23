@@ -11,15 +11,17 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.text.TextUtils;
-import android.view.Menu;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,15 +33,84 @@ public class CallSmsSafeActivity extends Activity {
     private BlackNumberDao dao;
     private CallSmsSafeAdapter adapter;
 
+    private LinearLayout ll_loading;
+    /**
+     * 分批查询数据
+     * 位置 和 条数
+     */
+    private int offset = 0;
+    private int maxnumber = 20;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_call_sms_safe);
+        ll_loading = (LinearLayout) findViewById(R.id.ll_loading);
         lv_callsms_safe = (ListView) findViewById(R.id.lv_callsms_safe);
         dao = new BlackNumberDao(this);
-        infos = dao.findAll();
-        adapter = new CallSmsSafeAdapter();
-        lv_callsms_safe.setAdapter(adapter);
+        fillData();
+
+        //listView注册一个滚动事件的监听器
+        lv_callsms_safe.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                switch (scrollState)
+                {
+                    case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
+                        //判断当前listView滚动的位置
+                        //获取最后一个可见条目在集合里面的位置
+                        int lastPosition = lv_callsms_safe.getLastVisiblePosition();
+
+                        if(lastPosition==(infos.size()-1)&&offset<infos.size())
+                        {
+                            Log.i(TAG,"列表被移动了最后一个位置");
+                            offset += maxnumber;
+                            fillData();
+                        }
+                        break;
+                    case AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
+                        break;
+                    case AbsListView.OnScrollListener.SCROLL_STATE_FLING:
+                        break;
+                }
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+            }
+        });
+
+    }
+
+    private void fillData() {
+        ll_loading.setVisibility(View.VISIBLE);
+        new Thread(){
+            @Override
+            public void run() {
+                if(infos==null)
+                {
+                    infos = dao.findPart(offset,maxnumber);
+                }else{
+                    infos.addAll(dao.findPart(offset,maxnumber));
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ll_loading.setVisibility(View.INVISIBLE);
+                        if(adapter==null)
+                        {
+                            adapter = new CallSmsSafeAdapter();
+                            lv_callsms_safe.setAdapter(adapter);
+                        }else{
+                            adapter.notifyDataSetChanged();
+                        }
+
+                    }
+                });
+            }
+        }.start();
     }
 
     private class CallSmsSafeAdapter extends BaseAdapter{
@@ -154,7 +225,7 @@ public class CallSmsSafeActivity extends Activity {
                 if(TextUtils.isEmpty(blacknumber))
                 {
                     Toast.makeText(getApplicationContext(),
-                            "黑名单号码不能为空", 0).show();
+                            "黑名单号码不能为空", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String mode;
@@ -168,7 +239,7 @@ public class CallSmsSafeActivity extends Activity {
                 {
                     mode = "2";
                 }else{
-                    Toast.makeText(getApplicationContext(), "请选择拦截模式", 0).show();
+                    Toast.makeText(getApplicationContext(), "请选择拦截模式", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
