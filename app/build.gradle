@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 17
+    compileSdkVersion 21
     buildToolsVersion '21.1.1'
 
     defaultConfig {
         applicationId "com.ly.mobilesafe"
         minSdkVersion 10
-        targetSdkVersion 21
+        targetSdkVersion 17
         versionCode 1
         versionName "1.0"
     }
