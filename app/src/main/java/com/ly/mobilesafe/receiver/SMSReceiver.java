@@ -49,18 +49,18 @@ public class SMSReceiver extends BroadcastReceiver {
                         SmsManager.getDefault().sendTextMessage(sender,
                                 null,lastLocation, null, null);
                     }
-                    //abortBroadcast();
+                    abortBroadcast();
                 }else if("#*alarm*#".equals(body))
                 {
                     MediaPlayer player = MediaPlayer.create(context,R.raw.ylzs);
                     player.setLooping(false);
                     player.setVolume(1.0f, 1.0f);
                     player.start();
-
+                    abortBroadcast();
 
                 }else if("#*wipedata*#".equals(body))
                 {
-
+                    abortBroadcast();
                 }else if("#*lockscreen*#".equals(body))
                 {
 //					Intent dintent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
@@ -72,10 +72,9 @@ public class SMSReceiver extends BroadcastReceiver {
                     DevicePolicyManager dpm = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
                     dpm.lockNow();
                     dpm.resetPassword("123", 0);
-
+                    abortBroadcast();
                 }
 
-                abortBroadcast();
             }
         }
 
