@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="55dip"
+        android:background="#8866ff00"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:text="@string/titlestr" 
+        android:textSize="22sp"/>
+    <com.ly.mobilesafe.ui.FocusedTextView
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:textSize="18sp"
+        android:text="最新的手机卫士，快来下载啊，下载送好吃的，最新的手机卫士，快来下载啊，下载送好吃的"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
+	<GridView
+        android:id="@+id/list_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dip"
+        android:numColumns="3"
+        android:verticalSpacing="10dip" />
+</LinearLayout>

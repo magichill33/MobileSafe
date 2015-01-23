@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="serverurl" >http://192.168.159.1:8080/version.html</string>
+</resources>

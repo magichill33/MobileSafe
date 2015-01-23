@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">手机卫士</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="titlestr">功能列表</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_lost_find">LostFindActivity</string>
+    <string name="title_activity_setup1">Setup1Activity</string>
+    <string name="title_activity_setup2">Setup2Activity</string>
+    <string name="title_activity_setup3">Setup3Activity</string>
+    <string name="title_activity_setup4">Setup4Activity</string>
+    <string name="title_activity_select_contact">SelectContactActivity</string>
+    <string name="sample_device_admin">phone lock</string>
+    <string name="admindesc">一键锁屏</string>
+    <string name="title_activity_atools">AtoolsActivity</string>
+    <string name="title_activity_number_address_query">NumberAddressQueryActivity</string>
+    <string name="title_activity_call_sms_safe">CallSmsSafeActivity</string>
+
+</resources>
