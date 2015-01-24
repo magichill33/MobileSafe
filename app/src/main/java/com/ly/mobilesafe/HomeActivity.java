@@ -66,6 +66,10 @@ public class HomeActivity extends Activity {
                         intent = new Intent(HomeActivity.this,CallSmsSafeActivity.class);
                         startActivity(intent);
                         break;
+                    case 2:
+                        intent = new Intent(HomeActivity.this,AppManagerActivity.class);
+                        startActivity(intent);
+                        break;
                     case 7:
                         intent = new Intent(HomeActivity.this,AtoolsActivity.class);
                         startActivity(intent);
