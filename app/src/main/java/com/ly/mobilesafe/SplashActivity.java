@@ -16,6 +16,7 @@ import org.json.JSONObject;
 
 import com.ly.mobilesafe.utils.StreamTools;
 
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -32,6 +33,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.test.InstrumentationTestCase;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -63,6 +65,10 @@ public class SplashActivity extends Activity {
         tv_update_info = (TextView) findViewById(R.id.tv_update_info);
         tv_splash_version.setText("版本号："+getVersionName());
         boolean update = sp.getBoolean("update", false);
+        
+        installShortCut();
+        
+        //拷贝数据库
         copyDB();
         if(update)
         {
@@ -80,6 +86,34 @@ public class SplashActivity extends Activity {
         AlphaAnimation aa = new AlphaAnimation(0.2f, 1.0f);
         aa.setDuration(500);
         findViewById(R.id.rl_root_splash).startAnimation(aa);
+    }
+
+    /**
+     * 创建快捷图标
+     */
+    private void installShortCut() {
+
+        boolean shortcut = sp.getBoolean("shortcut",false);
+        if(shortcut)
+            return;
+        SharedPreferences.Editor editor = sp.edit();
+
+        Intent intent = new Intent();
+        intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+        //快捷方式 要包含3个重要的信息1.名称 2.图标 3.干什么事情
+        intent.putExtra(Intent.EXTRA_SHORTCUT_NAME,"手机小卫士");
+        intent.putExtra(Intent.EXTRA_SHORTCUT_ICON, BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher));
+        //点击桌面对应图标的意图
+        Intent shortcutIntent = new Intent();
+        shortcutIntent.setAction("android.intent.action.MAIN");
+        shortcutIntent.addCategory("android.intent.category.LAUNCHER");
+        shortcutIntent.setClassName(getPackageName(),"com.ly.mobilesafe.SplashActivity");
+
+        intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT,shortcutIntent);
+        sendBroadcast(intent);
+        editor.putBoolean("shortcut",true);
+        editor.commit();
+
     }
 
     private Handler handler = new Handler() {
