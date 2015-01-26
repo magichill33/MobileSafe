@@ -21,8 +21,8 @@
     <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
     <uses-permission android:name="android.permission.WRITE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
-    <!--添加快捷图标权限-->
-    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <!-- 添加快捷图标权限 -->
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
 
     <!--
     <instrumentation
@@ -121,6 +121,10 @@
         <activity
             android:name=".AppManagerActivity"
             android:label="@string/title_activity_app_manager" >
+        </activity>
+        <activity
+            android:name=".TaskManagerActivity"
+            android:label="@string/title_activity_task_manager" >
         </activity>
     </application>
 

@@ -28,11 +28,6 @@ import android.widget.Toast;
 public class HomeActivity extends Activity {
 
     protected static final String TAG = "HomeActivity";
-
-    private GridView list_home;
-    private ToolListAdapter adapter;
-    private SharedPreferences sp;
-
     private static String[] names = {
             "手机防盗","通讯卫士","软件管理",
             "进程管理","流量统计","手机杀毒",
@@ -43,6 +38,14 @@ public class HomeActivity extends Activity {
             R.drawable.taskmanager,R.drawable.netmanager,R.drawable.trojan,
             R.drawable.sysoptimize,R.drawable.atools,R.drawable.settings
     };
+    private GridView list_home;
+    private ToolListAdapter adapter;
+    private SharedPreferences sp;
+    private EditText et_setup_pwd;
+    private EditText et_setup_confirm;
+    private Button btnOk;
+    private Button btnCancel;
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,10 @@ public class HomeActivity extends Activity {
                         break;
                     case 2:
                         intent = new Intent(HomeActivity.this,AppManagerActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 3:
+                        intent = new Intent(HomeActivity.this,TaskManagerActivity.class);
                         startActivity(intent);
                         break;
                     case 7:
@@ -98,11 +105,6 @@ public class HomeActivity extends Activity {
         }
     }
 
-    private EditText et_setup_pwd;
-    private EditText et_setup_confirm;
-    private Button btnOk;
-    private Button btnCancel;
-    private AlertDialog dialog;
     /**
      * 设置密码对话框
      */

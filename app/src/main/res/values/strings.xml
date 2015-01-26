@@ -19,5 +19,6 @@
     <string name="title_activity_number_address_query">NumberAddressQueryActivity</string>
     <string name="title_activity_call_sms_safe">CallSmsSafeActivity</string>
     <string name="title_activity_app_manager">AppManagerActivity</string>
+    <string name="title_activity_task_manager">TaskManagerActivity</string>
 
 </resources>
