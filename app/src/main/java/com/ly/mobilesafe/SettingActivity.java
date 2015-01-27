@@ -2,6 +2,7 @@ package com.ly.mobilesafe;
 
 import com.ly.mobilesafe.service.AddressService;
 import com.ly.mobilesafe.service.CallSmsSafeService;
+import com.ly.mobilesafe.service.WatchDogService;
 import com.ly.mobilesafe.ui.SettingClickView;
 import com.ly.mobilesafe.ui.SettingItemView;
 import com.ly.mobilesafe.utils.ServiceUtils;
@@ -32,6 +33,10 @@ public class SettingActivity extends Activity {
     //黑名单拦截设置
     private SettingItemView siv_callsms_safe;
     private Intent callSmsSafeIntent;
+
+    //程序锁看门狗设置
+    private SettingItemView siv_watchdog;
+    private Intent watchDogIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +150,10 @@ public class SettingActivity extends Activity {
                 }
             }
         });
+
+        //程序锁设置
+        siv_watchdog = (SettingItemView) findViewById(R.id.siv_watchdog);
+        watchDogIntent = new Intent(this, WatchDogService.class);
     }
 
     @Override

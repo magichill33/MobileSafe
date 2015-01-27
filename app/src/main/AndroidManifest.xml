@@ -159,9 +159,15 @@
             android:enabled="true"
             android:exported="true" >
             <intent-filter>
-                <action android:name="com.ly.mobilesafe.killall"/>
+                <action android:name="com.ly.mobilesafe.killall" />
             </intent-filter>
         </receiver>
+
+        <service
+            android:name=".service.WatchDogService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>

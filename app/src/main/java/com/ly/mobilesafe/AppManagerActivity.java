@@ -29,6 +29,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ly.mobilesafe.dao.ApplockDao;
 import com.ly.mobilesafe.domain.AppInfo;
 import com.ly.mobilesafe.engine.AppInfoProvider;
 import com.ly.mobilesafe.utils.DensityUtil;
@@ -57,6 +58,8 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
 
     private AppInfo appInfo; //被点击的条目
 
+    private ApplockDao dao;
+
     private LinearLayout ll_start;
     private LinearLayout ll_share;
     private LinearLayout ll_uninstall;
@@ -65,7 +68,7 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_manager);
-
+        dao = new ApplockDao(this);
         tv_status = (TextView) findViewById(R.id.tv_status);
         tv_avail_rom = (TextView) findViewById(R.id.tv_avail_rom);
         tv_avail_sd = (TextView) findViewById(R.id.tv_avail_sd);
@@ -169,7 +172,42 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
             }
         });
 
+        //程序锁，设置条目长点击事件监听器
+        lv_app_manager.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position==0)
+                {
+                    return true;
+                }else if(position ==(userAppInfos.size()+1))
+                {
+                    return true;
+                }else if(position<=userAppInfos.size())
+                {
+                    int newPos = position - 1;
+                    appInfo = userAppInfos.get(newPos);
+                }else {
+                    int newPos = position - userAppInfos.size() - 2;
+                    appInfo = systemAppInfos.get(newPos);
+                }
+
+                ViewHolder holder = (ViewHolder) view.getTag();
+                if(dao.find(appInfo.getPackname())){
+                    dao.delete(appInfo.getPackname());
+                    holder.iv_status.setImageResource(R.drawable.unlock);
+                }else {
+                    dao.add(appInfo.getPackname());
+                    holder.iv_status.setImageResource(R.drawable.lock);
+                }
+
+                return true;
+            }
+        });
+
     }
+
+
+
 
     private void fillData() {
         ll_loading.setVisibility(View.VISIBLE);
@@ -299,6 +337,28 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
         }
     }
 
+    private void dismissPopupWindow()
+    {
+        if(popupWindow!=null && popupWindow.isShowing())
+        {
+            popupWindow.dismiss();
+            popupWindow = null;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        dismissPopupWindow();
+        super.onDestroy();
+    }
+
+    static class ViewHolder{
+        TextView tv_name;
+        TextView tv_location;
+        ImageView iv_icon;
+        ImageView iv_status;
+    }
+
     private class AppManagerAdapter extends BaseAdapter{
 
         @Override
@@ -353,6 +413,7 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
                 holder.iv_icon = (ImageView) view.findViewById(R.id.iv_app_icon);
                 holder.tv_location = (TextView) view.findViewById(R.id.tv_app_location);
                 holder.tv_name = (TextView) view.findViewById(R.id.tv_app_name);
+                holder.iv_status = (ImageView) view.findViewById(R.id.iv_status);
                 view.setTag(holder);
 
             }
@@ -365,29 +426,14 @@ public class AppManagerActivity extends Activity implements View.OnClickListener
             } else {
                 holder.tv_location.setText("外部存储");
             }
+
+            if(dao.find(appInfo.getPackname())){
+                holder.iv_status.setImageResource(R.drawable.lock);
+            }else {
+                holder.iv_status.setImageResource(R.drawable.unlock);
+            }
+
             return view;
         }
-    }
-
-    static class ViewHolder{
-        TextView tv_name;
-        TextView tv_location;
-        ImageView iv_icon;
-    }
-
-
-    private void dismissPopupWindow()
-    {
-        if(popupWindow!=null && popupWindow.isShowing())
-        {
-            popupWindow.dismiss();
-            popupWindow = null;
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        dismissPopupWindow();
-        super.onDestroy();
     }
 }

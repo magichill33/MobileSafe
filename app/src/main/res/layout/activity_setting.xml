@@ -14,20 +14,20 @@
         android:textColor="#000000"
         android:textSize="22sp" />
     <com.ly.mobilesafe.ui.SettingItemView 
-        lying:ly_title="设置自动更新"
-        lying:desc_on="设置自动更新已经开启"
-        lying:desc_off="设置自动更新已经关闭"
         android:id="@+id/siv_update"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        lying:desc_off="设置自动更新已经关闭"
+        lying:desc_on="设置自动更新已经开启"
+        lying:ly_title="设置自动更新">
     </com.ly.mobilesafe.ui.SettingItemView>
  	<com.ly.mobilesafe.ui.SettingItemView 
-        lying:ly_title="设置号码归属地显示"
-        lying:desc_on="号码归属地显示已经打开"
-        lying:desc_off="号码归属地显示已经关闭"
         android:id="@+id/siv_show_address"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        lying:desc_off="号码归属地显示已经关闭"
+        lying:desc_on="号码归属地显示已经打开"
+        lying:ly_title="设置号码归属地显示">
     </com.ly.mobilesafe.ui.SettingItemView>
     <com.ly.mobilesafe.ui.SettingClickView
         android:id="@+id/scv_changebg"
@@ -35,11 +35,19 @@
         android:layout_height="wrap_content">
     </com.ly.mobilesafe.ui.SettingClickView>
     <com.ly.mobilesafe.ui.SettingItemView 
-        lying:ly_title="黑名单拦截设置"
-        lying:desc_on="黑名单拦截已经开启"
-        lying:desc_off="黑名单拦截已经关闭"
         android:id="@+id/siv_callsms_safe"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        lying:desc_off="黑名单拦截已经关闭"
+        lying:desc_on="黑名单拦截已经开启"
+        lying:ly_title="黑名单拦截设置">
+    </com.ly.mobilesafe.ui.SettingItemView>
+    <com.ly.mobilesafe.ui.SettingItemView
+        android:id="@+id/siv_watchdog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        lying:desc_off="程序锁设置"
+        lying:desc_on="看门狗已经开启"
+        lying:ly_title="看门狗已经关闭">
     </com.ly.mobilesafe.ui.SettingItemView>
 </LinearLayout>
