@@ -1,6 +1,9 @@
 package com.ly.mobilesafe;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.Formatter;
@@ -15,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ly.mobilesafe.domain.TaskInfo;
 import com.ly.mobilesafe.engine.TaskInfoProvider;
@@ -178,7 +182,35 @@ public class TaskManagerActivity extends Activity {
      * @param view
      */
     public void killAll(View view){
-
+        ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        List<TaskInfo> killedTaskInfos = new ArrayList<TaskInfo>();
+        int count = 0;
+        long saveMem = 0;
+        for (TaskInfo info:allTaskInfos)
+        {
+            if(info.isChecked()){
+                am.killBackgroundProcesses(info.getPackname());
+                if(info.isUserTask()){
+                    userTaskInfos.remove(info);
+                }else {
+                    systemTaskInfos.remove(info);
+                }
+                killedTaskInfos.add(info);
+                count++;
+                saveMem += info.getMemsize();
+            }
+        }
+        allTaskInfos.removeAll(killedTaskInfos);
+        adapter.notifyDataSetChanged();
+        Toast.makeText(this,
+                "清理了"+count+"个进程，释放了"
+                +Formatter.formatFileSize(this,saveMem)+"的内存",Toast.LENGTH_LONG).show();
+        processCount -= count;
+        availMem += saveMem;
+        tv_process_count.setText("运行中的进程：" + processCount + "个");
+        tv_mem_info.setText("剩余/总内存："
+                + Formatter.formatFileSize(this, availMem) + "/"
+                + Formatter.formatFileSize(this, totalMem));
     }
 
     /**
@@ -186,7 +218,13 @@ public class TaskManagerActivity extends Activity {
      * @param view
      */
     public void enterSetting(View view){
+        Intent intent = new Intent(this,TaskSettingActivity.class);
+        startActivityForResult(intent,0);
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        adapter.notifyDataSetChanged();
     }
 
     static class ViewHolder{
@@ -200,7 +238,14 @@ public class TaskManagerActivity extends Activity {
 
         @Override
         public int getCount() {
-            return allTaskInfos.size()+2;
+            SharedPreferences sp = getSharedPreferences("config",MODE_PRIVATE);
+            if(sp.getBoolean("showsystem",false))
+            {
+                return userTaskInfos.size()+systemTaskInfos.size()+2;
+            }else{
+                return userTaskInfos.size()+1;
+            }
+
         }
 
         @Override
