@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -154,6 +153,18 @@ public class SettingActivity extends Activity {
         //程序锁设置
         siv_watchdog = (SettingItemView) findViewById(R.id.siv_watchdog);
         watchDogIntent = new Intent(this, WatchDogService.class);
+        siv_watchdog.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(siv_watchdog.isChecked()){
+                    siv_watchdog.setChecked(false);
+                    stopService(watchDogIntent);
+                }else {
+                    siv_watchdog.setChecked(true);
+                    startActivity(watchDogIntent);
+                }
+            }
+        });
     }
 
     @Override
@@ -179,6 +190,10 @@ public class SettingActivity extends Activity {
         }else{
             siv_callsms_safe.setChecked(false);
         }
+
+        boolean isWatchDogServiceRunning = ServiceUtils.
+                isServiceRunning(SettingActivity.this,WatchDogService.class.getName());
+        siv_watchdog.setChecked(isWatchDogServiceRunning);
     }
 
 
