@@ -48,9 +48,45 @@ public class SplashActivity extends Activity {
     protected static final int URL_ERROR = 2;
     protected static final int NETWORK_ERROR = 3;
     protected static final int JSON_ERROR = 4;
+    private Handler handler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            // TODO Auto-generated method stub
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case SHOW_UPDATE_DIALOG:// 显示升级的对话框
+                    Log.i(TAG, "显示升级的对话框");
+                    showUpdateDialog();
+                    break;
+                case ENTER_HOME:// 进入主页面
+                    enterHome();
+                    break;
+
+                case URL_ERROR:// URL错误
+                    enterHome();
+                    Toast.makeText(getApplicationContext(), "URL错误",Toast.LENGTH_SHORT).show();
+
+                    break;
+
+                case NETWORK_ERROR:// 网络异常
+                    enterHome();
+                    Toast.makeText(SplashActivity.this, "网络异常", Toast.LENGTH_SHORT).show();
+                    break;
+
+                case JSON_ERROR:// JSON解析出错
+                    enterHome();
+                    Toast.makeText(SplashActivity.this, "JSON解析出错", Toast.LENGTH_SHORT).show();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+    };
     private String description;
     private String apkurl;
-
     private TextView tv_splash_version;
     private TextView tv_update_info;
     private SharedPreferences sp;
@@ -65,11 +101,11 @@ public class SplashActivity extends Activity {
         tv_update_info = (TextView) findViewById(R.id.tv_update_info);
         tv_splash_version.setText("版本号："+getVersionName());
         boolean update = sp.getBoolean("update", false);
-        
+
         installShortCut();
-        
+
         //拷贝数据库
-        copyDB();
+        copyDB("address.db");
         if(update)
         {
             checkUpdate();
@@ -115,44 +151,6 @@ public class SplashActivity extends Activity {
         editor.commit();
 
     }
-
-    private Handler handler = new Handler() {
-
-        @Override
-        public void handleMessage(Message msg) {
-            // TODO Auto-generated method stub
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case SHOW_UPDATE_DIALOG:// 显示升级的对话框
-                    Log.i(TAG, "显示升级的对话框");
-                    showUpdateDialog();
-                    break;
-                case ENTER_HOME:// 进入主页面
-                    enterHome();
-                    break;
-
-                case URL_ERROR:// URL错误
-                    enterHome();
-                    Toast.makeText(getApplicationContext(), "URL错误",Toast.LENGTH_SHORT).show();
-
-                    break;
-
-                case NETWORK_ERROR:// 网络异常
-                    enterHome();
-                    Toast.makeText(SplashActivity.this, "网络异常", Toast.LENGTH_SHORT).show();
-                    break;
-
-                case JSON_ERROR:// JSON解析出错
-                    enterHome();
-                    Toast.makeText(SplashActivity.this, "JSON解析出错", Toast.LENGTH_SHORT).show();
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
-    };
 
     /**
      * 检查是否有新版本，如果有就升级
@@ -322,14 +320,14 @@ public class SplashActivity extends Activity {
     /**
      * //path 把address.db这个数据库拷贝到data/data/《包名》/files/address.db
      */
-    private void copyDB(){
+    private void copyDB(String fileName){
         try {
-            File file = new File(getFilesDir(),"address.db");
+            File file = new File(getFilesDir(),fileName);
             if(file.exists()&&file.length()>0)
             {
-                Log.i(TAG, "数据存在，不拷贝");
+                Log.i(TAG, fileName+"数据存在，不拷贝");
             }else{
-                InputStream is = getAssets().open("address.db");
+                InputStream is = getAssets().open(fileName);
                 FileOutputStream fos = new FileOutputStream(file);
                 byte[] buffer = new byte[1024];
                 int len = 0;

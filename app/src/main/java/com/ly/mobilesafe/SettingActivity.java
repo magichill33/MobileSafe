@@ -144,6 +144,7 @@ public class SettingActivity extends Activity {
                     siv_callsms_safe.setChecked(false);
                     stopService(callSmsSafeIntent);
                 }else{
+
                     siv_callsms_safe.setChecked(true);
                     startService(callSmsSafeIntent);
                 }
@@ -161,7 +162,7 @@ public class SettingActivity extends Activity {
                     stopService(watchDogIntent);
                 }else {
                     siv_watchdog.setChecked(true);
-                    startActivity(watchDogIntent);
+                    startService(watchDogIntent);
                 }
             }
         });

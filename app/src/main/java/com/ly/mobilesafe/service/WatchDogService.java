@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
+import android.util.Log;
 
 import com.ly.mobilesafe.EnterPwdActivity;
 import com.ly.mobilesafe.dao.ApplockDao;
@@ -62,6 +63,7 @@ public class WatchDogService extends Service {
                 while (flag){
                     List<ActivityManager.RunningTaskInfo> infos = am.getRunningTasks(1);
                     String packname = infos.get(0).topActivity.getPackageName();
+                    //Log.i("WatchDogService",packname + "::" + tempStopProtectPackname);
                     if(protectPacknames.contains(packname)){
                        if(!packname.equals(tempStopProtectPackname)){
                            intent.putExtra("packname",packname);
@@ -117,18 +119,20 @@ public class WatchDogService extends Service {
     private class InnerReceiver extends BroadcastReceiver{
         @Override
         public void onReceive(Context context, Intent intent) {
-            System.out.println("接收到了临时停止保护的广播事件");
+
             tempStopProtectPackname = intent.getStringExtra("packname");
+            System.out.println("接收到了临时停止保护的广播事件:"+tempStopProtectPackname);
         }
     }
 
     /**
      * 锁屏数据发生改变后发送此广播
+     *
      */
     private class DataChangeReceiver extends BroadcastReceiver{
         @Override
         public void onReceive(Context context, Intent intent) {
-            System.out.print("数据库的内容变华了");
+            System.out.println("数据库的内容变华了");
             protectPacknames = dao.findAll();
         }
     }

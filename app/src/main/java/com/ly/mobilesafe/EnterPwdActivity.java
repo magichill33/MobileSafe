@@ -55,6 +55,7 @@ public class EnterPwdActivity extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
+        System.out.println("EnterPwdActivity onStop");
         finish();
     }
 
@@ -69,6 +70,7 @@ public class EnterPwdActivity extends Activity {
             Intent intent = new Intent();
             intent.setAction("com.ly.mobilesafe.tempstop");
             intent.putExtra("packname",packname);
+            sendBroadcast(intent);
             finish();
         }else {
             Toast.makeText(this,"密码错误。。。",Toast.LENGTH_SHORT).show();
