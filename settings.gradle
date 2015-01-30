@@ -1,1 +1,1 @@
-include ':app', ':drawbitmap'
+include ':app', ':drawbitmap', ':VideoPlayer'
