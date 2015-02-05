@@ -22,11 +22,14 @@
         <activity
             android:name=".AdActivity"
             android:label="@string/title_activity_ad" >
-           <!-- <intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".SpinnerDemo"
@@ -36,6 +39,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ToggleButtonActivity"
+            android:label="@string/title_activity_toggle_button" >
         </activity>
     </application>
 
