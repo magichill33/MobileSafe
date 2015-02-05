@@ -34,15 +34,20 @@
         <activity
             android:name=".SpinnerDemo"
             android:label="@string/title_activity_spinner_demo" >
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".ToggleButtonActivity"
+            android:label="@string/title_activity_toggle_button" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".ToggleButtonActivity"
-            android:label="@string/title_activity_toggle_button" >
         </activity>
     </application>
 
