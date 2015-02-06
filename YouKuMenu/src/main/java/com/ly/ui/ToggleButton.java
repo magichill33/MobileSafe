@@ -1,6 +1,7 @@
 package com.ly.ui;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -28,6 +29,38 @@ public class ToggleButton extends View implements View.OnClickListener {
      */
     private float slideBtn_left;
 
+    private int backgroundId; //背景图的资源ID
+    private int slideBtnId; //滑动图片的资源ID
+    /**
+     *当前开关的状态
+     * true 为开
+     */
+    private boolean currState = false;
+    /**
+     * 判断是否发生拖动，
+     * 如果拖动了，就不再响应 onclick 事件
+     *
+     */
+    private boolean isDrag = false;
+    /**
+     * down 事件时的x值
+     */
+    private int firstX;
+
+
+
+    /**
+     * View 对象显示的屏幕上，有几个重要步骤
+     * 1.构造方法 创建对象。
+     * 2.测量view的大小。onMeasure(int,int)
+     * 3.确定view的位置，view自身有一些建议权，决定权在父view上 onLayout()
+     * 4.绘制view的内容。onDraw(Canvas)
+     *
+     */
+    /**
+     * touch 事件的上一个x值
+     */
+    private int lastX;
 
     /**
      * 在代码里面创建对象的时候，使用此构造方法
@@ -43,6 +76,32 @@ public class ToggleButton extends View implements View.OnClickListener {
      */
     public ToggleButton(Context context, AttributeSet attrs) {
         super(context, attrs);
+        //获得自定义的属性
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.MyToggleBtn);
+        int N = ta.getIndexCount();
+        for (int i=0;i<N;i++){
+            /**
+             * 获得某个属性的ID值
+             */
+            int itemId = ta.getIndex(i);
+            switch (itemId){
+                case R.styleable.MyToggleBtn_my_background:
+                    backgroundId = ta.getResourceId(itemId,-1);
+                    if (backgroundId == -1)
+                        throw new RuntimeException("请设置背景图片");
+                    backgroundBitmap = BitmapFactory.decodeResource(getResources(),backgroundId);
+                    break;
+                case R.styleable.MyToggleBtn_my_slide_btn:
+                    slideBtnId = ta.getResourceId(itemId,-1);
+                    if (slideBtnId == -1)
+                        throw new RuntimeException("请设置滑动图片");
+                    slideBtn = BitmapFactory.decodeResource(getResources(),slideBtnId);
+                    break;
+                case R.styleable.MyToggleBtn_curr_state:
+                    currState = ta.getBoolean(itemId,false);
+                    break;
+            }
+        }
         initView();
     }
 
@@ -50,28 +109,18 @@ public class ToggleButton extends View implements View.OnClickListener {
      * 初始华
      */
     private void initView(){
-        backgroundBitmap = BitmapFactory.decodeResource(getResources(),
+      /*  backgroundBitmap = BitmapFactory.decodeResource(getResources(),
                 R.drawable.switch_background);
         slideBtn = BitmapFactory.decodeResource(getResources(),
-                R.drawable.slide_button);
+                R.drawable.slide_button);*/
 
         paint = new Paint(); //初始化 画笔
         paint.setAntiAlias(true); //打开抗矩齿
 
         //添加onclick事件监听
         setOnClickListener(this);
+        flushState();
     }
-
-
-
-    /**
-     * View 对象显示的屏幕上，有几个重要步骤
-     * 1.构造方法 创建对象。
-     * 2.测量view的大小。onMeasure(int,int)
-     * 3.确定view的位置，view自身有一些建议权，决定权在父view上 onLayout()
-     * 4.绘制view的内容。onDraw(Canvas)
-     *
-     */
 
     /**
      * 测量尺寸的回调方法
@@ -98,11 +147,6 @@ public class ToggleButton extends View implements View.OnClickListener {
     }
 
     /**
-     *当前开关的状态
-     * true 为开
-     */
-    private boolean currState = false;
-    /**
      * 绘制当前view的内容
      * @param canvas
      */
@@ -120,13 +164,6 @@ public class ToggleButton extends View implements View.OnClickListener {
         canvas.drawBitmap(slideBtn,slideBtn_left,0,paint);
     }
 
-    /**
-     * 判断是否发生拖动，
-     * 如果拖动了，就不再响应 onclick 事件
-     *
-     */
-    private boolean isDrag = false;
-
     @Override
     public void onClick(View v) {
         if (!isDrag){
@@ -135,15 +172,6 @@ public class ToggleButton extends View implements View.OnClickListener {
         }
 
     }
-
-    /**
-     * down 事件时的x值
-     */
-    private int firstX;
-    /**
-     * touch 事件的上一个x值
-     */
-    private int lastX;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

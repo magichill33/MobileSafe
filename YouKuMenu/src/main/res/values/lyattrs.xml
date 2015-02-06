@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyToggleBtn">
+        <!-- 声名一个属性  name是my_background   类型为 引用类型      引用资源ID -->
+        <attr name="my_background" format="reference"/>
+        <!-- 声名一个属性  name是my_slide_btn   类型为 引用类型      引用资源ID -->
+        <attr name="my_slide_btn" format="reference"/>
+        <!-- 声名一个属性  name是curr_state   类型为 boolean 类型-->
+        <attr name="curr_state" format="boolean"/>
+    </declare-styleable>
+</resources>

@@ -34,11 +34,14 @@
         <activity
             android:name=".SpinnerDemo"
             android:label="@string/title_activity_spinner_demo" >
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".ToggleButtonActivity"
@@ -48,6 +51,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".NinePatchActivity"
+            android:label="@string/title_activity_nine_patch" >
         </activity>
     </application>
 

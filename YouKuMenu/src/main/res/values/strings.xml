@@ -7,5 +7,6 @@
     <string name="title_activity_ad">AdActivity</string>
     <string name="title_activity_spinner_demo">SpinnerDemo</string>
     <string name="title_activity_toggle_button">ToggleButtonActivity</string>
+    <string name="title_activity_nine_patch">NinePatchActivity</string>
 
 </resources>
