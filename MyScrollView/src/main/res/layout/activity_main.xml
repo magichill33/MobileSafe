@@ -5,7 +5,11 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"></RadioGroup>
     <com.ly.main.MyScrollView
         android:id="@+id/myscroll_view"
         android:layout_width="match_parent"
