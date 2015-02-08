@@ -5,10 +5,11 @@
       <GradleProjectSettings>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="D:\linux\Android Studio\gradle\gradle-2.2.1" />
+        <option name="gradleHome" value="D:\linux\android\studio\gradle\gradle-2.2.1" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/CustomUI" />
             <option value="$PROJECT_DIR$/HttpTest" />
             <option value="$PROJECT_DIR$/MutiDownload" />
             <option value="$PROJECT_DIR$/MyScrollView" />

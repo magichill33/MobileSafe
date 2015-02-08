@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CustomUI</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_water_fall">WaterFallActivity</string>
+    <string name="title_activity_ring">RingActivity</string>
+    <string name="title_activity_senior_ring">SeniorRingActivity</string>
+
+</resources>

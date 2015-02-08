@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidStudio.iml" filepath="$PROJECT_DIR$/AndroidStudio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CustomUI/CustomUI.iml" filepath="$PROJECT_DIR$/CustomUI/CustomUI.iml" />
       <module fileurl="file://$PROJECT_DIR$/HttpTest/HttpTest.iml" filepath="$PROJECT_DIR$/HttpTest/HttpTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MobileSafe.iml" filepath="$PROJECT_DIR$/MobileSafe.iml" />
       <module fileurl="file://$PROJECT_DIR$/MutiDownload/MutiDownload.iml" filepath="$PROJECT_DIR$/MutiDownload/MutiDownload.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyScrollView/MyScrollView.iml" filepath="$PROJECT_DIR$/MyScrollView/MyScrollView.iml" />
       <module fileurl="file://$PROJECT_DIR$/VideoPlayer/VideoPlayer.iml" filepath="$PROJECT_DIR$/VideoPlayer/VideoPlayer.iml" />

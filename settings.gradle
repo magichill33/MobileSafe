@@ -1,1 +1,1 @@
-include ':app', ':drawbitmap', ':VideoPlayer', ':HttpTest', ':MutiDownload', ':YouKuMenu', ':gisutil', ':MyScrollView'
+include ':app',':drawbitmap',':VideoPlayer', ':MyScrollView', ':HttpTest', ':MutiDownload',':YouKuMenu',':gisutil', ':CustomUI'
