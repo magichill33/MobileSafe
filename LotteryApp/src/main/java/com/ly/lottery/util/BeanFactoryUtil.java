@@ -17,7 +17,7 @@ public class BeanFactoryUtil {
         try {
           /*  properties.load(BeanFactoryUtil.class.
                     getClassLoader().getResourceAsStream("bean.properties"));*/
-           properties.load(BeanFactoryUtil.class.getResourceAsStream("/com/ly/lottery/util/bean.properties"));
+           properties.load(BeanFactoryUtil.class.getResourceAsStream("/assets/bean.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
