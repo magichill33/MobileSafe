@@ -7,6 +7,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.ly.lottery.view.FirstUI;
+import com.ly.lottery.view.Hall;
 import com.ly.lottery.view.manager.BottomManager;
 import com.ly.lottery.view.manager.MiddleManager;
 import com.ly.lottery.view.manager.TitleManager;
@@ -33,7 +34,12 @@ public class MainActivity extends Activity {
         middleContainer = (RelativeLayout) findViewById(R.id.ii_middle);
         MiddleManager middleManager = MiddleManager.getInstance();
         middleManager.setMiddleContainer(middleContainer);
-        middleManager.changeUI(FirstUI.class); //加载第一个界面
+
+        //建立观察者和被观察者之间的关系
+        middleManager.addObserver(manager);
+        middleManager.addObserver(bottomManager);
+
+        middleManager.changeUI(Hall.class); //加载第一个界面
     }
 
     // a、用户返回键操作捕捉

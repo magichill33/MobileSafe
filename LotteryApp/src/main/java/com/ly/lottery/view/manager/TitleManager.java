@@ -6,13 +6,19 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ly.lottery.ConstantValue;
 import com.ly.lottery.R;
 import com.ly.lottery.view.SecondUI;
+
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by Administrator on 2015/2/10.
  */
-public class TitleManager {
+public class TitleManager implements Observer{
 
     private static TitleManager titleManager = new TitleManager();
     private RelativeLayout commonContainer;
@@ -77,7 +83,7 @@ public class TitleManager {
     }
 
     //显示通用标题
-    public void showCommonContainer(){
+    public void showCommonTitle(){
         initTitle();
         commonContainer.setVisibility(View.VISIBLE);
     }
@@ -101,5 +107,35 @@ public class TitleManager {
 
     public void changeTitle(String title){
         titleContent.setText(title);
+    }
+
+    @Override
+    public void update(Observable observable, Object data) {
+        if (data!=null&& StringUtils.isNumeric(data.toString())){
+            int id = Integer.parseInt(data.toString());
+            switch (id)
+            {
+                case ConstantValue.VIEW_FIRST:
+                    TitleManager.getInstance().showUnLoginTitle();
+                    break;
+                case ConstantValue.VIEW_SECOND: //第二个界面
+                    TitleManager.getInstance().showCommonTitle();
+                    break;
+                case ConstantValue.VIEW_SSQ: //双色球
+                    break;
+                case ConstantValue.VIEW_SHOPPING: //购物车
+                    break;
+                case ConstantValue.VIEW_LOGIN: //登陆
+                    showCommonTitle();
+                    break;
+                case ConstantValue.VIEW_PREBET: //投注
+                    break;
+                case ConstantValue.VIEW_HALL: //购彩大厅
+                    showUnLoginTitle();
+                break;
+
+
+            }
+        }
     }
 }

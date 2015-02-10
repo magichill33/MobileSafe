@@ -8,13 +8,19 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.ly.lottery.ConstantValue;
 import com.ly.lottery.R;
+
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * 控件底部导航容器
  * Created by Administrator on 2015/2/10.
  */
-public class BottomManager {
+public class BottomManager implements Observer{
     protected static final String TAG = "BottomManager";
 
     private static BottomManager instance;
@@ -109,5 +115,35 @@ public class BottomManager {
      */
     public void changeGameBottomNotice(String notice){
         playBottomNotice.setText(notice);
+    }
+
+    @Override
+    public void update(Observable observable, Object data) {
+        if (data!=null&& StringUtils.isNumeric(data.toString())){
+            int id = Integer.parseInt(data.toString());
+            switch (id)
+            {
+                case ConstantValue.VIEW_FIRST: //第一个界面
+                    BottomManager.getInstance().showCommonBottom();
+                    break;
+                case ConstantValue.VIEW_SECOND:
+                    BottomManager.getInstance().showGameBottom();
+                    break;
+                case ConstantValue.VIEW_SSQ: //双色球
+                    break;
+                case ConstantValue.VIEW_SHOPPING: //购物车
+                    break;
+                case ConstantValue.VIEW_LOGIN: //登陆
+                    showGameBottom();
+                    break;
+                case ConstantValue.VIEW_PREBET: //投注
+                    break;
+                case ConstantValue.VIEW_HALL: //购彩大厅
+                    showCommonBottom();
+                    break;
+
+
+            }
+        }
     }
 }

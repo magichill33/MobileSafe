@@ -1,10 +1,12 @@
 package com.ly.lottery.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ly.lottery.ConstantValue;
 import com.ly.lottery.view.manager.BaseUI;
 
 /**
@@ -12,23 +14,22 @@ import com.ly.lottery.view.manager.BaseUI;
  */
 public class FirstUI extends BaseUI
 {
-    private TextView textView;
     public FirstUI(Context context) {
         super(context);
-        init();
+    }
+
+    @Override
+    protected void setListener() {
+
     }
 
     /**
      * 解决目标界面每次都创建新界面问题
      */
-    private void init()
-    {
-        textView = new TextView(context);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
-        );
-        textView.setLayoutParams(layoutParams);
-        textView.setText("这是第一个界面");
+    @Override
+    protected void init() {
+
+
     }
 
     /**
@@ -37,7 +38,23 @@ public class FirstUI extends BaseUI
      */
     @Override
     public View getChild() {
+        //简单界面：
+        TextView textView = new TextView(context);
 
+        ViewGroup.LayoutParams layoutParams = new
+                ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
+                ViewGroup.LayoutParams.FILL_PARENT);
+        textView.setLayoutParams(layoutParams);
+
+        textView.setBackgroundColor(Color.BLUE);
+        textView.setText("这是第一个界面");
         return textView;
     }
+
+    @Override
+    public int getID() {
+        return ConstantValue.VIEW_FIRST;
+    }
+
+
 }
