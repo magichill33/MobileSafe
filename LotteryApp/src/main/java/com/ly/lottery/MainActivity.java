@@ -1,39 +1,55 @@
 package com.ly.lottery;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.KeyEvent;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.ly.lottery.view.FirstUI;
+import com.ly.lottery.view.manager.BottomManager;
+import com.ly.lottery.view.manager.MiddleManager;
+import com.ly.lottery.view.manager.TitleManager;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
+    private RelativeLayout middleContainer; //中间占位的容器
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.il_main);
+        init();
     }
 
+    private void init(){
+        TitleManager manager = TitleManager.getInstance();
+        manager.init(this);
+        manager.showUnLoginTitle();
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        BottomManager bottomManager = BottomManager.getInstance();
+        bottomManager.init(this);
+        bottomManager.showCommonBottom();
+
+        middleContainer = (RelativeLayout) findViewById(R.id.ii_middle);
+        MiddleManager middleManager = MiddleManager.getInstance();
+        middleManager.setMiddleContainer(middleContainer);
+        middleManager.changeUI(FirstUI.class); //加载第一个界面
     }
 
+    // a、用户返回键操作捕捉
+    // b、响应返回键——切换到历史界面
+    // LinkedList<String>——AndroidStack
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            boolean result = MiddleManager.getInstance().goBack();
+            //返回键操作失败
+            if (!result)
+            {
+                Toast.makeText(MainActivity.this, "是否退出系统", Toast.LENGTH_LONG).show();
+            }
+            return false;
         }
-
-        return super.onOptionsItemSelected(item);
+        return super.onKeyDown(keyCode, event);
     }
 }

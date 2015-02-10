@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/ii_title"
+        layout="@layout/il_title"
+        android:layout_alignParentTop="true"/>
+    <include
+        android:id="@+id/ii_bottom"
+        layout="@layout/il_bottom"
+        android:layout_alignParentBottom="true"/>
+    <RelativeLayout
+        android:id="@+id/ii_middle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ii_bottom"
+        android:layout_below="@id/ii_title">
+    </RelativeLayout>
+
+</RelativeLayout>
