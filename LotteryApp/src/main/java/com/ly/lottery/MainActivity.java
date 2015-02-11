@@ -2,6 +2,7 @@ package com.ly.lottery;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -20,6 +21,13 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.il_main);
+
+        // 获取屏幕的宽度
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        GlobalParams.WIN_WIDTH = metrics.widthPixels;
+
         init();
     }
 

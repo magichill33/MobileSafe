@@ -1,6 +1,7 @@
 package com.ly.lottery.view.manager;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -38,6 +39,57 @@ public class MiddleManager extends Observable{
     public void setMiddleContainer(RelativeLayout middleContainer) {
         this.middleContainer = middleContainer;
     }
+
+    public void changeUI(Class<? extends BaseUI> targetClazz,Bundle bundle){
+        //判断当前正在展示的界面与切换界面是否相同
+        if (currentUI!=null && currentUI.getClass() == targetClazz){
+            return;
+        }
+
+        BaseUI targetUI = null;
+        String key = targetClazz.getSimpleName();
+        if (VIEWCACHE.containsKey(key)){
+            targetUI = VIEWCACHE.get(key);
+        }else {
+            try {
+                Constructor<? extends BaseUI> constructor = targetClazz.getConstructor(Context.class);
+                targetUI = constructor.newInstance(getContext());
+                VIEWCACHE.put(key,targetUI);
+            } catch (Exception e) {
+                throw new RuntimeException("constructor new instance error");
+            }
+        }
+
+        if (currentUI!=null)
+        {
+            // 在清理掉当前正在展示的界面之前——onPause方法
+            currentUI.onPause();
+        }
+
+        Log.i(TAG,targetUI.toString());
+        if (targetUI!=null){
+            targetUI.setBundle(bundle);
+        }
+
+
+        //切换界面的核心代码
+        middleContainer.removeAllViews();
+        View child = targetUI.getChild();
+        middleContainer.addView(child);
+        child.startAnimation(AnimationUtils.loadAnimation(getContext(),
+                R.anim.ia_view_change));
+
+        //在加载完界面之后--onResume
+        targetUI.onResume();
+
+        currentUI = targetUI;
+        //将当前显示的界面放到栈顶
+        HISTORY.addFirst(key);
+
+        //当中间容器切换成功时，处理别外的两个容器的变化
+        changeTitleAndBottom();
+    }
+
 
     /**
      * 切换界面:解决问题“在标题容器中每次点击都在创建一个目标界面”

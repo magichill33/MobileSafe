@@ -31,168 +31,48 @@
             android:text="@string/is_ssq_default_notice"
             android:textColor="@android:color/black" />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ii_lottery_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/ii_category_fc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/is_category_fc"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/ii_category_tc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/is_category_tc"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/ii_category_gpc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/is_category_gpc"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"/>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/ii_category_selector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="matrix"
+        android:src="@drawable/id_category_selector"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/ii_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical" >
-
-            <!-- 双色球 -->
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/id_item_bg"
-                android:orientation="horizontal" >
-
-                <!-- 彩种logo -->
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/id_ssq" />
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dip"
-                    android:orientation="vertical" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dip"
-                        android:singleLine="true"
-                        android:text="@string/is_hall_ssq_title"
-                        android:textColor="@color/red_slight"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/ii_hall_ssq_summary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dip"
-                        android:layout_marginTop="2dip"
-                        android:singleLine="true"
-                        android:text="@string/is_hall_summary_default"
-                        android:textColor="@color/black_slight"
-                        android:textSize="12sp" />
-
-                    <ImageView
-                        android:id="@+id/ii_hall_ssq_bet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:layout_marginRight="5dip"
-                        android:src="@drawable/id_betting" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- 福彩3D -->
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/id_item_bg"
-                android:orientation="horizontal" >
-
-                <!-- 彩种logo -->
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/id_3d" />
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dip"
-                    android:orientation="vertical" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dip"
-                        android:singleLine="true"
-                        android:text="@string/is_hall_3d_title"
-                        android:textColor="@color/red_slight"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/ii_hall_3d_summary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dip"
-                        android:layout_marginTop="2dip"
-                        android:singleLine="true"
-                        android:text="@string/is_hall_summary_default"
-                        android:textColor="@color/black_slight"
-                        android:textSize="12sp" />
-
-                    <ImageView
-                        android:id="@+id/ii_hall_3d_bet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:layout_marginRight="5dip"
-                        android:src="@drawable/id_betting" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- 七乐彩 -->
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/id_item_bg"
-                android:orientation="horizontal" >
-
-                <!-- 彩种logo -->
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/id_qlc" />
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dip"
-                    android:orientation="vertical" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dip"
-                        android:singleLine="true"
-                        android:text="@string/is_hall_qlc_title"
-                        android:textColor="@color/red_slight"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/ii_hall_qlc_summary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dip"
-                        android:layout_marginTop="2dip"
-                        android:singleLine="true"
-                        android:text="@string/is_hall_summary_default"
-                        android:textColor="@color/black_slight"
-                        android:textSize="12sp" />
-
-                    <ImageView
-                        android:id="@+id/ii_hall_qlc_bet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:layout_marginRight="5dip"
-                        android:src="@drawable/id_betting" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
 </LinearLayout>

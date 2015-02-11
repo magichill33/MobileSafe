@@ -122,6 +122,7 @@ public class TitleManager implements Observer{
                     TitleManager.getInstance().showCommonTitle();
                     break;
                 case ConstantValue.VIEW_SSQ: //双色球
+                    showCommonTitle();
                     break;
                 case ConstantValue.VIEW_SHOPPING: //购物车
                     break;

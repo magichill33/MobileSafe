@@ -2,6 +2,7 @@ package com.ly.lottery.view.manager;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
@@ -16,6 +17,7 @@ import com.ly.lottery.util.PromptManager;
  */
 public abstract class BaseUI implements View.OnClickListener{
     protected Context context;
+    protected Bundle bundle;
     //显示到中间容器
     protected ViewGroup showInMiddle;
 
@@ -23,6 +25,10 @@ public abstract class BaseUI implements View.OnClickListener{
         this.context = context;
         init();
         setListener();
+    }
+
+    public void setBundle(Bundle bundle) {
+        this.bundle = bundle;
     }
 
     protected abstract void setListener();//设置监听
