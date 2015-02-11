@@ -1,9 +1,14 @@
 package com.ly.lottery.view.manager;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
+import com.ly.lottery.net.NetUtil;
+import com.ly.lottery.net.protocal.Message;
+import com.ly.lottery.util.PromptManager;
 
 /**
  * 所有界面的基类
@@ -60,5 +65,39 @@ public abstract class BaseUI implements View.OnClickListener{
 
     public View findViewById(int id){
         return showInMiddle.findViewById(id);
+    }
+
+    /**
+     * 要出去的时候调用
+     */
+    public void onPause(){
+
+    }
+
+    /**
+     * 进入到界面之后
+     */
+    public void onResume(){
+
+    }
+
+    protected abstract class MyHttpTask<Params> extends
+            AsyncTask<Params,Void,Message>{
+        /**
+         * 类似与Thread.start方法 由于final修饰，无法Override，方法重命名 省略掉网络判断
+         *
+         * @param params
+         * @return
+         */
+        public final AsyncTask<Params, Void, Message> executeProxy(
+                Params... params) {
+            if (NetUtil.checkNet(context)) {
+                return super.execute(params);
+            } else {
+                PromptManager.showNoNetWork(context);
+                return null;
+            }
+
+        }
     }
 }

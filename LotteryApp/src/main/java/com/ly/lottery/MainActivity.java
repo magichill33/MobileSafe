@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.ly.lottery.util.PromptManager;
 import com.ly.lottery.view.FirstUI;
 import com.ly.lottery.view.Hall;
 import com.ly.lottery.view.manager.BottomManager;
@@ -52,7 +53,8 @@ public class MainActivity extends Activity {
             //返回键操作失败
             if (!result)
             {
-                Toast.makeText(MainActivity.this, "是否退出系统", Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this, "是否退出系统", Toast.LENGTH_LONG).show();
+                PromptManager.showExitSystem(this);
             }
             return false;
         }

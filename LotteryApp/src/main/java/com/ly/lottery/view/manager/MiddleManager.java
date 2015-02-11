@@ -64,7 +64,11 @@ public class MiddleManager extends Observable{
             }
         }
 
-        currentUI = targetUI;
+        if (currentUI!=null)
+        {
+            // 在清理掉当前正在展示的界面之前——onPause方法
+            currentUI.onPause();
+        }
 
         Log.i(TAG,targetUI.toString());
         //切换界面的核心代码
@@ -73,6 +77,9 @@ public class MiddleManager extends Observable{
         middleContainer.addView(child);
         child.startAnimation(AnimationUtils.loadAnimation(getContext(),
                 R.anim.ia_view_change));
+
+        //在加载完界面之后--onResume
+        targetUI.onResume();
 
         currentUI = targetUI;
         //将当前显示的界面放到栈顶

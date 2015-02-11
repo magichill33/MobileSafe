@@ -41,7 +41,7 @@ public class NetUtil {
      * @param context
      */
     private static void readAPN(Context context) {
-        Uri PREFERRED_APN_URI = Uri.parse("content://telephony/carriers/preferapn");
+       /* Uri PREFERRED_APN_URI = Uri.parse("content://telephony/carriers/preferapn");
         //4.0模拟器屏蔽掉该权限
 
         //操作联系人类似
@@ -51,7 +51,7 @@ public class NetUtil {
         if (cursor!=null&&cursor.moveToFirst()){
             GlobalParams.PROXY = cursor.getString(cursor.getColumnIndex("proxy"));
             GlobalParams.PORT = cursor.getInt(cursor.getColumnIndex("port"));
-        }
+        }*/
     }
 
     /**
