@@ -52,23 +52,23 @@
             <!-- 红球选号的容器 -->
             <!-- 高度固定：留出一个空行——小屏幕手机 -->
 
-            <GridView
+            <com.ly.lottery.view.custom.MyGridView
                 android:id="@+id/ii_ssq_red_number_container"
 
                 android:layout_width="fill_parent"
 
+                android:layout_height="200dip"
                 android:layout_marginLeft="5dip"
                 android:layout_marginRight="5dip"
                 android:layout_marginTop="5dip"
-
-                android:listSelector="@android:color/white"
-
-                android:layout_height="200dip"
-                android:numColumns="auto_fit"
+                android:cacheColorHint="@android:color/white"
 
                 android:columnWidth="35dip"
+                android:listSelector="@android:color/white"
+
+                android:numColumns="auto_fit"
                 >
-            </GridView>
+            </com.ly.lottery.view.custom.MyGridView>
 
             <!-- 蓝球的选号 -->
 

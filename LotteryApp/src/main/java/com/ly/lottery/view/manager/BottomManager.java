@@ -73,6 +73,11 @@ public class BottomManager implements Observer{
             @Override
             public void onClick(View v) {
                 Log.i(TAG,"点击清空按键");
+                BaseUI baseUI = MiddleManager.getInstance().getCurrentUI();
+                if (baseUI instanceof PlayGame)
+                {
+                    ((PlayGame) baseUI).clear();
+                }
             }
         });
 
@@ -80,6 +85,11 @@ public class BottomManager implements Observer{
             @Override
             public void onClick(View v) {
                 Log.i(TAG,"点击选好按键");
+                BaseUI baseUI = MiddleManager.getInstance().getCurrentUI();
+                if (baseUI instanceof PlayGame)
+                {
+                    ((PlayGame) baseUI).done();
+                }
             }
         });
     }
@@ -130,6 +140,7 @@ public class BottomManager implements Observer{
                     BottomManager.getInstance().showGameBottom();
                     break;
                 case ConstantValue.VIEW_SSQ: //双色球
+                    showGameBottom();
                     break;
                 case ConstantValue.VIEW_SHOPPING: //购物车
                     break;

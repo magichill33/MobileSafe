@@ -40,6 +40,10 @@ public class MiddleManager extends Observable{
         this.middleContainer = middleContainer;
     }
 
+    public BaseUI getCurrentUI() {
+        return currentUI;
+    }
+
     public void changeUI(Class<? extends BaseUI> targetClazz,Bundle bundle){
         //判断当前正在展示的界面与切换界面是否相同
         if (currentUI!=null && currentUI.getClass() == targetClazz){
