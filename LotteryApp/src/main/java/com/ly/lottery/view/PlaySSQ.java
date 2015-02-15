@@ -3,6 +3,7 @@ package com.ly.lottery.view;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
@@ -12,14 +13,24 @@ import android.widget.GridView;
 
 import com.ly.lottery.ConstantValue;
 import com.ly.lottery.R;
+import com.ly.lottery.bean.ShoppingCart;
+import com.ly.lottery.bean.Ticket;
+import com.ly.lottery.engine.CommonInfoEngine;
+import com.ly.lottery.net.protocal.Message;
+import com.ly.lottery.net.protocal.Oelement;
+import com.ly.lottery.net.protocal.element.CurrentIssueElement;
+import com.ly.lottery.util.BeanFactoryUtil;
+import com.ly.lottery.util.PromptManager;
 import com.ly.lottery.view.adapter.PoolAdapter;
 import com.ly.lottery.view.custom.MyGridView;
 import com.ly.lottery.view.manager.BaseUI;
 import com.ly.lottery.view.manager.BottomManager;
+import com.ly.lottery.view.manager.MiddleManager;
 import com.ly.lottery.view.manager.PlayGame;
 import com.ly.lottery.view.manager.TitleManager;
 import com.ly.lottery.view.sensor.ShakeListener;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -193,6 +204,7 @@ public class PlaySSQ extends BaseUI implements PlayGame{
         super.onResume();
         changeTitle();
         changeNotice();
+        clear();
         //注册
         shakeListener = new ShakeListener(context) {
             @Override
@@ -246,7 +258,79 @@ public class PlaySSQ extends BaseUI implements PlayGame{
 
     @Override
     public void done() {
+        // ①判断：用户是否选择了一注投注
+        if (redNums.size()>=6 && blueNums.size()>=1){
+            // 一个购物车中，只能放置一个彩种，当前期的投注信息
+            // ②判断：是否获取到了当前销售期的信息
+            if (bundle!=null){
+                // ③封装用户的投注信息：红球、蓝球、注数
+                Ticket ticket = new Ticket();
+                DecimalFormat decimalFormat = new DecimalFormat("00");
+                StringBuffer redBuffer = new StringBuffer();
+                for (Integer item:redNums)
+                {
+                    redBuffer.append(" ").append(decimalFormat.format(item));
+                }
+                ticket.setRedNum(redBuffer.substring(1));
 
+                StringBuffer blueBuffer = new StringBuffer();
+                for (Integer item:blueNums){
+                    blueBuffer.append(" ").append(decimalFormat.format(item));
+                }
+                ticket.setBlueNum(blueBuffer.substring(1));
+
+                ticket.setNum(calcBet());
+
+                //创建彩票购物车，将投注信息添加到购物车中
+                ShoppingCart.getInstance().getTickets().add(ticket);
+                //设置采种的标识，设置采种期次
+                ShoppingCart.getInstance().setLotteryid(getID());
+                ShoppingCart.getInstance().setIssue(bundle.getString("issue"));
+                //界面跳转--购物车展示
+                MiddleManager.getInstance().changeUI(Shopping.class,bundle);
+
+            }else {
+                //重新获取其次信息
+                getCurrentIssueInfo();
+            }
+        }
+
+    }
+
+    private void getCurrentIssueInfo() {
+        new MyHttpTask<Integer>(){
+            @Override
+            protected void onPreExecute() {
+                //显示滚动条
+                PromptManager.showProgressDialog(context);
+            }
+
+            @Override
+            protected Message doInBackground(Integer... params) {
+                //获取数据--业务调用
+                CommonInfoEngine commonInfoEngine = BeanFactoryUtil.getImpl(CommonInfoEngine.class);
+                return commonInfoEngine.getCurrentIssueInfo(params[0]);
+            }
+
+            @Override
+            protected void onPostExecute(Message message) {
+                PromptManager.closeProgressDialog();
+                if (message!=null){
+                    Oelement oelement = message.getBody().getOelement();
+                    if (ConstantValue.SUCCESS.equals(oelement.getErrorcode())){
+                        CurrentIssueElement element = (CurrentIssueElement) message.getBody().getElements().get(0);
+                        //创建bundle
+                        bundle = new Bundle();
+                        bundle.putString("issue",element.getIssue());
+                        changeTitle();
+                    }else {
+                        PromptManager.showToast(context,oelement.getErrormsg());
+                    }
+                }else {
+                    PromptManager.showToast(context, "服务器忙，请稍后重试……");
+                }
+            }
+        }.executeProxy(ConstantValue.SSQ);
     }
 
     /**

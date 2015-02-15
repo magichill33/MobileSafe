@@ -1,6 +1,7 @@
 package com.ly.lottery.view.manager;
 
 import android.app.Activity;
+import android.opengl.Visibility;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -120,6 +121,14 @@ public class BottomManager implements Observer{
     }
 
     /**
+     * 改变底部导航容器显示情况
+     */
+    public void changeBottomVisiblity(int type){
+        if (bottomMenuContainer.getVisibility() != type)
+            bottomMenuContainer.setVisibility(type);
+    }
+
+    /**
      * 设置玩法底部提示信息
      * @param notice
      */
@@ -134,21 +143,15 @@ public class BottomManager implements Observer{
             switch (id)
             {
                 case ConstantValue.VIEW_FIRST: //第一个界面
-                    BottomManager.getInstance().showCommonBottom();
-                    break;
                 case ConstantValue.VIEW_SECOND:
-                    BottomManager.getInstance().showGameBottom();
-                    break;
                 case ConstantValue.VIEW_SSQ: //双色球
                     showGameBottom();
                     break;
                 case ConstantValue.VIEW_SHOPPING: //购物车
+                case ConstantValue.VIEW_PREBET: //投注
+                    changeBottomVisiblity(View.GONE);
                     break;
                 case ConstantValue.VIEW_LOGIN: //登陆
-                    showGameBottom();
-                    break;
-                case ConstantValue.VIEW_PREBET: //投注
-                    break;
                 case ConstantValue.VIEW_HALL: //购彩大厅
                     showCommonBottom();
                     break;

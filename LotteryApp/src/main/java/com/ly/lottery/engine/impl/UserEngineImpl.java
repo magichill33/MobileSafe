@@ -9,6 +9,7 @@ import com.ly.lottery.engine.BaseEngine;
 import com.ly.lottery.engine.UserEngine;
 import com.ly.lottery.net.HttpClientUtil;
 import com.ly.lottery.net.protocal.Message;
+import com.ly.lottery.net.protocal.element.BalanceElement;
 import com.ly.lottery.net.protocal.element.UserLoginElement;
 import com.ly.lottery.util.DES;
 
@@ -174,6 +175,66 @@ public class UserEngineImpl extends BaseEngine implements UserEngine{
                 e.printStackTrace();
             }
         }
+        return null;
+    }
+
+    @Override
+    public Message getBalance(User user) {
+        BalanceElement element = new BalanceElement();
+        Message message = new Message();
+        message.getHeader().getUsername().setTagValue(user.getUsername());
+        String xml = message.getXml(element);
+
+        Message result = super.getResult(xml);
+        if (result!=null){
+            // 第四步：请求结果的数据处理
+            // body部分的第二次解析，解析的是明文内容
+            XmlPullParser parser = Xml.newPullParser();
+            DES des = new DES();
+            String body = "<body>" + des.authcode(result.getBody().getServiceBodyInsideDESInfo(),
+                    "DECODE", ConstantValue.DES_PASSWORD) + "</body>";
+            try {
+                parser.setInput(new StringReader(body));
+                int eventType = parser.getEventType();
+                String name;
+                BalanceElement resultElement = null;
+                while (eventType!=XmlPullParser.END_DOCUMENT){
+                    switch (eventType){
+                        case XmlPullParser.START_TAG:
+                            name = parser.getName();
+                            if ("errorcode".equals(name)){
+                                result.getBody().getOelement().setErrorcode(parser.nextText());
+                            }
+                            if ("errormsg".equals(name)) {
+                                result.getBody().getOelement().setErrormsg(parser.nextText());
+                            }
+                            //正对于当前请求
+                            if ("element".equals(name)){
+                                resultElement = new BalanceElement();
+                                result.getBody().getElements().add(resultElement);
+                            }
+
+                            if ("investvalues".equals(name)){
+                                if (resultElement!=null){
+                                    resultElement.setInvestvalues(parser.nextText());
+                                }
+                            }
+
+                            break;
+                    }
+                    eventType = parser.next();
+                }
+                return result;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+        return null;
+    }
+
+    @Override
+    public Message bet(User user) {
         return null;
     }
 }

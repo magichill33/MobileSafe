@@ -7,6 +7,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ly.lottery.ConstantValue;
+import com.ly.lottery.GlobalParams;
 import com.ly.lottery.R;
 import com.ly.lottery.view.SecondUI;
 
@@ -119,20 +120,21 @@ public class TitleManager implements Observer{
                     TitleManager.getInstance().showUnLoginTitle();
                     break;
                 case ConstantValue.VIEW_SECOND: //第二个界面
-                    TitleManager.getInstance().showCommonTitle();
-                    break;
                 case ConstantValue.VIEW_SSQ: //双色球
-                    showCommonTitle();
-                    break;
                 case ConstantValue.VIEW_SHOPPING: //购物车
-                    break;
                 case ConstantValue.VIEW_LOGIN: //登陆
-                    showCommonTitle();
-                    break;
                 case ConstantValue.VIEW_PREBET: //投注
+                    showCommonTitle();
                     break;
                 case ConstantValue.VIEW_HALL: //购彩大厅
-                    showUnLoginTitle();
+                    if (GlobalParams.isLogin){
+                        showLoginTitle();
+                        String info = "用户名：" + GlobalParams.USERNAME + "\r\n" + "余额:" + GlobalParams.MONEY;
+                        userInfo.setText(info);
+                    }else {
+                        showUnLoginTitle();
+                    }
+
                 break;
 
 

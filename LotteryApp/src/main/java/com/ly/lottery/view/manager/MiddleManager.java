@@ -9,6 +9,8 @@ import android.widget.RelativeLayout;
 
 import com.ly.lottery.ConstantValue;
 import com.ly.lottery.R;
+import com.ly.lottery.util.PromptManager;
+import com.ly.lottery.view.Hall;
 
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
@@ -219,11 +221,18 @@ public class MiddleManager extends Observable{
             if (HISTORY.size()>0){
                 String key = HISTORY.getFirst();
                 BaseUI targetUI = VIEWCACHE.get(key);
+                if (targetUI!=null){
+                    currentUI.onPause();
+                    middleContainer.removeAllViews();
+                    middleContainer.addView(targetUI.getChild());
+                    targetUI.onResume();
+                    currentUI = targetUI;
+                    changeTitleAndBottom();
+                }else {
+                    changeUI(Hall.class);
+                    PromptManager.showToast(getContext(), "应用在低内存下运行");
+                }
 
-                middleContainer.removeAllViews();
-                middleContainer.addView(targetUI.getChild());
-                currentUI = targetUI;
-                changeTitleAndBottom();
                 return true;
             }
         }
