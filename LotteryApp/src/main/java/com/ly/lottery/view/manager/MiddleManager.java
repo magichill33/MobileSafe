@@ -9,7 +9,9 @@ import android.widget.RelativeLayout;
 
 import com.ly.lottery.ConstantValue;
 import com.ly.lottery.R;
+import com.ly.lottery.util.MemoryManager;
 import com.ly.lottery.util.PromptManager;
+import com.ly.lottery.util.SoftMap;
 import com.ly.lottery.view.Hall;
 
 import java.lang.reflect.Constructor;
@@ -26,9 +28,21 @@ public class MiddleManager extends Observable{
 
     private static final String TAG = "MiddleManager";
     private static MiddleManager instance = new MiddleManager();
+    // 利用手机内存空间，换应用应用的运行速度
+    private static Map<String, BaseUI> VIEWCACHE;// K
+    // :唯一的标示BaseUI的子类
+    static {
+        // 16M，如果不足<16M(模拟器)
+        // 32M，真机
+        if (MemoryManager.hasAcailMemory()){
+            VIEWCACHE = new HashMap<String,BaseUI>();
+        }else {
+            VIEWCACHE = new SoftMap<String,BaseUI>();
+        }
+    }
     BaseUI currentUI = null;
     private RelativeLayout middleContainer;
-    private Map<String,BaseUI> VIEWCACHE = new HashMap<String,BaseUI>();
+    //private Map<String,BaseUI> VIEWCACHE = new HashMap<String,BaseUI>();
     private LinkedList<String> HISTORY = new LinkedList<String>(); //用户操作的历史记录
 
     private MiddleManager() {
@@ -37,6 +51,23 @@ public class MiddleManager extends Observable{
     public static MiddleManager getInstance() {
         return instance;
     }
+
+    // 每增加一个界面150K——16M
+    // 内存不足
+    // 处理的方案：
+    // 第一种：控制VIEWCACHE集合的size
+    // 第二种：Fragment代替，replace方法，不会缓存界面
+    // 第三种：降低BaseUI的应用级别
+    // 强引用：当前（GC宁可抛出OOM，不会回收BaseUI）
+    // 软引用：在OOM之前被GC回收掉
+    // 弱引用：一旦被GC发现了就回收
+    // 虚引用：一旦创建了就被回收了
+
+    // 都存在优缺点
+    // 第一种：代码实现简单，适应性不强
+    // 第二种：上一个Fragment被回收了，当内存充足的时候，运行速度损失过多
+    // 第三种：优点，缺点：虽然引用级别降低，但是必须等待GC去回收，必须要提供给GC一个回收的时间，所以一旦申请内存速度过快，不适用
+    // 瀑布流——Lrucache
 
     public void setMiddleContainer(RelativeLayout middleContainer) {
         this.middleContainer = middleContainer;
@@ -229,6 +260,8 @@ public class MiddleManager extends Observable{
                     currentUI = targetUI;
                     changeTitleAndBottom();
                 }else {
+                    //处理方式一：创建一个新的目标界面：存在问题——如果有其他的界面传递给被删除的界面
+                    // 处理方式二：寻找一个不需要其他界面传递数据——跳转到首页
                     changeUI(Hall.class);
                     PromptManager.showToast(getContext(), "应用在低内存下运行");
                 }
