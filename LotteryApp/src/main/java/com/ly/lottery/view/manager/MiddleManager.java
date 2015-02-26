@@ -238,4 +238,11 @@ public class MiddleManager extends Observable{
         }
         return false;
     }
+
+    /**
+     * 清空返回列表中信息
+     */
+    public void clear() {
+        HISTORY.clear();
+    }
 }
