@@ -1,0 +1,8 @@
+# MobileSafe
+这是一个android stuido构建的project，里面包含
+app 一个手机卫士app
+CustomUI 里面包含一些自定义UI的用法的介绍
+LotteryApp一个手机彩票app原型
+MutiDownload一个多线程下载示例
+MyScrollView一个仿pagerView控件的实现
+
