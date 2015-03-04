@@ -88,6 +88,7 @@
     <orderEntry type="library" exported="" name="weibosdkcore" level="project" />
     <orderEntry type="library" exported="" name="json_simple-1.1" level="project" />
     <orderEntry type="library" exported="" name="actionbarsherlock-4.4.0" level="project" />
+    <orderEntry type="module" module-name="pulltorefress_library" exported="" />
   </component>
 </module>
 

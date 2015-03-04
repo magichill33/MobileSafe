@@ -1,15 +1,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cloudstorage="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rl_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-    <TextView
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world"/>
-
+        android:layout_weight="1"
+        android:background="#fff"
+        android:focusable="true"
+        cloudstorage:adapterViewBackground="@color/white"
+        cloudstorage:headerTextColor="@color/black"
+        />
     <View
         android:id="@+id/view_tag"
         android:layout_width="match_parent"
