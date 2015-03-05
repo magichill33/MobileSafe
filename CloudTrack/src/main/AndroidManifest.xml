@@ -17,11 +17,12 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:label="云盘"
         android:theme="@style/Theme.Sherlock.Light" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="云盘"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".OAuthActivity"
@@ -32,6 +33,22 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".upload.UploadTabActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".download.DownloadTabActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".upload.UploadFileExploerActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".CloudDirActivity"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
