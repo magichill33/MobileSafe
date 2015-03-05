@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ly.customui.ActionViewTest">
+    <item
+        android:id="@+id/search"
+        android:actionViewClass="android.widget.SearchView"
+        android:orderInCategory="100"
+        android:title="@string/menu_settings"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/progress"
+        android:actionLayout="@layout/clock"
+        android:orderInCategory="100"
+        android:title="@string/menu_settings"
+        app:showAsAction="always"/>
+</menu>

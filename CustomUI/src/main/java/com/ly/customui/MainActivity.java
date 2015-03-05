@@ -29,4 +29,9 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this,SeniorRingActivity.class);
         startActivity(intent);
     }
+
+    public void gotoActionBar(View view){
+        Intent intent = new Intent(this,ActionBar_TabNav.class);
+        startActivity(intent);
+    }
 }

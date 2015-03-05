@@ -28,6 +28,19 @@
             android:name=".SeniorRingActivity"
             android:label="@string/title_activity_senior_ring" >
         </activity>
+        <activity
+            android:name=".MyActionBar"
+            android:label="@string/title_activity_my_action_bar" >
+        </activity>
+        <activity
+            android:name=".ActionViewTest"
+            android:label="NBA"
+            android:logo="@drawable/ic_launcher" >
+        </activity>
+        <activity
+            android:name=".ActionBar_TabNav"
+            android:label="@string/title_activity_action_bar__tab_nav" >
+        </activity>
     </application>
 
 </manifest>

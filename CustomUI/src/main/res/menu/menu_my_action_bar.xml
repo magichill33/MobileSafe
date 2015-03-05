@@ -1,0 +1,50 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ly.customui.MyActionBar">
+    <item android:icon="@drawable/font"
+        android:title="@string/font_size"
+        app:showAsAction="always|withText">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/font_10"
+                    android:title="font_10"/>
+                <item
+                    android:id="@+id/font_12"
+                    android:title="font_12"/>
+                <item
+                    android:id="@+id/font_14"
+                    android:title="font_14"/>
+                <item
+                    android:id="@+id/font_16"
+                    android:title="font_16"/>
+                <item
+                    android:id="@+id/font_18"
+                    android:title="font_18"/>
+
+            </group>
+        </menu>
+    </item>
+
+    <item android:id="@+id/plain_item"
+        android:title="plain_item"
+        app:showAsAction="always" />
+    <item android:icon="@drawable/color"
+        android:title="字体颜色"
+        app:showAsAction="always">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/red_font"
+                    android:title="红色标题"/>
+                <item
+                    android:id="@+id/green_font"
+                    android:title="绿色标题"/>
+                <item
+                    android:id="@+id/blue_font"
+                    android:title="蓝色标题"/>
+            </group>
+        </menu>
+    </item>
+</menu>
