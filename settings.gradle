@@ -1,1 +1,1 @@
-include ':app', ':drawbitmap', ':VideoPlayer', ':MyScrollView', ':HttpTest', ':MutiDownload', ':YouKuMenu', ':gisutil', ':CustomUI', ':LotteryApp', ':CloudTrack', ':pulltorefress_library', ':actionbarsherlock'
+include ':app', ':drawbitmap', ':VideoPlayer', ':MyScrollView', ':HttpTest', ':MutiDownload', ':YouKuMenu', ':gisutil', ':CustomUI', ':LotteryApp', ':pulltorefress_library', ':actionbarsherlock', ':SlideMenuCase', ':exrlib', ':library'
