@@ -7,8 +7,8 @@
          necessary to support previous API levels.
     -->
     <declare-styleable name="ButtonBarContainerTheme">
-        <attr name="lyButtonBarStyle" format="reference" />
-        <attr name="lyButtonBarButtonStyle" format="reference" />
+        <attr name="ButtonBarStyle" format="reference" />
+        <attr name="ButtonBarButtonStyle" format="reference" />
     </declare-styleable>
 
 </resources>
