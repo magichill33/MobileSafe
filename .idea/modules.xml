@@ -3,19 +3,21 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidStudio.iml" filepath="$PROJECT_DIR$/AndroidStudio.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CloudTrack/CloudTrack.iml" filepath="$PROJECT_DIR$/CloudTrack/CloudTrack.iml" />
       <module fileurl="file://$PROJECT_DIR$/CustomUI/CustomUI.iml" filepath="$PROJECT_DIR$/CustomUI/CustomUI.iml" />
       <module fileurl="file://$PROJECT_DIR$/HttpTest/HttpTest.iml" filepath="$PROJECT_DIR$/HttpTest/HttpTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/LotteryApp/LotteryApp.iml" filepath="$PROJECT_DIR$/LotteryApp/LotteryApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/MobileSafe.iml" filepath="$PROJECT_DIR$/MobileSafe.iml" />
       <module fileurl="file://$PROJECT_DIR$/MutiDownload/MutiDownload.iml" filepath="$PROJECT_DIR$/MutiDownload/MutiDownload.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyScrollView/MyScrollView.iml" filepath="$PROJECT_DIR$/MyScrollView/MyScrollView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SlideMenuCase/SlideMenuCase.iml" filepath="$PROJECT_DIR$/SlideMenuCase/SlideMenuCase.iml" />
       <module fileurl="file://$PROJECT_DIR$/VideoPlayer/VideoPlayer.iml" filepath="$PROJECT_DIR$/VideoPlayer/VideoPlayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/YouKuMenu/YouKuMenu.iml" filepath="$PROJECT_DIR$/YouKuMenu/YouKuMenu.iml" />
       <module fileurl="file://$PROJECT_DIR$/actionbarsherlock/actionbarsherlock.iml" filepath="$PROJECT_DIR$/actionbarsherlock/actionbarsherlock.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/drawbitmap/drawbitmap.iml" filepath="$PROJECT_DIR$/drawbitmap/drawbitmap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exrlib/exrlib.iml" filepath="$PROJECT_DIR$/exrlib/exrlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/gisutil/gisutil.iml" filepath="$PROJECT_DIR$/gisutil/gisutil.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/pulltorefress_library/pulltorefress_library.iml" filepath="$PROJECT_DIR$/pulltorefress_library/pulltorefress_library.iml" />
     </modules>
   </component>
