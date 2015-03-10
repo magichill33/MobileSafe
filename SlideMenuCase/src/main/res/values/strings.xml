@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">新闻客户端</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">dummy_content</string>
+    <string name="tab_function">首页</string>
+    <string name="tab_news_center">新闻中心</string>
+    <string name="tab_smart_service">智慧服务</string>
+    <string name="tab_gov_affairs">政务指南</string>
+    <string name="tab_setting">设置</string>
+    <string name="share_content">千龙智慧北京新闻平台非常的好</string>
+    <string name="removeItem">删除</string>
+
+</resources>
