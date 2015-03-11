@@ -7,13 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.ly.news.MainActivity;
+
 /**
  * Created by Administrator on 2015/3/11.
  */
 public abstract class BaseFragment extends Fragment{
     protected View view;
     protected Context ctx;
-
+    protected SlidingMenu slidingMenu;
     /**
      * Activity创建完成
      * @param savedInstanceState
@@ -32,6 +35,7 @@ public abstract class BaseFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ctx = getActivity();
+        slidingMenu = ((MainActivity)ctx).getSlidingMenu();
     }
 
     /**

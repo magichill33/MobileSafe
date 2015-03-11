@@ -6,7 +6,7 @@
     android:orientation="vertical">
     <view
         android:id="@+id/viewpager"
-        class="com.ly.news.view.LazyViewPager"
+        class="com.ly.news.view.CustomViewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.0"/>

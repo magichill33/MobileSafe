@@ -5,14 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
+import com.lidroid.xutils.util.LogUtils;
 import com.ly.news.base.BasePage;
+import com.ly.news.utils.HMApi;
 
 
 public class NewsCenterPage extends BasePage {
 
 	public NewsCenterPage(Context ct) {
 		super(ct);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -24,9 +30,22 @@ public class NewsCenterPage extends BasePage {
 
 	@Override
 	public void initData() {
-		// TODO Auto-generated method stub
-		
+        testGet();
 	}
 
+    private void testGet(){
+        HttpUtils httpUtils = new HttpUtils();
+        httpUtils.send(HttpRequest.HttpMethod.GET, HMApi.NEWS_CENTER_CATEGORIES,
+                new RequestCallBack<Object>() {
+                    @Override
+                    public void onSuccess(ResponseInfo<Object> responseInfo) {
+                        LogUtils.d(responseInfo.result.toString());
+                    }
 
+                    @Override
+                    public void onFailure(HttpException error, String msg) {
+
+                    }
+                });
+    }
 }
