@@ -12,7 +12,12 @@ import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.lidroid.xutils.util.LogUtils;
 import com.ly.news.base.BasePage;
+import com.ly.news.bean.NewsCenterCategory;
+import com.ly.news.utils.GsonUtils;
 import com.ly.news.utils.HMApi;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class NewsCenterPage extends BasePage {
@@ -40,6 +45,7 @@ public class NewsCenterPage extends BasePage {
                     @Override
                     public void onSuccess(ResponseInfo<Object> responseInfo) {
                         LogUtils.d(responseInfo.result.toString());
+                        processData(responseInfo.result.toString());
                     }
 
                     @Override
@@ -47,5 +53,20 @@ public class NewsCenterPage extends BasePage {
 
                     }
                 });
+    }
+
+    private List<String> menuNewCenterList = new ArrayList<String>();
+
+    private void processData(String result) {
+        NewsCenterCategory category = GsonUtils.jsonToBean(result,
+                NewsCenterCategory.class);
+        if (200 == category.retcode){
+            List<NewsCenterCategory.CenterCategory> data = category.data;
+            for (NewsCenterCategory.CenterCategory cate:data){
+                menuNewCenterList.add(cate.title);
+            }
+        }
+
+
     }
 }

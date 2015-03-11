@@ -10,10 +10,13 @@ import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 import com.ly.news.fragment.Fragment1;
 import com.ly.news.fragment.HomeFragment;
 import com.ly.news.fragment.MenuFragment;
+import com.ly.news.fragment.MenuFragment2;
 
 
 public class MainActivity extends SlidingFragmentActivity {
     private SlidingMenu slidingMenu;
+    private MenuFragment2 menuFragment;
+
     /**
      * 1 得到滑动菜单
      * 2 设置滑动菜单是在左边出来还是右边出来
@@ -54,7 +57,7 @@ public class MainActivity extends SlidingFragmentActivity {
         // 第三个参数 SlidingMenu.TOUCHMODE_NONE 不能滑动
         slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         //创建fragment
-        MenuFragment menuFragment = new MenuFragment();
+        menuFragment = new MenuFragment2();
         //获取fragment的管理者
         getSupportFragmentManager()
                 //开启事物
@@ -69,6 +72,17 @@ public class MainActivity extends SlidingFragmentActivity {
         RightMenuFragment rightMenuFragment = new RightMenuFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.right_menu_frame, rightMenuFragment).commit();*/
     }
+
+
+    /**
+     * 获取菜单
+     * @return
+     */
+    public MenuFragment2 getMenuFragment2(){
+        menuFragment = (MenuFragment2) getSupportFragmentManager().findFragmentByTag("Menu");
+        return menuFragment;
+    }
+
 
     /**
      * 回调方法
