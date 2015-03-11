@@ -1,4 +1,4 @@
-package com.ly.nesw.fragment;
+package com.ly.news.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class Fragment1 extends Fragment {
+public class Fragment5 extends Fragment {
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class Fragment1 extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		TextView textview = new TextView(getActivity());
-		textview.setText(Fragment1.class.getSimpleName());
+		textview.setText(Fragment5.class.getSimpleName());
 		return textview;
 	}
 

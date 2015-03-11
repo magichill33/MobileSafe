@@ -1,18 +1,15 @@
-package com.ly.nesw;
+package com.ly.news;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.Window;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
-import com.ly.nesw.fragment.Fragment1;
-import com.ly.nesw.fragment.MenuFragment;
-import com.ly.nesw.fragment.RightMenuFragment;
+import com.ly.news.fragment.Fragment1;
+import com.ly.news.fragment.HomeFragment;
+import com.ly.news.fragment.MenuFragment;
 
 
 public class MainActivity extends SlidingFragmentActivity {
@@ -33,7 +30,7 @@ public class MainActivity extends SlidingFragmentActivity {
         setContentView(R.layout.content);
         setBehindContentView(R.layout.menu); //设置侧滑菜单的布局
 
-        Fragment fragment1 = new Fragment1();
+        Fragment fragment1 = new HomeFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
        /* getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,
                 fragment1).commit();*/
@@ -44,7 +41,7 @@ public class MainActivity extends SlidingFragmentActivity {
         slidingMenu = getSlidingMenu();
         //2 设置滑动菜单是在左边出来还是右边出来
         //参数可以设置左边LEFT，也可以设置右边RIGHT ，还能设置左右LEFT_RIGHT
-        slidingMenu.setMode(SlidingMenu.LEFT_RIGHT);
+        slidingMenu.setMode(SlidingMenu.LEFT);
         //3 设置滑动菜单出来之后，内容页，显示的剩余宽度
         slidingMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
         //4 设置滑动菜单的阴影 设置阴影，阴影需要在开始的时候，特别暗，慢慢的变淡
@@ -67,10 +64,10 @@ public class MainActivity extends SlidingFragmentActivity {
                         //提交
                 .commit();
 
-        slidingMenu.setSecondaryMenu(R.layout.right_menu);
+      /*  slidingMenu.setSecondaryMenu(R.layout.right_menu);
         slidingMenu.setSecondaryShadowDrawable(R.drawable.shadowright);
         RightMenuFragment rightMenuFragment = new RightMenuFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.right_menu_frame, rightMenuFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.right_menu_frame, rightMenuFragment).commit();*/
     }
 
     /**

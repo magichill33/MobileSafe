@@ -1,4 +1,4 @@
-package com.ly.nesw;
+package com.ly.news;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

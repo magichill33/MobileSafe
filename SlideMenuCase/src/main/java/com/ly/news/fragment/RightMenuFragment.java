@@ -1,4 +1,4 @@
-package com.ly.nesw.fragment;
+package com.ly.news.fragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +14,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.ly.nesw.MainActivity;
-import com.ly.nesw.R;
+import com.ly.news.MainActivity;
+import com.ly.news.R;
 
 
-public class MenuFragment extends Fragment implements OnItemClickListener {
+public class RightMenuFragment extends Fragment implements OnItemClickListener {
 
 	private View view;
 	private String tag = "MenuFragment";
