@@ -27,6 +27,11 @@ public abstract class BaseFragment extends Fragment{
         initData(savedInstanceState);
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
     /**
      * fragment创建完成
      * @param savedInstanceState

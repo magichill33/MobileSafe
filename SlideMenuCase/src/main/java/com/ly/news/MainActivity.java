@@ -38,7 +38,7 @@ public class MainActivity extends SlidingFragmentActivity {
        /* getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,
                 fragment1).commit();*/
         transaction.replace(R.id.content_frame,fragment1);
-        transaction.addToBackStack(null);
+       // transaction.addToBackStack(null);
         transaction.commit();
 
         slidingMenu = getSlidingMenu();

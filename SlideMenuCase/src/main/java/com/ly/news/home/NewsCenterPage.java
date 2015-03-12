@@ -11,6 +11,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.lidroid.xutils.util.LogUtils;
+import com.ly.news.MainActivity;
 import com.ly.news.base.BasePage;
 import com.ly.news.bean.NewsCenterCategory;
 import com.ly.news.utils.GsonUtils;
@@ -21,6 +22,8 @@ import java.util.List;
 
 
 public class NewsCenterPage extends BasePage {
+
+    private ArrayList<String> menuNewCenterList = new ArrayList<String>();
 
 	public NewsCenterPage(Context ct) {
 		super(ct);
@@ -55,18 +58,19 @@ public class NewsCenterPage extends BasePage {
                 });
     }
 
-    private List<String> menuNewCenterList = new ArrayList<String>();
-
     private void processData(String result) {
         NewsCenterCategory category = GsonUtils.jsonToBean(result,
                 NewsCenterCategory.class);
-        if (200 == category.retcode){
-            List<NewsCenterCategory.CenterCategory> data = category.data;
-            for (NewsCenterCategory.CenterCategory cate:data){
-                menuNewCenterList.add(cate.title);
-            }
+        if (category.retcode!= 200){
+            return;
         }
 
+        List<NewsCenterCategory.CenterCategory> data = category.data;
+        menuNewCenterList.clear();
+        for (NewsCenterCategory.CenterCategory cate:data){
+            menuNewCenterList.add(cate.title);
+        }
 
+        ((MainActivity)ctx).getMenuFragment2().initNewsCenterMenu(menuNewCenterList);
     }
 }
