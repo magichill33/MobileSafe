@@ -6,8 +6,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import com.itcast.cloudstorage.download.DownloadManager;
-import com.itcast.cloudstorage.utils.Logger;
+import com.ly.cloudstorage.download.DownloadManager;
+import com.ly.cloudstorage.utils.Logger;
 import com.vdisk.net.VDiskAPI.Entry;
 
 public class DownloadEntry implements Serializable {
