@@ -8,16 +8,22 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
 
     private final int MSG_HELLO = 0;
     private Handler mHandler;
+    private TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        textView = (TextView) findViewById(R.id.hello);
+
         new CustomThread().start();
         findViewById(R.id.send_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,6 +33,23 @@ public class MainActivity extends Activity {
                 mHandler.obtainMessage(MSG_HELLO, str).sendToTarget();
             }
         });
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(MainActivity.this,"我是子线程",Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    //Toast.makeText(MainActivity.this,"我是子线程",Toast.LENGTH_LONG).show();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     class CustomThread extends Thread {
@@ -42,6 +65,8 @@ public class MainActivity extends Activity {
                     switch (msg.what) {
                         case MSG_HELLO:
                             Log.e("Test", "CustomThread receive msg:" + (String) msg.obj);
+                          //  textView.setText("你好");
+                            Toast.makeText(MainActivity.this,"haha",Toast.LENGTH_SHORT).show();
                     }
                 }
             };
