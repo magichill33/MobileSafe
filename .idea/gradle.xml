@@ -5,14 +5,16 @@
       <GradleProjectSettings>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="D:\linux\Android Studio\gradle\gradle-2.2.1" />
+        <option name="gradleHome" value="D:\linux\android\studio\gradle\gradle-2.2.1" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/CloudTrack" />
             <option value="$PROJECT_DIR$/CustomUI" />
             <option value="$PROJECT_DIR$/HttpTest" />
+            <option value="$PROJECT_DIR$/KMPlayer1" />
             <option value="$PROJECT_DIR$/KuMi" />
+            <option value="$PROJECT_DIR$/KuPlayer" />
             <option value="$PROJECT_DIR$/LazyList" />
             <option value="$PROJECT_DIR$/LearnCase" />
             <option value="$PROJECT_DIR$/LotteryApp" />

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
-    <file url="file://$PROJECT_DIR$/XTCM/src/main/java/com/lilosoft/xtcm/base/BMapApiDemoApp.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/KMPlayer1/src/main/java/cn/ithm/kmplayer1/VideoViewPlayingActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/XTCM/src/main/java/com/lilosoft/xtcm/base/BMapApiDemoApp.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/XTCM/src/main/java/com/lilosoft/xtcm/base/TabBaseActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/XTCM/src/main/java/com/lilosoft/xtcm/constant/Config.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/XTCM/src/main/java/com/lilosoft/xtcm/constant/LayoutStructure.java" charset="UTF-8" />

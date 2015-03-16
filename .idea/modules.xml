@@ -6,7 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/CloudTrack/CloudTrack.iml" filepath="$PROJECT_DIR$/CloudTrack/CloudTrack.iml" />
       <module fileurl="file://$PROJECT_DIR$/CustomUI/CustomUI.iml" filepath="$PROJECT_DIR$/CustomUI/CustomUI.iml" />
       <module fileurl="file://$PROJECT_DIR$/HttpTest/HttpTest.iml" filepath="$PROJECT_DIR$/HttpTest/HttpTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KMPlayer1/KMPlayer1.iml" filepath="$PROJECT_DIR$/KMPlayer1/KMPlayer1.iml" />
       <module fileurl="file://$PROJECT_DIR$/KuMi/KuMi.iml" filepath="$PROJECT_DIR$/KuMi/KuMi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KuPlayer/KuPlayer.iml" filepath="$PROJECT_DIR$/KuPlayer/KuPlayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/LazyList/LazyList.iml" filepath="$PROJECT_DIR$/LazyList/LazyList.iml" />
       <module fileurl="file://$PROJECT_DIR$/LearnCase/LearnCase.iml" filepath="$PROJECT_DIR$/LearnCase/LearnCase.iml" />
       <module fileurl="file://$PROJECT_DIR$/LotteryApp/LotteryApp.iml" filepath="$PROJECT_DIR$/LotteryApp/LotteryApp.iml" />
