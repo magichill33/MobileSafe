@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:itemElement="http://schemas.android.com/apk/res/com.lilosoft.xtcm"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white" >
+
+    <com.lilosoft.xtcm.views.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+        <LinearLayout
+            android:id="@+id/home_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="100dip"
+            android:layout_marginTop="@dimen/title_bar_height"
+            android:orientation="horizontal" >
+
+            <com.lilosoft.xtcm.views.FunctionItem
+                android:id="@+id/f_contactslist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/function_item_select"
+                android:gravity="center"
+                itemElement:src="@drawable/contact"
+                itemElement:text="@string/function_contactslist" >
+            </com.lilosoft.xtcm.views.FunctionItem>
+
+            <com.lilosoft.xtcm.views.FunctionItem
+                android:id="@+id/f_updata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/function_item_select"
+                android:gravity="center"
+                itemElement:src="@drawable/updata"
+                itemElement:text="@string/function_updata" >
+            </com.lilosoft.xtcm.views.FunctionItem>
+  
+            <com.lilosoft.xtcm.views.FunctionItem
+                android:id="@+id/f_h_hs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/function_item_select"
+                android:gravity="center"
+                android:visibility="invisible"
+                itemElement:src="@drawable/blank"
+                itemElement:text="@string/function_blank">
+            </com.lilosoft.xtcm.views.FunctionItem>
+
+        </LinearLayout>
+        
+        <com.lilosoft.xtcm.views.MPProgressBar
+        android:id="@+id/mPProgressBar"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

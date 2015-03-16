@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- all begin -->
+    <string name="app_name">城管通</string>
+    <string name="please_wait">请等待</string>
+    <string name="error_data">数据异常</string>
+    <string name="error_load_data">数据加载失败</string>
+    <string name="none_data">没有数据</string>
+    <string name="grid_no_permission_grid">您没有管理网格的权限</string>
+    <string name="grid_no_data_or_err">没有数据或网格编码有误</string>
+    <string name="error_connection">连接失败</string>
+    <string name="more_char">…</string>
+    <string name="soft_updating">软件更新</string>
+    <string name="soft_update_cancel">取消</string>
+    <string name="none"></string>
+    <string name="no_permission">对不起，没有权限！</string>
+    <!-- all end -->
+
+
+    <!-- 登录    begin -->
+    <string name="logining_contentDescription">登录图片</string>
+    <string name="logining">登录中</string>
+    <string name="login_account">请输入账户</string>
+    <string name="login_password">请输入密码</string>
+    <string name="login_save_psw">保存密码</string>
+    <string name="login_auto_login">自动登录</string>
+    <string name="login_warning_usw_null">帐号不能为空</string>
+    <string name="login_warning_usw_length">帐号长度为1—12位数字</string>
+    <string name="login_warning_psw_null">密码不能为空</string>
+    <string name="login_warning_psw_length">密码长度为1—12位数字或字母组合</string>
+    <!-- 登录 end -->
+
+
+    <!-- Home begin -->
+    <string name="function_home">首页</string>
+    <string name="function_report">问题上报</string>
+    <string name="function_ready_report">待上报问题</string>
+    <string name="function_ready_examine">待核查任务</string>
+    <string name="function_ready_verify">待核实任务</string>
+    <string name="function_ready_dispose">待办理任务</string>
+    <string name="function_history">历史记录</string>
+    <string name="function_call">一键拨号</string>
+    <string name="function_dispose">自行处置</string>
+    <string name="function_part_report">部件上报</string>
+    <string name="function_xzsp">行政审批</string>
+    <string name="function_setup">Setup</string>
+    <string name="function_report_track">上报轨迹</string>
+    <string name="function_select_map">地图位置</string>
+    <string name="function_question_examine">案件核实</string>
+    <string name="function_question_verify">问题查实</string>
+    <string name="function_question_dispose">问题办理</string>
+    <string name="function_question_exist">系统退出</string>
+    <string name="function_contacts">联系人</string>
+    <string name="function_contactslist">联系人列表</string>
+    <string name="function_blank"></string>
+    <string name="function_updata">更新数据</string>
+    <string name="function_daka">手动打卡</string>
+    <string name="function_pcard">手动打卡</string>
+    <string name="app_menu_surelogout">确定退出程序吗？</string>
+    <string name="sure">确定</string>
+    <string name="cancle">取消</string>
+    <!-- Home end -->
+
+
+    <!-- history begin -->
+    <string name="function_history_sb">已上报</string>
+    <string name="function_history_sb_i">已上报详情</string>
+    <string name="function_history_hc">已核查</string>
+    <string name="function_history_hc_i">已核查详情</string>
+    <string name="function_history_hs">已核实</string>
+    <string name="function_history_hs_i">已核实详情</string>
+    <string name="function_history_bl">已办理</string>
+    <string name="function_history_bl_i">已办理详情</string>
+    <!-- history end -->
+
+
+    <!-- Report begin -->
+    <string name="function_report_success">上报成功</string>
+
+    <!-- Report end -->
+
+
+    <!-- Report begin -->
+    <string name="setup_ip">请输入IP</string>
+    <string name="setup_point">请输入端口</string>
+    <!-- Report end -->
+    
+    <!-- 地图 -->
+    <string name="air_num">空气质量指数：</string>
+    <string name="air_type">空气质量等级：</string>
+    <string name="map_attention">关注</string>
+    <string name="map_cancle">取消</string>
+    <string name="air_monitor">监测点</string>
+    
+    <!-- 行政审批 -->
+    <string name="function_sp_menu">公示公告</string>
+    <string name="function_ts_menu">行政审批</string>
+    <string name="function_tz_menu">户外广告</string>
+    <string name="function_sp_list">公示公告列表</string>
+    <string name="function_ts_list">行政审批列表</string>
+    <string name="function_tz_list">户外广告列表</string>
+    <string name="function_sp_detail">审批详情</string>
+    <string name="function_ts_detail">投诉详情</string>
+    <string name="function_tz_detail">通知详情</string>
+    
+    <!-- 部件上报 -->
+    <string name="map2d">http://111.47.112.90:6080/arcgis/rest/services/xiantao/map2d/MapServer</string>
+    <string name="cm_grid">http://111.47.112.90:6080/arcgis/rest/services/xiantao/cm_grid/MapServer/0</string>
+    <string name="cm_parts">http://111.47.112.90:6080/arcgis/rest/services/xiantao/cm_parts/MapServer</string>
+    <string name="objectId">OBJECTID</string>
+    <string name="objCode">OBJCODE</string>
+    <string name="objName">OBJNAME</string>
+    <string name="orgCode">BGCODE</string>
+    <string name="deptCode1">DEPTCODE1</string>
+    <string name="deptName1">DEPTNAME1</string>
+    <string name="deptCode2">DEPTCODE2</string>
+    <string name="deptName2">DEPTNAME2</string>
+    <string name="deptCode3">DEPTCODE3</string>
+    <string name="deptName3">DEPTNAME3</string>
+    
+    <!--  打卡-->
+    <string name="function_zao_work">早上上班打卡</string>
+    <string name="function_zao_offwork">早上下班打卡</string>
+    <string name="function_zhong_work">中午上班打卡</string>
+    <string name="function_xia_work">下午下班打卡</string>
+    
+</resources>

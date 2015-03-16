@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical" >
+
+    <com.lilosoft.xtcm.views.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/report_top_line"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_below="@id/titlebar"
+        android:background="@color/tab_line" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/report_top_line" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/history_info_list"
+                android:layout_width="fill_parent"
+                android:layout_height="450dip"
+                android:dividerHeight="1dip"
+                android:visibility="visible" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.lilosoft.xtcm.views.MPProgressBar
+        android:id="@+id/mPProgressBar"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/nocolor"
+        android:clickable="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white" >
+
+    <com.lilosoft.xtcm.views.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:layout_marginBottom="60dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="54.dip"
+        android:background="@color/nocolor"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/history_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="@color/nocolor"
+            android:divider="@color/nocolor"
+            android:dividerHeight="10dip"
+            android:listSelector="@color/nocolor"
+            android:scrollbars="none" >
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dip"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/page_up"
+            android:layout_width="wrap_content"
+            android:layout_height="40dip"
+            android:layout_marginRight="3dip"
+            android:layout_weight="1"
+            android:background="@drawable/item_bg"
+            android:text="上一页" />
+
+        <Button
+            android:id="@+id/page_down"
+            android:layout_width="wrap_content"
+            android:layout_height="40dip"
+            android:layout_marginLeft="3dip"
+            android:layout_weight="1"
+            android:background="@drawable/item_bg"
+            android:text="下一页" />
+    </LinearLayout>
+
+    <com.lilosoft.xtcm.views.MPProgressBar
+        android:id="@+id/mPProgressBar"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/progressbar_bg"
+    android:gravity="center" >
+
+    <RelativeLayout
+        android:layout_width="@dimen/mp_progressbar_relativeLayout_layout_width"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mp_progressbar_bg"
+        android:padding="@dimen/mp_progressbar_relativeLayout_padding" >
+        
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.ProgressBar"
+            android:layout_width="@dimen/mp_progressbar_progressbar_layout_width"
+            android:layout_height="@dimen/mp_progressbar_progressbar_layout_height"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical|center_horizontal" />
+
+        <TextView
+            android:id="@+id/tvTipMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/progressBar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/mp_progressbar_tvtipmsg_margin_top"
+            android:gravity="center_vertical|center_horizontal"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/tvEllipsis"
+            android:layout_width="@dimen/mp_progressbar_tvellipsis_layout_width"
+            android:layout_height="fill_parent"
+            android:layout_alignBottom="@id/tvTipMsg"
+            android:layout_alignTop="@id/tvTipMsg"
+            android:layout_toRightOf="@id/tvTipMsg"
+            android:gravity="center_vertical" />
+    </RelativeLayout>
+
+</LinearLayout>

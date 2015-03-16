@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <color name="bg_color">#88b0df</color>
+    <color name="gray">#ffcccccc</color>
+    <color name="black">#ff000000</color>
+    <color name="lucid_white">#ffffffff</color>
+    <color name="nocolor">#00000000</color>
+    
+     <color name="gray_black">#ff222222</color>
+    
+    <color name="white">#ffffff</color>
+    <color name="light_gray">#DCDCDC</color>
+    
+    <color name="progressbar_bg">#b7000000</color>
+    
+    <color name="tab_line">#63B5EF</color>
+    
+    <!-- 地图popup -->
+    <color name="metro">#DD1F7ABA</color>
+</resources>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:itemElement="http://schemas.android.com/apk/res/com.lilosoft.xtcm"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_color" >
+
+    <com.lilosoft.xtcm.views.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/bottom_bar_height"
+        android:layout_marginTop="@dimen/title_bar_height"
+        android:background="@color/nocolor"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/home_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="100dip"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <com.lilosoft.xtcm.views.FunctionItem
+                android:id="@+id/f_lowfun1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/function_item_select"
+                android:gravity="center"
+                itemElement:src="@drawable/icon05"
+                itemElement:text="@string/function_ready_dispose" >
+            </com.lilosoft.xtcm.views.FunctionItem>
+
+            <com.lilosoft.xtcm.views.FunctionItem
+                android:id="@+id/f_lowfun2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/function_item_select"
+                android:gravity="center"
+                itemElement:src="@drawable/icon06"
+                itemElement:text="@string/function_history" >
+            </com.lilosoft.xtcm.views.FunctionItem>
+
+            <!-- 行政审批 -->
+
+            <com.lilosoft.xtcm.views.FunctionItem
+                android:id="@+id/f_lowfun3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/function_item_select"
+                android:gravity="center"
+                itemElement:src="@drawable/icon09"
+                itemElement:text="@string/function_xzsp" >
+            </com.lilosoft.xtcm.views.FunctionItem>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/home_layout1"
+            android:layout_width="fill_parent"
+            android:layout_height="100dip"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <com.lilosoft.xtcm.views.FunctionItem
+                android:id="@+id/f_lowfun4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/function_item_select"
+                android:gravity="center" 
+                 itemElement:src="@drawable/contact"
+                itemElement:text="@string/function_contacts">
+            </com.lilosoft.xtcm.views.FunctionItem>
+
+            <com.lilosoft.xtcm.views.FunctionItem
+                android:id="@+id/f_lowfun5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/function_item_select"
+                android:gravity="center"
+                 itemElement:src="@drawable/icon08"
+                itemElement:text="@string/function_daka" >
+            </com.lilosoft.xtcm.views.FunctionItem>
+
+            <com.lilosoft.xtcm.views.FunctionItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+            </com.lilosoft.xtcm.views.FunctionItem>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/home_layout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <com.lilosoft.xtcm.views.FunctionItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+            </com.lilosoft.xtcm.views.FunctionItem>
+
+            <com.lilosoft.xtcm.views.FunctionItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+            </com.lilosoft.xtcm.views.FunctionItem>
+
+            <com.lilosoft.xtcm.views.FunctionItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+            </com.lilosoft.xtcm.views.FunctionItem>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/home_layout3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <com.lilosoft.xtcm.views.FunctionItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+            </com.lilosoft.xtcm.views.FunctionItem>
+
+            <com.lilosoft.xtcm.views.FunctionItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+            </com.lilosoft.xtcm.views.FunctionItem>
+
+            <com.lilosoft.xtcm.views.FunctionItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" >
+            </com.lilosoft.xtcm.views.FunctionItem>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,53 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    
+    <!-- mp_progressbar begin -->
+    <dimen name="mp_progressbar_relativeLayout_layout_width">100.00dip</dimen>
+    <dimen name="mp_progressbar_relativeLayout_padding">5.00dip</dimen>
+    <dimen name="mp_progressbar_progressbar_layout_width">35.00dip</dimen>
+    <dimen name="mp_progressbar_progressbar_layout_height">35.00dip</dimen>
+    <dimen name="mp_progressbar_tvtipmsg_margin_top">5.00dip</dimen>
+    <dimen name="mp_progressbar_tvellipsis_layout_width">10.00dip</dimen>
+    <!-- mp_progressbar end -->
+    
+    <!-- login begin -->
+    <dimen name="login_text_padding_left">10.00dp</dimen>
+    <dimen name="login_text_margin_top">20.00dp</dimen>
+    <dimen name="login_checkbox_margin_top">10.00dp</dimen>
+    <dimen name="login_checkbox_width">120.00dp</dimen>
+    <dimen name="login_checkbox_textsize">15.0sp</dimen>
+    <dimen name="login_botton_margin_right">30.0dip</dimen>
+    <!-- login end -->
+    
+    <!-- title bar begin -->
+    <dimen name="title_bar_height">44.0000dip</dimen>
+    <!-- 左button -->
+    <dimen name="title_bar_left_btn_font_size">12.00sp</dimen>
+    <dimen name="title_bar_left_btn_margin_left">4.0000dip</dimen>
+    <dimen name="title_bar_left_btn_width">51.3333dip</dimen>
+    <dimen name="title_bar_left_btn_height">30.6666dip</dimen>
+    <!-- 右button -->
+    <dimen name="title_bar_right_btn_font_size">12.00sp</dimen>
+    <dimen name="title_bar_right_btn_width">61.3333dip</dimen>
+    <dimen name="title_bar_right_text_width">80.3333dip</dimen>
+    <dimen name="title_bar_right_btn_height">30.6666dip</dimen>
+    <!-- 中间 -->
+    <!-- title bar end -->
+    
+    <!-- context begin -->
+    <dimen name="context_top_padding">5.0dip</dimen>
+    <dimen name="context_bottom_padding">55.0dip</dimen>
+    <dimen name="context_left_padding">5.0dip</dimen>
+    <dimen name="context_right_padding">5.0dip</dimen>
+    <dimen name="context_padding">5.0dip</dimen>
+    <!-- context end -->
+    
+    <!-- bottom_bar begin -->
+    <dimen name="bottom_tab_font_size">10.0sp</dimen>
+    <dimen name="bottom_tab_padding_up">5.0dip</dimen>
+    <dimen name="bottom_tab_padding_drawable">2.0dip</dimen>
+    <dimen name="bottom_bar_height">50.0000dip</dimen>
+    <!-- bottom_bar end -->
+
+</resources>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:itemElement="http://schemas.android.com/apk/res/com.lilosoft.xtcm"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/home_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <!-- 问题上报 -->
+
+                <com.lilosoft.xtcm.views.FunctionItem
+                    android:id="@+id/f_qreport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/function_item_select"
+                    android:gravity="center"
+                    itemElement:src="@drawable/icon01"
+                    itemElement:text="@string/function_report" >
+                </com.lilosoft.xtcm.views.FunctionItem>
+
+                <!-- 待上报问题 -->
+
+                <com.lilosoft.xtcm.views.FunctionItem
+                    android:id="@+id/f_qreport1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/function_item_select"
+                    android:gravity="center"
+                    itemElement:src="@drawable/icon02"
+                    itemElement:text="@string/function_ready_report" >
+                </com.lilosoft.xtcm.views.FunctionItem>
+
+                <!-- 待核实任务 -->
+
+                <com.lilosoft.xtcm.views.FunctionItem
+                    android:id="@+id/f_qreport2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/function_item_select"
+                    android:gravity="center"
+                    itemElement:src="@drawable/icon04"
+                    itemElement:text="@string/function_ready_verify" >
+                </com.lilosoft.xtcm.views.FunctionItem>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/home_layout1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <!-- 待核查任务 -->
+
+                <com.lilosoft.xtcm.views.FunctionItem
+                    android:id="@+id/f_qreport3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/function_item_select"
+                    android:gravity="center"
+                    itemElement:src="@drawable/icon03"
+                    itemElement:text="@string/function_ready_examine" >
+                </com.lilosoft.xtcm.views.FunctionItem>
+
+                <!-- 历史记录 -->
+
+                <com.lilosoft.xtcm.views.FunctionItem
+                    android:id="@+id/f_qreport5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/function_item_select"
+                    android:gravity="center"
+                    itemElement:src="@drawable/icon06"
+                    itemElement:text="@string/function_history" >
+                </com.lilosoft.xtcm.views.FunctionItem>
+
+                <!-- 一键拨号 -->
+
+                <com.lilosoft.xtcm.views.FunctionItem
+                    android:id="@+id/f_qreport6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/function_item_select"
+                    android:gravity="center"
+                    itemElement:src="@drawable/icon07"
+                    itemElement:text="@string/function_call" >
+                </com.lilosoft.xtcm.views.FunctionItem>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/home_layout2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <!-- 自行处置 -->
+                <com.lilosoft.xtcm.views.FunctionItem
+                    android:id="@+id/f_qreport7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/function_item_select"
+                    android:gravity="center"
+                    itemElement:src="@drawable/icon08"
+                    itemElement:text="@string/function_dispose" >
+                </com.lilosoft.xtcm.views.FunctionItem>
+
+                <!-- 行政审批 -->
+                <com.lilosoft.xtcm.views.FunctionItem
+                    android:id="@+id/f_qreport8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/function_item_select"
+                    android:gravity="center"
+                    itemElement:src="@drawable/icon09"
+                    itemElement:text="@string/function_xzsp" >
+                </com.lilosoft.xtcm.views.FunctionItem>
+
+                <!-- 手动打卡 -->
+                <com.lilosoft.xtcm.views.FunctionItem
+                    android:id="@+id/f_qreport13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/function_item_select"
+                    android:gravity="center"
+                    itemElement:src="@drawable/icon08"
+                    itemElement:text="@string/function_daka" >
+                </com.lilosoft.xtcm.views.FunctionItem>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/home_layout2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <!-- 部件上报 -->
+<!--  
+                <com.lilosoft.xtcm.views.FunctionItem
+                    android:id="@+id/f_qreport12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/function_item_select"
+                    android:gravity="center"
+                    itemElement:src="@drawable/part_report"
+                    itemElement:text="@string/function_part_report" >
+                </com.lilosoft.xtcm.views.FunctionItem>
+-->
+                <!-- 联系人 -->
+
+                <com.lilosoft.xtcm.views.FunctionItem
+                    android:id="@+id/f_qreport11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/function_item_select"
+                    android:gravity="center"
+                    itemElement:src="@drawable/contact"
+                    itemElement:text="@string/function_contacts" >
+                </com.lilosoft.xtcm.views.FunctionItem>
+
+                <!-- 退出 -->
+
+                <com.lilosoft.xtcm.views.FunctionItem
+                    android:id="@+id/f_qreport10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/function_item_select"
+                    android:gravity="center"
+                    itemElement:src="@drawable/icon10"
+                    itemElement:text="@string/function_question_exist" >
+                </com.lilosoft.xtcm.views.FunctionItem>
+                
+                <!-- 空白补位 -->
+                <com.lilosoft.xtcm.views.FunctionItem
+                    android:id="@+id/f_qreport12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/function_item_select"
+                    android:gravity="center"
+                    itemElement:src="@drawable/blank"
+                    itemElement:text="@string/function_blank" >
+                </com.lilosoft.xtcm.views.FunctionItem>
+                
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <!--
+    <LinearLayout
+        android:id="@+id/home_layout3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal" >
+    </LinearLayout>
+    -->
+
+</LinearLayout>

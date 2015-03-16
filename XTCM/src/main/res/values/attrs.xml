@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="FunctionItem">
+        <attr name="src" format="integer" />
+        <attr name="text" format="integer" />
+    </declare-styleable>
+
+</resources>

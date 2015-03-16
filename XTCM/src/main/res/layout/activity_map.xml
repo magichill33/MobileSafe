@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.esri.android.map.MapView
+        android:id="@+id/map"
+        initExtent="112.93728983351912, 30.074192171852417, 113.82191936700929, 30.535167965189714"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </com.esri.android.map.MapView>
+
+    <com.lilosoft.xtcm.views.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dip"
+        android:layout_marginLeft="5dip"
+        android:layout_marginRight="5dip"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/sure"
+            android:layout_width="wrap_content"
+            android:layout_height="40dip"
+            android:layout_marginRight="3dip"
+            android:layout_weight="1"
+            android:background="@drawable/item_bg"
+            android:text="确定" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="40dip"
+            android:layout_marginLeft="3dip"
+            android:layout_weight="1"
+            android:background="@drawable/item_bg"
+            android:text="取消" />
+    </LinearLayout>
+
+    <com.lilosoft.xtcm.views.MPProgressBar
+        android:id="@+id/mPProgressBar"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

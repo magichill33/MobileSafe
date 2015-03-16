@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <com.esri.android.map.MapView
+        android:id="@+id/map"
+        initExtent="112.93728983351912, 30.074192171852417, 113.82191936700929, 30.535167965189714"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </com.esri.android.map.MapView>
+
+    <ImageButton
+        android:id="@+id/btnLocate"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="10dip"
+        android:layout_marginLeft="10dip"
+        android:background="#ccffffff"
+        android:src="@drawable/gps" />
+    
+    <ImageView 
+        android:id="@+id/iv_mark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/mark"
+        android:visibility="gone"/>
+
+</RelativeLayout>

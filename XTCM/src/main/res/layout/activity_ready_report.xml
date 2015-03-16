@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal" >
+
+    <ListView
+        android:id="@+id/ready_report_list"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:cacheColorHint="@color/nocolor"
+        android:divider="@color/nocolor"
+        android:dividerHeight="10dip"
+        android:listSelector="@color/nocolor" >
+    </ListView>
+
+</LinearLayout>

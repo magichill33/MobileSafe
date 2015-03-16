@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_color" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/bg_color"
+        android:orientation="vertical" >
+
+        <com.lilosoft.xtcm.views.TitleBar
+            android:id="@+id/titlebar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <TabHost
+            android:id="@+id/tabhost"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@android:color/white"
+                android:paddingBottom="50dip"/>
+            <!-- 去掉四周间隙 -->
+                <!-- android:paddingBottom="@dimen/context_bottom_padding"
+                android:paddingLeft="@dimen/context_left_padding"
+                android:paddingRight="@dimen/context_right_padding"
+                android:paddingTop="@dimen/context_top_padding" /> -->
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <RadioGroup
+                android:id="@id/main_radio"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/bottom_bar_height"
+                android:layout_gravity="bottom"
+                android:background="@drawable/maintab_toolbar_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@id/radio_button0"
+                    style="@style/main_tab_bottom"
+                    android:layout_marginTop="2.0dip"
+                    android:checked="true"
+                    android:drawableTop="@drawable/icon_1_n"
+                    android:text="@string/function_home" />
+
+                <RadioButton
+                    android:id="@id/radio_button1"
+                    style="@style/main_tab_bottom"
+                    android:layout_marginTop="2.0dip"
+                    android:drawableTop="@drawable/icon_2_n"
+                    android:text="@string/function_report" />
+
+                <RadioButton
+                    android:id="@id/radio_button2"
+                    style="@style/main_tab_bottom"
+                    android:layout_marginTop="2.0dip"
+                    android:drawableTop="@drawable/icon_3_n"
+                    android:text="@string/function_ready_report" />
+
+                <RadioButton
+                    android:id="@id/radio_button3"
+                    style="@style/main_tab_bottom"
+                    android:layout_marginTop="2.0dip"
+                    android:drawableTop="@drawable/icon_5_n"
+                    android:text="@string/function_ready_verify" />
+
+                <RadioButton
+                    android:id="@id/radio_button4"
+                    style="@style/main_tab_bottom"
+                    android:layout_marginTop="2.0dip"
+                    android:drawableTop="@drawable/icon_4_n"
+                    android:text="@string/function_ready_examine" />
+            </RadioGroup>
+        </TabHost>
+    </LinearLayout>
+
+    <com.lilosoft.xtcm.views.MPProgressBar
+        android:id="@+id/mPProgressBar"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

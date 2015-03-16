@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical" >
+
+    <com.lilosoft.xtcm.views.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titlebar"
+        android:layout_weight="1.0"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/setup_ip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/input_bg"
+            android:hint="@string/setup_ip"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/login_text_padding_left"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/setup_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="10dip"
+            android:background="@drawable/input_bg"
+            android:hint="@string/setup_point"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/login_text_padding_left"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="10dip"
+            android:layout_weight="3.0"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/setup_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/login_botton_margin_right"
+                android:background="@drawable/title_right_bg"
+                android:text="确认" />
+
+            <Button
+                android:id="@+id/setup_exit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/login_botton_margin_right"
+                android:background="@drawable/title_right_bg"
+                android:text="退出" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
