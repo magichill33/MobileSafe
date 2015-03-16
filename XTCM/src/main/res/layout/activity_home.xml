@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:itemElement="http://schemas.android.com/apk/res/com.lilosoft.xtcm"
+    xmlns:itemElement="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_gravity="center"
@@ -160,7 +160,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/home_layout2"
+                android:id="@+id/home_layout3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
