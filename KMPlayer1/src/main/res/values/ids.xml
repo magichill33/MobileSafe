@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="main_title" type="id"/>
+    <item name="scroll" type="id" />
+    <item name="rly_feature_container" type="id" />
+    <item name="newImageGallery" type="id" />
+    <item name="mainRadioGallery" type="id" />
+    <item name="recommendMoreMovie" type="id" />
+    <item name="gridviewMovie" type="id" />
+    <item name="recommendMoreTv" type="id" />
+    <item name="gridviewTv" type="id" />
+    <item name="recommendMoreZy" type="id" />
+    <item name="gridviewZy" type="id" />
+    <item name="recommendMoreDm" type="id" />
+    <item name="gridviewDm" type="id" />
+    <item name="recommendMoreWoman" type="id" />
+    <item name="gridviewWoman" type="id" />
+    <item name="recommendMoreMusic" type="id" />
+    <item name="gridviewMusic" type="id" />
+    <item name="recommendMoreAmuse" type="id" />
+    <item name="gridviewAmuse" type="id" />
+    <item name="recommendMoreSport" type="id" />
+    <item name="gridviewSport" type="id" />
+    <item name="recommendMoreInfo" type="id" />
+    <item name="gridviewInfo" type="id" />
+    <item name="lin" type="id" />
+    <item name="scoreId" type="id" />
+    <item name="item_img" type="id" />
+    <item name="progress_loadin" type="id" />
+    <item name="txt_loading" type="id" />
+    <item name="progress_loading" type="id" />
+    <item name="ii_channle_grid" type="id" />
+    <item name="progress_linear" type="id" />
+    <item name="progressbar_loading" type="id" />
+    <item name="load_more_textview" type="id" />
+    <item name="playe_layout" type="id" />
+    <item name="video_view" type="id" />
+    <item name="video_buffer" type="id" />
+    <item name="mediacontroller_buffer_bar" type="id" />
+    <item name="video_bufferi" type="id" />
+    <item name="mediacontrolle_buffer_text" type="id" />
+    <item name="mediacontrolle_buffer_info_text" type="id" />
+    <item name="player_loading" type="id" />
+    <item name="loading_video_name" type="id" />
+    <item name="loading_text" type="id" />
+    <item name="loading_rxBytes_text" type="id" />
+    <item name="frame" type="id" />
+    <item name="mFrameLayout" type="id" />
+</resources>

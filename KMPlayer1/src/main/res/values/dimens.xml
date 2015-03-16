@@ -1,0 +1,12 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="title_text_padding_left">1dp</dimen>
+    <dimen name="common_font_size_18">18sp</dimen>
+    <dimen name="videodetail_padding_left">1dp</dimen>
+    <dimen name="videodetail_padding_right">1dp</dimen>
+    <dimen name="videodetail_gridview_padding">1dp</dimen>
+
+</resources>

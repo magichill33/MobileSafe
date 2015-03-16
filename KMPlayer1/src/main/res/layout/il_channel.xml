@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <GridView
+        android:id="@id/ii_channle_grid"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15.0dip"
+        android:layout_marginLeft="6.0dip"
+        android:layout_marginRight="6.0dip"
+        android:fadingEdge="none"
+        android:fadingEdgeLength="0.0dip"
+        android:horizontalSpacing="8.0dip"
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:verticalSpacing="5.0dip" />
+
+    <LinearLayout
+        android:id="@id/progress_linear"
+        android:layout_width="wrap_content"
+        android:layout_height="30.0dip"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10.0dip"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ProgressBar
+            android:id="@id/progressbar_loading"
+            style="?android:progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@id/load_more_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5.0dip"
+            android:gravity="clip_vertical"
+            android:text="@string/loading"
+            android:textColor="@android:color/white"
+            android:textSize="15.0sp" />
+    </LinearLayout>
+
+</RelativeLayout>

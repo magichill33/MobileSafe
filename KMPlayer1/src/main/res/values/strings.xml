@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">KMPlayer</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="tip_network">亲，网络异常，请检查网络哦！</string>
+    <string name="loading">数据加载……</string>
+    
+</resources>
