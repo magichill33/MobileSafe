@@ -26,6 +26,10 @@ import com.lilosoft.xtcm.views.MPProgressBar;
 import com.lilosoft.xtcm.views.TitleBar;
 import com.lilosoft.xtcm.views.TitleBar.STYLE;
 
+/**
+ * 联系人Activity
+ */
+
 public class ContactsActivity extends NormalBaseActivity implements OnClickListener {
 
     private static final int SUCCESS_UPDATA = 1;

@@ -7,7 +7,7 @@ import android.os.Environment;
 
 /**
  * @category 配置
- * @author William Liu
+ * @author Yi Liu
  *
  */
 public class Config {
@@ -22,7 +22,7 @@ public class Config {
     /**
      * @category 网络模式 true=有网 false=无网
      */
-    public final static boolean NETWORK = true;
+    public final static boolean NETWORK = false;
 
     /**
      * @category 网络请求数据编码格式
@@ -106,8 +106,8 @@ public class Config {
 //	private static String URL_ = "http://192.168.120.117:8003/";//接口服务器
 //	private static String MAPURL_ = "http://111.47.112.90:6080/";//地图服务器
 
-//	private static String URL_ = "http://111.47.112.90:8003/";//接口服务器
-    private static String URL_ = "http://192.168.0.135:8003/";//接口服务器
+	private static String URL_ = "http://111.47.112.90:8003/";//接口服务器
+   // private static String URL_ = "http://192.168.0.135:8003/";//接口服务器
     /**
      * @category 更新
      */

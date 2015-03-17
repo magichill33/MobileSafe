@@ -7,7 +7,7 @@ import com.lilosoft.xtcm.base.AbsBaseActivity;
 
 /**
  * @category 页面管理
- * @author William Liu
+ * @author yi Liu
  *
  */
 public class ActivityManager {

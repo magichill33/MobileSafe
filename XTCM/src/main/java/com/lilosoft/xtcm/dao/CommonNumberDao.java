@@ -63,8 +63,8 @@ public class CommonNumberDao {
     public static List<Map<String, Object>> getGroupData(Context context) {
 
         List<Map<String, Object>> groupData = new ArrayList<Map<String, Object>>();
-        File file = new File(Environment.getExternalStorageDirectory(),
-                "db_contacts.db");
+        //File file = new File(Environment.getExternalStorageDirectory(),
+        //        "db_contacts.db");
         SQLiteDatabase db = new DatabaseHelper(context).getWritableDatabase();
         if (db.isOpen()) {
             Cursor cursor = db.query("ct", new String[] { "_id", "dept" },
