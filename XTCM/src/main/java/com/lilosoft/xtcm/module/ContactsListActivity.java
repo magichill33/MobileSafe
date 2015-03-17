@@ -24,130 +24,130 @@ import com.lilosoft.xtcm.views.TitleBar.STYLE;
 
 public class ContactsListActivity extends NormalBaseActivity {
 
-	private TitleBar mTitleBar;
-	private ExpandableListView elv;
+    private TitleBar mTitleBar;
+    private ExpandableListView elv;
 
-	@Override
-	protected void installViews() {
-		// TODO Auto-generated method stub
-		setContentView(R.layout.activity_contactslist);
-		initTitleBar();
-		initValues();
-	}
+    @Override
+    protected void installViews() {
+        // TODO Auto-generated method stub
+        setContentView(R.layout.activity_contactslist);
+        initTitleBar();
+        initValues();
+    }
 
-	private void initValues() {
-		elv = (ExpandableListView) findViewById(R.id.elv);
+    private void initValues() {
+        elv = (ExpandableListView) findViewById(R.id.elv);
 
 //		if (!CommonNumberDao.isExist()) {
 //			CommonNumberDao.copyDB(this);
 //		}
 
-		// ×éÊı¾İ
-		List<Map<String, Object>> groupData = CommonNumberDao.getGroupData(mContext);
-		// ×ÓÊı¾İ
-		List<List<Map<String, Object>>> childData = CommonNumberDao
-				.getChildData(mContext);
+        // ç»„æ•°æ®
+        List<Map<String, Object>> groupData = CommonNumberDao.getGroupData(mContext);
+        // å­æ•°æ®
+        List<List<Map<String, Object>>> childData = CommonNumberDao
+                .getChildData(mContext);
 
-		final SimpleExpandableListAdapter adapter = new SimpleExpandableListAdapter(
-				this,// ÉÏÏÂÎÄ
-				groupData,// ×éÊı¾İ List<Map<String,Object>>
-				android.R.layout.simple_expandable_list_item_1,// ×é²¼¾Ö R.layout.
-				new String[] { "dept" }, // ×éÊı¾İµÄkey String[]
-				new int[] { android.R.id.text1 }, // ×é²¼¾Ö¿Ø¼şµÄid int[]
-				childData, // º¢×ÓµÄÊı¾İ List<List<Map<String,Object>>>
-				android.R.layout.simple_expandable_list_item_2,// º¢×ÓµÄ²¼¾Ö R.layout
-				new String[] { "name", "phone" }, // º¢×ÓÊı¾İµÄkey String[]
-				new int[] { android.R.id.text1, android.R.id.text2 });// º¢×Ó²¼¾Ö¿Ø¼şµÄid
-																		// int[]
-		elv.setAdapter(adapter);
+        final SimpleExpandableListAdapter adapter = new SimpleExpandableListAdapter(
+                this,// ä¸Šä¸‹æ–‡
+                groupData,// ç»„æ•°æ® List<Map<String,Object>>
+                android.R.layout.simple_expandable_list_item_1,// ç»„å¸ƒå±€ R.layout.
+                new String[] { "dept" }, // ç»„æ•°æ®çš„key String[]
+                new int[] { android.R.id.text1 }, // ç»„å¸ƒå±€æ§ä»¶çš„id int[]
+                childData, // å­©å­çš„æ•°æ® List<List<Map<String,Object>>>
+                android.R.layout.simple_expandable_list_item_2,// å­©å­çš„å¸ƒå±€ R.layout
+                new String[] { "name", "phone" }, // å­©å­æ•°æ®çš„key String[]
+                new int[] { android.R.id.text1, android.R.id.text2 });// å­©å­å¸ƒå±€æ§ä»¶çš„id
+        // int[]
+        elv.setAdapter(adapter);
 
-		// ÉèÖÃº¢×ÓÌõÄ¿ÉèÖÃµã»÷ÊÂ¼ş
-		elv.setOnChildClickListener(new OnChildClickListener() {
+        // è®¾ç½®å­©å­æ¡ç›®è®¾ç½®ç‚¹å‡»äº‹ä»¶
+        elv.setOnChildClickListener(new OnChildClickListener() {
 
-			@Override
-			public boolean onChildClick(ExpandableListView parent, View v,
-					int groupPosition, int childPosition, long id) {
-				Map<String, String> map = (Map<String, String>) adapter
-						.getChild(groupPosition, childPosition);
-				String mobilephone = map.get("mobilephone");
-				String shortnum = map.get("shortnum");
-				// µ¯³öÑ¡Ôñ²¦ºÅ¶Ô»°¿ò
-				showSelectDialog(mobilephone, shortnum);
-				// Ö±½Ó²¦ºÅ
-				// Intent intent = new Intent(Intent.ACTION_CALL);
-				// intent.setData(Uri.parse("tel:" + mobilephone));
-				// context.startActivity(intent);
-				return false;
-			}
-		});
-	}
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                Map<String, String> map = (Map<String, String>) adapter
+                        .getChild(groupPosition, childPosition);
+                String mobilephone = map.get("mobilephone");
+                String shortnum = map.get("shortnum");
+                // å¼¹å‡ºé€‰æ‹©æ‹¨å·å¯¹è¯æ¡†
+                showSelectDialog(mobilephone, shortnum);
+                // ç›´æ¥æ‹¨å·
+                // Intent intent = new Intent(Intent.ACTION_CALL);
+                // intent.setData(Uri.parse("tel:" + mobilephone));
+                // context.startActivity(intent);
+                return false;
+            }
+        });
+    }
 
-	private void initTitleBar() {
-		mTitleBar = (TitleBar) findViewById(R.id.titlebar);
+    private void initTitleBar() {
+        mTitleBar = (TitleBar) findViewById(R.id.titlebar);
 
-		mTitleBar.changeStyle(STYLE.NOT_BTN_AND_TITLE);
+        mTitleBar.changeStyle(STYLE.NOT_BTN_AND_TITLE);
 
-		mTitleBar.centerTextView.setText("ÁªÏµÈËÁĞ±í");
-	}
+        mTitleBar.centerTextView.setText("è”ç³»äººåˆ—è¡¨");
+    }
 
-	@Override
-	protected void registerEvents() {
-		// TODO Auto-generated method stub
+    @Override
+    protected void registerEvents() {
+        // TODO Auto-generated method stub
 
-	}
-	
-	protected void showSelectDialog(String longnum, String shortnum) {
-		// TODO Auto-generated method stub
-		// AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
-		// dialogBuilder.setTitle("ÇëÑ¡Ôñ²¦ºÅÀàĞÍ£º");
-		// dialogBuilder.setView(View.inflate(context,
-		// R.layout.ldt_selectdialog, dialogBuilder));
-		SelectDialog dialog = new SelectDialog(mContext, longnum, shortnum);
-		dialog.setTitle("ÇëÑ¡Ôñ²¦ºÅÀàĞÍ");
-		dialog.show();
-	}
-	
-	public class SelectDialog extends Dialog {
+    }
 
-		String longnum;
-		String shortnum;
+    protected void showSelectDialog(String longnum, String shortnum) {
+        // TODO Auto-generated method stub
+        // AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+        // dialogBuilder.setTitle("è¯·é€‰æ‹©æ‹¨å·ç±»å‹ï¼š");
+        // dialogBuilder.setView(View.inflate(context,
+        // R.layout.ldt_selectdialog, dialogBuilder));
+        SelectDialog dialog = new SelectDialog(mContext, longnum, shortnum);
+        dialog.setTitle("è¯·é€‰æ‹©æ‹¨å·ç±»å‹");
+        dialog.show();
+    }
 
-		public SelectDialog(Context context, String longnum, String shortnum) {
-			super(context);
-			this.longnum = longnum;
-			this.shortnum = shortnum;
-		}
+    public class SelectDialog extends Dialog {
 
-		@Override
-		protected void onCreate(Bundle savedInstanceState) {
-			// TODO Auto-generated method stub
-			super.onCreate(savedInstanceState);
-			this.setContentView(R.layout.selectdialog);
-			Button bt_long = (Button) this.findViewById(R.id.bt_long);
-			Button bt_short = (Button) this.findViewById(R.id.bt_short);
+        String longnum;
+        String shortnum;
 
-			bt_long.setOnClickListener(new View.OnClickListener() {
+        public SelectDialog(Context context, String longnum, String shortnum) {
+            super(context);
+            this.longnum = longnum;
+            this.shortnum = shortnum;
+        }
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Intent intent = new Intent(Intent.ACTION_CALL);
-					intent.setData(Uri.parse("tel:" + longnum));
-					mContext.startActivity(intent);
-				}
-			});
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            // TODO Auto-generated method stub
+            super.onCreate(savedInstanceState);
+            this.setContentView(R.layout.selectdialog);
+            Button bt_long = (Button) this.findViewById(R.id.bt_long);
+            Button bt_short = (Button) this.findViewById(R.id.bt_short);
 
-			bt_short.setOnClickListener(new View.OnClickListener() {
+            bt_long.setOnClickListener(new View.OnClickListener() {
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Intent intent = new Intent(Intent.ACTION_CALL);
-					intent.setData(Uri.parse("tel:" + shortnum));
-					mContext.startActivity(intent);
-				}
-			});
-		}
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
+                    Intent intent = new Intent(Intent.ACTION_CALL);
+                    intent.setData(Uri.parse("tel:" + longnum));
+                    mContext.startActivity(intent);
+                }
+            });
 
-	}
+            bt_short.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
+                    Intent intent = new Intent(Intent.ACTION_CALL);
+                    intent.setData(Uri.parse("tel:" + shortnum));
+                    mContext.startActivity(intent);
+                }
+            });
+        }
+
+    }
 }

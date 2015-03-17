@@ -15,7 +15,7 @@ import com.lilosoft.xtcm.views.TitleBar;
 import com.lilosoft.xtcm.views.TitleBar.STYLE;
 
 /**
- * 行政审批GridView
+ * 琛屾斂瀹℃壒GridView
  *
  * @author yzy
  *
@@ -50,7 +50,7 @@ public class AdministratorApproveMenuActivity extends NormalBaseActivity
     }
 
     /**
-     * @category 初始化titleBar
+     * @category 鍒濆鍖杢itleBar
      */
     protected void initTitleBar() {
         mTitleBar = (TitleBar) findViewById(R.id.titlebar);
@@ -88,7 +88,7 @@ public class AdministratorApproveMenuActivity extends NormalBaseActivity
     public void onClick(View v) {
         switch (v.getId()) {
             /**
-             * 审批
+             * 瀹℃壒
              */
             case R.id.f_h_sb:
                 startActivity(new Intent(mContext,
@@ -96,7 +96,7 @@ public class AdministratorApproveMenuActivity extends NormalBaseActivity
                         "searchType", 0));
                 break;
             /**
-             * 投诉
+             * 鎶曡瘔
              */
             case R.id.f_h_hc:
                 startActivity(new Intent(mContext,
@@ -104,7 +104,7 @@ public class AdministratorApproveMenuActivity extends NormalBaseActivity
                         "searchType", 1));
                 break;
             /**
-             * 通知
+             * 閫氱煡
              */
             case R.id.f_h_hs:
                 startActivity(new Intent(mContext,

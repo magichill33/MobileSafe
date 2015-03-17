@@ -1,181 +1,181 @@
 package com.lilosoft.xtcm.instantiation;
 
 /**
- * @category ¿˙ ∑¡–±Ì“—∞Ï¿Ì◊÷∂Œ
+ * @category ÂéÜÂè≤ÂàóË°®Â∑≤ÂäûÁêÜÂ≠óÊÆµ
  * @author William Liu
- * 
+ *
  */
 public class HistoryDisposeListBean {
 
-	private String CASEID;
-	private String TASKID;
-	private String SIGNID;
-	private String HANDLEID;
-	private String CASECODE;
-	private String CASETITLE;
-	private String CASESTATUS;
-	private String CASEPARENTITEM1;
-	private String CASEPARENTITEM2;
-	private String CASEITEM;
-	private String DISPATCHTIME;
-	private String DISPATCHTYPE;
-	private String DISPATCHPERSONID;
-	private String FEEDBACKDEALTIME;
-	private String RN;
-	private String CASEDESCRIPTION;
-	
+    private String CASEID;
+    private String TASKID;
+    private String SIGNID;
+    private String HANDLEID;
+    private String CASECODE;
+    private String CASETITLE;
+    private String CASESTATUS;
+    private String CASEPARENTITEM1;
+    private String CASEPARENTITEM2;
+    private String CASEITEM;
+    private String DISPATCHTIME;
+    private String DISPATCHTYPE;
+    private String DISPATCHPERSONID;
+    private String FEEDBACKDEALTIME;
+    private String RN;
+    private String CASEDESCRIPTION;
 
-	public HistoryDisposeListBean(String caseid, String taskid, String signid,
-			String handleid, String casecode, String casetitle,
-			String casestatus, String caseparentitem1, String caseparentitem2,
-			String caseitem, String dispatchtime, String dispatchtype,
-			String dispatchpersonid, String feedbackdealtime, String rn,String casedescription) {
-		// TODO Auto-generated constructor stub
-		this.CASEID = caseid;
-		this.TASKID = taskid;
-		this.SIGNID = signid;
-		this.HANDLEID = handleid;
-		this.CASECODE = casecode;
-		this.CASETITLE = casetitle;
-		this.CASESTATUS = casestatus;
-		this.CASEPARENTITEM1 = caseparentitem1;
-		this.CASEPARENTITEM2 = caseparentitem2;
-		this.CASEITEM = caseitem;
-		this.DISPATCHTIME = dispatchtime;
-		this.DISPATCHTYPE = dispatchtype;
-		this.DISPATCHPERSONID = dispatchpersonid;
-		this.FEEDBACKDEALTIME = feedbackdealtime;
-		this.RN = rn;
-		this.CASEDESCRIPTION=casedescription;
-		
-	}
 
-	public String getCASEID() {
-		return CASEID;
-	}
+    public HistoryDisposeListBean(String caseid, String taskid, String signid,
+                                  String handleid, String casecode, String casetitle,
+                                  String casestatus, String caseparentitem1, String caseparentitem2,
+                                  String caseitem, String dispatchtime, String dispatchtype,
+                                  String dispatchpersonid, String feedbackdealtime, String rn,String casedescription) {
+        // TODO Auto-generated constructor stub
+        this.CASEID = caseid;
+        this.TASKID = taskid;
+        this.SIGNID = signid;
+        this.HANDLEID = handleid;
+        this.CASECODE = casecode;
+        this.CASETITLE = casetitle;
+        this.CASESTATUS = casestatus;
+        this.CASEPARENTITEM1 = caseparentitem1;
+        this.CASEPARENTITEM2 = caseparentitem2;
+        this.CASEITEM = caseitem;
+        this.DISPATCHTIME = dispatchtime;
+        this.DISPATCHTYPE = dispatchtype;
+        this.DISPATCHPERSONID = dispatchpersonid;
+        this.FEEDBACKDEALTIME = feedbackdealtime;
+        this.RN = rn;
+        this.CASEDESCRIPTION=casedescription;
 
-	public void setCASEID(String cASEID) {
-		CASEID = cASEID;
-	}
+    }
 
-	public String getTASKID() {
-		return TASKID;
-	}
+    public String getCASEID() {
+        return CASEID;
+    }
 
-	public void setTASKID(String tASKID) {
-		TASKID = tASKID;
-	}
+    public void setCASEID(String cASEID) {
+        CASEID = cASEID;
+    }
 
-	public String getSIGNID() {
-		return SIGNID;
-	}
+    public String getTASKID() {
+        return TASKID;
+    }
 
-	public void setSIGNID(String sIGNID) {
-		SIGNID = sIGNID;
-	}
+    public void setTASKID(String tASKID) {
+        TASKID = tASKID;
+    }
 
-	public String getHANDLEID() {
-		return HANDLEID;
-	}
+    public String getSIGNID() {
+        return SIGNID;
+    }
 
-	public void setHANDLEID(String hANDLEID) {
-		HANDLEID = hANDLEID;
-	}
+    public void setSIGNID(String sIGNID) {
+        SIGNID = sIGNID;
+    }
 
-	public String getCASECODE() {
-		return CASECODE;
-	}
+    public String getHANDLEID() {
+        return HANDLEID;
+    }
 
-	public void setCASECODE(String cASECODE) {
-		CASECODE = cASECODE;
-	}
+    public void setHANDLEID(String hANDLEID) {
+        HANDLEID = hANDLEID;
+    }
 
-	public String getCASETITLE() {
-		return CASETITLE;
-	}
+    public String getCASECODE() {
+        return CASECODE;
+    }
 
-	public void setCASETITLE(String cASETITLE) {
-		CASETITLE = cASETITLE;
-	}
+    public void setCASECODE(String cASECODE) {
+        CASECODE = cASECODE;
+    }
 
-	public String getCASESTATUS() {
-		return CASESTATUS;
-	}
+    public String getCASETITLE() {
+        return CASETITLE;
+    }
 
-	public void setCASESTATUS(String cASESTATUS) {
-		CASESTATUS = cASESTATUS;
-	}
+    public void setCASETITLE(String cASETITLE) {
+        CASETITLE = cASETITLE;
+    }
 
-	public String getCASEPARENTITEM1() {
-		return CASEPARENTITEM1;
-	}
+    public String getCASESTATUS() {
+        return CASESTATUS;
+    }
 
-	public void setCASEPARENTITEM1(String cASEPARENTITEM1) {
-		CASEPARENTITEM1 = cASEPARENTITEM1;
-	}
+    public void setCASESTATUS(String cASESTATUS) {
+        CASESTATUS = cASESTATUS;
+    }
 
-	public String getCASEPARENTITEM2() {
-		return CASEPARENTITEM2;
-	}
+    public String getCASEPARENTITEM1() {
+        return CASEPARENTITEM1;
+    }
 
-	public void setCASEPARENTITEM2(String cASEPARENTITEM2) {
-		CASEPARENTITEM2 = cASEPARENTITEM2;
-	}
+    public void setCASEPARENTITEM1(String cASEPARENTITEM1) {
+        CASEPARENTITEM1 = cASEPARENTITEM1;
+    }
 
-	public String getCASEITEM() {
-		return CASEITEM;
-	}
+    public String getCASEPARENTITEM2() {
+        return CASEPARENTITEM2;
+    }
 
-	public void setCASEITEM(String cASEITEM) {
-		CASEITEM = cASEITEM;
-	}
+    public void setCASEPARENTITEM2(String cASEPARENTITEM2) {
+        CASEPARENTITEM2 = cASEPARENTITEM2;
+    }
 
-	public String getDISPATCHTIME() {
-		return DISPATCHTIME;
-	}
+    public String getCASEITEM() {
+        return CASEITEM;
+    }
 
-	public void setDISPATCHTIME(String dISPATCHTIME) {
-		DISPATCHTIME = dISPATCHTIME;
-	}
+    public void setCASEITEM(String cASEITEM) {
+        CASEITEM = cASEITEM;
+    }
 
-	public String getDISPATCHTYPE() {
-		return DISPATCHTYPE;
-	}
+    public String getDISPATCHTIME() {
+        return DISPATCHTIME;
+    }
 
-	public void setDISPATCHTYPE(String dISPATCHTYPE) {
-		DISPATCHTYPE = dISPATCHTYPE;
-	}
+    public void setDISPATCHTIME(String dISPATCHTIME) {
+        DISPATCHTIME = dISPATCHTIME;
+    }
 
-	public String getDISPATCHPERSONID() {
-		return DISPATCHPERSONID;
-	}
+    public String getDISPATCHTYPE() {
+        return DISPATCHTYPE;
+    }
 
-	public void setDISPATCHPERSONID(String dISPATCHPERSONID) {
-		DISPATCHPERSONID = dISPATCHPERSONID;
-	}
+    public void setDISPATCHTYPE(String dISPATCHTYPE) {
+        DISPATCHTYPE = dISPATCHTYPE;
+    }
 
-	public String getFEEDBACKDEALTIME() {
-		return FEEDBACKDEALTIME;
-	}
+    public String getDISPATCHPERSONID() {
+        return DISPATCHPERSONID;
+    }
 
-	public void setFEEDBACKDEALTIME(String fEEDBACKDEALTIME) {
-		FEEDBACKDEALTIME = fEEDBACKDEALTIME;
-	}
+    public void setDISPATCHPERSONID(String dISPATCHPERSONID) {
+        DISPATCHPERSONID = dISPATCHPERSONID;
+    }
 
-	public String getRN() {
-		return RN;
-	}
+    public String getFEEDBACKDEALTIME() {
+        return FEEDBACKDEALTIME;
+    }
 
-	public void setRN(String rN) {
-		RN = rN;
-	}
+    public void setFEEDBACKDEALTIME(String fEEDBACKDEALTIME) {
+        FEEDBACKDEALTIME = fEEDBACKDEALTIME;
+    }
 
-	public String getCASEDESCRIPTION() {
-		return CASEDESCRIPTION;
-	}
+    public String getRN() {
+        return RN;
+    }
 
-	public void setCASEDESCRIPTION(String cASEDESCRIPTION) {
-		CASEDESCRIPTION = cASEDESCRIPTION;
-	}
+    public void setRN(String rN) {
+        RN = rN;
+    }
+
+    public String getCASEDESCRIPTION() {
+        return CASEDESCRIPTION;
+    }
+
+    public void setCASEDESCRIPTION(String cASEDESCRIPTION) {
+        CASEDESCRIPTION = cASEDESCRIPTION;
+    }
 
 }

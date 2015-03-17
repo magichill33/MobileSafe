@@ -29,7 +29,7 @@ import com.lilosoft.xtcm.base.NormalBaseActivity;
 import com.lilosoft.xtcm.constant.Config;
 
 /**
- * @category Â¼Òô
+ * @category å½•éŸ³
  * @author William Liu
  *
  */
@@ -81,13 +81,13 @@ public class AudioRecordActivity extends NormalBaseActivity implements
     @Override
     protected void registerEvents() {
         // TODO Auto-generated method stub
-		/* Â¼Òô */
+		/* å½•éŸ³ */
         myButton1.setOnClickListener(this);
-		/* Í£Ö¹ */
+		/* åœæ­¢ */
         myButton2.setOnClickListener(this);
-		/* ²¥·Å */
+		/* æ’­æ”¾ */
         myButton3.setOnClickListener(this);
-		/* É¾³ı */
+		/* åˆ é™¤ */
         myButton4.setOnClickListener(this);
 
         record_sure.setOnClickListener(this);
@@ -100,27 +100,27 @@ public class AudioRecordActivity extends NormalBaseActivity implements
 
         strTempFile = Config.FILES_NAME_URL;
 
-		/* ÅĞ¶ÏSD CardÊÇ·ñ²åÈë */
+		/* åˆ¤æ–­SD Cardæ˜¯å¦æ’å…¥ */
         sdCardExit = Environment.getExternalStorageState().equals(
                 android.os.Environment.MEDIA_MOUNTED);
-		/* È¡µÃSD CardÂ·¾¶×öÎªÂ¼ÒôµÄÎÄ¼şÎ»ÖÃ */
+		/* å–å¾—SD Cardè·¯å¾„åšä¸ºå½•éŸ³çš„æ–‡ä»¶ä½ç½® */
         if (sdCardExit)
             myRecAudioDir = new File(Config.FILES_NAME_URL.substring(0,
                     Config.FILES_NAME_URL.length() - 1));
 
-		/* È¡µÃSD CardÄ¿Â¼ÀïµÄËùÓĞ.amrÎÄ¼ş */
+		/* å–å¾—SD Cardç›®å½•é‡Œçš„æ‰€æœ‰.amræ–‡ä»¶ */
         getRecordFiles();
 
         adapter = new ArrayAdapter<String>(this,
                 R.layout.view_record_list_item, recordFiles);
-		/* ½«ArrayAdapter´æÈëListView¶ÔÏóÖĞ */
+		/* å°†ArrayAdapterå­˜å…¥ListViewå¯¹è±¡ä¸­ */
         myListView1.setAdapter(adapter);
     }
 
     @Override
     protected void onStop() {
         if (mMediaRecorder01 != null && !isStopRecord) {
-			/* Í£Ö¹Â¼Òô */
+			/* åœæ­¢å½•éŸ³ */
             mMediaRecorder01.stop();
             mMediaRecorder01.release();
             mMediaRecorder01 = null;
@@ -136,7 +136,7 @@ public class AudioRecordActivity extends NormalBaseActivity implements
 
                 for (int i = 0; i < files.length; i++) {
                     if (files[i].getName().indexOf(".") >= 0) {
-						/* ¶ÁÈ¡.amrÎÄ¼ş */
+						/* è¯»å–.amræ–‡ä»¶ */
                         String fileS = files[i].getName().substring(
                                 files[i].getName().indexOf("."));
                         if (fileS.toLowerCase().equals(".amr")) {
@@ -149,7 +149,7 @@ public class AudioRecordActivity extends NormalBaseActivity implements
         }
     }
 
-    /* ¿ªÆô²¥·ÅÂ¼ÒôÎÄ¼şµÄ³ÌĞò */
+    /* å¼€å¯æ’­æ”¾å½•éŸ³æ–‡ä»¶çš„ç¨‹åº */
     private void openFile(File f) {
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -199,12 +199,12 @@ public class AudioRecordActivity extends NormalBaseActivity implements
             case R.id.r_button01:
                 try {
                     if (!sdCardExit) {
-                        Toast.makeText(AudioRecordActivity.this, "Çë²åÈëSD Card",
+                        Toast.makeText(AudioRecordActivity.this, "è¯·æ’å…¥SD Card",
                                 Toast.LENGTH_LONG).show();
                         return;
                     }
 
-				/* ½¨Á¢Â¼Òôµµ */
+				/* å»ºç«‹å½•éŸ³æ¡£ */
                     // myRecAudioFile = getFilePath(strTempFile, getRandom()
                     // + ".amr");
                     strTempFile = getRandomName();
@@ -213,7 +213,7 @@ public class AudioRecordActivity extends NormalBaseActivity implements
                             myRecAudioDir);
 
                     mMediaRecorder01 = new MediaRecorder();
-				/* Éè¶¨Â¼ÒôÀ´Ô´ÎªÂó¿Ë·ç */
+				/* è®¾å®šå½•éŸ³æ¥æºä¸ºéº¦å…‹é£ */
                     mMediaRecorder01.setAudioSource(MediaRecorder.AudioSource.MIC);
                     mMediaRecorder01
                             .setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
@@ -227,7 +227,7 @@ public class AudioRecordActivity extends NormalBaseActivity implements
 
                     mMediaRecorder01.start();
 
-                    myTextView1.setText("Â¼ÒôÖĞ¡­");
+                    myTextView1.setText("å½•éŸ³ä¸­â€¦");
 
                     myButton1.setEnabled(false);
                     myButton2.setEnabled(true);
@@ -243,13 +243,13 @@ public class AudioRecordActivity extends NormalBaseActivity implements
                 break;
             case R.id.r_button02:
                 if (myRecAudioFile != null) {
-				/* Í£Ö¹Â¼Òô */
+				/* åœæ­¢å½•éŸ³ */
                     mMediaRecorder01.stop();
-				/* ½«Â¼ÒôÎÄ¼şÃû¸øAdapter */
+				/* å°†å½•éŸ³æ–‡ä»¶åç»™Adapter */
                     adapter.add(myRecAudioFile.getName());
                     mMediaRecorder01.release();
                     mMediaRecorder01 = null;
-                    myTextView1.setText("Íê³É£º" + myRecAudioFile.getName());
+                    myTextView1.setText("å®Œæˆï¼š" + myRecAudioFile.getName());
                     myButton1.setEnabled(true);
                     myButton3.setEnabled(true);
                     myButton4.setEnabled(true);
@@ -264,18 +264,18 @@ public class AudioRecordActivity extends NormalBaseActivity implements
                 break;
             case R.id.r_button03:
                 if (myPlayFile != null && myPlayFile.exists()) {
-				/* ¿ªÆô²¥·ÅµÄ³ÌĞò */
+				/* å¼€å¯æ’­æ”¾çš„ç¨‹åº */
                     openFile(myPlayFile);
                 }
                 break;
             case R.id.r_button04:
                 if (myPlayFile != null) {
-				/* Òò½«AdapterÒÆ³ıÎÄ¼şÃû */
+				/* å› å°†Adapterç§»é™¤æ–‡ä»¶å */
                     adapter.remove(myPlayFile.getName());
-				/* É¾³ıÎÄ¼ş */
+				/* åˆ é™¤æ–‡ä»¶ */
                     if (myPlayFile.exists())
                         myPlayFile.delete();
-                    myTextView1.setText("Íê³ÉÉ¾³ı");
+                    myTextView1.setText("å®Œæˆåˆ é™¤");
                     myButton3.setEnabled(false);
                     myButton4.setEnabled(false);
                 }
@@ -286,7 +286,7 @@ public class AudioRecordActivity extends NormalBaseActivity implements
                             new Intent().putExtra("path", myPlayFile.getPath()));
                     finish();
                 } else {
-                    myTextView1.setText("ÇëÑ¡ÔñÂ¼Òô£¡");
+                    myTextView1.setText("è¯·é€‰æ‹©å½•éŸ³ï¼");
                 }
                 break;
             case R.id.record_cancel:
@@ -302,13 +302,13 @@ public class AudioRecordActivity extends NormalBaseActivity implements
     @Override
     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
         // TODO Auto-generated method stub
-		/* µ±ÓĞµãÑ¡ÎÄ¼şÃûÊ±½«É¾³ı¼°²¥·Å°´Å¥Enable */
+		/* å½“æœ‰ç‚¹é€‰æ–‡ä»¶åæ—¶å°†åˆ é™¤åŠæ’­æ”¾æŒ‰é’®Enable */
         myButton3.setEnabled(true);
         myButton4.setEnabled(true);
 
         myPlayFile = new File(myRecAudioDir.getAbsolutePath() + File.separator
                 + ((CheckedTextView) arg1).getText());
-        myTextView1.setText("ÒÑÑ¡£º" + ((CheckedTextView) arg1).getText());
+        myTextView1.setText("å·²é€‰ï¼š" + ((CheckedTextView) arg1).getText());
     }
 
 }

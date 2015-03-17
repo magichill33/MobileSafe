@@ -2,10 +2,10 @@ package com.lilosoft.xtcm.constant;
 
 public class Limit {
 
-	// ÓÃ»§Éí·İ
-	public final static String[] limits = new String[] { "Íø¸ñÔ±", "²¿ÃÅ°ìÀíÔ±" };
+    // ç”¨æˆ·èº«ä»½
+    public final static String[] limits = new String[] { "ç½‘æ ¼å‘˜", "éƒ¨é—¨åŠç†å‘˜" };
 
-	// ÎŞÈ¨ÏŞ²âÊÔ
-	// public final static String[] limit = new String[] { "test1", "test2" };
+    // æ— æƒé™æµ‹è¯•
+    // public final static String[] limit = new String[] { "test1", "test2" };
 
 }

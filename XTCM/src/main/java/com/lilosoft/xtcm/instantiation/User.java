@@ -1,31 +1,31 @@
 package com.lilosoft.xtcm.instantiation;
 
 /**
- * @category ÓÃ»§ĞÅÏ¢
+ * @category ç”¨æˆ·ä¿¡æ¯
  * @author William Liu
- * 
+ *
  */
 public class User {
 
-	/**
-	 * @category ÓÃ»§Ãû
-	 */
-	public static String username = "";
+    /**
+     * @category ç”¨æˆ·å
+     */
+    public static String username = "";
 
-	/**
-	 * @category ÃÜÂë
-	 */
-	public static String passcode = "";
+    /**
+     * @category å¯†ç 
+     */
+    public static String passcode = "";
 
-	/**
-	 * @category È¨ÏŞ
-	 */
-	public static String limit = "";
-	public static String sqcode="";
+    /**
+     * @category æƒé™
+     */
+    public static String limit = "";
+    public static String sqcode="";
 
-	/**
-	 * @category ¹ÜÀíÍø¸ñ
-	 */
-	public static String[] gridinfo = null;
+    /**
+     * @category ç®¡ç†ç½‘æ ¼
+     */
+    public static String[] gridinfo = null;
 
 }

@@ -581,12 +581,12 @@ public class PunchCardActivity extends NormalBaseActivity implements
             super.handleMessage(msg);
             switch (msg.what) {
                 case 12314124:
-                    Toast.makeText(PunchCardActivity.this, "ÇëÔÚÕıÈ·µÄÊ±¼ä¶Î´ò¿¨£¡",
+                    Toast.makeText(PunchCardActivity.this, "è¯·åœ¨æ­£ç¡®çš„æ—¶é—´æ®µæ‰“å¡ï¼",
                             Toast.LENGTH_SHORT).show();
                     break;
                 case SET_PCARD_PALCE:
                     progressDialog.dismiss();
-                    Toast.makeText(PunchCardActivity.this, "ÇëÉèÖÃ´ò¿¨Çø£¡",
+                    Toast.makeText(PunchCardActivity.this, "è¯·è®¾ç½®æ‰“å¡åŒºï¼",
                             Toast.LENGTH_SHORT).show();
 
                     break;
@@ -606,16 +606,16 @@ public class PunchCardActivity extends NormalBaseActivity implements
                     thread.start();
                     break;
                 case MSG_PCARD_SUCCESS_ORDER:
-                    Toast.makeText(PunchCardActivity.this, "´ò¿¨³É¹¦£¡",
+                    Toast.makeText(PunchCardActivity.this, "æ‰“å¡æˆåŠŸï¼",
                             Toast.LENGTH_SHORT).show();
                     break;
                 case MSG_pCARD_LOST_ORDER:
-                    Toast.makeText(PunchCardActivity.this, "´ò¿¨Ê§°Ü£¡",
+                    Toast.makeText(PunchCardActivity.this, "æ‰“å¡å¤±è´¥ï¼",
                             Toast.LENGTH_SHORT).show();
                     break;
                 case MSG_pCARD_CANNOT:
 
-                    Toast.makeText(PunchCardActivity.this, "Çëµ½ÉÏ°àÇø´ò¿¨£¡",
+                    Toast.makeText(PunchCardActivity.this, "è¯·åˆ°ä¸Šç­åŒºæ‰“å¡ï¼",
                             Toast.LENGTH_SHORT).show();
                     break;
                 case 789:
@@ -624,7 +624,7 @@ public class PunchCardActivity extends NormalBaseActivity implements
                     break;
                 case 123:
                     if (!gaptime(record_morning)) {
-                        Toast.makeText(PunchCardActivity.this, "µ±Ìì´ò¿¨Ê±¼ä¼ä¸ôÌ«¶Ì£¡",
+                        Toast.makeText(PunchCardActivity.this, "å½“å¤©æ‰“å¡æ—¶é—´é—´éš”å¤ªçŸ­ï¼",
                                 Toast.LENGTH_SHORT).show();
                     } else {
                         Thread thread1 = new Thread(afternoon_Thread);
@@ -633,7 +633,7 @@ public class PunchCardActivity extends NormalBaseActivity implements
                     break;
                 case 678:
                     if (!gaptime(record_afternoon)) {
-                        Toast.makeText(PunchCardActivity.this, "µ±Ìì´ò¿¨Ê±¼ä¼ä¸ôÌ«¶Ì£¡",
+                        Toast.makeText(PunchCardActivity.this, "å½“å¤©æ‰“å¡æ—¶é—´é—´éš”å¤ªçŸ­ï¼",
                                 Toast.LENGTH_SHORT).show();
                     } else {
                         Thread thread1 = new Thread(evening_Thread);
@@ -669,7 +669,7 @@ public class PunchCardActivity extends NormalBaseActivity implements
         xiawupcard = (FunctionItem) findViewById(R.id.f_lowfun3);
         shangwupcard=(FunctionItem) findViewById(R.id.f_lowfun4);
         progressDialog = new LoadingProgressDialog(this);
-        progressDialog.setMessage("¼ÓÔØÖĞ...");
+        progressDialog.setMessage("åŠ è½½ä¸­...");
         progressDialog.show();
         currtDate = getAppDate();
         Thread sp = new Thread(getidThread);
@@ -749,13 +749,13 @@ public class PunchCardActivity extends NormalBaseActivity implements
     }
 
     private String getbeijingtime() {
-        java.util.Locale locale = java.util.Locale.CHINA; // ÕâÊÇ»ñµÃ±¾µØÖĞ¹úÊ±Çø
-        String pattern = "yyyy-MM-dd HH:mm:ss ";// ÕâÊÇÈÕÆÚ¸ñÊ½
+        java.util.Locale locale = java.util.Locale.CHINA; // è¿™æ˜¯è·å¾—æœ¬åœ°ä¸­å›½æ—¶åŒº
+        String pattern = "yyyy-MM-dd HH:mm:ss ";// è¿™æ˜¯æ—¥æœŸæ ¼å¼
         java.text.SimpleDateFormat df = new java.text.SimpleDateFormat(pattern,
-                locale);// Éè¶¨ÈÕÆÚ¸ñÊ½
-        String pattern1 = "HH:mm:ss ";// ÕâÊÇÈÕÆÚ¸ñÊ½
+                locale);// è®¾å®šæ—¥æœŸæ ¼å¼
+        String pattern1 = "HH:mm:ss ";// è¿™æ˜¯æ—¥æœŸæ ¼å¼
         java.text.SimpleDateFormat df1 = new java.text.SimpleDateFormat(
-                pattern1, locale);// Éè¶¨ÈÕÆÚ¸ñÊ½
+                pattern1, locale);// è®¾å®šæ—¥æœŸæ ¼å¼
         java.util.Date date = new java.util.Date();
         java.net.URL url = null;
         try {
@@ -763,25 +763,25 @@ public class PunchCardActivity extends NormalBaseActivity implements
         } catch (MalformedURLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }// È¡µÃ×ÊÔ´¶ÔÏó
+        }// å–å¾—èµ„æºå¯¹è±¡
         java.net.URLConnection uc = null;
         try {
             uc = url.openConnection();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }// Éú³ÉÁ¬½Ó¶ÔÏó
+        }// ç”Ÿæˆè¿æ¥å¯¹è±¡
         try {
             uc.connect();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        } // ·¢³öÁ¬½Ó
-        long ld = uc.getDate(); // È¡µÃÍøÕ¾ÈÕÆÚÊ±¼ä
-        date = new Date(ld); // ×ª»»Îª±ê×¼Ê±¼ä¶ÔÏó
+        } // å‘å‡ºè¿æ¥
+        long ld = uc.getDate(); // å–å¾—ç½‘ç«™æ—¥æœŸæ—¶é—´
+        date = new Date(ld); // è½¬æ¢ä¸ºæ ‡å‡†æ—¶é—´å¯¹è±¡
         String bjTime = df.format(date);
         stime = df1.format(date);
-        System.out.println("±±¾©Ê±¼ä:" + bjTime);
+        System.out.println("åŒ—äº¬æ—¶é—´:" + bjTime);
         return bjTime;
     }
 
@@ -790,10 +790,10 @@ public class PunchCardActivity extends NormalBaseActivity implements
         switch (v.getId()) {
             case R.id.f_lowfun1:
                 if (!get_placeid) {
-                    Toast.makeText(PunchCardActivity.this, "ÇëÉèÖÃ´ò¿¨Çø£¡",
+                    Toast.makeText(PunchCardActivity.this, "è¯·è®¾ç½®æ‰“å¡åŒºï¼",
                             Toast.LENGTH_SHORT).show();
                 } else if (!ispunchCard) {
-                    Toast.makeText(PunchCardActivity.this, "Çëµ½ÉÏ°àÇø´ò¿¨£¡",
+                    Toast.makeText(PunchCardActivity.this, "è¯·åˆ°ä¸Šç­åŒºæ‰“å¡ï¼",
                             Toast.LENGTH_SHORT).show();
                 } else {
 
@@ -801,29 +801,29 @@ public class PunchCardActivity extends NormalBaseActivity implements
                     thread1.start();
                 }
 
-                // Toast.makeText(this, "ÒÑ´ò¿¨", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(this, "å·²æ‰“å¡", Toast.LENGTH_SHORT).show();
 
                 break;
             case R.id.f_lowfun4:
                 if (!get_placeid) {
-                    Toast.makeText(PunchCardActivity.this, "ÇëÉèÖÃ´ò¿¨Çø£¡",
+                    Toast.makeText(PunchCardActivity.this, "è¯·è®¾ç½®æ‰“å¡åŒºï¼",
                             Toast.LENGTH_SHORT).show();
                 } else if (!ispunchCard) {
-                    Toast.makeText(PunchCardActivity.this, "Çëµ½ÉÏ°àÇø´ò¿¨£¡",
+                    Toast.makeText(PunchCardActivity.this, "è¯·åˆ°ä¸Šç­åŒºæ‰“å¡ï¼",
                             Toast.LENGTH_SHORT).show();
                 } else {
 
                     Thread thread1 = new Thread(evening_Thread);
                     thread1.start();
                 }
-                // Toast.makeText(this, "ÒÑ´ò¿¨", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(this, "å·²æ‰“å¡", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.f_lowfun3:
                 if (!get_placeid) {
-                    Toast.makeText(PunchCardActivity.this, "ÇëÉèÖÃ´ò¿¨Çø£¡",
+                    Toast.makeText(PunchCardActivity.this, "è¯·è®¾ç½®æ‰“å¡åŒºï¼",
                             Toast.LENGTH_SHORT).show();
                 } else if (!ispunchCard) {
-                    Toast.makeText(PunchCardActivity.this, "Çëµ½ÉÏ°àÇø´ò¿¨£¡",
+                    Toast.makeText(PunchCardActivity.this, "è¯·åˆ°ä¸Šç­åŒºæ‰“å¡ï¼",
                             Toast.LENGTH_SHORT).show();
                 } else {
 
@@ -833,10 +833,10 @@ public class PunchCardActivity extends NormalBaseActivity implements
                 break;
             case R.id.f_lowfun2:
                 if (!get_placeid) {
-                    Toast.makeText(PunchCardActivity.this, "ÇëÉèÖÃ´ò¿¨Çø£¡",
+                    Toast.makeText(PunchCardActivity.this, "è¯·è®¾ç½®æ‰“å¡åŒºï¼",
                             Toast.LENGTH_SHORT).show();
                 } else if (!ispunchCard) {
-                    Toast.makeText(PunchCardActivity.this, "Çëµ½ÉÏ°àÇø´ò¿¨£¡",
+                    Toast.makeText(PunchCardActivity.this, "è¯·åˆ°ä¸Šç­åŒºæ‰“å¡ï¼",
                             Toast.LENGTH_SHORT).show();
                 } else {
 
@@ -913,11 +913,11 @@ public class PunchCardActivity extends NormalBaseActivity implements
         // URL url;
         // Date date = null;
         // try {
-        // url = new URL("http://www.bjtime.cn");// È¡µÃ×ÊÔ´¶ÔÏó
-        // URLConnection uc = url.openConnection();// Éú³ÉÁ¬½Ó¶ÔÏó
-        // uc.connect(); // ·¢³öÁ¬½Ó
-        // long ld = uc.getDate(); // È¡µÃÍøÕ¾ÈÕÆÚÊ±¼ä
-        // date = new Date(ld); // ×ª»»Îª±ê×¼Ê±¼ä¶ÔÏó
+        // url = new URL("http://www.bjtime.cn");// å–å¾—èµ„æºå¯¹è±¡
+        // URLConnection uc = url.openConnection();// ç”Ÿæˆè¿æ¥å¯¹è±¡
+        // uc.connect(); // å‘å‡ºè¿æ¥
+        // long ld = uc.getDate(); // å–å¾—ç½‘ç«™æ—¥æœŸæ—¶é—´
+        // date = new Date(ld); // è½¬æ¢ä¸ºæ ‡å‡†æ—¶é—´å¯¹è±¡
         //
         // } catch (MalformedURLException e) {
         // // TODO Auto-generated catch block
@@ -961,8 +961,8 @@ public class PunchCardActivity extends NormalBaseActivity implements
 
         try {
             currDate = sdf.parse(currDate1);
-            startDate = sdf.parse(startDate1);// ¿ªÊ¼Ê±¼ä
-            // endDate = sdf.parse(endDate1);// ½áÊøÊ±¼ä
+            startDate = sdf.parse(startDate1);// å¼€å§‹æ—¶é—´
+            // endDate = sdf.parse(endDate1);// ç»“æŸæ—¶é—´
 
         } catch (ParseException e) {
             // TODO Auto-generated catch block

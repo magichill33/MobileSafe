@@ -11,85 +11,85 @@ import android.widget.TextView;
 import com.lilosoft.xtcm.R;
 
 /**
- * @category ×Ô¶¨ÒåµÈ´ı¿ò
+ * @category è‡ªå®šä¹‰ç­‰å¾…æ¡†
  * @author William Liu
  *
  */
 public class MPProgressBar extends RelativeLayout {
 
-	private ProgressBar progressBar;
-	private TextView tvTipMsg;
-	private TextView tvEllipsis;
-	private Context mContext;
-	private LayoutInflater mInflater;
+    private ProgressBar progressBar;
+    private TextView tvTipMsg;
+    private TextView tvEllipsis;
+    private Context mContext;
+    private LayoutInflater mInflater;
 
-	public MPProgressBar(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		init(context);
-	}
+    public MPProgressBar(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }
 
-	public MPProgressBar(Context context) {
-		super(context);
-		init(context);
-	}
-	public MPProgressBar(Context context, int mStyle) {
-		super(context);
-		init(context);
-	}
+    public MPProgressBar(Context context) {
+        super(context);
+        init(context);
+    }
+    public MPProgressBar(Context context, int mStyle) {
+        super(context);
+        init(context);
+    }
 
-	private void init(Context context) {
-		this.mContext = context;
-		mInflater = LayoutInflater.from(mContext);
-		mInflater.inflate(R.layout.view_mp_progressbar, this);
-		
-		progressBar = (ProgressBar) findViewById(R.id.progressBar);
-		tvTipMsg = (TextView) findViewById(R.id.tvTipMsg);
-		tvEllipsis = (TextView) findViewById(R.id.tvEllipsis);
-		
-		tvTipMsg.setTextColor(Color.WHITE);
-		tvEllipsis.setTextColor(Color.WHITE);
-	}
-	
-	/**
-	 * ÉèÖÃStyle
-	 * @param style
-	 */
-	public void setProgressBarStyle(int style) {
-		progressBar.setScrollBarStyle(style);
-	}
-	
-	/**
-	 * ÉèÖÃÌáÊ¾ĞÅÏ¢
-	 * @param tipMsg
-	 */
-	public void setTextTipMsg (CharSequence tipMsg) {
-		tvTipMsg.setText(tipMsg);
-	}
-	
-	/**
-	 * ÉèÖÃÎÄ×ÖºóÃæµÄÊ¡ÂÔºÅ£¬Èç£ºÍ¨ĞÅÖĞ¡­
-	 * @param ellipsis
-	 */
-	public void setTextEllipsis (CharSequence ellipsis) {
-		tvEllipsis.setText(ellipsis);
-	}
-	
-	/**
-	 * ÉèÖÃ×ÖÌåÑÕÉ«
-	 * @param textColor
-	 */
-	public void setTextColorTipMsg (int textColor) {
-		tvTipMsg.setTextColor(textColor);
-		tvEllipsis.setTextColor(textColor);
-	}
-	
-	/**
-	 * ÉèÖÃ×ÖÌå´óĞ¡
-	 * @param textSize
-	 */
-	public void setTextSizeTipMsg (float  textSize) {
-		tvTipMsg.setTextSize(textSize);
-		tvEllipsis.setTextSize(textSize);
-	}
+    private void init(Context context) {
+        this.mContext = context;
+        mInflater = LayoutInflater.from(mContext);
+        mInflater.inflate(R.layout.view_mp_progressbar, this);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        tvTipMsg = (TextView) findViewById(R.id.tvTipMsg);
+        tvEllipsis = (TextView) findViewById(R.id.tvEllipsis);
+
+        tvTipMsg.setTextColor(Color.WHITE);
+        tvEllipsis.setTextColor(Color.WHITE);
+    }
+
+    /**
+     * è®¾ç½®Style
+     * @param style
+     */
+    public void setProgressBarStyle(int style) {
+        progressBar.setScrollBarStyle(style);
+    }
+
+    /**
+     * è®¾ç½®æç¤ºä¿¡æ¯
+     * @param tipMsg
+     */
+    public void setTextTipMsg (CharSequence tipMsg) {
+        tvTipMsg.setText(tipMsg);
+    }
+
+    /**
+     * è®¾ç½®æ–‡å­—åé¢çš„çœç•¥å·ï¼Œå¦‚ï¼šé€šä¿¡ä¸­â€¦
+     * @param ellipsis
+     */
+    public void setTextEllipsis (CharSequence ellipsis) {
+        tvEllipsis.setText(ellipsis);
+    }
+
+    /**
+     * è®¾ç½®å­—ä½“é¢œè‰²
+     * @param textColor
+     */
+    public void setTextColorTipMsg (int textColor) {
+        tvTipMsg.setTextColor(textColor);
+        tvEllipsis.setTextColor(textColor);
+    }
+
+    /**
+     * è®¾ç½®å­—ä½“å¤§å°
+     * @param textSize
+     */
+    public void setTextSizeTipMsg (float  textSize) {
+        tvTipMsg.setTextSize(textSize);
+        tvEllipsis.setTextSize(textSize);
+    }
 
 }

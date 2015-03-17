@@ -5,33 +5,33 @@ import android.view.KeyEvent;
 import com.lilosoft.xtcm.constant.Config;
 
 public abstract class TabBaseActivity extends NormalBaseActivity {
-	
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-		initListView();
-	}
 
-	/**
-	 * @category ≥ı ºªØ¡–±Ì
-	 */
-	protected abstract void initListView();
+    @Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        initListView();
+    }
 
-	/**
-	 * @category back ¬º˛
-	 */
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		// TODO Auto-generated method stub
+    /**
+     * @category ÂàùÂßãÂåñÂàóË°®
+     */
+    protected abstract void initListView();
 
-		if (KeyEvent.KEYCODE_BACK == keyCode) {
-			HomeBaseActivity.tabHost.setCurrentTabByTag(Config.A_TAB);
-			HomeBaseActivity.tabBt1.setChecked(true);
-		}
+    /**
+     * @category back‰∫ã‰ª∂
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
 
-		return false;
-		
-	}
+        if (KeyEvent.KEYCODE_BACK == keyCode) {
+            HomeBaseActivity.tabHost.setCurrentTabByTag(Config.A_TAB);
+            HomeBaseActivity.tabBt1.setChecked(true);
+        }
+
+        return false;
+
+    }
 
 }

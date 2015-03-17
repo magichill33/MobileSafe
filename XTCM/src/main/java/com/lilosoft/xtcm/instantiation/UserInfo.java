@@ -1,31 +1,31 @@
 package com.lilosoft.xtcm.instantiation;
 
 public class UserInfo {
-	
-	/**
-	 * @category ÓÃ»§Ãû
-	 */
-	private String username;
 
-	/**
-	 * @category ÃÜÂë
-	 */
-	private String passcode;
+    /**
+     * @category ç”¨æˆ·å
+     */
+    private String username;
 
-	public String getUsername() {
-		return username;
-	}
+    /**
+     * @category å¯†ç 
+     */
+    private String passcode;
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public String getPasscode() {
-		return passcode;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public void setPasscode(String passcode) {
-		this.passcode = passcode;
-	}
-	
+    public String getPasscode() {
+        return passcode;
+    }
+
+    public void setPasscode(String passcode) {
+        this.passcode = passcode;
+    }
+
 }

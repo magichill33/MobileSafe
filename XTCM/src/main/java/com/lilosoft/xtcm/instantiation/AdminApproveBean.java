@@ -5,98 +5,98 @@ import java.util.List;
 
 public class AdminApproveBean {
 
-	private String ADTIVEID; // 审批编号
-	private String ADTIVETITLE; // 审批标题
-	private String ADTIVETYPE; // 审批类型
-	private String ADTIVECONTENT; // 审批内容
-	private String ADTIVEDATA; // 审批时间
-	private String RN;
-	private List<String> list = null;
+    private String ADTIVEID; // 瀹℃壒缂栧彿
+    private String ADTIVETITLE; // 瀹℃壒鏍囬
+    private String ADTIVETYPE; // 瀹℃壒绫诲瀷
+    private String ADTIVECONTENT; // 瀹℃壒鍐呭
+    private String ADTIVEDATA; // 瀹℃壒鏃堕棿
+    private String RN;
+    private List<String> list = null;
 
-	public AdminApproveBean(String adtiveid, // 审批编号
-			String adtivetitle, // 审批标题
-			String adtivetype, // 审批类型
-			String adtivecontent, // 审批内容
-			String adtivedata, // 审批时间
-			String rn) {
-		// TODO Auto-generated constructor stub
-		this.ADTIVEID = adtiveid; // 审批编号
-		this.ADTIVETITLE = adtivetitle; // 审批标题
-		this.ADTIVETYPE = adtivetype; // 审批类型
-		this.ADTIVECONTENT = adtivecontent; // 审批内容
-		this.ADTIVEDATA = adtivedata;
-		this.RN = rn;
-		setList();
-	}
+    public AdminApproveBean(String adtiveid, // 瀹℃壒缂栧彿
+                            String adtivetitle, // 瀹℃壒鏍囬
+                            String adtivetype, // 瀹℃壒绫诲瀷
+                            String adtivecontent, // 瀹℃壒鍐呭
+                            String adtivedata, // 瀹℃壒鏃堕棿
+                            String rn) {
+        // TODO Auto-generated constructor stub
+        this.ADTIVEID = adtiveid; // 瀹℃壒缂栧彿
+        this.ADTIVETITLE = adtivetitle; // 瀹℃壒鏍囬
+        this.ADTIVETYPE = adtivetype; // 瀹℃壒绫诲瀷
+        this.ADTIVECONTENT = adtivecontent; // 瀹℃壒鍐呭
+        this.ADTIVEDATA = adtivedata;
+        this.RN = rn;
+        setList();
+    }
 
-	public String getADTIVEID() {
-		return ADTIVEID;
-	}
+    public String getADTIVEID() {
+        return ADTIVEID;
+    }
 
-	public void setADTIVEID(String aDTIVEID) {
-		ADTIVEID = aDTIVEID;
-	}
+    public void setADTIVEID(String aDTIVEID) {
+        ADTIVEID = aDTIVEID;
+    }
 
-	public String getADTIVETITLE() {
-		return ADTIVETITLE;
-	}
+    public String getADTIVETITLE() {
+        return ADTIVETITLE;
+    }
 
-	public void setADTIVETITLE(String aDTIVETITLE) {
-		ADTIVETITLE = aDTIVETITLE;
-	}
+    public void setADTIVETITLE(String aDTIVETITLE) {
+        ADTIVETITLE = aDTIVETITLE;
+    }
 
-	public String getADTIVETYPE() {
-		return ADTIVETYPE;
-	}
+    public String getADTIVETYPE() {
+        return ADTIVETYPE;
+    }
 
-	public void setADTIVETYPE(String aDTIVETYPE) {
-		ADTIVETYPE = aDTIVETYPE;
-	}
+    public void setADTIVETYPE(String aDTIVETYPE) {
+        ADTIVETYPE = aDTIVETYPE;
+    }
 
-	public String getADTIVECONTENT() {
-		return ADTIVECONTENT;
-	}
+    public String getADTIVECONTENT() {
+        return ADTIVECONTENT;
+    }
 
-	public void setADTIVECONTENT(String aDTIVECONTENT) {
-		ADTIVECONTENT = aDTIVECONTENT;
-	}
+    public void setADTIVECONTENT(String aDTIVECONTENT) {
+        ADTIVECONTENT = aDTIVECONTENT;
+    }
 
-	public String getADTIVEDATA() {
-		return ADTIVEDATA;
-	}
+    public String getADTIVEDATA() {
+        return ADTIVEDATA;
+    }
 
-	public void setADTIVEDATA(String aDTIVEDATA) {
-		ADTIVEDATA = aDTIVEDATA;
-	}
+    public void setADTIVEDATA(String aDTIVEDATA) {
+        ADTIVEDATA = aDTIVEDATA;
+    }
 
-	public String getRN() {
-		return RN;
-	}
+    public String getRN() {
+        return RN;
+    }
 
-	public void setRN(String rN) {
-		RN = rN;
-	}
-	
-	public List<String> getList() {
-		return list;
-	}
+    public void setRN(String rN) {
+        RN = rN;
+    }
 
-	public void setList() {
+    public List<String> getList() {
+        return list;
+    }
 
-		if (null != ADTIVEID) {
-			list = new ArrayList<String>();
-//			list.add("审批编号:");
+    public void setList() {
+
+        if (null != ADTIVEID) {
+            list = new ArrayList<String>();
+//			list.add("瀹℃壒缂栧彿:");
 //			list.add(ADTIVEID);
-			list.add("审批类型:");
-			list.add(ADTIVETYPE);
-			list.add("审批时间:");
-			list.add(ADTIVEDATA);
-			list.add("审批标题:");
-			list.add(ADTIVETITLE);
-			list.add("审批内容:");
-			list.add(ADTIVECONTENT);
-		}
+            list.add("瀹℃壒绫诲瀷:");
+            list.add(ADTIVETYPE);
+            list.add("瀹℃壒鏃堕棿:");
+            list.add(ADTIVEDATA);
+            list.add("瀹℃壒鏍囬:");
+            list.add(ADTIVETITLE);
+            list.add("瀹℃壒鍐呭:");
+            list.add(ADTIVECONTENT);
+        }
 
-	}
+    }
 
 }

@@ -8,71 +8,71 @@ import com.lilosoft.xtcm.constant.Config;
 import com.lilosoft.xtcm.constant.TableStructure;
 
 /**
- * @category  ˝æ›ø‚∑˛ŒÒ
+ * @category Êï∞ÊçÆÂ∫ìÊúçÂä°
  * @author William Liu
- * 
+ *
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-	/**
-	 * @category  ˝æ›ø‚≤Ÿ◊˜ππ‘Ï∑Ω∑®
-	 * @param context
-	 */
-	public DatabaseHelper(Context context) {
-		// TODO Auto-generated constructor stub
-		super(context, Config.DATABASE_NAME, null, Config.DATABASE_VERSION);
-	}
+    /**
+     * @category Êï∞ÊçÆÂ∫ìÊìç‰ΩúÊûÑÈÄ†ÊñπÊ≥ï
+     * @param context
+     */
+    public DatabaseHelper(Context context) {
+        // TODO Auto-generated constructor stub
+        super(context, Config.DATABASE_NAME, null, Config.DATABASE_VERSION);
+    }
 
-	/**
-	 * @category ¥¥Ω® ˝æ›ø‚
-	 * @author William Liu
-	 */
-	@Override
-	public void onCreate(SQLiteDatabase database) {
-		// TODO Auto-generated method stub
-		String sql = "CREATE TABLE " + TableStructure.TABLE_NAME_QUESTION
-				+ " (" + TableStructure.Q_QUESTION_ID
-				+ " integer primary key autoincrement, "
-				+ TableStructure.Q_QUESTION_TYPE + " varchar(20), "
-				+ TableStructure.Q_QUESTION_TYPE1 + " varchar(20), "
-				+ TableStructure.Q_QUESTION_TYPE2 + " varchar(20), "
-				+ TableStructure.Q_QUESTION_LOCATION + " varchar(50), "
-				+ TableStructure.Q_QUESTION_DESCRIPT + " text, "
-				+ TableStructure.Q_QUESTION_BEFOR_IMG1 + " text, "
-				+ TableStructure.Q_QUESTION_BEFOR_IMG2 + " text, "
-				+ TableStructure.Q_QUESTION_BEFOR_IMG3 + " text, "
-				+ TableStructure.Q_QUESTION_AFTER_IMG1 + " text, "
-				+ TableStructure.Q_QUESTION_AFTER_IMG2 + " text, "
-				+ TableStructure.Q_QUESTION_AFTER_IMG3 + " text, "
-				+ TableStructure.Q_QUESTION_REC1 + " text, "
-				+ TableStructure.Q_QUESTION_REC2 + " text, "
-				+ TableStructure.Q_QUESTION_REC3 + " text,"
-				+ TableStructure.Q_QUESTION_CASESNUM + " varchar(50))";
-		database.execSQL(sql);
+    /**
+     * @category ÂàõÂª∫Êï∞ÊçÆÂ∫ì
+     * @author William Liu
+     */
+    @Override
+    public void onCreate(SQLiteDatabase database) {
+        // TODO Auto-generated method stub
+        String sql = "CREATE TABLE " + TableStructure.TABLE_NAME_QUESTION
+                + " (" + TableStructure.Q_QUESTION_ID
+                + " integer primary key autoincrement, "
+                + TableStructure.Q_QUESTION_TYPE + " varchar(20), "
+                + TableStructure.Q_QUESTION_TYPE1 + " varchar(20), "
+                + TableStructure.Q_QUESTION_TYPE2 + " varchar(20), "
+                + TableStructure.Q_QUESTION_LOCATION + " varchar(50), "
+                + TableStructure.Q_QUESTION_DESCRIPT + " text, "
+                + TableStructure.Q_QUESTION_BEFOR_IMG1 + " text, "
+                + TableStructure.Q_QUESTION_BEFOR_IMG2 + " text, "
+                + TableStructure.Q_QUESTION_BEFOR_IMG3 + " text, "
+                + TableStructure.Q_QUESTION_AFTER_IMG1 + " text, "
+                + TableStructure.Q_QUESTION_AFTER_IMG2 + " text, "
+                + TableStructure.Q_QUESTION_AFTER_IMG3 + " text, "
+                + TableStructure.Q_QUESTION_REC1 + " text, "
+                + TableStructure.Q_QUESTION_REC2 + " text, "
+                + TableStructure.Q_QUESTION_REC3 + " text,"
+                + TableStructure.Q_QUESTION_CASESNUM + " varchar(50))";
+        database.execSQL(sql);
 
-		//  ¬º˛∑÷¿‡–≈œ¢
-		String event_sql = "CREATE TABLE EVENT_SPINNER(ID integer primary key autoincrement,"
-				+ "EID varchar(100),FATHERID varchar(100),ITEMTYPENAME varchar(100),CODE varchar(100),LAYER varchar(100),TYPE varchar(50))";
-		database.execSQL(event_sql);
-		
-		//¡™œµ»À–≈œ¢
-		String sql_contacts = "CREATE TABLE ct(_id integer primary key autoincrement," +
-				"dept varchar(50),name varchar(20),mobilephone varchar(20),shortnum varchar(20))";
-		database.execSQL(sql_contacts);
-	}
+        // ‰∫ã‰ª∂ÂàÜÁ±ª‰ø°ÊÅØ
+        String event_sql = "CREATE TABLE EVENT_SPINNER(ID integer primary key autoincrement,"
+                + "EID varchar(100),FATHERID varchar(100),ITEMTYPENAME varchar(100),CODE varchar(100),LAYER varchar(100),TYPE varchar(50))";
+        database.execSQL(event_sql);
 
-	/**
-	 * @category  ˝æ›ø‚–ﬁ∏ƒ
-	 */
-	@Override
-	public void onUpgrade(SQLiteDatabase database, int oldVersion,
-			int newVersion) {
-		// TODO Auto-generated method stub
-		database.execSQL("DROP TABLE IF EXISTS "
-				+ TableStructure.TABLE_NAME_QUESTION);
-		database.execSQL("DROP TABLE IF EXISTS EVENT_SPINNER ");
-		database.execSQL("DROP TABLE IF EXISTS ct");
-		onCreate(database);
-	}
+        //ËÅîÁ≥ª‰∫∫‰ø°ÊÅØ
+        String sql_contacts = "CREATE TABLE ct(_id integer primary key autoincrement," +
+                "dept varchar(50),name varchar(20),mobilephone varchar(20),shortnum varchar(20))";
+        database.execSQL(sql_contacts);
+    }
+
+    /**
+     * @category Êï∞ÊçÆÂ∫ì‰øÆÊîπ
+     */
+    @Override
+    public void onUpgrade(SQLiteDatabase database, int oldVersion,
+                          int newVersion) {
+        // TODO Auto-generated method stub
+        database.execSQL("DROP TABLE IF EXISTS "
+                + TableStructure.TABLE_NAME_QUESTION);
+        database.execSQL("DROP TABLE IF EXISTS EVENT_SPINNER ");
+        database.execSQL("DROP TABLE IF EXISTS ct");
+        onCreate(database);
+    }
 
 }

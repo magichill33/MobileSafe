@@ -24,14 +24,14 @@ import com.lilosoft.xtcm.constant.TableStructure;
 import com.lilosoft.xtcm.utils.LogFactory;
 
 /**
- * @category ÍøÂçÁ¬½ÓÀà
+ * @category ç½‘ç»œè¿æ¥ç±»
  * @author William Liu
  *
  */
 public class HttpConnection {
 
     /**
-     * @category ÍøÂçÇëÇóÖ¸Áî--µÇÂ¼ [ÓÃ»§Ãû] [ÃÜÂë]
+     * @category ç½‘ç»œè¯·æ±‚æŒ‡ä»¤--ç™»å½• [ç”¨æˆ·å] [å¯†ç ]
      */
     public final static int CONNECTION_COMMON_PCARD_SETUP = 0xA9881888;
     public final static int CONNECTION_COMMON_PCARD = 0xA9881999;
@@ -39,89 +39,89 @@ public class HttpConnection {
     public final static int CONNECTION_COMMON_PCARD_PLACE = 0xA9881669;
     public final static int CONNECTION_COMMON_LOGIN = 0xA9881025;
     /**
-     * @category ÍøÂçÇëÇóÖ¸Áî--ÎÊÌâÉÏ±¨ [µÇÂ¼ÕÊºÅ] [Ñ¡ÔñÊÂÏî] [¼òÒª¸ÅÊö] [ÏêÏ¸ÃèÊö] [x×ø±ê] [y×ø±ê] [Íø¸ñ±àºÅ]
-     *           [Í¼Æ¬¼¯ºÏ*MAX9]
+     * @category ç½‘ç»œè¯·æ±‚æŒ‡ä»¤--é—®é¢˜ä¸ŠæŠ¥ [ç™»å½•å¸å·] [é€‰æ‹©äº‹é¡¹] [ç®€è¦æ¦‚è¿°] [è¯¦ç»†æè¿°] [xåæ ‡] [yåæ ‡] [ç½‘æ ¼ç¼–å·]
+     *           [å›¾ç‰‡é›†åˆ*MAX9]
      */
     public final static int CONNECTION_COMMON_REPORT = 0xA9883025;
     public final static int CONNECTION_PART_REPORT = 0xA6884029;
     /**
-     * @category ÍøÂçÇëÇóÖ¸Áî--´ıºË²éÈÎÎñÁĞ±í[ÓÃ»§Ãû]
+     * @category ç½‘ç»œè¯·æ±‚æŒ‡ä»¤--å¾…æ ¸æŸ¥ä»»åŠ¡åˆ—è¡¨[ç”¨æˆ·å]
      */
     public final static int CONNECTION_READY_EXAMINE_LIST = 0xA9883225;
     /**
-     * @category ÍøÂçÇëÇóÖ¸Áî--´ıºË²éÈÎÎñµ¥¸öÊı¾İ [CaseID]
+     * @category ç½‘ç»œè¯·æ±‚æŒ‡ä»¤--å¾…æ ¸æŸ¥ä»»åŠ¡å•ä¸ªæ•°æ® [CaseID]
      */
     public final static int CONNECTION_READY_EXAMINE = 0xA9883325;
     /**
-     * @category ÍøÂçÇëÇóÖ¸Áî--È·ÈÏºË²é[IsOK] [InspectID] [Ìá½»ÄÚÈİ] [CaseCode] [ÓÃ»§Ãû]
-     *           [Í¼Æ¬¼¯ºÏ*MAX9]
+     * @category ç½‘ç»œè¯·æ±‚æŒ‡ä»¤--ç¡®è®¤æ ¸æŸ¥[IsOK] [InspectID] [æäº¤å†…å®¹] [CaseCode] [ç”¨æˆ·å]
+     *           [å›¾ç‰‡é›†åˆ*MAX9]
      */
     public final static int CONNECTION_READY_EXAMINE_SUBMIT = 0xA9813325;
     /**
-     * @category ÍøÂçÇëÇóÖ¸Áî--´ıºËÊµÈÎÎñÁĞ±í[ÓÃ»§Ãû]
+     * @category ç½‘ç»œè¯·æ±‚æŒ‡ä»¤--å¾…æ ¸å®ä»»åŠ¡åˆ—è¡¨[ç”¨æˆ·å]
      */
     public final static int CONNECTION_READY_VERIFY_LIST = 0xA1823325;
     /**
-     * @category ÍøÂçÇëÇóÖ¸Áî--´ıºËÊµÈÎÎñµ¥¸öÊı¾İ[CaseID]
+     * @category ç½‘ç»œè¯·æ±‚æŒ‡ä»¤--å¾…æ ¸å®ä»»åŠ¡å•ä¸ªæ•°æ®[CaseID]
      */
     public final static int CONNECTION_READY_VERIFY = 0xA1823305;
     /**
-     * @category ÍøÂçÇëÇóÖ¸Áî--È·ÈÏºËÊµ[IsOK] [InspectID] [Ìá½»ÄÚÈİ] [ÓÃ»§Ãû] [CaseCode]
-     *           [Í¼Æ¬¼¯ºÏ*MAX9]
+     * @category ç½‘ç»œè¯·æ±‚æŒ‡ä»¤--ç¡®è®¤æ ¸å®[IsOK] [InspectID] [æäº¤å†…å®¹] [ç”¨æˆ·å] [CaseCode]
+     *           [å›¾ç‰‡é›†åˆ*MAX9]
      */
     public final static int CONNECTION_READY_VERIFY_SUBMIT = 0xA1713300;
     /**
-     * @category ÍøÂçÇëÇóÖ¸Áî--´ı°ìÀíÈÎÎñÁĞ±í[ÓÃ»§Ãû]
+     * @category ç½‘ç»œè¯·æ±‚æŒ‡ä»¤--å¾…åŠç†ä»»åŠ¡åˆ—è¡¨[ç”¨æˆ·å]
      */
     public final static int CONNECTION_READY_DISPOSE_LIST = 0xA171B300;
     /**
-     * @category ÍøÂçÇëÇóÖ¸Áî--´ı°ìÀíÈÎÎñµ¥¸öÊı¾İ[CaseID]
+     * @category ç½‘ç»œè¯·æ±‚æŒ‡ä»¤--å¾…åŠç†ä»»åŠ¡å•ä¸ªæ•°æ®[CaseID]
      */
     public final static int CONNECTION_READY_DISPOSE = 0xA171B200;
     /**
-     * @category ÍøÂçÇëÇóÖ¸Áî--È·ÈÏ°ìÀí[IsOK] [ÄÚÈİ] [TaskID] [HandID] [CaseID] [ÓÃ»§Ãû]
-     *           [Í¼Æ¬¼¯ºÏ*MAX9]
+     * @category ç½‘ç»œè¯·æ±‚æŒ‡ä»¤--ç¡®è®¤åŠç†[IsOK] [å†…å®¹] [TaskID] [HandID] [CaseID] [ç”¨æˆ·å]
+     *           [å›¾ç‰‡é›†åˆ*MAX9]
      */
     public final static int CONNECTION_READY_DISPOSE_SUBMIT = 0xA1F1B200;
     /**
-     * @category ÍøÂçÇëÇóÖ¸Áî--ÀúÊ·¼ÇÂ¼ÁĞ±í[ÓÃ»§Ãû] [ËÑË÷ÀàĞÍ] [Ò³] [Ã¿Ò³ÊıÁ¿]
+     * @category ç½‘ç»œè¯·æ±‚æŒ‡ä»¤--å†å²è®°å½•åˆ—è¡¨[ç”¨æˆ·å] [æœç´¢ç±»å‹] [é¡µ] [æ¯é¡µæ•°é‡]
      *
-     *           ËÑË÷ÀàĞÍ(sb-ÉÏ±¨ÀúÊ·|hc-ºË²éÀúÊ·|hs-ºËÊµÀúÊ·|bl-°ìÀíÀúÊ·)
+     *           æœç´¢ç±»å‹(sb-ä¸ŠæŠ¥å†å²|hc-æ ¸æŸ¥å†å²|hs-æ ¸å®å†å²|bl-åŠç†å†å²)
      */
     public final static int CONNECTION_QUESTION_HISTORY_LIST = 0xA2F1B201;
     /**
-     * @category ÍøÂçÇëÇóÖ¸Áî--ÀúÊ·¼ÇÂ¼µ¥¸öÊı¾İ[CaseID]
+     * @category ç½‘ç»œè¯·æ±‚æŒ‡ä»¤--å†å²è®°å½•å•ä¸ªæ•°æ®[CaseID]
      */
     public final static int CONNECTION_QUESTION_HISTORY = 0xA2F1C207;
     /**
-     * @category ÍøÂçÇëÇóÖ¸Áî--×ÔĞĞ´¦ÀíÉÏ±¨[...]
+     * @category ç½‘ç»œè¯·æ±‚æŒ‡ä»¤--è‡ªè¡Œå¤„ç†ä¸ŠæŠ¥[...]
      */
     public final static int CONNECTION_QUESTION_DISPOSED = 0xA2E1B211;
     /**
-     * @category ÇëÇóÖ¸Áî--ĞĞÕşÉó²é[ÓÃ»§Ãû] [SearchType] [Ò³] [Ã¿Ò³ÊıÁ¿]
+     * @category è¯·æ±‚æŒ‡ä»¤--è¡Œæ”¿å®¡æŸ¥[ç”¨æˆ·å] [SearchType] [é¡µ] [æ¯é¡µæ•°é‡]
      */
     public final static int CONNECTION_ADMIN_APPROVE = 0xA231B24F;
     /**
-     * ĞĞÕşÉóÅúÏêÇé
+     * è¡Œæ”¿å®¡æ‰¹è¯¦æƒ…
      */
     public final static int CONNECTION_ADMIN_APPROVE_DETAIL = 123;
     /**
-     * @category ÍøÂçÇëÇóÖ¸Áî--¹ì¼£ÉÏ±¨[Y] [X] [Type] [ÓÃ»§Ãû]
+     * @category ç½‘ç»œè¯·æ±‚æŒ‡ä»¤--è½¨è¿¹ä¸ŠæŠ¥[Y] [X] [Type] [ç”¨æˆ·å]
      */
     public final static int CONNECTION_LOCATION_REPORT = 0xA2F1C24F;
     /**
-     * »ñÈ¡ÁªÏµÈËÊı¾İ
+     * è·å–è”ç³»äººæ•°æ®
      */
     public static final int CONNECTION_CONTACTS_DATA = 0x00B1C3;
     /**
-     * ÊÂ¼ş·ÖÀàĞÅÏ¢
+     * äº‹ä»¶åˆ†ç±»ä¿¡æ¯
      */
     public final static int CONNECTION_EVENT_INFO = 888;
     private final String TAG = "HttpConnection";
     private JSONArray array;
 
     /**
-     * @category ¿Í»§¶ËÇëÇó
+     * @category å®¢æˆ·ç«¯è¯·æ±‚
      * @param httpPost
      * @return
      * @throws IOException
@@ -143,7 +143,7 @@ public class HttpConnection {
     }
 
     /**
-     * @category jsonÊµÌå²ÎÊı
+     * @category jsonå®ä½“å‚æ•°
      * @param URL
      * @param jsonParam
      * @return String
@@ -165,12 +165,12 @@ public class HttpConnection {
     }
 
     /**
-     * µ÷ÓÃ´Ë·½·¨Çë×ĞÏ¸ºË¶Ô²ÎÊıË³Ğò
+     * è°ƒç”¨æ­¤æ–¹æ³•è¯·ä»”ç»†æ ¸å¯¹å‚æ•°é¡ºåº
      *
-     * @category »ñÈ¡·şÎñÆ÷·µ»ØµÄÊı¾İ
+     * @category è·å–æœåŠ¡å™¨è¿”å›çš„æ•°æ®
      * @author William Liu
-     * @param ÍøÂçÁ¬½ÓÖ¸Áî
-     * @param ËùĞè²ÎÊıÇë²é¿´Ö¸ÁîËµÃ÷
+     * @param ç½‘ç»œè¿æ¥æŒ‡ä»¤
+     * @param æ‰€éœ€å‚æ•°è¯·æŸ¥çœ‹æŒ‡ä»¤è¯´æ˜
      * @return String
      * @throws JSONException
      * @throws IOException
@@ -323,43 +323,43 @@ public class HttpConnection {
                                         TableStructure.V_PART_REPORT)
                                 .put(TableStructure.COVER_BODY,
                                         (new JSONObject()
-                                                // °¸¼şÊı
+                                                // æ¡ˆä»¶æ•°
                                                 .put(TableStructure.R_REPORT_RESPONSE_CASES_NUM,
                                                         arg[25])
-                                                        // Í¼²ã±àºÅ
+                                                        // å›¾å±‚ç¼–å·
                                                 .put(TableStructure.EXTEND4,
                                                         arg[26])
-                                                        // µç»°
+                                                        // ç”µè¯
                                                 .put(TableStructure.R_REPORT_RESPONSE_TEL,
                                                         "")
-                                                        // ĞÕÃû
+                                                        // å§“å
                                                 .put(TableStructure.R_REPORT_RESPONSE_NEME,
                                                         "")
-                                                        // ¾Ó×¡µØÖ·
+                                                        // å±…ä½åœ°å€
                                                 .put(TableStructure.R_REPORT_RESPONSE_LIVE_ADRES,
                                                         "")
-                                                        // µÇÂ¼ÕÊºÅ
+                                                        // ç™»å½•å¸å·
                                                 .put(TableStructure.R_REPORT_RESPONSE_USER_NAME,
                                                         arg[0])
-                                                        // Ñ¡ÔñÊÂÏî
+                                                        // é€‰æ‹©äº‹é¡¹
                                                 .put(TableStructure.R_REPORT_RESPONSE_TYPE,
                                                         arg[1])
-                                                        // ¼òÒª¸ÅÊö
+                                                        // ç®€è¦æ¦‚è¿°
                                                 .put(TableStructure.R_REPORT_RESPONSE_ALL_TYPE,
                                                         arg[2])
-                                                        // ÏêÏ¸ÃèÊö
+                                                        // è¯¦ç»†æè¿°
                                                 .put(TableStructure.R_REPORT_RESPONSE_DESCRIPT,
                                                         arg[3])
-                                                        // µØÖ·
+                                                        // åœ°å€
                                                 .put(TableStructure.R_REPORT_RESPONSE_ADRES,
                                                         "")
-                                                        // x×ø±ê
+                                                        // xåæ ‡
                                                 .put(TableStructure.R_REPORT_RESPONSE_X,
                                                         arg[4])
-                                                        // y×ø±ê
+                                                        // yåæ ‡
                                                 .put(TableStructure.R_REPORT_RESPONSE_Y,
                                                         arg[5])
-                                                        // Íø¸ñ±àºÅ
+                                                        // ç½‘æ ¼ç¼–å·
                                                 .put(TableStructure.R_REPORT_RESPONSE_GRID_CODE,
                                                         arg[18])
                                                 .put(TableStructure.OBJECTID,
@@ -380,7 +380,7 @@ public class HttpConnection {
                                                         arg[23])
                                                 .put(TableStructure.DEPTNAME3,
                                                         arg[24])
-                                                        // Í¼Æ¬¼¯ºÏ
+                                                        // å›¾ç‰‡é›†åˆ
                                                 .put(TableStructure.R_REPORT_RESPONSE_FLIST,
                                                         array))).toString());
                 break;
@@ -449,43 +449,43 @@ public class HttpConnection {
                                         TableStructure.V_ACT_REPORT)
                                 .put(TableStructure.COVER_BODY,
                                         (new JSONObject()
-                                                // °¸¼şÊı
+                                                // æ¡ˆä»¶æ•°
                                                 .put(TableStructure.R_REPORT_RESPONSE_CASES_NUM,
                                                         arg[0])
-                                                        // µç»°
+                                                        // ç”µè¯
                                                 .put(TableStructure.R_REPORT_RESPONSE_TEL,
                                                         "")
-                                                        // ĞÕÃû
+                                                        // å§“å
                                                 .put(TableStructure.R_REPORT_RESPONSE_NEME,
                                                         "")
-                                                        // ¾Ó×¡µØÖ·
+                                                        // å±…ä½åœ°å€
                                                 .put(TableStructure.R_REPORT_RESPONSE_LIVE_ADRES,
                                                         "")
-                                                        // µÇÂ¼ÕÊºÅ
+                                                        // ç™»å½•å¸å·
                                                 .put(TableStructure.R_REPORT_RESPONSE_USER_NAME,
                                                         arg[1])
-                                                        // Ñ¡ÔñÊÂÏî
+                                                        // é€‰æ‹©äº‹é¡¹
                                                 .put(TableStructure.R_REPORT_RESPONSE_TYPE,
                                                         arg[2])
-                                                        // ¼òÒª¸ÅÊö
+                                                        // ç®€è¦æ¦‚è¿°
                                                 .put(TableStructure.R_REPORT_RESPONSE_ALL_TYPE,
                                                         arg[3])
-                                                        // ÏêÏ¸ÃèÊö
+                                                        // è¯¦ç»†æè¿°
                                                 .put(TableStructure.R_REPORT_RESPONSE_DESCRIPT,
                                                         arg[4])
-                                                        // µØÖ·
+                                                        // åœ°å€
                                                 .put(TableStructure.R_REPORT_RESPONSE_ADRES,
                                                         "")
-                                                        // x×ø±ê
+                                                        // xåæ ‡
                                                 .put(TableStructure.R_REPORT_RESPONSE_X,
                                                         arg[5])
-                                                        // y×ø±ê
+                                                        // yåæ ‡
                                                 .put(TableStructure.R_REPORT_RESPONSE_Y,
                                                         arg[6])
-                                                        // Íø¸ñ±àºÅ
+                                                        // ç½‘æ ¼ç¼–å·
                                                 .put(TableStructure.R_REPORT_RESPONSE_GRID_CODE,
                                                         arg[7])
-                                                        // Í¼Æ¬¼¯ºÏ
+                                                        // å›¾ç‰‡é›†åˆ
                                                 .put(TableStructure.R_REPORT_RESPONSE_FLIST,
                                                         array))).toString());
 
@@ -963,7 +963,7 @@ public class HttpConnection {
                                                         arg[3]))).toString());
                 break;
             /**
-             * ĞĞÕşÉóÅúÏêÇé
+             * è¡Œæ”¿å®¡æ‰¹è¯¦æƒ…
              */
             case CONNECTION_ADMIN_APPROVE_DETAIL:
                 data = setStringEntity(
@@ -997,7 +997,7 @@ public class HttpConnection {
                 break;
 
             /**
-             * »ñÈ¡ÊÂ¼ş·ÖÀàĞÅÏ¢
+             * è·å–äº‹ä»¶åˆ†ç±»ä¿¡æ¯
              */
             case CONNECTION_EVENT_INFO:
                 String type = arg[0];

@@ -68,15 +68,15 @@ public class PartReportActivity extends NormalBaseActivity implements
         OnClickListener, OnLongClickListener {
 
     /**
-     * ÉÏ±¨³É¹¦
+     * ä¸ŠæŠ¥æˆåŠŸ
      */
     private final static int MSG_REPORT_SUCCESS_ORDER = 0x0FFFFFFF;
     /**
-     * ÉÏ±¨Ê§°Ü
+     * ä¸ŠæŠ¥å¤±è´¥
      */
     private final static int MSG_REPORT_LOST_ORDER = 0x00FFFFFF;
     /*
-     * ÊÂ¼ş·ÖÀàÊôĞÔ
+     * äº‹ä»¶åˆ†ç±»å±æ€§
      */
     public static String PID = "bigMC";
     public static String CID = "bigID";
@@ -93,7 +93,7 @@ public class PartReportActivity extends NormalBaseActivity implements
     String layer = null;
     private String err_Msg;
     /**
-     * @category Ö÷Ïß³Ì´¦Àí
+     * @category ä¸»çº¿ç¨‹å¤„ç†
      */
     @SuppressLint("HandlerLeak")
     private Handler myHandle = new Handler() {
@@ -107,7 +107,7 @@ public class PartReportActivity extends NormalBaseActivity implements
                 // hasDataThenInit();
                 // break;
                 case Config.SHOW_PROGRESS_DIALOG:
-                    HomeBaseActivity.showProgressDialog("½»»¥ÖĞ¡­");
+                    HomeBaseActivity.showProgressDialog("äº¤äº’ä¸­â€¦");
                     break;
                 case Config.DISMISS_PROGRESS_DIALOG:
                     HomeBaseActivity.dismissProgressDialog();
@@ -178,13 +178,13 @@ public class PartReportActivity extends NormalBaseActivity implements
     private View submit;
     private View save;
     private String casesNum;
-    // ×Ö·ûÊäÈë¼àÌıÆ÷
+    // å­—ç¬¦è¾“å…¥ç›‘å¬å™¨
     TextWatcher caseNumListener = new TextWatcher() {
         @Override
         public void afterTextChanged(Editable s) {
             String text = s.toString();
             int len = s.toString().length();
-            if (len == 1 && text.equals("0")) {// ÅĞ¶Ï²»ÄÜÊäÈë0»òÕß0¿ªÍ·µÄÊı×Ö
+            if (len == 1 && text.equals("0")) {// åˆ¤æ–­ä¸èƒ½è¾“å…¥0æˆ–è€…0å¼€å¤´çš„æ•°å­—
                 s.clear();
             } else {
                 casesNum = s.toString();
@@ -216,7 +216,7 @@ public class PartReportActivity extends NormalBaseActivity implements
     private String lon;
     private String lat;
     /**
-     * @category ÎÊÌâÉÏ±¨ÇëÇó´¦Àí
+     * @category é—®é¢˜ä¸ŠæŠ¥è¯·æ±‚å¤„ç†
      */
     private Thread partReportThread = new Thread(new Runnable() {
 
@@ -273,16 +273,16 @@ public class PartReportActivity extends NormalBaseActivity implements
                 }
 
                 /**
-                 * »ñÈ¡µÚÈı¼¶ÊÂ¼ş·ÖÀàID
+                 * è·å–ç¬¬ä¸‰çº§äº‹ä»¶åˆ†ç±»ID
                  */
-                List<String> middles = new ArrayList<String>();// µÚ¶ş¼¶ID¼¯ºÏ
-                List<String> middleNames = new ArrayList<String>();// µÚ¶ş¼¶Name¼¯ºÏ
-                List<String> smalls = new ArrayList<String>();// µÚÈı¼¶ID¼¯ºÏ
-                List<String> smallNames = new ArrayList<String>();// µÚÈı¼¶Name¼¯ºÏ
-                String[] bigArray = new String[]{BJID};// »ñÈ¡µÚÒ»¼¶IDÊı×é
-                String[] bigNameArray = new String[]{"²¿¼ş·ÖÀà"};// »ñÈ¡µÚÒ»¼¶Ãû³ÆÊı×é
-                String bigID = bigArray[type.getSelectedItemPosition()];// »ñÈ¡µ±Ç°Ñ¡È¡µÄID
-                String bigName = bigNameArray[type.getSelectedItemPosition()];// »ñÈ¡µ±Ç°Ñ¡È¡µÄName
+                List<String> middles = new ArrayList<String>();// ç¬¬äºŒçº§IDé›†åˆ
+                List<String> middleNames = new ArrayList<String>();// ç¬¬äºŒçº§Nameé›†åˆ
+                List<String> smalls = new ArrayList<String>();// ç¬¬ä¸‰çº§IDé›†åˆ
+                List<String> smallNames = new ArrayList<String>();// ç¬¬ä¸‰çº§Nameé›†åˆ
+                String[] bigArray = new String[]{BJID};// è·å–ç¬¬ä¸€çº§IDæ•°ç»„
+                String[] bigNameArray = new String[]{"éƒ¨ä»¶åˆ†ç±»"};// è·å–ç¬¬ä¸€çº§åç§°æ•°ç»„
+                String bigID = bigArray[type.getSelectedItemPosition()];// è·å–å½“å‰é€‰å–çš„ID
+                String bigName = bigNameArray[type.getSelectedItemPosition()];// è·å–å½“å‰é€‰å–çš„Name
                 for (int i = 0; i < eventList.size(); i++) {
                     EventKings event = eventList.get(i);
                     if (bigID.equals(event.getParentid())) {
@@ -292,7 +292,7 @@ public class PartReportActivity extends NormalBaseActivity implements
                 }
                 if (middles != null && middles.size() > 0) {
                     String middleID = middles.get(type1
-                            .getSelectedItemPosition());// »ñÈ¡µ±Ç°µÚ¶ş¼¶ID
+                            .getSelectedItemPosition());// è·å–å½“å‰ç¬¬äºŒçº§ID
                     for (int i = 0; i < eventList.size(); i++) {
                         EventKings event = eventList.get(i);
                         if (middleID.equals(event.getParentid())) {
@@ -303,12 +303,12 @@ public class PartReportActivity extends NormalBaseActivity implements
                 }
                 int tp2index = type2.getSelectedItemPosition();
                 LogFactory.d(TAG, "tp2index = "+tp2index);
-                String smallID = smalls.get(tp2index);// µÚÈı¼¶ID
+                String smallID = smalls.get(tp2index);// ç¬¬ä¸‰çº§ID
                 String middleName = middleNames.get(type1
-                        .getSelectedItemPosition());// µÚ¶ş¼¶Name
+                        .getSelectedItemPosition());// ç¬¬äºŒçº§Name
                 String smallName = smallNames.get(type2
-                        .getSelectedItemPosition());// µÚ¶ş¼¶Name
-                // °¸¼şÊıÁ¿
+                        .getSelectedItemPosition());// ç¬¬äºŒçº§Name
+                // æ¡ˆä»¶æ•°é‡
                 // casesNum = etCaseNum.getText().toString();
 
                 HttpConnection httpConnection = new HttpConnection();
@@ -376,7 +376,7 @@ public class PartReportActivity extends NormalBaseActivity implements
         map = (TextView) findViewById(R.id.map);
         descript = (EditText) findViewById(R.id.descript);
         etCaseNum = (EditText) findViewById(R.id.et_casesnum);
-        // ´¦ÀíÇ°
+        // å¤„ç†å‰
 
         media_p11 = (ImageView) findViewById(R.id.media_p11);
 
@@ -402,7 +402,7 @@ public class PartReportActivity extends NormalBaseActivity implements
         // TODO Auto-generated method stub
         map.setOnClickListener(this);
 
-        // ´¦ÀíÇ°
+        // å¤„ç†å‰
         media_p11.setOnClickListener(this);
         media_p11.setOnLongClickListener(this);
 
@@ -420,10 +420,10 @@ public class PartReportActivity extends NormalBaseActivity implements
         selectImgIntent = new Intent(Intent.ACTION_GET_CONTENT);
         selectImgIntent.addCategory(Intent.CATEGORY_OPENABLE);
         selectImgIntent.setType("image/*");
-        // selectImgIntent.setType("audio/*"); // Ñ¡ÔñÒôÆµ
-        // selectImgIntent.setType("video/*"); // Ñ¡ÔñÊÓÆµ £¨mp4 3gp ÊÇandroidÖ§³ÖµÄÊÓÆµ¸ñÊ½£©
-        // selectImgIntent.setType("video/*;image/*");// Í¬Ê±Ñ¡ÔñÊÓÆµºÍÍ¼Æ¬
-        // selectImgIntent.putExtra("crop", "true"); // ²Ã¼ô
+        // selectImgIntent.setType("audio/*"); // é€‰æ‹©éŸ³é¢‘
+        // selectImgIntent.setType("video/*"); // é€‰æ‹©è§†é¢‘ ï¼ˆmp4 3gp æ˜¯androidæ”¯æŒçš„è§†é¢‘æ ¼å¼ï¼‰
+        // selectImgIntent.setType("video/*;image/*");// åŒæ—¶é€‰æ‹©è§†é¢‘å’Œå›¾ç‰‡
+        // selectImgIntent.putExtra("crop", "true"); // è£å‰ª
         // selectImgIntent.putExtra("aspectX", 1);
         // selectImgIntent.putExtra("aspectY", 1);
         // selectImgIntent.putExtra("outputX", 80);
@@ -434,14 +434,14 @@ public class PartReportActivity extends NormalBaseActivity implements
         selectAudioIntent.setType("audio/*");
 
         typeData = new AutoUpdateEvent(this).getBigEvent(PID);
-        String[] type1Data = new String[]{"²¿¼ş·ÖÀà"};
+        String[] type1Data = new String[]{"éƒ¨ä»¶åˆ†ç±»"};
         eventList = AutoUpdateEvent.eventList;
         // type1Data = TypeContent.TYPE1_TEXT;
         // type2Data = TypeContent.TYPE2_TEXT;
         // type2Id = TypeContent.TYPE2_ID;
         for (int i = 0; i < eventList.size(); i++) {
             EventKings kings = eventList.get(i);
-            if (kings.getMc().equals("²¿¼ş·ÖÀà")) {
+            if (kings.getMc().equals("éƒ¨ä»¶åˆ†ç±»")) {
                 BJID = kings.getId();
                 break;
             }
@@ -588,7 +588,7 @@ public class PartReportActivity extends NormalBaseActivity implements
     }
 
     /**
-     * »ñÈ¡listÖµµÄË÷Òı
+     * è·å–listå€¼çš„ç´¢å¼•
      *
      * @param strList
      * @param value
@@ -783,7 +783,7 @@ public class PartReportActivity extends NormalBaseActivity implements
     private void takePictureFromCameraIntent() {
         if (!Environment.getExternalStorageState().equals(
                 Environment.MEDIA_MOUNTED)) {
-            Toast.makeText(this, "µ±Ç°Éè±¸ÎŞSD¿¨£¬ÎŞ·¨½øĞĞÅÄÕÕ£¡", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "å½“å‰è®¾å¤‡æ— SDå¡ï¼Œæ— æ³•è¿›è¡Œæ‹ç…§ï¼", Toast.LENGTH_SHORT).show();
             return;
         }
         String base = "LILOSOFT";
@@ -809,15 +809,15 @@ public class PartReportActivity extends NormalBaseActivity implements
         // TODO Auto-generated method stub
         switch (v.getId()) {
             case R.id.map:
-//			if (!type.getSelectedItem().toString().equals("²¿¼ş·ÖÀà")) {
-//				Toast.makeText(this, "ÇëÑ¡Ôñ²¿¼ş·ÖÀà£¡", 1).show();
+//			if (!type.getSelectedItem().toString().equals("éƒ¨ä»¶åˆ†ç±»")) {
+//				Toast.makeText(this, "è¯·é€‰æ‹©éƒ¨ä»¶åˆ†ç±»ï¼", 1).show();
 //				return;
 //			}
                 code = events.get(type2.getSelectedItem().toString());
                 layer = eventsLayer.get(type2.getSelectedItem().toString());
                 if (TextUtils.isEmpty(layer)) {
-                    LogFactory.e(TAG, "layerÎª¿Õ");
-                    Toast.makeText(this, "Í¼²ãÎª¿Õ", 1).show();
+                    LogFactory.e(TAG, "layerä¸ºç©º");
+                    Toast.makeText(this, "å›¾å±‚ä¸ºç©º", 1).show();
                     return;
                 } else {
                     LogFactory.e(TAG, "code = " + code);
@@ -833,12 +833,12 @@ public class PartReportActivity extends NormalBaseActivity implements
             case R.id.submit:
                 boolean finishKey = true;
 
-                if ("ÇëÑ¡Ôñ²¿¼ş".equals(map.getText().toString())) {
-                    Toast.makeText(mContext, "ÇëÔÚµØÍ¼ÉÏÑ¡Ôñ²¿¼ş£¡", Toast.LENGTH_SHORT)
+                if ("è¯·é€‰æ‹©éƒ¨ä»¶".equals(map.getText().toString())) {
+                    Toast.makeText(mContext, "è¯·åœ¨åœ°å›¾ä¸Šé€‰æ‹©éƒ¨ä»¶ï¼", Toast.LENGTH_SHORT)
                             .show();
                     finishKey = false;
                 } else if ("".equals(descript.getText().toString())) {
-                    Toast.makeText(mContext, "ÎÊÌâÃèÊö²»ÄÜÎª¿Õ£¡", Toast.LENGTH_SHORT)
+                    Toast.makeText(mContext, "é—®é¢˜æè¿°ä¸èƒ½ä¸ºç©ºï¼", Toast.LENGTH_SHORT)
                             .show();
                     finishKey = false;
                 } else if (finishKey) {
@@ -846,7 +846,7 @@ public class PartReportActivity extends NormalBaseActivity implements
                         threadG = new Thread(partReportThread);
                         threadG.start();
                     } else {
-                        Toast.makeText(mContext, "ÎŞÍøÄ£Ê½-ÉÏ±¨£¡", Toast.LENGTH_SHORT)
+                        Toast.makeText(mContext, "æ— ç½‘æ¨¡å¼-ä¸ŠæŠ¥ï¼", Toast.LENGTH_SHORT)
                                 .show();
                     }
                 }
@@ -887,7 +887,7 @@ public class PartReportActivity extends NormalBaseActivity implements
                 lon = data.getStringExtra("Lon");
                 lat = data.getStringExtra("Lat");
                 if (null != oBJECTID) {
-                    map.setText("ÖØĞÂÑ¡Ôñ²¿¼ş");
+                    map.setText("é‡æ–°é€‰æ‹©éƒ¨ä»¶");
                 }
             } else if (R.id.media_r11 == requestCode
                     || R.id.media_r21 == requestCode
@@ -946,7 +946,7 @@ public class PartReportActivity extends NormalBaseActivity implements
                         break;
                     case R.id.media_p21:
                         if (media_p11text.equals(mediaPath)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             try {
@@ -972,7 +972,7 @@ public class PartReportActivity extends NormalBaseActivity implements
                     case R.id.media_p31:
                         if (media_p11text.equals(mediaPath)
                                 || media_p21text.equals(mediaPath)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             try {
@@ -1017,7 +1017,7 @@ public class PartReportActivity extends NormalBaseActivity implements
                         break;
                     case R.id.media_p21a:
                         if (media_p11atext.equals(mediaPath)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             try {
@@ -1043,7 +1043,7 @@ public class PartReportActivity extends NormalBaseActivity implements
                     case R.id.media_p31a:
                         if (media_p11atext.equals(mediaPath)
                                 || media_p21atext.equals(mediaPath)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             try {
@@ -1078,7 +1078,7 @@ public class PartReportActivity extends NormalBaseActivity implements
                     case R.id.media_p11:
                         if (media_p21text.equals(SD_CARD_TEMP_DIR)
                                 || media_p31text.equals(SD_CARD_TEMP_DIR)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             file = new File(SD_CARD_TEMP_DIR);
@@ -1109,7 +1109,7 @@ public class PartReportActivity extends NormalBaseActivity implements
                     case R.id.media_p21:
                         if (media_p11text.equals(SD_CARD_TEMP_DIR)
                                 || media_p31text.equals(SD_CARD_TEMP_DIR)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             file = new File(SD_CARD_TEMP_DIR);
@@ -1140,7 +1140,7 @@ public class PartReportActivity extends NormalBaseActivity implements
                     case R.id.media_p31:
                         if (media_p11text.equals(SD_CARD_TEMP_DIR)
                                 || media_p21text.equals(SD_CARD_TEMP_DIR)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             file = new File(SD_CARD_TEMP_DIR);
@@ -1170,7 +1170,7 @@ public class PartReportActivity extends NormalBaseActivity implements
                     case R.id.media_p11a:
                         if (media_p21atext.equals(SD_CARD_TEMP_DIR)
                                 || media_p31atext.equals(SD_CARD_TEMP_DIR)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             file = new File(SD_CARD_TEMP_DIR);
@@ -1201,7 +1201,7 @@ public class PartReportActivity extends NormalBaseActivity implements
                     case R.id.media_p21a:
                         if (media_p11atext.equals(SD_CARD_TEMP_DIR)
                                 || media_p31atext.equals(SD_CARD_TEMP_DIR)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             file = new File(SD_CARD_TEMP_DIR);
@@ -1232,7 +1232,7 @@ public class PartReportActivity extends NormalBaseActivity implements
                     case R.id.media_p31a:
                         if (media_p11atext.equals(SD_CARD_TEMP_DIR)
                                 || media_p21atext.equals(SD_CARD_TEMP_DIR)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             file = new File(SD_CARD_TEMP_DIR);
@@ -1268,7 +1268,7 @@ public class PartReportActivity extends NormalBaseActivity implements
 
     public int jsonParseToOrder(String response) throws JSONException {
         // TODO Auto-generated method stub
-        // {"head":"approve","body":{"isSuccess":"1","message":"Ìá½»³É¹¦"}}
+        // {"head":"approve","body":{"isSuccess":"1","message":"æäº¤æˆåŠŸ"}}
 
         if (null != response && !"".equals(response)) {
             JSONObject jsonObject = new JSONObject(response);
@@ -1302,7 +1302,7 @@ public class PartReportActivity extends NormalBaseActivity implements
                 }
             }
         } else {
-            err_Msg = "Êı¾İÒì³££¡";
+            err_Msg = "æ•°æ®å¼‚å¸¸ï¼";
             LogFactory.e(TAG, "not data!");
         }
 
@@ -1310,7 +1310,7 @@ public class PartReportActivity extends NormalBaseActivity implements
     }
 
     /**
-     * @category Ö¸Áî·Ö·¢
+     * @category æŒ‡ä»¤åˆ†å‘
      * @param response
      */
     private void action(String response) {
@@ -1334,7 +1334,7 @@ public class PartReportActivity extends NormalBaseActivity implements
         // type1.setAdapter(adapter1);
         // type2.setAdapter(adapter2);
         // etCaseNum.setText("");
-        // map.setText("µã»÷Ñ¡Ôñ");
+        // map.setText("ç‚¹å‡»é€‰æ‹©");
         descript.setText("");
         // etCaseNum.setText("");
         drawable1 = null;

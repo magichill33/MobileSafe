@@ -1,12 +1,12 @@
 package com.lilosoft.xtcm.network;
 
 /**
- * @category ÍøÂçÇëÇó¿ØÖÆ
+ * @category ç½‘ç»œè¯·æ±‚æ§åˆ¶
  * @author William Liu
  *
  */
 public class CncsAction {
-	
-	
-	
+
+
+
 }

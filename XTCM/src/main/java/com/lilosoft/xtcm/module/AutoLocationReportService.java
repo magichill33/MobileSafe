@@ -25,175 +25,175 @@ import com.lilosoft.xtcm.network.HttpConnection;
 import com.lilosoft.xtcm.utils.LogFactory;
 
 /**
- * @category ÉÏ±¨¹ì¼£·şÎñ
+ * @category ä¸ŠæŠ¥è½¨è¿¹æœåŠ¡
  * @author William Liu
- * 
+ *
  */
 public class AutoLocationReportService extends Service {
 
-	private final String TAG = "AutoLocationReportService";
-	Thread thread = null;
-	private LocationManager locationManager;
-	private boolean localPass = true;
-	private double latitude = 0.0;
-	private double longitude = 0.0;
-	Thread submitLocal = new Thread(new Runnable() {
+    private final String TAG = "AutoLocationReportService";
+    Thread thread = null;
+    private LocationManager locationManager;
+    private boolean localPass = true;
+    private double latitude = 0.0;
+    private double longitude = 0.0;
+    Thread submitLocal = new Thread(new Runnable() {
 
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-			try {
-				HttpConnection httpConnection = new HttpConnection();
-				httpConnection.getData(
-						HttpConnection.CONNECTION_LOCATION_REPORT,
-						User.username, "GridOfficer", longitude + "", latitude
-								+ "");
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            try {
+                HttpConnection httpConnection = new HttpConnection();
+                httpConnection.getData(
+                        HttpConnection.CONNECTION_LOCATION_REPORT,
+                        User.username, "GridOfficer", longitude + "", latitude
+                                + "");
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 
-		}
-	});
-	Handler handler = new Handler() {
+        }
+    });
+    Handler handler = new Handler() {
 
-		public void handleMessage(android.os.Message msg) {
-			getLocation();
-			if (0 != latitude && 0 != longitude && localPass) {
-				localPass = false;
-				if (Config.NETWORK) {
-					LogFactory.e(TAG, "µ±Ç°¹ì¼£Îª:"+latitude+longitude);
-					thread = new Thread(submitLocal);
-					thread.start();
-				}
-			} else {
-				LogFactory.e(TAG, "Ã»ÓĞ»ñÈ¡µ½µØÖ·!");
-			}
+        public void handleMessage(android.os.Message msg) {
+            getLocation();
+            if (0 != latitude && 0 != longitude && localPass) {
+                localPass = false;
+                if (Config.NETWORK) {
+                    LogFactory.e(TAG, "å½“å‰è½¨è¿¹ä¸º:"+latitude+longitude);
+                    thread = new Thread(submitLocal);
+                    thread.start();
+                }
+            } else {
+                LogFactory.e(TAG, "æ²¡æœ‰è·å–åˆ°åœ°å€!");
+            }
 
-		};
-	};
-	LocationListener locationListener = new LocationListener() {
+        };
+    };
+    LocationListener locationListener = new LocationListener() {
 
-		// ProviderµÄ×´Ì¬ÔÚ¿ÉÓÃ¡¢ÔİÊ±²»¿ÉÓÃºÍÎŞ·şÎñÈı¸ö×´Ì¬Ö±½ÓÇĞ»»Ê±´¥·¢´Ëº¯Êı
-		@Override
-		public void onStatusChanged(String provider, int status, Bundle extras) {
+        // Providerçš„çŠ¶æ€åœ¨å¯ç”¨ã€æš‚æ—¶ä¸å¯ç”¨å’Œæ— æœåŠ¡ä¸‰ä¸ªçŠ¶æ€ç›´æ¥åˆ‡æ¢æ—¶è§¦å‘æ­¤å‡½æ•°
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
 
-		}
+        }
 
-		// Provider±»enableÊ±´¥·¢´Ëº¯Êı£¬±ÈÈçGPS±»´ò¿ª
-		@Override
-		public void onProviderEnabled(String provider) {
+        // Providerè¢«enableæ—¶è§¦å‘æ­¤å‡½æ•°ï¼Œæ¯”å¦‚GPSè¢«æ‰“å¼€
+        @Override
+        public void onProviderEnabled(String provider) {
 
-		}
+        }
 
-		// Provider±»disableÊ±´¥·¢´Ëº¯Êı£¬±ÈÈçGPS±»¹Ø±Õ
-		@Override
-		public void onProviderDisabled(String provider) {
+        // Providerè¢«disableæ—¶è§¦å‘æ­¤å‡½æ•°ï¼Œæ¯”å¦‚GPSè¢«å…³é—­
+        @Override
+        public void onProviderDisabled(String provider) {
 
-		}
+        }
 
-		// µ±×ø±ê¸Ä±äÊ±´¥·¢´Ëº¯Êı£¬Èç¹ûProvider´«½øÏàÍ¬µÄ×ø±ê£¬Ëü¾Í²»»á±»´¥·¢
-		@Override
-		public void onLocationChanged(Location location) {
-			if (location != null) {
-				latitude = location.getLatitude(); // ¾­¶È
-				longitude = location.getLongitude(); // Î³¶È
-				localPass = true;
-			}
-		}
-	};
+        // å½“åæ ‡æ”¹å˜æ—¶è§¦å‘æ­¤å‡½æ•°ï¼Œå¦‚æœProviderä¼ è¿›ç›¸åŒçš„åæ ‡ï¼Œå®ƒå°±ä¸ä¼šè¢«è§¦å‘
+        @Override
+        public void onLocationChanged(Location location) {
+            if (location != null) {
+                latitude = location.getLatitude(); // ç»åº¦
+                longitude = location.getLongitude(); // çº¬åº¦
+                localPass = true;
+            }
+        }
+    };
 
-	@Override
-	public IBinder onBind(Intent arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public IBinder onBind(Intent arg0) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@Override
-	public void onCreate() {
-		// TODO Auto-generated method stub
-		super.onCreate();
-		LogFactory.e(TAG, "·şÎñ´´½¨");
-		if ("" == User.username)
-			try {
-				User.username = new SharedPreferencesFactory().getTopUser(
-						createPackageContext("com.lilosoft.xtcm",
-								Context.CONTEXT_INCLUDE_CODE
-										| Context.CONTEXT_IGNORE_SECURITY))
-						.getUsername();
-				MyTimerTask timerTask = new MyTimerTask();
-				Timer timer = new Timer(true);
-				timer.schedule(timerTask, 0, Config.AUTO_LOCATION_REPORT_TIME);
-			} catch (NameNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		else {
-			MyTimerTask timerTask = new MyTimerTask();
-			Timer timer = new Timer(true);
-			timer.schedule(timerTask, 0, Config.AUTO_LOCATION_REPORT_TIME);
-		}
+    @Override
+    public void onCreate() {
+        // TODO Auto-generated method stub
+        super.onCreate();
+        LogFactory.e(TAG, "æœåŠ¡åˆ›å»º");
+        if ("" == User.username)
+            try {
+                User.username = new SharedPreferencesFactory().getTopUser(
+                        createPackageContext("com.lilosoft.xtcm",
+                                Context.CONTEXT_INCLUDE_CODE
+                                        | Context.CONTEXT_IGNORE_SECURITY))
+                        .getUsername();
+                MyTimerTask timerTask = new MyTimerTask();
+                Timer timer = new Timer(true);
+                timer.schedule(timerTask, 0, Config.AUTO_LOCATION_REPORT_TIME);
+            } catch (NameNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        else {
+            MyTimerTask timerTask = new MyTimerTask();
+            Timer timer = new Timer(true);
+            timer.schedule(timerTask, 0, Config.AUTO_LOCATION_REPORT_TIME);
+        }
 
-	}
+    }
 
-	@Override
-	public int onStartCommand(Intent intent, int flags, int startId) {
-		// TODO Auto-generated method stub
-		LogFactory.e(TAG, "·şÎñ¿ªÊ¼");
-		return super.onStartCommand(intent, START_STICKY, startId);
-	}
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        // TODO Auto-generated method stub
+        LogFactory.e(TAG, "æœåŠ¡å¼€å§‹");
+        return super.onStartCommand(intent, START_STICKY, startId);
+    }
 
-	@Override
-	public void onDestroy() {
-		// TODO Auto-generated method stub
-		LogFactory.e(TAG, "·şÎñ±»É±");
-		startService(new Intent(
-				"COM.LILOSOFT.XTCM.MODULE.AUTO_LOCATION_REPORT_SERVICE"));
-	}
+    @Override
+    public void onDestroy() {
+        // TODO Auto-generated method stub
+        LogFactory.e(TAG, "æœåŠ¡è¢«æ€");
+        startService(new Intent(
+                "COM.LILOSOFT.XTCM.MODULE.AUTO_LOCATION_REPORT_SERVICE"));
+    }
 
-	private void getLocation() {
-		if (null == locationManager)
-			locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+    private void getLocation() {
+        if (null == locationManager)
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-		if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 
-			locationManager.requestLocationUpdates(
-					LocationManager.GPS_PROVIDER, 5000, 0, locationListener);
-			Location location = locationManager
-					.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            locationManager.requestLocationUpdates(
+                    LocationManager.GPS_PROVIDER, 5000, 0, locationListener);
+            Location location = locationManager
+                    .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
-			if (location != null) {
-				latitude = location.getLatitude(); // ¾­¶È
-				longitude = location.getLongitude(); // Î³¶È
-			}
+            if (location != null) {
+                latitude = location.getLatitude(); // ç»åº¦
+                longitude = location.getLongitude(); // çº¬åº¦
+            }
 
-		} else {
+        } else {
 
-			locationManager
-					.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
-							5000, 0, locationListener);
-			Location location = locationManager
-					.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            locationManager
+                    .requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
+                            5000, 0, locationListener);
+            Location location = locationManager
+                    .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
-			if (location != null) {
-				latitude = location.getLatitude(); // ¾­¶È
-				longitude = location.getLongitude(); // Î³¶È
-			}
-		}
+            if (location != null) {
+                latitude = location.getLatitude(); // ç»åº¦
+                longitude = location.getLongitude(); // çº¬åº¦
+            }
+        }
 
-	}
+    }
 
-	private class MyTimerTask extends TimerTask {
-		@Override
-		public void run() {
-			handler.sendEmptyMessage(0);
-		}
-	}
+    private class MyTimerTask extends TimerTask {
+        @Override
+        public void run() {
+            handler.sendEmptyMessage(0);
+        }
+    }
 
 }

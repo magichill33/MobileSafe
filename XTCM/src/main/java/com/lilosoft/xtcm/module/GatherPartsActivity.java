@@ -72,532 +72,532 @@ import com.lilosoft.xtcm.utils.CenterPointUtil;
 import com.lilosoft.xtcm.utils.LogFactory;
 
 /**
- * ÓÃÀ´½øĞĞ²¿¼şĞÅÏ¢²É¼¯µÄactivity
- * 
+ * ç”¨æ¥è¿›è¡Œéƒ¨ä»¶ä¿¡æ¯é‡‡é›†çš„activity
+ *
  * @author ly
- * 
+ *
  */
 public class GatherPartsActivity extends Activity {
 
-	private static final String TAG = "GatherPartsActivity";
-	protected final int getAddSuccess = 0;
-	protected final int getAddFail = 1;
-	// °Ù¶ÈMapAPIµÄ¹ÜÀíÀà
-	public BMapManager mBMapMan = null;
-	// ÊÚÈ¨Key
-	// TODO: ÇëÊäÈëÄúµÄKey,
-	// ÉêÇëµØÖ·£ºhttp://dev.baidu.com/wiki/static/imap/key/
-	public String mStrKey = "E3041FEDFA4A24627A4B76539E07658B0FE44A5D";
-	protected double latitude;
-	protected double longitude;
-	private MapView map;
-	// private PopupContainer popupContainer;
-	private PopupDialog popupDialog;
-	private ProgressDialog progressDialog;
-	private AtomicInteger count;
-	// private String categoryId = "01";
-	// private String layerId = "01"; //´óÀàID
-	private GraphicsLayer filterLayer = new GraphicsLayer();
-	private ImageButton gpsButton;
-	// private LocationManager locManager;
-	// ¶¨Î»Ïà¹Ø
-	private GraphicsLayer gpsLayer = new GraphicsLayer();
-	private Drawable locationAble;
-	private ImageView iv_mark;
+    private static final String TAG = "GatherPartsActivity";
+    protected final int getAddSuccess = 0;
+    protected final int getAddFail = 1;
+    // ç™¾åº¦MapAPIçš„ç®¡ç†ç±»
+    public BMapManager mBMapMan = null;
+    // æˆæƒKey
+    // TODO: è¯·è¾“å…¥æ‚¨çš„Key,
+    // ç”³è¯·åœ°å€ï¼šhttp://dev.baidu.com/wiki/static/imap/key/
+    public String mStrKey = "E3041FEDFA4A24627A4B76539E07658B0FE44A5D";
+    protected double latitude;
+    protected double longitude;
+    private MapView map;
+    // private PopupContainer popupContainer;
+    private PopupDialog popupDialog;
+    private ProgressDialog progressDialog;
+    private AtomicInteger count;
+    // private String categoryId = "01";
+    // private String layerId = "01"; //å¤§ç±»ID
+    private GraphicsLayer filterLayer = new GraphicsLayer();
+    private ImageButton gpsButton;
+    // private LocationManager locManager;
+    // å®šä½ç›¸å…³
+    private GraphicsLayer gpsLayer = new GraphicsLayer();
+    private Drawable locationAble;
+    private ImageView iv_mark;
 
-	/**
-	 * Called when the activity is first created.
-	 */
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.partsmap);
-		// ArcGISRuntime.setClientId("1eFHW78avlnRUPHm");
-		final GraphicsLayer partsLayer = new GraphicsLayer();
-		map = (MapView) findViewById(R.id.map);
+    /**
+     * Called when the activity is first created.
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.partsmap);
+        // ArcGISRuntime.setClientId("1eFHW78avlnRUPHm");
+        final GraphicsLayer partsLayer = new GraphicsLayer();
+        map = (MapView) findViewById(R.id.map);
 
-		iv_mark = (ImageView) findViewById(R.id.iv_mark);
+        iv_mark = (ImageView) findViewById(R.id.iv_mark);
 
-		gpsButton = (ImageButton) findViewById(R.id.btnLocate);
-		// locManager = (LocationManager)
-		// getSystemService(Context.LOCATION_SERVICE);
-		Intent intent = getIntent();
-		Bundle bundler = intent.getExtras();
+        gpsButton = (ImageButton) findViewById(R.id.btnLocate);
+        // locManager = (LocationManager)
+        // getSystemService(Context.LOCATION_SERVICE);
+        Intent intent = getIntent();
+        Bundle bundler = intent.getExtras();
 //		String partId = bundler.getString("partId");
 //		String categoryId = bundler.getString("categoryId");
-		String code = bundler.getString("CODE");
-		String layer = bundler.getString("LAYER");
-		locationAble = getResources().getDrawable(R.drawable.location);
-		mBMapMan = new BMapManager(GatherPartsActivity.this);
-		mBMapMan.init(mStrKey, new MyGeneralListener());
-		mBMapMan.getLocationManager().setLocationCoordinateType(
-				MKLocationManager.MK_COORDINATE_WGS84);
-		mBMapMan.start();
-
-		ArcGISTiledMapServiceLayer tileLayer = new ArcGISTiledMapServiceLayer(
-				getResources().getString(R.string.map2d));
-		// XianTaoWMTSLayer tileLayer = new XianTaoWMTSLayer();
-		// GoogleMapServiceLayer tileLayer = new GoogleMapServiceLayer();
-		map.addLayer(tileLayer);
-		map.addLayer(partsLayer);
-		map.addLayer(filterLayer);
-		map.addLayer(gpsLayer);
-		new Thread(new Runnable() {
-			public void run() {
-
-				locateMap(
-						GatherPartsActivity.this.getResources().getString(
-								R.string.cm_grid), map);
-			}
-		}).start();
-		final String url = getResources().getString(R.string.cm_parts) + "/"
-				+ Integer.valueOf(layer);
-		LogFactory.e(TAG, url);
-		final String picName = "p" + code;
-		map.setOnSingleTapListener(new OnSingleTapListener() {
-			private static final long serialVersionUID = 1L;
-
-			public void onSingleTap(float x, float y) {
-				if (map.isLoaded()) {
-					map.centerAt(map.toMapPoint(x, y), true);
-					if (map.getResolution() > map.getMinResolution()) {
-						// Log.v("ly", Integer.valueOf(LayerId)+"");
-						Log.v("ly",
-								"res:" + map.getResolution() + "--"
-										+ map.getMinResolution());
-						new AlertDialog.Builder(GatherPartsActivity.this)
-								.setTitle("ÌáÊ¾").setMessage("Çë½«µØÍ¼·Åµ½×î´ó²ãÏÔÊ¾²¿¼ş")
-								.setPositiveButton("È·¶¨", null).show();
-					} else {
-						count = new AtomicInteger();
-						if (progressDialog == null
-								|| !progressDialog.isShowing()) {
-							progressDialog = ProgressDialog.show(
-									map.getContext(), "", "²éÑ¯...");
-							progressDialog.getWindow().setLayout(400, 200);
-						}
-
-						int tolerance = 500;
-
-						Envelope env = new Envelope(map.toMapPoint(x, y),
-								tolerance * map.getResolution(), tolerance
-										* map.getResolution());
-						new RunQueryPartsLayerTask(partsLayer, env, picName,
-								map.getContext(), x, y).execute(url);
-					}
-
-				}
-			}
-		});
-
-		// bMapManager.getLocationManager().requestLocationUpdates(mLocationListener);
-		// bMapManager.getLocationManager().setLocationCoordinateType(MKLocationManager.MK_COORDINATE_WGS84);
-		// bMapManager.start();
-
-		gpsButton.setOnTouchListener(new OnTouchListener() {
-
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					v.setBackgroundColor(0xcc818d89);
-					gpsLayer.removeAll();
-					MKLocationManager manager = mBMapMan.getLocationManager();
-					Location location = manager.getLocationInfo();
-					if (location != null) {
-						latitude = location.getLatitude();
-						longitude = location.getLongitude();
-						PictureMarkerSymbol picSymbol = new PictureMarkerSymbol(
-								locationAble);
-						Point point = new Point(longitude, latitude);
-						Graphic graphic = new Graphic(point, picSymbol);
-						gpsLayer.addGraphic(graphic);
-						// map.centerAt(point, true);
-						map.zoomToResolution(point, map.getMinResolution());
-					}
-					Log.i("°Ù¶ÈµØÍ¼¹ì¼£ÊÇ:", latitude + "---" + longitude);
-
-				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					// ÔÙĞŞ¸ÄÎªÌ§ÆğÊ±µÄÕı³£Í¼Æ¬
-					v.setBackgroundColor(0xccffffff);
-				}
-
-				return false;
-			}
-		});
-
-	}
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		map.pause();
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		map.unpause();
-	}
-
-	/**
-	 * ³õÊ¼»¯µØÍ¼Ê±½«¶¨Î»ÔÚÒ»¸öºÏÊÊµÄÎ»ÖÃ
-	 */
-	private void locateMap(String url, MapView mapView) {
-		Query query = new Query();
-		query.setReturnGeometry(true);
-		query.setWhere("1=1");
-		// query.setOutFields(new String[]{"*"});
-		QueryTask queryTask = new QueryTask(url);
-		try {
-			FeatureSet fs = queryTask.execute(query);
-			if (fs != null) {
-				Graphic[] graphics = fs.getGraphics();
-				// Polygon polygon = null;
-
-				ArrayList<Envelope> enveList = new ArrayList<Envelope>();
-
-				for (int i = 0; i < graphics.length; i++) {
-					if (graphics[i] != null
-							&& graphics[i].getGeometry() != null) {
-
-						Geometry geometry = graphics[i].getGeometry();
-
-						if (Geometry.Type.POLYGON == geometry.getType()) {
-
-							Envelope envelope = new Envelope();
-							geometry.queryEnvelope(envelope);
-							// polygon = (Polygon) geometry;
-							// polygon.queryEnvelope(envelope);
-							enveList.add(envelope);
-
-						}
-					}
-				}
-
-				mapView.setExtent(CenterPointUtil.getEnvelope(enveList));
-			}
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			Log.e("DrawError", e.getMessage());
-			e.printStackTrace();
-		}
-	}
-
-	private void createPopupViews(Graphic[] graphics, String picName,
-			ListView listParts, Context context) {
-
-		int imgId = GatherPartsActivity.this.getResources().getIdentifier(
-				picName, "drawable", this.getPackageName());
-		Drawable iconPart = GatherPartsActivity.this.getResources()
-				.getDrawable(imgId);
-		List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
-		for (Graphic graphic : graphics) {
-			Map<String, Object> listMap = new HashMap<String, Object>();
-			listMap.put("image", iconPart);
-			listMap.put("addr", graphic
-					.getAttributeValue((String) GatherPartsActivity.this
-							.getResources().getText(R.string.objCode)));
-			listMap.put("graphic", graphic);
-			listItems.add(listMap);
-		}
-
-		ListViewAdapter listViewAdapter = new ListViewAdapter(context,
-				listItems);
-		listParts.setAdapter(listViewAdapter);
-
-	}
-
-	/**
-	 * ¼ÆËã±êÌâÀ¸µÄ¸ß¶È
-	 *
-	 * @return
-	 */
-	private int initHeight() {
-		Rect rect = new Rect();
-		Window window = getWindow();
-		map.getWindowVisibleDisplayFrame(rect);
-		// ×´Ì¬À¸µÄ¸ß¶È
-		int statusBarHight = rect.top;
-		// ±êÌâÀ¸¸ú×´Ì¬À¸µÄ×ÜÌå¸ß¶È
-		int contentViewTop = window.findViewById(Window.ID_ANDROID_CONTENT)
-				.getTop();
-		// ±êÌâÀ¸µÄ¸ß¶È
-		int titleBarHeight = contentViewTop - statusBarHight;
-		return titleBarHeight;
-	}
-
-	// ²éÑ¯²¿¼şĞÅÏ¢½«ÆäÏÔÊ¾ÔÙÍ¼²ãÉÏ
-	private class RunQueryPartsLayerTask extends
-			AsyncTask<String, Void, FeatureSet> {
-
-		private GraphicsLayer graphicsLayer;
-		private Envelope envelope;
-		private String picName;
-		private Context context;
-		private float xScreen;
-		private float yScreen;
-		private PopupDialog popupDialog;
-
-		public RunQueryPartsLayerTask(GraphicsLayer graphicsLayer,
-				Envelope env, String picName, Context context, float x, float y) {
-			super();
-			this.graphicsLayer = graphicsLayer;
-			envelope = env;
-			this.picName = picName;
-			this.context = context;
-			xScreen = x;
-			yScreen = y;
-		}
-
-		private void clearLayer() {
-			filterLayer.removeAll();
-			gpsLayer.removeAll();
-		}
-
-		@Override
-		protected FeatureSet doInBackground(String... urls) {
-			for (String url : urls) {
-				Query query = new Query();
-				query.setReturnGeometry(true);
-				query.setGeometry(envelope);
-				// query.setWhere("1=1");
-				// query.setMaxFeatures(10);
-				query.setOutFields(new String[] { "*" });
-				QueryTask queryTask = new QueryTask(url);
-				try {
-					graphicsLayer.removeAll();
-					// filterLayer.removeAll();
-					clearLayer();
-					FeatureSet fs = queryTask.execute(query);
-					if (fs != null && fs.getGraphics().length > 0) {
-						Graphic[] graphics = fs.getGraphics();
-						Polygon polygon = null;
-
-						FeatureSet featureSet = new FeatureSet();
-						List<Graphic> list = new ArrayList<Graphic>();
-
-						int imgId = 0;
-						try {
-							imgId = GatherPartsActivity.this.getResources()
-									.getIdentifier(picName, "drawable",
-											GatherPartsActivity.this.getPackageName());
-							LogFactory.e(TAG, "imgID = "+imgId);
-						} catch (Exception e) {
-							// TODO Auto-generated catch block
-							LogFactory.e(TAG, "¼ÓÔØ×ÊÔ´id³ö´í");
-							e.printStackTrace();
-						}
-
-						for (int i = 0; i < graphics.length; i++) {
-							Geometry geometry = graphics[i].getGeometry();
-
-							Drawable drawable = GatherPartsActivity.this
-									.getResources().getDrawable(imgId);
-							PictureMarkerSymbol picSymbol = new PictureMarkerSymbol(
-									drawable);
-							// PictureDrawable drawable = new
-							// PictureDrawable(picture)
-							Graphic graphic = new Graphic(geometry, picSymbol);
-							graphicsLayer.addGraphic(graphic);
-							// graphic.setAttributes(graphics[i].getAttributes());
-							list.add(graphic);
-						}
-						int len = list.size();
-						Graphic[] gc = new Graphic[len];
-						for (int i = 0; i < len; i++) {
-							gc[i] = list.get(i);
-						}
-
-						featureSet.setGraphics(gc);
-						return fs;
-
-					}
-
-				} catch (Exception e) {
-					Log.e("ly", e.getMessage());
-					e.printStackTrace();
-				}
-			}
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(final FeatureSet result) {
-			count.decrementAndGet();
-			if (result == null) {
-				if (progressDialog != null && progressDialog.isShowing())
-					progressDialog.dismiss();
-				new AlertDialog.Builder(context).setTitle("ÌáÊ¾")
-						.setMessage("´ËÇøÓò·¶Î§ÄÚÃ»ÓĞ²¿¼şĞÅÏ¢")
-						.setPositiveButton("È·¶¨", null).show();
-				return;
-			}
-			Graphic[] graphics = result.getGraphics();
-			if (graphics == null || graphics.length == 0) {
-				if (progressDialog != null && progressDialog.isShowing())
-					progressDialog.dismiss();
-
-				return;
-			}
-
-			if (graphics.length > 0) {
-				if (progressDialog != null && progressDialog.isShowing())
-					progressDialog.dismiss();
-				Log.v("ly", "length:" + graphics.length);
-				popupDialog = new PopupDialog(context, graphics,
-						picName);
-				Window win = popupDialog.getWindow();
-				DisplayMetrics metric = new DisplayMetrics();
-				getWindowManager().getDefaultDisplay().getMetrics(metric);
-				int width = metric.widthPixels; // ÆÁÄ»¿í¶È£¨ÏñËØ£©
-				int height = metric.heightPixels; // ÆÁÄ»¸ß¶È£¨ÏñËØ£©
-				// android.view.WindowManager.LayoutParams lp = new
-				// android.view.WindowManager.LayoutParams();
-				WindowManager.LayoutParams wlp = win.getAttributes();
-				win.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
-				// lp.x = width/2 - wlp.width/2;
-				// lp.y = -170;
-				// lp.x = 150;
-				wlp.y = height / 2 - initHeight();
-				win.setAttributes(wlp);
-				// win.setGravity(Gravity.CENTER_VERTICAL);
-				popupDialog.setCanceledOnTouchOutside(true); // ÉèÖÃµã»÷DialogÍâ²¿ÈÎÒâÇøÓò¹Ø±ÕDialog
-				popupDialog.setOnDismissListener(new OnDismissListener() {
-
-					public void onDismiss(DialogInterface dialog) {
-						iv_mark.setVisibility(View.GONE);
-					}
-				});
-				popupDialog.show();
-
-				return;
-			}
-
-		}
-
-	}
-
-	/**
-	 * µ¯³ö¶Ô»°¿òÀà
-	 *
-	 * @author ly
-	 *
-	 */
-	private class PopupDialog extends Dialog {
-		private Graphic[] graphics;
-		private String picName;
-		private Context context;
-
-		public PopupDialog(Context context, Graphic[] graphics, String picName) {
-			super(context, R.style.PopupDialog);
-
-			this.graphics = graphics;
-			this.picName = picName;
-			this.context = context;
-		}
-
-		@Override
-		protected void onCreate(Bundle savedInstanceState) {
-			super.onCreate(savedInstanceState);
-			this.setContentView(R.layout.partsitem);
-			ListView listView = (ListView) this.findViewById(R.id.listParts);
-			createPopupViews(graphics, picName, listView, context);
-		}
-
-	}
-
-	/**
-	 * listÊÊÅäÆ÷Àà
-	 *
-	 * @author ly
-	 *
-	 */
-	private class ListViewAdapter extends BaseAdapter {
-
-		private Context context;
-		private List<Map<String, Object>> listItems;
-
-		private CheckBox selectedCheckBox = null;
-
-		public ListViewAdapter(Context context,
-				List<Map<String, Object>> listItems) {
-			super();
-			this.context = context;
-			this.listItems = listItems;
-		}
-
-		public int getCount() {
-			return listItems.size();
-		}
-
-		public Object getItem(int position) {
-			return listItems.get(position);
-		}
-
-		public long getItemId(int position) {
-			return 0;
-		}
-
-		/**
-		 * ListView itemÉèÖÃ
-		 */
-
-		public View getView(int position, View convertView, ViewGroup parent) {
-			final int selectID = position;
-			ListItemView listItemView = null;
-
-			if (convertView == null) {
-				listItemView = new ListItemView();
-				convertView = View.inflate(GatherPartsActivity.this, R.layout.list_item, null);
-				listItemView.image = (ImageView) convertView
-						.findViewById(R.id.imageItem);
-				listItemView.address = (TextView) convertView
-						.findViewById(R.id.addrItem);
-				listItemView.btnPick = (Button) convertView
-						.findViewById(R.id.pickItem);
-				listItemView.radionButton = (CheckBox) convertView
-						.findViewById(R.id.radioItem);
-				// ÉèÖÃ¿Ø¼ş¼¯µ½convertView
-				convertView.setTag(listItemView);
-			} else {
-				listItemView = (ListItemView) convertView.getTag();
-			}
-
-			final CheckBox cb = listItemView.radionButton;
-			final Graphic graphic = (Graphic) listItems.get(position).get(
-					"graphic");
-			final Drawable drawable = (Drawable) listItems.get(position).get(
-					"image");
-
-			listItemView.image.setBackgroundDrawable((Drawable) listItems.get(
-					position).get("image"));
-			listItemView.address.setText(listItems.get(position).get("addr").toString());
-
-			listItemView.btnPick.setOnClickListener(new OnClickListener() {
-
-				public void onClick(View v) {
-					postPartsData(graphic);
-				}
-			});
-
-			listItemView.radionButton
-					.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-						public void onCheckedChanged(CompoundButton buttonView,
-								boolean isChecked) {
-
-							if (selectedCheckBox != null
-									&& selectedCheckBox != cb) {
-								selectedCheckBox.setChecked(false);
-							}
-							selectedCheckBox = cb;
-							filterLayer.removeAll();
-							if (isChecked) {
+        String code = bundler.getString("CODE");
+        String layer = bundler.getString("LAYER");
+        locationAble = getResources().getDrawable(R.drawable.location);
+        mBMapMan = new BMapManager(GatherPartsActivity.this);
+        mBMapMan.init(mStrKey, new MyGeneralListener());
+        mBMapMan.getLocationManager().setLocationCoordinateType(
+                MKLocationManager.MK_COORDINATE_WGS84);
+        mBMapMan.start();
+
+        ArcGISTiledMapServiceLayer tileLayer = new ArcGISTiledMapServiceLayer(
+                getResources().getString(R.string.map2d));
+        // XianTaoWMTSLayer tileLayer = new XianTaoWMTSLayer();
+        // GoogleMapServiceLayer tileLayer = new GoogleMapServiceLayer();
+        map.addLayer(tileLayer);
+        map.addLayer(partsLayer);
+        map.addLayer(filterLayer);
+        map.addLayer(gpsLayer);
+        new Thread(new Runnable() {
+            public void run() {
+
+                locateMap(
+                        GatherPartsActivity.this.getResources().getString(
+                                R.string.cm_grid), map);
+            }
+        }).start();
+        final String url = getResources().getString(R.string.cm_parts) + "/"
+                + Integer.valueOf(layer);
+        LogFactory.e(TAG, url);
+        final String picName = "p" + code;
+        map.setOnSingleTapListener(new OnSingleTapListener() {
+            private static final long serialVersionUID = 1L;
+
+            public void onSingleTap(float x, float y) {
+                if (map.isLoaded()) {
+                    map.centerAt(map.toMapPoint(x, y), true);
+                    if (map.getResolution() > map.getMinResolution()) {
+                        // Log.v("ly", Integer.valueOf(LayerId)+"");
+                        Log.v("ly",
+                                "res:" + map.getResolution() + "--"
+                                        + map.getMinResolution());
+                        new AlertDialog.Builder(GatherPartsActivity.this)
+                                .setTitle("æç¤º").setMessage("è¯·å°†åœ°å›¾æ”¾åˆ°æœ€å¤§å±‚æ˜¾ç¤ºéƒ¨ä»¶")
+                                .setPositiveButton("ç¡®å®š", null).show();
+                    } else {
+                        count = new AtomicInteger();
+                        if (progressDialog == null
+                                || !progressDialog.isShowing()) {
+                            progressDialog = ProgressDialog.show(
+                                    map.getContext(), "", "æŸ¥è¯¢...");
+                            progressDialog.getWindow().setLayout(400, 200);
+                        }
+
+                        int tolerance = 500;
+
+                        Envelope env = new Envelope(map.toMapPoint(x, y),
+                                tolerance * map.getResolution(), tolerance
+                                * map.getResolution());
+                        new RunQueryPartsLayerTask(partsLayer, env, picName,
+                                map.getContext(), x, y).execute(url);
+                    }
+
+                }
+            }
+        });
+
+        // bMapManager.getLocationManager().requestLocationUpdates(mLocationListener);
+        // bMapManager.getLocationManager().setLocationCoordinateType(MKLocationManager.MK_COORDINATE_WGS84);
+        // bMapManager.start();
+
+        gpsButton.setOnTouchListener(new OnTouchListener() {
+
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    v.setBackgroundColor(0xcc818d89);
+                    gpsLayer.removeAll();
+                    MKLocationManager manager = mBMapMan.getLocationManager();
+                    Location location = manager.getLocationInfo();
+                    if (location != null) {
+                        latitude = location.getLatitude();
+                        longitude = location.getLongitude();
+                        PictureMarkerSymbol picSymbol = new PictureMarkerSymbol(
+                                locationAble);
+                        Point point = new Point(longitude, latitude);
+                        Graphic graphic = new Graphic(point, picSymbol);
+                        gpsLayer.addGraphic(graphic);
+                        // map.centerAt(point, true);
+                        map.zoomToResolution(point, map.getMinResolution());
+                    }
+                    Log.i("ç™¾åº¦åœ°å›¾è½¨è¿¹æ˜¯:", latitude + "---" + longitude);
+
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    // å†ä¿®æ”¹ä¸ºæŠ¬èµ·æ—¶çš„æ­£å¸¸å›¾ç‰‡
+                    v.setBackgroundColor(0xccffffff);
+                }
+
+                return false;
+            }
+        });
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        map.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        map.unpause();
+    }
+
+    /**
+     * åˆå§‹åŒ–åœ°å›¾æ—¶å°†å®šä½åœ¨ä¸€ä¸ªåˆé€‚çš„ä½ç½®
+     */
+    private void locateMap(String url, MapView mapView) {
+        Query query = new Query();
+        query.setReturnGeometry(true);
+        query.setWhere("1=1");
+        // query.setOutFields(new String[]{"*"});
+        QueryTask queryTask = new QueryTask(url);
+        try {
+            FeatureSet fs = queryTask.execute(query);
+            if (fs != null) {
+                Graphic[] graphics = fs.getGraphics();
+                // Polygon polygon = null;
+
+                ArrayList<Envelope> enveList = new ArrayList<Envelope>();
+
+                for (int i = 0; i < graphics.length; i++) {
+                    if (graphics[i] != null
+                            && graphics[i].getGeometry() != null) {
+
+                        Geometry geometry = graphics[i].getGeometry();
+
+                        if (Geometry.Type.POLYGON == geometry.getType()) {
+
+                            Envelope envelope = new Envelope();
+                            geometry.queryEnvelope(envelope);
+                            // polygon = (Polygon) geometry;
+                            // polygon.queryEnvelope(envelope);
+                            enveList.add(envelope);
+
+                        }
+                    }
+                }
+
+                mapView.setExtent(CenterPointUtil.getEnvelope(enveList));
+            }
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            Log.e("DrawError", e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void createPopupViews(Graphic[] graphics, String picName,
+                                  ListView listParts, Context context) {
+
+        int imgId = GatherPartsActivity.this.getResources().getIdentifier(
+                picName, "drawable", this.getPackageName());
+        Drawable iconPart = GatherPartsActivity.this.getResources()
+                .getDrawable(imgId);
+        List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+        for (Graphic graphic : graphics) {
+            Map<String, Object> listMap = new HashMap<String, Object>();
+            listMap.put("image", iconPart);
+            listMap.put("addr", graphic
+                    .getAttributeValue((String) GatherPartsActivity.this
+                            .getResources().getText(R.string.objCode)));
+            listMap.put("graphic", graphic);
+            listItems.add(listMap);
+        }
+
+        ListViewAdapter listViewAdapter = new ListViewAdapter(context,
+                listItems);
+        listParts.setAdapter(listViewAdapter);
+
+    }
+
+    /**
+     * è®¡ç®—æ ‡é¢˜æ çš„é«˜åº¦
+     *
+     * @return
+     */
+    private int initHeight() {
+        Rect rect = new Rect();
+        Window window = getWindow();
+        map.getWindowVisibleDisplayFrame(rect);
+        // çŠ¶æ€æ çš„é«˜åº¦
+        int statusBarHight = rect.top;
+        // æ ‡é¢˜æ è·ŸçŠ¶æ€æ çš„æ€»ä½“é«˜åº¦
+        int contentViewTop = window.findViewById(Window.ID_ANDROID_CONTENT)
+                .getTop();
+        // æ ‡é¢˜æ çš„é«˜åº¦
+        int titleBarHeight = contentViewTop - statusBarHight;
+        return titleBarHeight;
+    }
+
+    // æŸ¥è¯¢éƒ¨ä»¶ä¿¡æ¯å°†å…¶æ˜¾ç¤ºå†å›¾å±‚ä¸Š
+    private class RunQueryPartsLayerTask extends
+            AsyncTask<String, Void, FeatureSet> {
+
+        private GraphicsLayer graphicsLayer;
+        private Envelope envelope;
+        private String picName;
+        private Context context;
+        private float xScreen;
+        private float yScreen;
+        private PopupDialog popupDialog;
+
+        public RunQueryPartsLayerTask(GraphicsLayer graphicsLayer,
+                                      Envelope env, String picName, Context context, float x, float y) {
+            super();
+            this.graphicsLayer = graphicsLayer;
+            envelope = env;
+            this.picName = picName;
+            this.context = context;
+            xScreen = x;
+            yScreen = y;
+        }
+
+        private void clearLayer() {
+            filterLayer.removeAll();
+            gpsLayer.removeAll();
+        }
+
+        @Override
+        protected FeatureSet doInBackground(String... urls) {
+            for (String url : urls) {
+                Query query = new Query();
+                query.setReturnGeometry(true);
+                query.setGeometry(envelope);
+                // query.setWhere("1=1");
+                // query.setMaxFeatures(10);
+                query.setOutFields(new String[] { "*" });
+                QueryTask queryTask = new QueryTask(url);
+                try {
+                    graphicsLayer.removeAll();
+                    // filterLayer.removeAll();
+                    clearLayer();
+                    FeatureSet fs = queryTask.execute(query);
+                    if (fs != null && fs.getGraphics().length > 0) {
+                        Graphic[] graphics = fs.getGraphics();
+                        Polygon polygon = null;
+
+                        FeatureSet featureSet = new FeatureSet();
+                        List<Graphic> list = new ArrayList<Graphic>();
+
+                        int imgId = 0;
+                        try {
+                            imgId = GatherPartsActivity.this.getResources()
+                                    .getIdentifier(picName, "drawable",
+                                            GatherPartsActivity.this.getPackageName());
+                            LogFactory.e(TAG, "imgID = "+imgId);
+                        } catch (Exception e) {
+                            // TODO Auto-generated catch block
+                            LogFactory.e(TAG, "åŠ è½½èµ„æºidå‡ºé”™");
+                            e.printStackTrace();
+                        }
+
+                        for (int i = 0; i < graphics.length; i++) {
+                            Geometry geometry = graphics[i].getGeometry();
+
+                            Drawable drawable = GatherPartsActivity.this
+                                    .getResources().getDrawable(imgId);
+                            PictureMarkerSymbol picSymbol = new PictureMarkerSymbol(
+                                    drawable);
+                            // PictureDrawable drawable = new
+                            // PictureDrawable(picture)
+                            Graphic graphic = new Graphic(geometry, picSymbol);
+                            graphicsLayer.addGraphic(graphic);
+                            // graphic.setAttributes(graphics[i].getAttributes());
+                            list.add(graphic);
+                        }
+                        int len = list.size();
+                        Graphic[] gc = new Graphic[len];
+                        for (int i = 0; i < len; i++) {
+                            gc[i] = list.get(i);
+                        }
+
+                        featureSet.setGraphics(gc);
+                        return fs;
+
+                    }
+
+                } catch (Exception e) {
+                    Log.e("ly", e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(final FeatureSet result) {
+            count.decrementAndGet();
+            if (result == null) {
+                if (progressDialog != null && progressDialog.isShowing())
+                    progressDialog.dismiss();
+                new AlertDialog.Builder(context).setTitle("æç¤º")
+                        .setMessage("æ­¤åŒºåŸŸèŒƒå›´å†…æ²¡æœ‰éƒ¨ä»¶ä¿¡æ¯")
+                        .setPositiveButton("ç¡®å®š", null).show();
+                return;
+            }
+            Graphic[] graphics = result.getGraphics();
+            if (graphics == null || graphics.length == 0) {
+                if (progressDialog != null && progressDialog.isShowing())
+                    progressDialog.dismiss();
+
+                return;
+            }
+
+            if (graphics.length > 0) {
+                if (progressDialog != null && progressDialog.isShowing())
+                    progressDialog.dismiss();
+                Log.v("ly", "length:" + graphics.length);
+                popupDialog = new PopupDialog(context, graphics,
+                        picName);
+                Window win = popupDialog.getWindow();
+                DisplayMetrics metric = new DisplayMetrics();
+                getWindowManager().getDefaultDisplay().getMetrics(metric);
+                int width = metric.widthPixels; // å±å¹•å®½åº¦ï¼ˆåƒç´ ï¼‰
+                int height = metric.heightPixels; // å±å¹•é«˜åº¦ï¼ˆåƒç´ ï¼‰
+                // android.view.WindowManager.LayoutParams lp = new
+                // android.view.WindowManager.LayoutParams();
+                WindowManager.LayoutParams wlp = win.getAttributes();
+                win.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
+                // lp.x = width/2 - wlp.width/2;
+                // lp.y = -170;
+                // lp.x = 150;
+                wlp.y = height / 2 - initHeight();
+                win.setAttributes(wlp);
+                // win.setGravity(Gravity.CENTER_VERTICAL);
+                popupDialog.setCanceledOnTouchOutside(true); // è®¾ç½®ç‚¹å‡»Dialogå¤–éƒ¨ä»»æ„åŒºåŸŸå…³é—­Dialog
+                popupDialog.setOnDismissListener(new OnDismissListener() {
+
+                    public void onDismiss(DialogInterface dialog) {
+                        iv_mark.setVisibility(View.GONE);
+                    }
+                });
+                popupDialog.show();
+
+                return;
+            }
+
+        }
+
+    }
+
+    /**
+     * å¼¹å‡ºå¯¹è¯æ¡†ç±»
+     *
+     * @author ly
+     *
+     */
+    private class PopupDialog extends Dialog {
+        private Graphic[] graphics;
+        private String picName;
+        private Context context;
+
+        public PopupDialog(Context context, Graphic[] graphics, String picName) {
+            super(context, R.style.PopupDialog);
+
+            this.graphics = graphics;
+            this.picName = picName;
+            this.context = context;
+        }
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            this.setContentView(R.layout.partsitem);
+            ListView listView = (ListView) this.findViewById(R.id.listParts);
+            createPopupViews(graphics, picName, listView, context);
+        }
+
+    }
+
+    /**
+     * listé€‚é…å™¨ç±»
+     *
+     * @author ly
+     *
+     */
+    private class ListViewAdapter extends BaseAdapter {
+
+        private Context context;
+        private List<Map<String, Object>> listItems;
+
+        private CheckBox selectedCheckBox = null;
+
+        public ListViewAdapter(Context context,
+                               List<Map<String, Object>> listItems) {
+            super();
+            this.context = context;
+            this.listItems = listItems;
+        }
+
+        public int getCount() {
+            return listItems.size();
+        }
+
+        public Object getItem(int position) {
+            return listItems.get(position);
+        }
+
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        /**
+         * ListView itemè®¾ç½®
+         */
+
+        public View getView(int position, View convertView, ViewGroup parent) {
+            final int selectID = position;
+            ListItemView listItemView = null;
+
+            if (convertView == null) {
+                listItemView = new ListItemView();
+                convertView = View.inflate(GatherPartsActivity.this, R.layout.list_item, null);
+                listItemView.image = (ImageView) convertView
+                        .findViewById(R.id.imageItem);
+                listItemView.address = (TextView) convertView
+                        .findViewById(R.id.addrItem);
+                listItemView.btnPick = (Button) convertView
+                        .findViewById(R.id.pickItem);
+                listItemView.radionButton = (CheckBox) convertView
+                        .findViewById(R.id.radioItem);
+                // è®¾ç½®æ§ä»¶é›†åˆ°convertView
+                convertView.setTag(listItemView);
+            } else {
+                listItemView = (ListItemView) convertView.getTag();
+            }
+
+            final CheckBox cb = listItemView.radionButton;
+            final Graphic graphic = (Graphic) listItems.get(position).get(
+                    "graphic");
+            final Drawable drawable = (Drawable) listItems.get(position).get(
+                    "image");
+
+            listItemView.image.setBackgroundDrawable((Drawable) listItems.get(
+                    position).get("image"));
+            listItemView.address.setText(listItems.get(position).get("addr").toString());
+
+            listItemView.btnPick.setOnClickListener(new OnClickListener() {
+
+                public void onClick(View v) {
+                    postPartsData(graphic);
+                }
+            });
+
+            listItemView.radionButton
+                    .setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+                        public void onCheckedChanged(CompoundButton buttonView,
+                                                     boolean isChecked) {
+
+                            if (selectedCheckBox != null
+                                    && selectedCheckBox != cb) {
+                                selectedCheckBox.setChecked(false);
+                            }
+                            selectedCheckBox = cb;
+                            filterLayer.removeAll();
+                            if (isChecked) {
 								/*
 								 * drawable.setColorFilter(Color.YELLOW,android.
 								 * graphics.PorterDuff.Mode.MULTIPLY);
@@ -615,21 +615,21 @@ public class GatherPartsActivity extends Activity {
 								 * drawable.setAlpha(55);
 								 */
 
-								map.centerAt((Point) graphic.getGeometry(),
-										true);
-								iv_mark.setVisibility(View.VISIBLE);
-							}
-						}
-					});
+                                map.centerAt((Point) graphic.getGeometry(),
+                                        true);
+                                iv_mark.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    });
 
-			return convertView;
-		}
+            return convertView;
+        }
 
-		/**
-		 * Ìá½»²É¼¯µÄ²¿¼şÊı¾İ
-		 */
-		private void postPartsData(Graphic g) {
-			Map<String, Object> attr = g.getAttributes();
+        /**
+         * æäº¤é‡‡é›†çš„éƒ¨ä»¶æ•°æ®
+         */
+        private void postPartsData(Graphic g) {
+            Map<String, Object> attr = g.getAttributes();
 //			Part part = new Part();
 //			// attr.get(getAttrName(R.string.objectId));
 //			part.setObjectId(attr.get(getAttrName(R.string.objectId))
@@ -649,68 +649,68 @@ public class GatherPartsActivity extends Activity {
 //					.toString());
 //			part.setDeptName3(attr.get(getAttrName(R.string.deptName3))
 //					.toString());
-			Point point = (Point) g.getGeometry();
+            Point point = (Point) g.getGeometry();
 //			part.setLon(point.getX());
 //			part.setLat(point.getY());
 //			Log.v("ly", part.toString());
 
-			Intent data = new Intent();
+            Intent data = new Intent();
 
-			data.putExtra(getResources().getString(R.string.objectId), attr.get(getAttrName(R.string.objectId))
-					.toString());
-			data.putExtra(getResources().getString(R.string.objCode), attr.get(getAttrName(R.string.objCode))
-					.toString());
-			data.putExtra(getResources().getString(R.string.objName), attr.get(getAttrName(R.string.objName))
-					.toString());
-			data.putExtra(getResources().getString(R.string.orgCode), attr.get(getAttrName(R.string.orgCode))
-					.toString());
-			data.putExtra(getResources().getString(R.string.deptCode1), attr.get(getAttrName(R.string.deptCode1))
-					.toString());
-			data.putExtra(getResources().getString(R.string.deptName1), attr.get(getAttrName(R.string.deptName1))
-					.toString());
-			data.putExtra(getResources().getString(R.string.deptCode2), attr.get(getAttrName(R.string.deptCode2))
-					.toString());
-			data.putExtra(getResources().getString(R.string.deptName2), attr.get(getAttrName(R.string.deptName2))
-					.toString());
-			data.putExtra(getResources().getString(R.string.deptCode3), attr.get(getAttrName(R.string.deptCode3))
-					.toString());
-			data.putExtra(getResources().getString(R.string.deptName3), attr.get(getAttrName(R.string.deptName3))
-					.toString());
-			data.putExtra("Lon",point.getX()+"");
-			data.putExtra("Lat",point.getY()+"");
+            data.putExtra(getResources().getString(R.string.objectId), attr.get(getAttrName(R.string.objectId))
+                    .toString());
+            data.putExtra(getResources().getString(R.string.objCode), attr.get(getAttrName(R.string.objCode))
+                    .toString());
+            data.putExtra(getResources().getString(R.string.objName), attr.get(getAttrName(R.string.objName))
+                    .toString());
+            data.putExtra(getResources().getString(R.string.orgCode), attr.get(getAttrName(R.string.orgCode))
+                    .toString());
+            data.putExtra(getResources().getString(R.string.deptCode1), attr.get(getAttrName(R.string.deptCode1))
+                    .toString());
+            data.putExtra(getResources().getString(R.string.deptName1), attr.get(getAttrName(R.string.deptName1))
+                    .toString());
+            data.putExtra(getResources().getString(R.string.deptCode2), attr.get(getAttrName(R.string.deptCode2))
+                    .toString());
+            data.putExtra(getResources().getString(R.string.deptName2), attr.get(getAttrName(R.string.deptName2))
+                    .toString());
+            data.putExtra(getResources().getString(R.string.deptCode3), attr.get(getAttrName(R.string.deptCode3))
+                    .toString());
+            data.putExtra(getResources().getString(R.string.deptName3), attr.get(getAttrName(R.string.deptName3))
+                    .toString());
+            data.putExtra("Lon",point.getX()+"");
+            data.putExtra("Lat",point.getY()+"");
 
-			setResult(Activity.RESULT_OK, data);
-			finish();
-		}
+            setResult(Activity.RESULT_OK, data);
+            finish();
+        }
 
-		private String getAttrName(int id) {
-			return (String) GatherPartsActivity.this.getResources().getText(id);
-		}
+        private String getAttrName(int id) {
+            return (String) GatherPartsActivity.this.getResources().getText(id);
+        }
 
-		public final class ListItemView {
-			public ImageView image;
-			public TextView address;
-			public Button btnPick;
-			public CheckBox radionButton;
-		}
+        public final class ListItemView {
+            public ImageView image;
+            public TextView address;
+            public Button btnPick;
+            public CheckBox radionButton;
+        }
 
-	}
+    }
 
-	// ³£ÓÃÊÂ¼ş¼àÌı£¬ÓÃÀ´´¦ÀíÍ¨³£µÄÍøÂç´íÎó£¬ÊÚÈ¨ÑéÖ¤´íÎóµÈ
-	class MyGeneralListener implements MKGeneralListener {
-		public void onGetNetworkState(int iError) {
-			Toast.makeText(GatherPartsActivity.this, "ÄúµÄÍøÂç³ö´íÀ²£¡",
-					Toast.LENGTH_LONG).show();
-		}
+    // å¸¸ç”¨äº‹ä»¶ç›‘å¬ï¼Œç”¨æ¥å¤„ç†é€šå¸¸çš„ç½‘ç»œé”™è¯¯ï¼ŒæˆæƒéªŒè¯é”™è¯¯ç­‰
+    class MyGeneralListener implements MKGeneralListener {
+        public void onGetNetworkState(int iError) {
+            Toast.makeText(GatherPartsActivity.this, "æ‚¨çš„ç½‘ç»œå‡ºé”™å•¦ï¼",
+                    Toast.LENGTH_LONG).show();
+        }
 
-		public void onGetPermissionState(int iError) {
-			if (iError == MKEvent.ERROR_PERMISSION_DENIED) {
-				// ÊÚÈ¨Key´íÎó£º
-				Toast.makeText(GatherPartsActivity.this,
-						"ÇëÔÚBMapApiDemoApp.javaÎÄ¼şÊäÈëÕıÈ·µÄÊÚÈ¨Key£¡", Toast.LENGTH_LONG)
-						.show();
-			}
-		}
-	}
+        public void onGetPermissionState(int iError) {
+            if (iError == MKEvent.ERROR_PERMISSION_DENIED) {
+                // æˆæƒKeyé”™è¯¯ï¼š
+                Toast.makeText(GatherPartsActivity.this,
+                        "è¯·åœ¨BMapApiDemoApp.javaæ–‡ä»¶è¾“å…¥æ­£ç¡®çš„æˆæƒKeyï¼", Toast.LENGTH_LONG)
+                        .show();
+            }
+        }
+    }
 
 }

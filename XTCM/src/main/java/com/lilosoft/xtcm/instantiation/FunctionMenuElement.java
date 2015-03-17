@@ -3,75 +3,75 @@ package com.lilosoft.xtcm.instantiation;
 import android.content.Intent;
 
 /**
- * @category ²Ëµ¥ÔªËØ
+ * @category èœå•å…ƒç´ 
  * @author William Liu
- * 
+ *
  */
 
 public class FunctionMenuElement {
 
-	/**
-	 * @category ±êÖ¾Î»
-	 */
-	private String tag;
-	/**
-	 * @category ×Ö¶ÎÃû
-	 */
-	private int resLabel;
-	/**
-	 * @category Í¼±ê
-	 */
-	private int resIcon;
-	/**
-	 * @category ÏìÓ¦ÊÂ¼ş
-	 */
-	private Intent content;
+    /**
+     * @category æ ‡å¿—ä½
+     */
+    private String tag;
+    /**
+     * @category å­—æ®µå
+     */
+    private int resLabel;
+    /**
+     * @category å›¾æ ‡
+     */
+    private int resIcon;
+    /**
+     * @category å“åº”äº‹ä»¶
+     */
+    private Intent content;
 
-	/**
-	 * @category ²Ëµ¥ÔªËØ¹¹Ôì·½·¨
-	 * @param tag
-	 * @param resLabel
-	 * @param resIcon
-	 * @param content
-	 */
-	public FunctionMenuElement(String tag, int resLabel, int resIcon,
-			Intent content) {
-		this.tag = tag;
-		this.resLabel = resLabel;
-		this.resIcon = resIcon;
-		this.content = content;
-	}
+    /**
+     * @category èœå•å…ƒç´ æ„é€ æ–¹æ³•
+     * @param tag
+     * @param resLabel
+     * @param resIcon
+     * @param content
+     */
+    public FunctionMenuElement(String tag, int resLabel, int resIcon,
+                               Intent content) {
+        this.tag = tag;
+        this.resLabel = resLabel;
+        this.resIcon = resIcon;
+        this.content = content;
+    }
 
-	public String getTag() {
-		return tag;
-	}
+    public String getTag() {
+        return tag;
+    }
 
-	public void setTag(String tag) {
-		this.tag = tag;
-	}
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 
-	public int getResLabel() {
-		return resLabel;
-	}
+    public int getResLabel() {
+        return resLabel;
+    }
 
-	public void setResLabel(int resLabel) {
-		this.resLabel = resLabel;
-	}
+    public void setResLabel(int resLabel) {
+        this.resLabel = resLabel;
+    }
 
-	public int getResIcon() {
-		return resIcon;
-	}
+    public int getResIcon() {
+        return resIcon;
+    }
 
-	public void setResIcon(int resIcon) {
-		this.resIcon = resIcon;
-	}
+    public void setResIcon(int resIcon) {
+        this.resIcon = resIcon;
+    }
 
-	public Intent getContent() {
-		return content;
-	}
+    public Intent getContent() {
+        return content;
+    }
 
-	public void setContent(Intent content) {
-		this.content = content;
-	}
+    public void setContent(Intent content) {
+        this.content = content;
+    }
 
 }

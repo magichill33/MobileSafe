@@ -1,114 +1,114 @@
 package com.lilosoft.xtcm.instantiation;
 
 public class Part {
-	//id
-	private String objectId;
-	//≤øº˛±‡∫≈
-	private String objCode;
-	//≤øº˛√˚≥∆
-	private String objName;
-	//À˘ Ù«¯”Ú±‡¬Î
-	private String orgcode;
-	//÷˜π‹≤ø√≈±‡¬Î
-	private String deptCode1;
-	//÷˜π‹≤ø√≈√˚≥∆
-	private String deptName1;
-	//»® Ùµ•Œª±‡¬Î
-	private String deptCode2;
-	//»® Ùµ•Œª√˚≥∆
-	private String deptName2;
-	//—¯ª§µ•Œª±‡¬Î
-	private String deptCode3;
-	//—¯ª§µ•Œª√˚≥∆
-	private String deptName3;
-	//æ≠∂»
-	private double lon;
-	//Œ≥∂»
-	private double lat;
-	
-	
-	public String getObjectId() {
-		return objectId;
-	}
-	public void setObjectId(String objectId) {
-		this.objectId = objectId;
-	}
-	public String getObjCode() {
-		return objCode;
-	}
-	public void setObjCode(String objCode) {
-		this.objCode = objCode;
-	}
-	public String getObjName() {
-		return objName;
-	}
-	public void setObjName(String objName) {
-		this.objName = objName;
-	}
-	public String getOrgcode() {
-		return orgcode;
-	}
-	public void setOrgcode(String orgcode) {
-		this.orgcode = orgcode;
-	}
-	public String getDeptCode1() {
-		return deptCode1;
-	}
-	public void setDeptCode1(String deptCode1) {
-		this.deptCode1 = deptCode1;
-	}
-	public String getDeptName1() {
-		return deptName1;
-	}
-	public void setDeptName1(String deptName1) {
-		this.deptName1 = deptName1;
-	}
-	public String getDeptCode2() {
-		return deptCode2;
-	}
-	public void setDeptCode2(String deptCode2) {
-		this.deptCode2 = deptCode2;
-	}
-	public String getDeptName2() {
-		return deptName2;
-	}
-	public void setDeptName2(String deptName2) {
-		this.deptName2 = deptName2;
-	}
-	public String getDeptCode3() {
-		return deptCode3;
-	}
-	public void setDeptCode3(String deptCode3) {
-		this.deptCode3 = deptCode3;
-	}
-	public String getDeptName3() {
-		return deptName3;
-	}
-	public void setDeptName3(String deptName3) {
-		this.deptName3 = deptName3;
-	}
-	public double getLon() {
-		return lon;
-	}
-	public void setLon(double lon) {
-		this.lon = lon;
-	}
-	public double getLat() {
-		return lat;
-	}
-	public void setLat(double lat) {
-		this.lat = lat;
-	}
-	@Override
-	public String toString() {
-		return "Part [objectId=" + objectId + ", objCode=" + objCode
-				+ ", objName=" + objName + ", orgcode=" + orgcode
-				+ ", deptCode1=" + deptCode1 + ", deptName1=" + deptName1
-				+ ", deptCode2=" + deptCode2 + ", deptName2=" + deptName2
-				+ ", deptCode3=" + deptCode3 + ", deptName3=" + deptName3
-				+ ", lon=" + lon + ", lat=" + lat + "]";
-	}
-	
-	
-	
+    //id
+    private String objectId;
+    //ÈÉ®‰ª∂ÁºñÂè∑
+    private String objCode;
+    //ÈÉ®‰ª∂ÂêçÁß∞
+    private String objName;
+    //ÊâÄÂ±ûÂå∫ÂüüÁºñÁ†Å
+    private String orgcode;
+    //‰∏ªÁÆ°ÈÉ®Èó®ÁºñÁ†Å
+    private String deptCode1;
+    //‰∏ªÁÆ°ÈÉ®Èó®ÂêçÁß∞
+    private String deptName1;
+    //ÊùÉÂ±ûÂçï‰ΩçÁºñÁ†Å
+    private String deptCode2;
+    //ÊùÉÂ±ûÂçï‰ΩçÂêçÁß∞
+    private String deptName2;
+    //ÂÖªÊä§Âçï‰ΩçÁºñÁ†Å
+    private String deptCode3;
+    //ÂÖªÊä§Âçï‰ΩçÂêçÁß∞
+    private String deptName3;
+    //ÁªèÂ∫¶
+    private double lon;
+    //Á∫¨Â∫¶
+    private double lat;
+
+
+    public String getObjectId() {
+        return objectId;
+    }
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
+    }
+    public String getObjCode() {
+        return objCode;
+    }
+    public void setObjCode(String objCode) {
+        this.objCode = objCode;
+    }
+    public String getObjName() {
+        return objName;
+    }
+    public void setObjName(String objName) {
+        this.objName = objName;
+    }
+    public String getOrgcode() {
+        return orgcode;
+    }
+    public void setOrgcode(String orgcode) {
+        this.orgcode = orgcode;
+    }
+    public String getDeptCode1() {
+        return deptCode1;
+    }
+    public void setDeptCode1(String deptCode1) {
+        this.deptCode1 = deptCode1;
+    }
+    public String getDeptName1() {
+        return deptName1;
+    }
+    public void setDeptName1(String deptName1) {
+        this.deptName1 = deptName1;
+    }
+    public String getDeptCode2() {
+        return deptCode2;
+    }
+    public void setDeptCode2(String deptCode2) {
+        this.deptCode2 = deptCode2;
+    }
+    public String getDeptName2() {
+        return deptName2;
+    }
+    public void setDeptName2(String deptName2) {
+        this.deptName2 = deptName2;
+    }
+    public String getDeptCode3() {
+        return deptCode3;
+    }
+    public void setDeptCode3(String deptCode3) {
+        this.deptCode3 = deptCode3;
+    }
+    public String getDeptName3() {
+        return deptName3;
+    }
+    public void setDeptName3(String deptName3) {
+        this.deptName3 = deptName3;
+    }
+    public double getLon() {
+        return lon;
+    }
+    public void setLon(double lon) {
+        this.lon = lon;
+    }
+    public double getLat() {
+        return lat;
+    }
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+    @Override
+    public String toString() {
+        return "Part [objectId=" + objectId + ", objCode=" + objCode
+                + ", objName=" + objName + ", orgcode=" + orgcode
+                + ", deptCode1=" + deptCode1 + ", deptName1=" + deptName1
+                + ", deptCode2=" + deptCode2 + ", deptName2=" + deptName2
+                + ", deptCode3=" + deptCode3 + ", deptName3=" + deptName3
+                + ", lon=" + lon + ", lat=" + lat + "]";
+    }
+
+
+
 }

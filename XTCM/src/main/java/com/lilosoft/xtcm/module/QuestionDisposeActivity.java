@@ -60,7 +60,7 @@ import com.lilosoft.xtcm.views.TitleBar;
 import com.lilosoft.xtcm.views.TitleBar.STYLE;
 
 /**
- * @category ´ı´¦Àí
+ * @category å¾…å¤„ç†
  * @author William Liu
  *
  */
@@ -69,17 +69,17 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
         JsonParseInterface, OnClickListener, OnLongClickListener {
 
     /**
-     * ÉÏ±¨³É¹¦
+     * ä¸ŠæŠ¥æˆåŠŸ
      */
     private final static int MSG_DISPOSE_SUBMIT_SUCCESS_ORDER = 0x0FFFFFFF;
     /**
-     * ÉÏ±¨Ê§°Ü
+     * ä¸ŠæŠ¥å¤±è´¥
      */
     private final static int MSG_DISPOSE_SUBMIT_LOST_ORDER = 0x00FFFFFF;
     private final static int MSG_INIT_SUCCESS = 0x0F1;
     private final static int MSG_INIT_LOSE = 0x0F2;
     /**
-     * @category Ö÷Ïß³Ì´¦Àí
+     * @category ä¸»çº¿ç¨‹å¤„ç†
      */
     @SuppressLint("HandlerLeak")
     private Handler myHandle = new Handler() {
@@ -104,7 +104,7 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
                     Toast.makeText(mContext, err_Msg, Toast.LENGTH_LONG).show();
                     break;
                 case Config.SHOW_PROGRESS_DIALOG:
-                    showProgressDialog("½»»¥ÖĞ¡­");
+                    showProgressDialog("äº¤äº’ä¸­â€¦");
                     break;
                 case Config.DISMISS_PROGRESS_DIALOG:
                     dismissProgressDialog();
@@ -227,8 +227,8 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
                     }
                 }
                 HttpConnection httpConnection = new HttpConnection();
-                // ºË²éÈ·ÈÏ½Ó¿Ú´«²Î
-                // [IsOK] [ÄÚÈİ] [TaskID] [HandID] [CaseID] [ÓÃ»§Ãû] [Í¼Æ¬¼¯ºÏ*MAX9]
+                // æ ¸æŸ¥ç¡®è®¤æ¥å£ä¼ å‚
+                // [IsOK] [å†…å®¹] [TaskID] [HandID] [CaseID] [ç”¨æˆ·å] [å›¾ç‰‡é›†åˆ*MAX9]
                 action(httpConnection.getData(
                         HttpConnection.CONNECTION_READY_DISPOSE_SUBMIT, pass,
                         q_d_verifyeed_back_content.getText().toString(),
@@ -303,7 +303,7 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
         q_d_success.setOnClickListener(this);
         // q_d_lose.setOnClickListener(this);
 
-        // ´¦ÀíÇ°
+        // å¤„ç†å‰
         media_p11a.setOnClickListener(this);
         media_p11a.setOnLongClickListener(this);
 
@@ -318,7 +318,7 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
     @SuppressWarnings("deprecation")
     private void readMediaData() {
 
-        // ³õÊ¼»¯Í¼Æ¬
+        // åˆå§‹åŒ–å›¾ç‰‡
         if (null != (list = disposeBean.getApproveFileList())) {
             for (int i = 0; i < list.size(); i++) {
                 ImageTool.writeFile(list.get(i));
@@ -348,7 +348,7 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
     }
 
     /**
-     * @category ³õÊ¼»¯titleBar
+     * @category åˆå§‹åŒ–titleBar
      */
     protected void initTitleBar() {
 
@@ -361,7 +361,7 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
     }
 
     private void initViews() {
-        // ³õÊ¼»¯ÄÚÈİ
+        // åˆå§‹åŒ–å†…å®¹
         q_d_title.setText(disposeBean.getCASETITLE());
         q_d_type.setText(disposeBean.getCASEITEM());
         q_d_description.setText(disposeBean.getCASEDESCRIPTION());
@@ -612,7 +612,7 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
     }
 
     /**
-     * @category Ö¸Áî·Ö·¢
+     * @category æŒ‡ä»¤åˆ†å‘
      * @param response
      */
     private void action(String response) {
@@ -655,7 +655,7 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
                 }
             }
         } else {
-            err_Msg = "Êı¾İÒì³££¡";
+            err_Msg = "æ•°æ®å¼‚å¸¸ï¼";
             LogFactory.e(TAG, "not data!");
         }
 
@@ -667,10 +667,10 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
         selectImgIntent = new Intent(Intent.ACTION_GET_CONTENT);
         selectImgIntent.addCategory(Intent.CATEGORY_OPENABLE);
         selectImgIntent.setType("image/*");
-        // selectImgIntent.setType("audio/*"); // Ñ¡ÔñÒôÆµ
-        // selectImgIntent.setType("video/*"); // Ñ¡ÔñÊÓÆµ £¨mp4 3gp ÊÇandroidÖ§³ÖµÄÊÓÆµ¸ñÊ½£©
-        // selectImgIntent.setType("video/*;image/*");// Í¬Ê±Ñ¡ÔñÊÓÆµºÍÍ¼Æ¬
-        // selectImgIntent.putExtra("crop", "true"); // ²Ã¼ô
+        // selectImgIntent.setType("audio/*"); // é€‰æ‹©éŸ³é¢‘
+        // selectImgIntent.setType("video/*"); // é€‰æ‹©è§†é¢‘ ï¼ˆmp4 3gp æ˜¯androidæ”¯æŒçš„è§†é¢‘æ ¼å¼ï¼‰
+        // selectImgIntent.setType("video/*;image/*");// åŒæ—¶é€‰æ‹©è§†é¢‘å’Œå›¾ç‰‡
+        // selectImgIntent.putExtra("crop", "true"); // è£å‰ª
         // selectImgIntent.putExtra("aspectX", 1);
         // selectImgIntent.putExtra("aspectY", 1);
         // selectImgIntent.putExtra("outputX", 80);
@@ -702,30 +702,30 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
         switch (v.getId()) {
             case R.id.q_d_success:
                 if ("".equals(q_d_verifyeed_back_content.getText().toString())) {
-                    Toast.makeText(mContext, "Ìá½»ÄÚÈİ²»ÄÜÎª¿Õ£¡", Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext, "æäº¤å†…å®¹ä¸èƒ½ä¸ºç©ºï¼", Toast.LENGTH_LONG).show();
                 } else if (s1a == null || "".equals(s1a)) {
-                    Toast.makeText(mContext, "Í¼Æ¬²»ÄÜÎª¿Õ!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext, "å›¾ç‰‡ä¸èƒ½ä¸ºç©º!", Toast.LENGTH_LONG).show();
                 } else {
                     if (Config.NETWORK) {
-                        pass = "1"; // Í¨¹ı
+                        pass = "1"; // é€šè¿‡
                         threadG = new Thread(disposeSubmitThread);
                         threadG.start();
                     } else {
-                        Toast.makeText(mContext, "ÎŞÁ¬½ÓÄ£Ê½-ºÏ¸ñ£¡", Toast.LENGTH_LONG)
+                        Toast.makeText(mContext, "æ— è¿æ¥æ¨¡å¼-åˆæ ¼ï¼", Toast.LENGTH_LONG)
                                 .show();
                     }
                 }
                 break;
             // case R.id.q_d_lose:
             // if ("".equals(q_d_verifyeed_back_content.getText().toString())) {
-            // Toast.makeText(mContext, "Ìá½»ÄÚÈİ²»ÄÜÎª¿Õ£¡", Toast.LENGTH_LONG).show();
+            // Toast.makeText(mContext, "æäº¤å†…å®¹ä¸èƒ½ä¸ºç©ºï¼", Toast.LENGTH_LONG).show();
             // } else {
             // if (Config.NETWORK) {
-            // pass = "0"; // ²»ºÏ¸ñ
+            // pass = "0"; // ä¸åˆæ ¼
             // threadG = new Thread(disposeSubmitThread);
             // threadG.start();
             // } else {
-            // Toast.makeText(mContext, "ÎŞÁ¬½ÓÄ£Ê½-²»ºÏ¸ñ£¡", Toast.LENGTH_LONG)
+            // Toast.makeText(mContext, "æ— è¿æ¥æ¨¡å¼-ä¸åˆæ ¼ï¼", Toast.LENGTH_LONG)
             // .show();
             // }
             // }
@@ -769,7 +769,7 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
     }
 
     /***
-     * ÎŞÄÚÈİ²»²Ù×÷
+     * æ— å†…å®¹ä¸æ“ä½œ
      */
     @Override
     public boolean onLongClick(View v) {
@@ -917,19 +917,19 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
     }
 
     /**
-     * ²Ã¼ôÍ¼Æ¬·½·¨ÊµÏÖ
+     * è£å‰ªå›¾ç‰‡æ–¹æ³•å®ç°
      *
      * @param uri
      */
     public void startPhotoZoom(Uri uri) {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
-        // ÏÂÃæÕâ¸öcrop=trueÊÇÉèÖÃÔÚ¿ªÆôµÄIntentÖĞÉèÖÃÏÔÊ¾µÄVIEW¿É²Ã¼ô
+        // ä¸‹é¢è¿™ä¸ªcrop=trueæ˜¯è®¾ç½®åœ¨å¼€å¯çš„Intentä¸­è®¾ç½®æ˜¾ç¤ºçš„VIEWå¯è£å‰ª
         intent.putExtra("crop", "true");
-        // aspectX aspectY ÊÇ¿í¸ßµÄ±ÈÀı
+        // aspectX aspectY æ˜¯å®½é«˜çš„æ¯”ä¾‹
         intent.putExtra("aspectX", 1);
         intent.putExtra("aspectY", 1);
-        // outputX outputY ÊÇ²Ã¼ôÍ¼Æ¬¿í¸ß
+        // outputX outputY æ˜¯è£å‰ªå›¾ç‰‡å®½é«˜
         intent.putExtra("outputX", 200);
         intent.putExtra("outputY", 200);
         intent.putExtra("return-data", true);
@@ -1014,7 +1014,7 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
                         break;
                     case R.id.media_p21a:
                         if (media_p11atext.equals(mediaPath)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             try {
@@ -1046,7 +1046,7 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
                     case R.id.media_p31a:
                         if (media_p11atext.equals(mediaPath)
                                 || media_p21atext.equals(mediaPath)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             try {
@@ -1096,7 +1096,7 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
                     case R.id.media_p11a:
                         if (media_p21atext.equals(SD_CARD_TEMP_DIR)
                                 || media_p31atext.equals(SD_CARD_TEMP_DIR)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             file = new File(SD_CARD_TEMP_DIR);
@@ -1129,7 +1129,7 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
                     case R.id.media_p21a:
                         if (media_p11atext.equals(SD_CARD_TEMP_DIR)
                                 || media_p31atext.equals(SD_CARD_TEMP_DIR)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             file = new File(SD_CARD_TEMP_DIR);
@@ -1162,7 +1162,7 @@ public class QuestionDisposeActivity extends NormalBaseActivity implements
                     case R.id.media_p31a:
                         if (media_p11atext.equals(SD_CARD_TEMP_DIR)
                                 || media_p21atext.equals(SD_CARD_TEMP_DIR)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             file = new File(SD_CARD_TEMP_DIR);

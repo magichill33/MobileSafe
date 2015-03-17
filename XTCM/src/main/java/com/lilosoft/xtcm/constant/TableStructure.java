@@ -1,372 +1,372 @@
 package com.lilosoft.xtcm.constant;
 
 /**
- * @category ±í½á¹¹
+ * @category è¡¨ç»“æ„
  * @author William Liu
- * 
+ *
  */
 public class TableStructure {
 
-	/**
-	 * @category Íâ²ã json ×Ö¶ÎÃû begin
-	 */
-	public final static String COVER_HEAD = "head";
-	public final static String COVER_BODY = "body";
-	/**
-	 * Íâ²ã json ×Ö¶ÎÃû end
-	 */
-	// ´ò¿¨
-	public final static String PUNCHCARD = "InsertRecord";// ·½·¨Ãû
-	public final static String PUNCHCARD_SETUP = "GetKQconfig";// ´ò¿¨ÅäÖÃ
-	public final static String PUNCHCARD_Record = "GetKQRecored";
-	public final static String PUNCHCARD_place = "GetPersonKQPlace";
-	
-	
-	
-	public final static String pcard_morning_time = "SWSBSJ";
-	public final static String pcard_afternoon_time = "ZWSBSJ";
-	public final static String pcard_evening_time = "XWXBSJ";
-	public final static String pcard_allowlate_time = "YXCDSJ";
-	public final static String pcard_allow_leave_time = "YXZTSJ";
-	public final static String pcard_gap_time = "DKJGSJ";
-
-	// ×Ö¶Î
-	public final static String PCARD_USERNAME = "USERLOGINNAME";
-	public final static String PCARD_DATE = "GetRecordDate";
-	public final static String PCARD_WORKTIME = "GETRECORDTIME";
-	public final static String PCARD_OFFWORKTIME = "OffRecordDate";
-	public final static String PCARD_UPTYPE = "UpType";
-	public final static String PCARD_OFFTYPE = "OffType";
-	public final static String PCARD_ZWUPTIME = "ZwUpTime";
-	public final static String PCARD_ZWUPTYPE = "ZwUpType";
-	public final static String PCARD_SWOFFTYPE = "SwOffType";
-	public final static String PCARD_SWOFFTIME = "SwOffTime";
-	public final static String PCARD_PLACEID="PLID";
-	/**
-	 * @category ĞĞÎª json headÖµ begin
-	 */
-	// µÇÂ¼
-	public final static String V_ACT_LOGIN = "login";
-	// ÎÊÌâÉÏ±¨
-	public final static String V_ACT_REPORT = "approve";
-	// ²¿¼şÉÏ±¨
-	public final static String V_PART_REPORT = "Partapprove";
-
-	// ´ıºË²éÈÎÎñÁĞ±í
-	public final static String V_ACT_READY_EXAMINE_LIST = "ReadyExamineList";
-	// ´ıºË²éÈÎÎñµ¥¸öÊı¾İ
-	public final static String V_ACT_READY_EXAMINE = "GetCaseInfo";
-	// È·ÈÏºË²é
-	public final static String V_ACT_READY_EXAMINE_SUBMIT = "inspect";
-
-	// ´ıºËÊµÈÎÎñÁĞ±í
-	public final static String V_ACT_READY_VERIFY_LIST = "WaitingforInspectVerification";
-	// ´ıºËÊµÈÎÎñµ¥¸öÊı¾İ
-	public final static String V_ACT_READY_VERIFY = "WaitingforInspectCaseInfo"; //
-	// È·ÈÏºËÊµ
-	public final static String V_ACT_READY_VERIFY_SUBMIT = "ReadyVerifySubmit"; //
-
-	// ´ı°ìÀíÈÎÎñÁĞ±í
-	public final static String V_ACT_READY_DISPOSE_LIST = "WaitingforHandle";
-	// ´ı°ìÀíÈÎÎñµ¥¸öÊı¾İ
-	public final static String V_ACT_READY_DISPOSE = "HandleCaseInfo"; //
-	// È·ÈÏ°ìÀí
-	public final static String V_ACT_READY_DISPOSE_SUBMIT = "Handle"; //
-
-	// ÀúÊ·¼ÇÂ¼ÁĞ±í £¨*HISTORY ¿é£©
-	public final static String V_ACT_QUESTION_HISTORY_LIST = "QuestionHistoryList"; // -------------------
-	// ÀúÊ·¼ÇÂ¼µ¥¸öÊı¾İ
-	public final static String V_ACT_QUESTION_HISTORY = "QuestionHistory"; // -------------------
-
-	// ×ÔĞĞ´¦ÀíÉÏ±¨
-	public final static String V_ACT_QUESTION_DISPOSED = "QuestionDisposed"; // -------------------
-	// ¹ì¼£ÉÏ±¨
-	public final static String V_ACT_LOCATION_REPORT = "SubmitTrack";
-
-	// ÎÊÌâ×Ô´¦Àí
-	public final static String WENTIZHICHULI = "CaseSelf";
-
-	// ĞĞÕşÉóÅúÁĞ±í
-	public final static String V_ACT_ADMINI_APPROVE_LIST = "AdminiApproveList";
-
-	// ĞĞÕşÉóÅúÏêÇé
-	public final static String V_ACT_ADMINI_APPROVE_DETAIL = "GetAdminiApprove";
-
-	// »ñÈ¡ÊÂ¼ş·ÖÀàĞÅÏ¢
-	public final static String V_ACT_ADMINI_GET_ALLTYPE = "GetAllTypeNew";
-	public final static String V_ACT_ADMINI_EVENT_TYPE = "eventtype";
-
-	/**
-	 * ĞĞÎª json headÖµ end
-	 */
-
-	/**
-	 * *HISTORY BTGIN
-	 */
-	public final static String V_ACT_QUESTION_HISTORY_TYPE_REPORT = "sb";
-	public final static String V_ACT_QUESTION_HISTORY_TYPE_EXMINE = "hc";
-	public final static String V_ACT_QUESTION_HISTORY_TYPE_VERIFY = "hs";
-	public final static String V_ACT_QUESTION_HISTORY_TYPE_DISPOSE = "bl";
-	public final static int V_ACT_QUESTION_HISTORY_LIST_MAX = 10;
-	/**
-	 * *HISTORY END
-	 */
-
-	/**
-	 * @category Login json ×Ö¶ÎÃû begin
-	 */
-	// request
-	public final static String S_USER_INFO = "uInfo";
-	public final static String S_AUTO_LOGIN = "autoLogin";
-	// ÓÃ»§Ãû
-	public final static String R_USER_REQUEST_USERNAME_NAME = "LoginName";
-	// ÃÜÂë
-	public final static String R_USER_REQUEST_PASSCODE = "LoginPassWord";
-	/*
-	 * response
-	 */
-	// µÇÂ¼³É¹¦
-	public final static String R_USER_RESPONSE_KEY = "isSuccess";
-	// ·µ»ØÏûÏ¢
-	public final static String R_USER_RESPONSE_MSG = "message";
-	// È¨ÏŞ
-	public final static String R_USER_RESPONSE_LIMIT = "Limit";
-	// ¹ÜÀíÍø¸ñ
-	public final static String R_USER_RESPONSE_GRIDINFO = "GridInfo";
-	/**
-	 * Login json ×Ö¶ÎÃû end
-	 */
-
-	/**
-	 * @category ÎÊÌâÉÏ±¨ json ×Ö¶ÎÃû begin
-	 */
-	// µç»°
-	public final static String R_REPORT_RESPONSE_CASES_NUM = "casesNum";
-	// µç»°
-	public final static String R_REPORT_RESPONSE_TEL = "ComplainterTel";
-	// ĞÕÃû
-	public final static String R_REPORT_RESPONSE_NEME = "ComplainterName";
-	// ¾Ó×¡µØÖ·
-	public final static String R_REPORT_RESPONSE_LIVE_ADRES = "ComplainterAddress";
-	// µÇÂ¼ÕÊºÅ
-	public final static String R_REPORT_RESPONSE_USER_NAME = "ACCEPTUSERID";
-	// Ñ¡ÔñÊÂÏî
-	public final static String R_REPORT_RESPONSE_TYPE = "CASEITEM";
-	// ¼òÒª¸ÅÊö
-	public final static String R_REPORT_RESPONSE_ALL_TYPE = "CASETITLE";
-	// ÏêÏ¸ÃèÊö
-	public final static String R_REPORT_RESPONSE_DESCRIPT = "CASEDESCRIPTION";
-	// µØÖ·
-	public final static String R_REPORT_RESPONSE_ADRES = "CASEADDRESS";
-	// x×ø±ê
-	public final static String R_REPORT_RESPONSE_X = "X";
-	// y×ø±ê
-	public final static String R_REPORT_RESPONSE_Y = "Y";
-	// Íø¸ñ±àºÅ
-	public final static String R_REPORT_RESPONSE_GRID_CODE = "GridCode";
-	// Í¼Æ¬Êı×é
-	public final static String R_REPORT_RESPONSE_FLIST = "FList";
-	// Í¼Æ¬Ãû
-	public final static String R_REPORT_RESPONSE_FNAME = "FName";
-	// Í¼Æ¬Êı¾İ
-	public final static String R_REPORT_RESPONSE_FDATA = "FData";
-	// Í¼Æ¬ÀàĞÍ
-	public final static String R_REPORT_RESPONSE_FTYPE = "FType";
-	/**
-	 * ÎÊÌâÉÏ±¨ json ×Ö¶ÎÃû end
-	 * 
-	 */
-
-	public final static String OBJECTID = "OBJECTID";
-	public final static String OBJCODE = "OBJCODE";
-	public final static String OBJNAME = "OBJNAME";
-	public final static String DEPTCODE1 = "DEPTCODE1";
-	public final static String DEPTNAME1 = "DEPTNAME1";
-	public final static String DEPTCODE2 = "DEPTCODE2";
-	public final static String DEPTNAME2 = "DEPTNAME2";
-	public final static String DEPTCODE3 = "DEPTCODE3";
-	public final static String DEPTNAME3 = "DEPTNAME3";
-	public final static String EXTEND4 = "EXTEND4";
-
-	/**
-	 * @category È·ÈÏºË²éÏêÏ¸ json ×Ö¶ÎÃû begin
-	 */
-	public final static String R_EXAMINE_REQUEST_CASE_ID = "CaseID";
-
-	/**
-	 * È·ÈÏºË²éÏêÏ¸ json ×Ö¶ÎÃû end
-	 */
-
-	/**
-	 * @category È·ÈÏºË²é json ×Ö¶ÎÃû begin
-	 */
-	// 1==Í¨¹ı/ 0==²»Í¨¹ı
-	public final static String R_EXAMINE_REQUEST_IS_OK = "IsOK";
-
-	public final static String R_EXAMINE_REQUEST_INSPECT_ID = "InspectID";
-
-	public final static String R_EXAMINE_REQUEST_VERIFYEED_BACK_CONTENT = "VerifyeedBackContent";
-
-	public final static String R_EXAMINE_REQUEST_CASE_CODE = "CaseCode";
-
-	public final static String R_EXAMINE_REQUEST_LOGIN_NAME = "LoginName";
-
-	/**
-	 * È·ÈÏºË²é json ×Ö¶ÎÃû end
-	 */
-
-	/**
-	 * @category ´ı°ìÀíÈÎÎñµ¥¸öÊı¾İ json ×Ö¶ÎÃû begin
-	 */
-	public final static String R_DISPOSE_REQUEST_CASE_ID2 = "CaseID";
-
-	/**
-	 * ´ı°ìÀíÈÎÎñµ¥¸öÊı¾İ json ×Ö¶ÎÃû end
-	 */
-
-	/**
-	 * @category È·ÈÏ°ìÀí json ×Ö¶ÎÃû begin
-	 */
-	// 1==Í¨¹ı/ 0==²»Í¨¹ı
-	public final static String R_DISPOSE_REQUEST_IS_OK = "IsOK";
-
-	public final static String R_DISPOSE_REQUEST_DEAL_RESULT = "DealResult";
-
-	public final static String R_DISPOSE_REQUEST_TASK_ID = "TaskID";
-
-	public final static String R_DISPOSE_REQUEST_HAND_ID = "HandID";
-
-	public final static String R_DISPOSE_REQUEST_CASE_ID = "CaseID";
-
-	public final static String R_DISPOSE_REQUEST_LOGIN_NAME = "LoginName";
-	// Í¼Æ¬Êı×é
-	public final static String R_DISPOSE_REQUEST_FLIST = "FList";
-	// Í¼Æ¬Ãû
-	public final static String R_DISPOSE_REQUEST_FNAME = "FName";
-	// Í¼Æ¬Êı¾İ
-	public final static String R_DISPOSE_REQUEST_FDATA = "FData";
-	// Í¼Æ¬ÀàĞÍ
-	public final static String R_DISPOSE_REQUEST_FTYPE = "FType";
-	/**
-	 * È·ÈÏ°ìÀí json ×Ö¶ÎÃû end
-	 */
-
-	/**
-	 * @category ´ıºËÊµµ¥¸ö json ×Ö¶ÎÃû begin
-	 */
-	public final static String R_READY_VERIFY_CASE_ID = "CaseID";
-
-	/**
-	 * ´ıºËÊµµ¥¸ö json ×Ö¶ÎÃû end
-	 */
-
-	/**
-	 * @category ´ıºËÊµÌá½» json ×Ö¶ÎÃû begin
-	 */
-	// 1==Í¨¹ı/ 0==²»Í¨¹ı
-	public final static String R_READY_VERIFY_SUBMIT_IS_OK = "IsOK";
-
-	public final static String R_READY_VERIFY_SUBMIT_INSPECT_ID = "InspectID";
-
-	public final static String R_READY_VERIFY_SUBMIT_VERIFYEED_BACK_CONTENT = "VerifyeedBackContent";
-
-	public final static String R_READY_VERIFY_SUBMIT_LOGIN_NAME = "LoginName";
-
-	public final static String R_READY_VERIFY_SUBMIT_CASE_CODE = "CaseCode";
-	// Í¼Æ¬Êı×é
-	public final static String R_READY_VERIFY_SUBMIT_FLIST = "FList";
-	// Í¼Æ¬Ãû
-	public final static String R_READY_VERIFY_SUBMIT_FNAME = "FName";
-	// Í¼Æ¬Êı¾İ
-	public final static String R_READY_VERIFY_SUBMIT_FDATA = "FData";
-	// Í¼Æ¬ÀàĞÍ
-	public final static String R_READY_VERIFY_SUBMIT_FTYPE = "FType";
-
-	/**
-	 * ´ıºËÊµÌá½» json ×Ö¶ÎÃû end
-	 */
-
-	/**
-	 * @category ÀúÊ·ÁĞ±í json ×Ö¶ÎÃû begin
-	 */
-	public final static String R_READY_HISTORY_LIST_SEARCH_TYPE = "SearchType";
-
-	public final static String R_READY_HISTORY_LIST_PAGE_INDEX = "PageIndex";
-
-	public final static String R_READY_HISTORY_LIST_PAGE_SIZE = "PageSize";
-
-	public final static String R_READY_HISTORY_LIST_RECORD_COUNT = "RecordCount";
-
-	/**
-	 * ÀúÊ·ÁĞ±í json ×Ö¶ÎÃû end
-	 */
-
-	/**
-	 * @category ÀúÊ·µ¥Ìõ json ×Ö¶ÎÃû begin
-	 */
-	public final static String R_READY_HISTORY_CASE_ID = "CaseID";
-	// ĞĞÕşÉóÅúID
-	public final static String R_READY_APPROVE_ADTIVE_ID = "ADTIVEID";
-	/**
-	 * ÀúÊ·ÁĞ±í json ×Ö¶ÎÃû end
-	 */
-
-	/**
-	 * @category ¹ì¼£ÉÏ´« json ×Ö¶ÎÃû begin
-	 */
-	public final static String R_LOCAL_REQUEST_KEY = "Key";
-
-	public final static String R_LOCAL_REQUEST_TYPE = "Type";
-
-	public final static String R_LOCAL_REQUEST_X = "X";
-
-	public final static String R_LOCAL_REQUEST_Y = "Y";
-
-	/**
-	 * ¹ì¼£ÉÏ´« json ×Ö¶ÎÃû end
-	 */
-
-	/**
-	 * @category ÎÊÌâÉÏ±¨Êı¾İ¿âÔİ´æ×Ö¶Î begin
-	 */
-	public final static String TABLE_NAME_QUESTION = "T_QUESTION";
-
-	public final static String Q_QUESTION_ID = "Q_QUESTION_ID";
-
-	public final static String Q_QUESTION_TYPE = "Q_QUESTION_TYPE";
-
-	public final static String Q_QUESTION_TYPE1 = "Q_QUESTION_TYPE_1";
-
-	public final static String Q_QUESTION_TYPE2 = "Q_QUESTION_TYPE_2";
-
-	public final static String Q_QUESTION_LOCATION = "Q_QUESTION_LOCATION";
-
-	public final static String Q_QUESTION_DESCRIPT = "Q_QUESTION_DESCRIPT";
-
-	public final static String Q_QUESTION_BEFOR_IMG1 = "Q_QUESTION_BEFOR_IMG_1";
-
-	public final static String Q_QUESTION_BEFOR_IMG2 = "Q_QUESTION_BEFOR_IMG_2";
-
-	public final static String Q_QUESTION_BEFOR_IMG3 = "Q_QUESTION_BEFOR_IMG_3";
-
-	public final static String Q_QUESTION_AFTER_IMG1 = "Q_QUESTION_AFTER_IMG_1";
-
-	public final static String Q_QUESTION_AFTER_IMG2 = "Q_QUESTION_AFTER_IMG_2";
-
-	public final static String Q_QUESTION_AFTER_IMG3 = "Q_QUESTION_AFTER_IMG_3";
-
-	public final static String Q_QUESTION_REC1 = "Q_QUESTION_REC_1";
-
-	public final static String Q_QUESTION_REC2 = "Q_QUESTION_REC_2";
-
-	public final static String Q_QUESTION_REC3 = "Q_QUESTION_REC_3";
-
-	public final static String Q_QUESTION_CASESNUM = "Q_QUESTION_CASESNUM";
-	/**
-	 * ÎÊÌâÉÏ±¨Êı¾İ¿âÔİ´æ×Ö¶Î end
-	 */
-	public final static String TypeVison = "TypeVison";
-
-	// ÁªÏµÈË
-	public final static String GetLinkManInfo = "GetLinkManInfo";
+    /**
+     * @category å¤–å±‚ json å­—æ®µå begin
+     */
+    public final static String COVER_HEAD = "head";
+    public final static String COVER_BODY = "body";
+    /**
+     * å¤–å±‚ json å­—æ®µå end
+     */
+    // æ‰“å¡
+    public final static String PUNCHCARD = "InsertRecord";// æ–¹æ³•å
+    public final static String PUNCHCARD_SETUP = "GetKQconfig";// æ‰“å¡é…ç½®
+    public final static String PUNCHCARD_Record = "GetKQRecored";
+    public final static String PUNCHCARD_place = "GetPersonKQPlace";
+
+
+
+    public final static String pcard_morning_time = "SWSBSJ";
+    public final static String pcard_afternoon_time = "ZWSBSJ";
+    public final static String pcard_evening_time = "XWXBSJ";
+    public final static String pcard_allowlate_time = "YXCDSJ";
+    public final static String pcard_allow_leave_time = "YXZTSJ";
+    public final static String pcard_gap_time = "DKJGSJ";
+
+    // å­—æ®µ
+    public final static String PCARD_USERNAME = "USERLOGINNAME";
+    public final static String PCARD_DATE = "GetRecordDate";
+    public final static String PCARD_WORKTIME = "GETRECORDTIME";
+    public final static String PCARD_OFFWORKTIME = "OffRecordDate";
+    public final static String PCARD_UPTYPE = "UpType";
+    public final static String PCARD_OFFTYPE = "OffType";
+    public final static String PCARD_ZWUPTIME = "ZwUpTime";
+    public final static String PCARD_ZWUPTYPE = "ZwUpType";
+    public final static String PCARD_SWOFFTYPE = "SwOffType";
+    public final static String PCARD_SWOFFTIME = "SwOffTime";
+    public final static String PCARD_PLACEID="PLID";
+    /**
+     * @category è¡Œä¸º json headå€¼ begin
+     */
+    // ç™»å½•
+    public final static String V_ACT_LOGIN = "login";
+    // é—®é¢˜ä¸ŠæŠ¥
+    public final static String V_ACT_REPORT = "approve";
+    // éƒ¨ä»¶ä¸ŠæŠ¥
+    public final static String V_PART_REPORT = "Partapprove";
+
+    // å¾…æ ¸æŸ¥ä»»åŠ¡åˆ—è¡¨
+    public final static String V_ACT_READY_EXAMINE_LIST = "ReadyExamineList";
+    // å¾…æ ¸æŸ¥ä»»åŠ¡å•ä¸ªæ•°æ®
+    public final static String V_ACT_READY_EXAMINE = "GetCaseInfo";
+    // ç¡®è®¤æ ¸æŸ¥
+    public final static String V_ACT_READY_EXAMINE_SUBMIT = "inspect";
+
+    // å¾…æ ¸å®ä»»åŠ¡åˆ—è¡¨
+    public final static String V_ACT_READY_VERIFY_LIST = "WaitingforInspectVerification";
+    // å¾…æ ¸å®ä»»åŠ¡å•ä¸ªæ•°æ®
+    public final static String V_ACT_READY_VERIFY = "WaitingforInspectCaseInfo"; //
+    // ç¡®è®¤æ ¸å®
+    public final static String V_ACT_READY_VERIFY_SUBMIT = "ReadyVerifySubmit"; //
+
+    // å¾…åŠç†ä»»åŠ¡åˆ—è¡¨
+    public final static String V_ACT_READY_DISPOSE_LIST = "WaitingforHandle";
+    // å¾…åŠç†ä»»åŠ¡å•ä¸ªæ•°æ®
+    public final static String V_ACT_READY_DISPOSE = "HandleCaseInfo"; //
+    // ç¡®è®¤åŠç†
+    public final static String V_ACT_READY_DISPOSE_SUBMIT = "Handle"; //
+
+    // å†å²è®°å½•åˆ—è¡¨ ï¼ˆ*HISTORY å—ï¼‰
+    public final static String V_ACT_QUESTION_HISTORY_LIST = "QuestionHistoryList"; // -------------------
+    // å†å²è®°å½•å•ä¸ªæ•°æ®
+    public final static String V_ACT_QUESTION_HISTORY = "QuestionHistory"; // -------------------
+
+    // è‡ªè¡Œå¤„ç†ä¸ŠæŠ¥
+    public final static String V_ACT_QUESTION_DISPOSED = "QuestionDisposed"; // -------------------
+    // è½¨è¿¹ä¸ŠæŠ¥
+    public final static String V_ACT_LOCATION_REPORT = "SubmitTrack";
+
+    // é—®é¢˜è‡ªå¤„ç†
+    public final static String WENTIZHICHULI = "CaseSelf";
+
+    // è¡Œæ”¿å®¡æ‰¹åˆ—è¡¨
+    public final static String V_ACT_ADMINI_APPROVE_LIST = "AdminiApproveList";
+
+    // è¡Œæ”¿å®¡æ‰¹è¯¦æƒ…
+    public final static String V_ACT_ADMINI_APPROVE_DETAIL = "GetAdminiApprove";
+
+    // è·å–äº‹ä»¶åˆ†ç±»ä¿¡æ¯
+    public final static String V_ACT_ADMINI_GET_ALLTYPE = "GetAllTypeNew";
+    public final static String V_ACT_ADMINI_EVENT_TYPE = "eventtype";
+
+    /**
+     * è¡Œä¸º json headå€¼ end
+     */
+
+    /**
+     * *HISTORY BTGIN
+     */
+    public final static String V_ACT_QUESTION_HISTORY_TYPE_REPORT = "sb";
+    public final static String V_ACT_QUESTION_HISTORY_TYPE_EXMINE = "hc";
+    public final static String V_ACT_QUESTION_HISTORY_TYPE_VERIFY = "hs";
+    public final static String V_ACT_QUESTION_HISTORY_TYPE_DISPOSE = "bl";
+    public final static int V_ACT_QUESTION_HISTORY_LIST_MAX = 10;
+    /**
+     * *HISTORY END
+     */
+
+    /**
+     * @category Login json å­—æ®µå begin
+     */
+    // request
+    public final static String S_USER_INFO = "uInfo";
+    public final static String S_AUTO_LOGIN = "autoLogin";
+    // ç”¨æˆ·å
+    public final static String R_USER_REQUEST_USERNAME_NAME = "LoginName";
+    // å¯†ç 
+    public final static String R_USER_REQUEST_PASSCODE = "LoginPassWord";
+    /*
+     * response
+     */
+    // ç™»å½•æˆåŠŸ
+    public final static String R_USER_RESPONSE_KEY = "isSuccess";
+    // è¿”å›æ¶ˆæ¯
+    public final static String R_USER_RESPONSE_MSG = "message";
+    // æƒé™
+    public final static String R_USER_RESPONSE_LIMIT = "Limit";
+    // ç®¡ç†ç½‘æ ¼
+    public final static String R_USER_RESPONSE_GRIDINFO = "GridInfo";
+    /**
+     * Login json å­—æ®µå end
+     */
+
+    /**
+     * @category é—®é¢˜ä¸ŠæŠ¥ json å­—æ®µå begin
+     */
+    // ç”µè¯
+    public final static String R_REPORT_RESPONSE_CASES_NUM = "casesNum";
+    // ç”µè¯
+    public final static String R_REPORT_RESPONSE_TEL = "ComplainterTel";
+    // å§“å
+    public final static String R_REPORT_RESPONSE_NEME = "ComplainterName";
+    // å±…ä½åœ°å€
+    public final static String R_REPORT_RESPONSE_LIVE_ADRES = "ComplainterAddress";
+    // ç™»å½•å¸å·
+    public final static String R_REPORT_RESPONSE_USER_NAME = "ACCEPTUSERID";
+    // é€‰æ‹©äº‹é¡¹
+    public final static String R_REPORT_RESPONSE_TYPE = "CASEITEM";
+    // ç®€è¦æ¦‚è¿°
+    public final static String R_REPORT_RESPONSE_ALL_TYPE = "CASETITLE";
+    // è¯¦ç»†æè¿°
+    public final static String R_REPORT_RESPONSE_DESCRIPT = "CASEDESCRIPTION";
+    // åœ°å€
+    public final static String R_REPORT_RESPONSE_ADRES = "CASEADDRESS";
+    // xåæ ‡
+    public final static String R_REPORT_RESPONSE_X = "X";
+    // yåæ ‡
+    public final static String R_REPORT_RESPONSE_Y = "Y";
+    // ç½‘æ ¼ç¼–å·
+    public final static String R_REPORT_RESPONSE_GRID_CODE = "GridCode";
+    // å›¾ç‰‡æ•°ç»„
+    public final static String R_REPORT_RESPONSE_FLIST = "FList";
+    // å›¾ç‰‡å
+    public final static String R_REPORT_RESPONSE_FNAME = "FName";
+    // å›¾ç‰‡æ•°æ®
+    public final static String R_REPORT_RESPONSE_FDATA = "FData";
+    // å›¾ç‰‡ç±»å‹
+    public final static String R_REPORT_RESPONSE_FTYPE = "FType";
+    /**
+     * é—®é¢˜ä¸ŠæŠ¥ json å­—æ®µå end
+     *
+     */
+
+    public final static String OBJECTID = "OBJECTID";
+    public final static String OBJCODE = "OBJCODE";
+    public final static String OBJNAME = "OBJNAME";
+    public final static String DEPTCODE1 = "DEPTCODE1";
+    public final static String DEPTNAME1 = "DEPTNAME1";
+    public final static String DEPTCODE2 = "DEPTCODE2";
+    public final static String DEPTNAME2 = "DEPTNAME2";
+    public final static String DEPTCODE3 = "DEPTCODE3";
+    public final static String DEPTNAME3 = "DEPTNAME3";
+    public final static String EXTEND4 = "EXTEND4";
+
+    /**
+     * @category ç¡®è®¤æ ¸æŸ¥è¯¦ç»† json å­—æ®µå begin
+     */
+    public final static String R_EXAMINE_REQUEST_CASE_ID = "CaseID";
+
+    /**
+     * ç¡®è®¤æ ¸æŸ¥è¯¦ç»† json å­—æ®µå end
+     */
+
+    /**
+     * @category ç¡®è®¤æ ¸æŸ¥ json å­—æ®µå begin
+     */
+    // 1==é€šè¿‡/ 0==ä¸é€šè¿‡
+    public final static String R_EXAMINE_REQUEST_IS_OK = "IsOK";
+
+    public final static String R_EXAMINE_REQUEST_INSPECT_ID = "InspectID";
+
+    public final static String R_EXAMINE_REQUEST_VERIFYEED_BACK_CONTENT = "VerifyeedBackContent";
+
+    public final static String R_EXAMINE_REQUEST_CASE_CODE = "CaseCode";
+
+    public final static String R_EXAMINE_REQUEST_LOGIN_NAME = "LoginName";
+
+    /**
+     * ç¡®è®¤æ ¸æŸ¥ json å­—æ®µå end
+     */
+
+    /**
+     * @category å¾…åŠç†ä»»åŠ¡å•ä¸ªæ•°æ® json å­—æ®µå begin
+     */
+    public final static String R_DISPOSE_REQUEST_CASE_ID2 = "CaseID";
+
+    /**
+     * å¾…åŠç†ä»»åŠ¡å•ä¸ªæ•°æ® json å­—æ®µå end
+     */
+
+    /**
+     * @category ç¡®è®¤åŠç† json å­—æ®µå begin
+     */
+    // 1==é€šè¿‡/ 0==ä¸é€šè¿‡
+    public final static String R_DISPOSE_REQUEST_IS_OK = "IsOK";
+
+    public final static String R_DISPOSE_REQUEST_DEAL_RESULT = "DealResult";
+
+    public final static String R_DISPOSE_REQUEST_TASK_ID = "TaskID";
+
+    public final static String R_DISPOSE_REQUEST_HAND_ID = "HandID";
+
+    public final static String R_DISPOSE_REQUEST_CASE_ID = "CaseID";
+
+    public final static String R_DISPOSE_REQUEST_LOGIN_NAME = "LoginName";
+    // å›¾ç‰‡æ•°ç»„
+    public final static String R_DISPOSE_REQUEST_FLIST = "FList";
+    // å›¾ç‰‡å
+    public final static String R_DISPOSE_REQUEST_FNAME = "FName";
+    // å›¾ç‰‡æ•°æ®
+    public final static String R_DISPOSE_REQUEST_FDATA = "FData";
+    // å›¾ç‰‡ç±»å‹
+    public final static String R_DISPOSE_REQUEST_FTYPE = "FType";
+    /**
+     * ç¡®è®¤åŠç† json å­—æ®µå end
+     */
+
+    /**
+     * @category å¾…æ ¸å®å•ä¸ª json å­—æ®µå begin
+     */
+    public final static String R_READY_VERIFY_CASE_ID = "CaseID";
+
+    /**
+     * å¾…æ ¸å®å•ä¸ª json å­—æ®µå end
+     */
+
+    /**
+     * @category å¾…æ ¸å®æäº¤ json å­—æ®µå begin
+     */
+    // 1==é€šè¿‡/ 0==ä¸é€šè¿‡
+    public final static String R_READY_VERIFY_SUBMIT_IS_OK = "IsOK";
+
+    public final static String R_READY_VERIFY_SUBMIT_INSPECT_ID = "InspectID";
+
+    public final static String R_READY_VERIFY_SUBMIT_VERIFYEED_BACK_CONTENT = "VerifyeedBackContent";
+
+    public final static String R_READY_VERIFY_SUBMIT_LOGIN_NAME = "LoginName";
+
+    public final static String R_READY_VERIFY_SUBMIT_CASE_CODE = "CaseCode";
+    // å›¾ç‰‡æ•°ç»„
+    public final static String R_READY_VERIFY_SUBMIT_FLIST = "FList";
+    // å›¾ç‰‡å
+    public final static String R_READY_VERIFY_SUBMIT_FNAME = "FName";
+    // å›¾ç‰‡æ•°æ®
+    public final static String R_READY_VERIFY_SUBMIT_FDATA = "FData";
+    // å›¾ç‰‡ç±»å‹
+    public final static String R_READY_VERIFY_SUBMIT_FTYPE = "FType";
+
+    /**
+     * å¾…æ ¸å®æäº¤ json å­—æ®µå end
+     */
+
+    /**
+     * @category å†å²åˆ—è¡¨ json å­—æ®µå begin
+     */
+    public final static String R_READY_HISTORY_LIST_SEARCH_TYPE = "SearchType";
+
+    public final static String R_READY_HISTORY_LIST_PAGE_INDEX = "PageIndex";
+
+    public final static String R_READY_HISTORY_LIST_PAGE_SIZE = "PageSize";
+
+    public final static String R_READY_HISTORY_LIST_RECORD_COUNT = "RecordCount";
+
+    /**
+     * å†å²åˆ—è¡¨ json å­—æ®µå end
+     */
+
+    /**
+     * @category å†å²å•æ¡ json å­—æ®µå begin
+     */
+    public final static String R_READY_HISTORY_CASE_ID = "CaseID";
+    // è¡Œæ”¿å®¡æ‰¹ID
+    public final static String R_READY_APPROVE_ADTIVE_ID = "ADTIVEID";
+    /**
+     * å†å²åˆ—è¡¨ json å­—æ®µå end
+     */
+
+    /**
+     * @category è½¨è¿¹ä¸Šä¼  json å­—æ®µå begin
+     */
+    public final static String R_LOCAL_REQUEST_KEY = "Key";
+
+    public final static String R_LOCAL_REQUEST_TYPE = "Type";
+
+    public final static String R_LOCAL_REQUEST_X = "X";
+
+    public final static String R_LOCAL_REQUEST_Y = "Y";
+
+    /**
+     * è½¨è¿¹ä¸Šä¼  json å­—æ®µå end
+     */
+
+    /**
+     * @category é—®é¢˜ä¸ŠæŠ¥æ•°æ®åº“æš‚å­˜å­—æ®µ begin
+     */
+    public final static String TABLE_NAME_QUESTION = "T_QUESTION";
+
+    public final static String Q_QUESTION_ID = "Q_QUESTION_ID";
+
+    public final static String Q_QUESTION_TYPE = "Q_QUESTION_TYPE";
+
+    public final static String Q_QUESTION_TYPE1 = "Q_QUESTION_TYPE_1";
+
+    public final static String Q_QUESTION_TYPE2 = "Q_QUESTION_TYPE_2";
+
+    public final static String Q_QUESTION_LOCATION = "Q_QUESTION_LOCATION";
+
+    public final static String Q_QUESTION_DESCRIPT = "Q_QUESTION_DESCRIPT";
+
+    public final static String Q_QUESTION_BEFOR_IMG1 = "Q_QUESTION_BEFOR_IMG_1";
+
+    public final static String Q_QUESTION_BEFOR_IMG2 = "Q_QUESTION_BEFOR_IMG_2";
+
+    public final static String Q_QUESTION_BEFOR_IMG3 = "Q_QUESTION_BEFOR_IMG_3";
+
+    public final static String Q_QUESTION_AFTER_IMG1 = "Q_QUESTION_AFTER_IMG_1";
+
+    public final static String Q_QUESTION_AFTER_IMG2 = "Q_QUESTION_AFTER_IMG_2";
+
+    public final static String Q_QUESTION_AFTER_IMG3 = "Q_QUESTION_AFTER_IMG_3";
+
+    public final static String Q_QUESTION_REC1 = "Q_QUESTION_REC_1";
+
+    public final static String Q_QUESTION_REC2 = "Q_QUESTION_REC_2";
+
+    public final static String Q_QUESTION_REC3 = "Q_QUESTION_REC_3";
+
+    public final static String Q_QUESTION_CASESNUM = "Q_QUESTION_CASESNUM";
+    /**
+     * é—®é¢˜ä¸ŠæŠ¥æ•°æ®åº“æš‚å­˜å­—æ®µ end
+     */
+    public final static String TypeVison = "TypeVison";
+
+    // è”ç³»äºº
+    public final static String GetLinkManInfo = "GetLinkManInfo";
 }

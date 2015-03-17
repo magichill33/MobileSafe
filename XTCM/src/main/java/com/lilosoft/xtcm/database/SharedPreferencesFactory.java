@@ -11,14 +11,14 @@ import com.lilosoft.xtcm.utils.Base64Util;
 import com.lilosoft.xtcm.utils.LogFactory;
 
 /**
- * @category Êı¾İ´æ´¢
+ * @category æ•°æ®å­˜å‚¨
  * @author William Liu
  *
  */
 public class SharedPreferencesFactory {
 
     /**
-     * @category ÉÏÏÂÎÄ¶ÔÏó
+     * @category ä¸Šä¸‹æ–‡å¯¹è±¡
      */
     private static Context context;
     /**
@@ -31,17 +31,17 @@ public class SharedPreferencesFactory {
     private String uInfo;
 
     /**
-     * @category contentĞŞ¸Ätoken
+     * @category contentä¿®æ”¹token
      */
     private boolean CHANGE_USER = false;
 
     /**
-     * @category µÇÂ¼¹ıµÄÓÃ»§ËùÔÚÏÂ±ê
+     * @category ç™»å½•è¿‡çš„ç”¨æˆ·æ‰€åœ¨ä¸‹æ ‡
      */
     private int bit = 0;
 
     /**
-     * IP ÅäÖÃ
+     * IP é…ç½®
      *
      * @param mContext
      * @return
@@ -84,7 +84,7 @@ public class SharedPreferencesFactory {
     }
 
     /**
-     * @category »ñÈ¡SharedPreferencesÊµÌå
+     * @category è·å–SharedPreferenceså®ä½“
      * @param mContext
      * @return
      */
@@ -96,7 +96,7 @@ public class SharedPreferencesFactory {
     }
 
     /**
-     * @category ±£´æÓÃ»§Êı¾İ
+     * @category ä¿å­˜ç”¨æˆ·æ•°æ®
      * @param mContext
      * @param user
      * @param psw
@@ -180,7 +180,7 @@ public class SharedPreferencesFactory {
     }
 
     /**
-     * @category »ñÈ¡ÓÃ»§Êı¾İ
+     * @category è·å–ç”¨æˆ·æ•°æ®
      * @param mContext
      */
     private void readUserInfo(Context mContext) {
@@ -199,7 +199,7 @@ public class SharedPreferencesFactory {
     }
 
     /**
-     * @category ÕË»§ÊÇ·ñ×Ô¶¯µÇÂ¼
+     * @category è´¦æˆ·æ˜¯å¦è‡ªåŠ¨ç™»å½•
      * @param mContext
      * @return
      */
@@ -212,7 +212,7 @@ public class SharedPreferencesFactory {
     }
 
     /**
-     * @category ¶ÁÈ¡ÃÜÔ¿
+     * @category è¯»å–å¯†é’¥
      * @return
      */
     public String readKey(Context mContext) {
@@ -223,7 +223,7 @@ public class SharedPreferencesFactory {
     }
 
     /**
-     * @category Ğ´ÃÜÔ¿
+     * @category å†™å¯†é’¥
      * @param mContext
      * @param key
      */
@@ -236,7 +236,7 @@ public class SharedPreferencesFactory {
     }
 
     /**
-     * @category ¼ì²éÓÃ»§ÃûÊÇ·ñ´æÔÚ
+     * @category æ£€æŸ¥ç”¨æˆ·åæ˜¯å¦å­˜åœ¨
      *
      * @return
      */
@@ -265,7 +265,7 @@ public class SharedPreferencesFactory {
     }
 
     /**
-     * @category ¸Ä±äÓÃ»§
+     * @category æ”¹å˜ç”¨æˆ·
      * @param userName
      * @param userPsw
      * @return
@@ -327,7 +327,7 @@ public class SharedPreferencesFactory {
     }
 
     /**
-     * @category »ñÈ¡ËùÓĞÓÃ»§Ãû AutoCompleteTextView Ê¹ÓÃ
+     * @category è·å–æ‰€æœ‰ç”¨æˆ·å AutoCompleteTextView ä½¿ç”¨
      *
      * @param mContext
      * @return
@@ -354,7 +354,7 @@ public class SharedPreferencesFactory {
     }
 
     /**
-     * @category »ñµÃÊ×¸öÓÃ»§
+     * @category è·å¾—é¦–ä¸ªç”¨æˆ·
      * @param mContext
      * @return
      */

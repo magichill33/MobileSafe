@@ -18,7 +18,7 @@ import com.lilosoft.xtcm.views.TitleBar;
 import com.lilosoft.xtcm.views.TitleBar.STYLE;
 
 /**
- * @category 历史
+ * @category 鍘嗗彶
  * @author William Liu
  *
  */
@@ -69,7 +69,7 @@ public class QuestionHistoryActivity extends NormalBaseActivity implements
     }
 
     /**
-     * @category 初始化titleBar
+     * @category 鍒濆鍖杢itleBar
      */
     protected void initTitleBar() {
 

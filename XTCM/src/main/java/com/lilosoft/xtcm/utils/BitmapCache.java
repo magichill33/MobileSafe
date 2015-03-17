@@ -9,84 +9,84 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 public class BitmapCache {
-	static private BitmapCache cache;
-	/** ÓÃÓÚChcheÄÚÈİµÄ´æ´¢ */
-	private Hashtable<Integer, MySoftRef> hashRefs;
-	/** À¬»øReferenceµÄ¶ÓÁĞ£¨ËùÒıÓÃµÄ¶ÔÏóÒÑ¾­±»»ØÊÕ£¬Ôò½«¸ÃÒıÓÃ´æÈë¶ÓÁĞÖĞ£© */
-	private ReferenceQueue<Bitmap> q;
+    static private BitmapCache cache;
+    /** ç”¨äºChcheå†…å®¹çš„å­˜å‚¨ */
+    private Hashtable<Integer, MySoftRef> hashRefs;
+    /** åƒåœ¾Referenceçš„é˜Ÿåˆ—ï¼ˆæ‰€å¼•ç”¨çš„å¯¹è±¡å·²ç»è¢«å›æ”¶ï¼Œåˆ™å°†è¯¥å¼•ç”¨å­˜å…¥é˜Ÿåˆ—ä¸­ï¼‰ */
+    private ReferenceQueue<Bitmap> q;
 
-	private BitmapCache() {
-		hashRefs = new Hashtable<Integer, MySoftRef>();
-		q = new ReferenceQueue<Bitmap>();
-	}
+    private BitmapCache() {
+        hashRefs = new Hashtable<Integer, MySoftRef>();
+        q = new ReferenceQueue<Bitmap>();
+    }
 
-	/**
-	 * È¡µÃ»º´æÆ÷ÊµÀı
-	 */
-	public static BitmapCache getInstance() {
-		if (cache == null) {
-			cache = new BitmapCache();
-		}
-		return cache;
-	}
+    /**
+     * å–å¾—ç¼“å­˜å™¨å®ä¾‹
+     */
+    public static BitmapCache getInstance() {
+        if (cache == null) {
+            cache = new BitmapCache();
+        }
+        return cache;
+    }
 
-	/**
-	 * ÒÔÈíÒıÓÃµÄ·½Ê½¶ÔÒ»¸öBitmap¶ÔÏóµÄÊµÀı½øĞĞÒıÓÃ²¢±£´æ¸ÃÒıÓÃ
-	 */
-	private void addCacheBitmap(Bitmap bmp, Integer key) {
-		cleanCache();// Çå³ıÀ¬»øÒıÓÃ
-		MySoftRef ref = new MySoftRef(bmp, q, key);
-		hashRefs.put(key, ref);
-	}
+    /**
+     * ä»¥è½¯å¼•ç”¨çš„æ–¹å¼å¯¹ä¸€ä¸ªBitmapå¯¹è±¡çš„å®ä¾‹è¿›è¡Œå¼•ç”¨å¹¶ä¿å­˜è¯¥å¼•ç”¨
+     */
+    private void addCacheBitmap(Bitmap bmp, Integer key) {
+        cleanCache();// æ¸…é™¤åƒåœ¾å¼•ç”¨
+        MySoftRef ref = new MySoftRef(bmp, q, key);
+        hashRefs.put(key, ref);
+    }
 
-	/**
-	 * ÒÀ¾İËùÖ¸¶¨µÄdrawableÏÂµÄÍ¼Æ¬×ÊÔ´IDºÅ£¨¿ÉÒÔ¸ù¾İ×Ô¼ºµÄĞèÒª´ÓÍøÂç»ò±¾µØpathÏÂ»ñÈ¡£©£¬ÖØĞÂ»ñÈ¡ÏàÓ¦Bitmap¶ÔÏóµÄÊµÀı
-	 */
-	public Bitmap getBitmap(int resId, Context context) {
-		Bitmap bmp = null;
-		// »º´æÖĞÊÇ·ñÓĞ¸ÃBitmapÊµÀıµÄÈíÒıÓÃ£¬Èç¹ûÓĞ£¬´ÓÈíÒıÓÃÖĞÈ¡µÃ¡£
-		if (hashRefs.containsKey(resId)) {
-			MySoftRef ref = (MySoftRef) hashRefs.get(resId);
-			bmp = (Bitmap) ref.get();
-		}
-		// Èç¹ûÃ»ÓĞÈíÒıÓÃ£¬»òÕß´ÓÈíÒıÓÃÖĞµÃµ½µÄÊµÀıÊÇnull£¬ÖØĞÂ¹¹½¨Ò»¸öÊµÀı£¬
-		// ²¢±£´æ¶ÔÕâ¸öĞÂ½¨ÊµÀıµÄÈíÒıÓÃ
-		if (bmp == null) {
-			// ´«ËµdecodeStreamÖ±½Óµ÷ÓÃJNI>>nativeDecodeAsset()À´Íê³Édecode£¬
-			// ÎŞĞèÔÙÊ¹ÓÃjava²ãµÄcreateBitmap£¬´Ó¶ø½ÚÊ¡ÁËjava²ãµÄ¿Õ¼ä¡£
-			bmp = BitmapFactory.decodeStream(context.getResources()
-					.openRawResource(resId));
-			this.addCacheBitmap(bmp, resId);
-		}
-		return bmp;
-	}
+    /**
+     * ä¾æ®æ‰€æŒ‡å®šçš„drawableä¸‹çš„å›¾ç‰‡èµ„æºIDå·ï¼ˆå¯ä»¥æ ¹æ®è‡ªå·±çš„éœ€è¦ä»ç½‘ç»œæˆ–æœ¬åœ°pathä¸‹è·å–ï¼‰ï¼Œé‡æ–°è·å–ç›¸åº”Bitmapå¯¹è±¡çš„å®ä¾‹
+     */
+    public Bitmap getBitmap(int resId, Context context) {
+        Bitmap bmp = null;
+        // ç¼“å­˜ä¸­æ˜¯å¦æœ‰è¯¥Bitmapå®ä¾‹çš„è½¯å¼•ç”¨ï¼Œå¦‚æœæœ‰ï¼Œä»è½¯å¼•ç”¨ä¸­å–å¾—ã€‚
+        if (hashRefs.containsKey(resId)) {
+            MySoftRef ref = (MySoftRef) hashRefs.get(resId);
+            bmp = (Bitmap) ref.get();
+        }
+        // å¦‚æœæ²¡æœ‰è½¯å¼•ç”¨ï¼Œæˆ–è€…ä»è½¯å¼•ç”¨ä¸­å¾—åˆ°çš„å®ä¾‹æ˜¯nullï¼Œé‡æ–°æ„å»ºä¸€ä¸ªå®ä¾‹ï¼Œ
+        // å¹¶ä¿å­˜å¯¹è¿™ä¸ªæ–°å»ºå®ä¾‹çš„è½¯å¼•ç”¨
+        if (bmp == null) {
+            // ä¼ è¯´decodeStreamç›´æ¥è°ƒç”¨JNI>>nativeDecodeAsset()æ¥å®Œæˆdecodeï¼Œ
+            // æ— éœ€å†ä½¿ç”¨javaå±‚çš„createBitmapï¼Œä»è€ŒèŠ‚çœäº†javaå±‚çš„ç©ºé—´ã€‚
+            bmp = BitmapFactory.decodeStream(context.getResources()
+                    .openRawResource(resId));
+            this.addCacheBitmap(bmp, resId);
+        }
+        return bmp;
+    }
 
-	private void cleanCache() {
-		MySoftRef ref = null;
-		while ((ref = (MySoftRef) q.poll()) != null) {
-			hashRefs.remove(ref._key);
-		}
-	}
+    private void cleanCache() {
+        MySoftRef ref = null;
+        while ((ref = (MySoftRef) q.poll()) != null) {
+            hashRefs.remove(ref._key);
+        }
+    }
 
-	/**
-	 * Çå³ıCacheÄÚµÄÈ«²¿ÄÚÈİ
-	 */
-	public void clearCache() {
-		cleanCache();
-		hashRefs.clear();
-		System.gc();
-		System.runFinalization();
-	}
+    /**
+     * æ¸…é™¤Cacheå†…çš„å…¨éƒ¨å†…å®¹
+     */
+    public void clearCache() {
+        cleanCache();
+        hashRefs.clear();
+        System.gc();
+        System.runFinalization();
+    }
 
-	/**
-	 * ¼Ì³ĞSoftReference£¬Ê¹µÃÃ¿Ò»¸öÊµÀı¶¼¾ßÓĞ¿ÉÊ¶±ğµÄ±êÊ¶¡£
-	 */
-	private class MySoftRef extends SoftReference<Bitmap> {
-		private Integer _key = 0;
+    /**
+     * ç»§æ‰¿SoftReferenceï¼Œä½¿å¾—æ¯ä¸€ä¸ªå®ä¾‹éƒ½å…·æœ‰å¯è¯†åˆ«çš„æ ‡è¯†ã€‚
+     */
+    private class MySoftRef extends SoftReference<Bitmap> {
+        private Integer _key = 0;
 
-		public MySoftRef(Bitmap bmp, ReferenceQueue<Bitmap> q, int key) {
-			super(bmp, q);
-			_key = key;
-		}
-	}
+        public MySoftRef(Bitmap bmp, ReferenceQueue<Bitmap> q, int key) {
+            super(bmp, q);
+            _key = key;
+        }
+    }
 }

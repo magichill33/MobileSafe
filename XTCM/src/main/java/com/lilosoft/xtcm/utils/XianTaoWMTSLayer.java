@@ -17,210 +17,210 @@ import com.esri.core.geometry.SpatialReference;
 import com.esri.core.io.UserCredentials;
 
 public class XianTaoWMTSLayer extends TiledServiceLayer {
-	
-	private TianDiTuTiledMapServiceType _mapType;
-	private TileInfo tiandituTileInfo;
+
+    private TianDiTuTiledMapServiceType _mapType;
+    private TileInfo tiandituTileInfo;
 	
 /*	public XianTaoWMTSLayer(boolean initLayer) {
 		super(initLayer);
 	}*/
-	
-	public XianTaoWMTSLayer() {
-		this(null, null, true);
-	}
 
-	public XianTaoWMTSLayer(TianDiTuTiledMapServiceType mapType) {
-		this(mapType, null, true);
-	}
+    public XianTaoWMTSLayer() {
+        this(null, null, true);
+    }
 
-	public XianTaoWMTSLayer(TianDiTuTiledMapServiceType mapType,
-			UserCredentials usercredentials) {
-		this(mapType, usercredentials, true);
-	}
+    public XianTaoWMTSLayer(TianDiTuTiledMapServiceType mapType) {
+        this(mapType, null, true);
+    }
 
-	public XianTaoWMTSLayer(TianDiTuTiledMapServiceType mapType,
-			UserCredentials usercredentials, boolean flag) {
-		super("");
-		this._mapType = mapType;
-		setCredentials(usercredentials);
+    public XianTaoWMTSLayer(TianDiTuTiledMapServiceType mapType,
+                            UserCredentials usercredentials) {
+        this(mapType, usercredentials, true);
+    }
 
-		if (flag)
-			try {
-				getServiceExecutor().submit(new Runnable() {
+    public XianTaoWMTSLayer(TianDiTuTiledMapServiceType mapType,
+                            UserCredentials usercredentials, boolean flag) {
+        super("");
+        this._mapType = mapType;
+        setCredentials(usercredentials);
 
-					public final void run() {
-						a.initLayer();
-					}
+        if (flag)
+            try {
+                getServiceExecutor().submit(new Runnable() {
 
-					final XianTaoWMTSLayer a;
+                    public final void run() {
+                        a.initLayer();
+                    }
 
-					{
-						a = XianTaoWMTSLayer.this;
-						// super();
-					}
-				});
-				return;
-			} catch (RejectedExecutionException _ex) {
-			}
-	}
+                    final XianTaoWMTSLayer a;
 
-	public TianDiTuTiledMapServiceType getMapType() {
-		return this._mapType;
-	}
+                    {
+                        a = XianTaoWMTSLayer.this;
+                        // super();
+                    }
+                });
+                return;
+            } catch (RejectedExecutionException _ex) {
+            }
+    }
 
-	protected void initLayer() {
-		this.buildTileInfo();
-		this.setFullExtent(new Envelope(-180, -90, 180, 90));
-		// this.setDefaultSpatialReference(SpatialReference.create(4490));
-		// //CGCS2000
-		this.setDefaultSpatialReference(SpatialReference.create(4490)); // GCS_WGS_1984
-		// this.setInitialExtent(new Envelope(90.52,33.76,113.59,42.88));
-		//this.setInitialExtent(new Envelope(108.31208162289873,
-			//	28.43301753729623, 116.89833669751555, 33.7232802677077));
-		this.setInitialExtent(new Envelope(70.0, 15.0, 135.0, 55.0));
-		super.initLayer();
-	}
+    public TianDiTuTiledMapServiceType getMapType() {
+        return this._mapType;
+    }
 
-	public void refresh() {
-		try {
-			getServiceExecutor().submit(new Runnable() {
+    protected void initLayer() {
+        this.buildTileInfo();
+        this.setFullExtent(new Envelope(-180, -90, 180, 90));
+        // this.setDefaultSpatialReference(SpatialReference.create(4490));
+        // //CGCS2000
+        this.setDefaultSpatialReference(SpatialReference.create(4490)); // GCS_WGS_1984
+        // this.setInitialExtent(new Envelope(90.52,33.76,113.59,42.88));
+        //this.setInitialExtent(new Envelope(108.31208162289873,
+        //	28.43301753729623, 116.89833669751555, 33.7232802677077));
+        this.setInitialExtent(new Envelope(70.0, 15.0, 135.0, 55.0));
+        super.initLayer();
+    }
 
-				public final void run() {
-					if (a.isInitialized())
-						try {
-							a.b();
-							a.clearTiles();
-							return;
-						} catch (Exception exception) {
-							Log.e("ArcGIS",
-									"Re-initialization of the layer failed.",
-									exception);
-						}
-				}
+    public void refresh() {
+        try {
+            getServiceExecutor().submit(new Runnable() {
 
-				final XianTaoWMTSLayer a;
+                public final void run() {
+                    if (a.isInitialized())
+                        try {
+                            a.b();
+                            a.clearTiles();
+                            return;
+                        } catch (Exception exception) {
+                            Log.e("ArcGIS",
+                                    "Re-initialization of the layer failed.",
+                                    exception);
+                        }
+                }
 
-				{
-					a = XianTaoWMTSLayer.this;
-					// super();
-				}
-			});
-			return;
-		} catch (RejectedExecutionException _ex) {
-			return;
-		}
-	}
+                final XianTaoWMTSLayer a;
 
-	final void b() throws Exception {
+                {
+                    a = XianTaoWMTSLayer.this;
+                    // super();
+                }
+            });
+            return;
+        } catch (RejectedExecutionException _ex) {
+            return;
+        }
+    }
 
-	}
+    final void b() throws Exception {
 
-	@Override
-	protected byte[] getTile(int level, int col, int row) throws Exception {
+    }
 
-		byte[] result = null;
-		try {
-			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    @Override
+    protected byte[] getTile(int level, int col, int row) throws Exception {
 
-			URL sjwurl = new URL(this.getTianDiMapUrl(level, col, row));
-			HttpURLConnection httpUrl = null;
-			BufferedInputStream bis = null;
-			byte[] buf = new byte[1024];
+        byte[] result = null;
+        try {
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
-			httpUrl = (HttpURLConnection) sjwurl.openConnection();
-			httpUrl.connect();
-			bis = new BufferedInputStream(httpUrl.getInputStream());
+            URL sjwurl = new URL(this.getTianDiMapUrl(level, col, row));
+            HttpURLConnection httpUrl = null;
+            BufferedInputStream bis = null;
+            byte[] buf = new byte[1024];
 
-			while (true) {
-				int bytes_read = bis.read(buf);
-				if (bytes_read > 0) {
-					bos.write(buf, 0, bytes_read);
-				} else {
-					break;
-				}
-			}
-			;
-			bis.close();
-			httpUrl.disconnect();
+            httpUrl = (HttpURLConnection) sjwurl.openConnection();
+            httpUrl.connect();
+            bis = new BufferedInputStream(httpUrl.getInputStream());
 
-			result = bos.toByteArray();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
+            while (true) {
+                int bytes_read = bis.read(buf);
+                if (bytes_read > 0) {
+                    bos.write(buf, 0, bytes_read);
+                } else {
+                    break;
+                }
+            }
+            ;
+            bis.close();
+            httpUrl.disconnect();
 
-		return result;
-	}
+            result = bos.toByteArray();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
-	@Override
-	public TileInfo getTileInfo() {
-		return this.tiandituTileInfo;
-	}
+        return result;
+    }
 
-	/**
-     * 
+    @Override
+    public TileInfo getTileInfo() {
+        return this.tiandituTileInfo;
+    }
+
+    /**
+     *
      * */
-	private String getTianDiMapUrl(int level, int col, int row) {
+    private String getTianDiMapUrl(int level, int col, int row) {
 
-		/**
-		 * ÃÏµÿÕº ∏¡ø°¢”∞œÒ
-		 * */
-		StringBuilder url = new StringBuilder("http://111.47.112.90:8718/newmap/ogc/xiantao/vector");
-		
-		url.append("/wmts?Service=WMTS&Request=GetTile&Version=1.0.0")
-		.append("&Style=Default&Format=image/png").append("&serviceMode=KVP")
-		.append("&layer=vector").append("&TileMatrixSet=TileMatrixSet_0")
-		.append("&TileMatrix=").append(level)
-		.append("&TileRow=").append(row)
-		.append("&TileCol=").append(col);
-		Log.v("ly", url.toString());
-		return url.toString();
-	}
+        /**
+         * Â§©Âú∞ÂõæÁü¢Èáè„ÄÅÂΩ±ÂÉè
+         * */
+        StringBuilder url = new StringBuilder("http://111.47.112.90:8718/newmap/ogc/xiantao/vector");
 
-	private void buildTileInfo() {
-		Point originalPoint = new Point(-180, 90);
+        url.append("/wmts?Service=WMTS&Request=GetTile&Version=1.0.0")
+                .append("&Style=Default&Format=image/png").append("&serviceMode=KVP")
+                .append("&layer=vector").append("&TileMatrixSet=TileMatrixSet_0")
+                .append("&TileMatrix=").append(level)
+                .append("&TileRow=").append(row)
+                .append("&TileCol=").append(col);
+        Log.v("ly", url.toString());
+        return url.toString();
+    }
 
-		double[] res = { 0.010986328125, 0.0054931640625, 
-				0.00274658203125, 0.001373291015625,
-				0.0006866455078125, 0.00034332275390625, 
-				0.000171661376953125,0.0000858306884765625,
-				0.00004291534423828125,0.000021457672119140625,
-				0.000010728836059570313,0.000005364418029785156,
-				0.000005364418029785156/2,0.000005364418029785156/4
-				};
-		double[] scale = {4622333.678977588,2311166.839488794,
-				1155583.419744397,577791.7098721985,
-				288895.85493609926,144447.92746804963,
-				72223.96373402482,36111.98186701241,
-				18055.990933506204,9027.995466753102,
-				4513.997733376551,2256.998866688275,
-				1128.499917984,564.249958992};
-		int levels = 14;
-		int dpi = 96;
-		int tileWidth = 256;
-		int tileHeight = 256;
-		this.tiandituTileInfo = new com.esri.android.map.TiledServiceLayer.TileInfo(
-				originalPoint, scale, res, levels, dpi, tileWidth, tileHeight);
-		this.setTileInfo(this.tiandituTileInfo);
-	}
+    private void buildTileInfo() {
+        Point originalPoint = new Point(-180, 90);
 
-	public enum TianDiTuTiledMapServiceType {
-		/**
-		 * ÃÏµÿÕº ∏¡ø
-		 * */
-		VEC_C,
-		/**
-		 * ÃÏµÿÕº”∞œÒ
-		 * */
-		IMG_C,
-		/**
-		 * ÃÏµÿÕº ∏¡ø±Í◊¢
-		 * */
-		CVA_C,
-		/**
-		 * ÃÏµÿÕº”∞œÒ±Í◊¢
-		 * */
-		CIA_C
-	}
-	
+        double[] res = { 0.010986328125, 0.0054931640625,
+                0.00274658203125, 0.001373291015625,
+                0.0006866455078125, 0.00034332275390625,
+                0.000171661376953125,0.0000858306884765625,
+                0.00004291534423828125,0.000021457672119140625,
+                0.000010728836059570313,0.000005364418029785156,
+                0.000005364418029785156/2,0.000005364418029785156/4
+        };
+        double[] scale = {4622333.678977588,2311166.839488794,
+                1155583.419744397,577791.7098721985,
+                288895.85493609926,144447.92746804963,
+                72223.96373402482,36111.98186701241,
+                18055.990933506204,9027.995466753102,
+                4513.997733376551,2256.998866688275,
+                1128.499917984,564.249958992};
+        int levels = 14;
+        int dpi = 96;
+        int tileWidth = 256;
+        int tileHeight = 256;
+        this.tiandituTileInfo = new com.esri.android.map.TiledServiceLayer.TileInfo(
+                originalPoint, scale, res, levels, dpi, tileWidth, tileHeight);
+        this.setTileInfo(this.tiandituTileInfo);
+    }
+
+    public enum TianDiTuTiledMapServiceType {
+        /**
+         * Â§©Âú∞ÂõæÁü¢Èáè
+         * */
+        VEC_C,
+        /**
+         * Â§©Âú∞ÂõæÂΩ±ÂÉè
+         * */
+        IMG_C,
+        /**
+         * Â§©Âú∞ÂõæÁü¢ÈáèÊ†áÊ≥®
+         * */
+        CVA_C,
+        /**
+         * Â§©Âú∞ÂõæÂΩ±ÂÉèÊ†áÊ≥®
+         * */
+        CIA_C
+    }
+
 
 }

@@ -28,119 +28,119 @@ import com.lilosoft.xtcm.views.TitleBar.STYLE;
 
 public class ContactsActivity extends NormalBaseActivity implements OnClickListener {
 
-	private static final int SUCCESS_UPDATA = 1;
-	private static final int FALIED_UPDATA = 0;
-	Handler mHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			super.handleMessage(msg);
-			switch (msg.what) {
-			case SUCCESS_UPDATA:
-				dismissProgressDialog();
-				Toast.makeText(mContext, "∏¸–¬¡™œµ»À ˝æ›≥…π¶£¨«ÎΩ¯»Î¡™œµ»À¡–±Ì≤Èø¥£°", 1).show();
-				break;
-			case FALIED_UPDATA:
-				dismissProgressDialog();
-				Toast.makeText(mContext, "∏¸–¬¡™œµ»À ˝æ› ß∞‹£¨«Î…‘∫Û‘Ÿ ‘£°", 1).show();
-				break;
-			default:
-				break;
-			}
-		}
-	};
-	private TitleBar mTitleBar;
-	private FunctionItem functionItem;
-	private FunctionItem functionItem1;
+    private static final int SUCCESS_UPDATA = 1;
+    private static final int FALIED_UPDATA = 0;
+    Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case SUCCESS_UPDATA:
+                    dismissProgressDialog();
+                    Toast.makeText(mContext, "Êõ¥Êñ∞ËÅîÁ≥ª‰∫∫Êï∞ÊçÆÊàêÂäüÔºåËØ∑ËøõÂÖ•ËÅîÁ≥ª‰∫∫ÂàóË°®Êü•ÁúãÔºÅ", 1).show();
+                    break;
+                case FALIED_UPDATA:
+                    dismissProgressDialog();
+                    Toast.makeText(mContext, "Êõ¥Êñ∞ËÅîÁ≥ª‰∫∫Êï∞ÊçÆÂ§±Ë¥•ÔºåËØ∑Á®çÂêéÂÜçËØïÔºÅ", 1).show();
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+    private TitleBar mTitleBar;
+    private FunctionItem functionItem;
+    private FunctionItem functionItem1;
 
-	@Override
-	protected void installViews() {
-		// TODO Auto-generated method stub
-		setContentView(R.layout.activity_contacts);
-		initTitleBar();
+    @Override
+    protected void installViews() {
+        // TODO Auto-generated method stub
+        setContentView(R.layout.activity_contacts);
+        initTitleBar();
 
-		functionItem = (FunctionItem) findViewById(R.id.f_contactslist);
-		functionItem1 = (FunctionItem) findViewById(R.id.f_updata);
-		mPProgressBar = (MPProgressBar) findViewById(R.id.mPProgressBar);
-	}
+        functionItem = (FunctionItem) findViewById(R.id.f_contactslist);
+        functionItem1 = (FunctionItem) findViewById(R.id.f_updata);
+        mPProgressBar = (MPProgressBar) findViewById(R.id.mPProgressBar);
+    }
 
-	private void initTitleBar() {
-		// TODO Auto-generated method stub
-		mTitleBar = (TitleBar) findViewById(R.id.titlebar);
+    private void initTitleBar() {
+        // TODO Auto-generated method stub
+        mTitleBar = (TitleBar) findViewById(R.id.titlebar);
 
-		mTitleBar.changeStyle(STYLE.NOT_BTN_AND_TITLE);
+        mTitleBar.changeStyle(STYLE.NOT_BTN_AND_TITLE);
 
-		mTitleBar.centerTextView.setText("¡™œµ»À");
-	}
+        mTitleBar.centerTextView.setText("ËÅîÁ≥ª‰∫∫");
+    }
 
-	@Override
-	protected void registerEvents() {
-		// TODO Auto-generated method stub
-		functionItem.setOnClickListener(this);
-		functionItem1.setOnClickListener(this);
-	}
+    @Override
+    protected void registerEvents() {
+        // TODO Auto-generated method stub
+        functionItem.setOnClickListener(this);
+        functionItem1.setOnClickListener(this);
+    }
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.f_contactslist:
-			startActivity(new Intent(mContext, ContactsListActivity.class));
-			break;
-		case R.id.f_updata:
-			updataContactsData();
-			break;
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.f_contactslist:
+                startActivity(new Intent(mContext, ContactsListActivity.class));
+                break;
+            case R.id.f_updata:
+                updataContactsData();
+                break;
 
-		default:
-			break;
-		}
-	}
-	
-	private void updataContactsData() {
-		new AsyncTask<Void, Void, String>(){
-			protected void onPreExecute() {
-				showProgressDialog("’˝‘⁄∏¸–¬ ˝æ›");
-			};
+            default:
+                break;
+        }
+    }
 
-			@Override
-			protected String doInBackground(Void... params) {
-				HttpConnection hc = new HttpConnection();
-				try {
-					return hc.getData(HttpConnection.CONNECTION_CONTACTS_DATA);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				return null;
-			}
+    private void updataContactsData() {
+        new AsyncTask<Void, Void, String>(){
+            protected void onPreExecute() {
+                showProgressDialog("Ê≠£Âú®Êõ¥Êñ∞Êï∞ÊçÆ");
+            };
 
-			protected void onPostExecute(String result) {
-				if (TextUtils.isEmpty(result)) {
-					Toast.makeText(mContext, "ªÒ»° ˝æ› ß∞‹", 1);
-					finish();
-				}else{
-					try {
-						Gson gson = new Gson();
-						final Contacts jc = gson.fromJson(result, Contacts.class);
-						new Thread() {
-							public void run() {
-								boolean b = CommonNumberDao.writeIntoDataBase(
-										mContext, jc.body);
-								Message msg = Message.obtain();
-								if (b) {
-									msg.what = SUCCESS_UPDATA;
-								} else {
-									msg.what = FALIED_UPDATA;
-								}
-								mHandler.sendMessage(msg);
-							};
-						}.start();
-					} catch (Exception e) {
-						// TODO: handle exception
-					}
-				}
-			};
-		}.execute();
+            @Override
+            protected String doInBackground(Void... params) {
+                HttpConnection hc = new HttpConnection();
+                try {
+                    return hc.getData(HttpConnection.CONNECTION_CONTACTS_DATA);
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                return null;
+            }
 
-	}
-	
+            protected void onPostExecute(String result) {
+                if (TextUtils.isEmpty(result)) {
+                    Toast.makeText(mContext, "Ëé∑ÂèñÊï∞ÊçÆÂ§±Ë¥•", 1);
+                    finish();
+                }else{
+                    try {
+                        Gson gson = new Gson();
+                        final Contacts jc = gson.fromJson(result, Contacts.class);
+                        new Thread() {
+                            public void run() {
+                                boolean b = CommonNumberDao.writeIntoDataBase(
+                                        mContext, jc.body);
+                                Message msg = Message.obtain();
+                                if (b) {
+                                    msg.what = SUCCESS_UPDATA;
+                                } else {
+                                    msg.what = FALIED_UPDATA;
+                                }
+                                mHandler.sendMessage(msg);
+                            };
+                        }.start();
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                    }
+                }
+            };
+        }.execute();
+
+    }
+
 
 }

@@ -23,40 +23,40 @@ import com.lilosoft.xtcm.views.TitleBar.STYLE;
 
 public class AdministratorApproveDetailActivity extends NormalBaseActivity{
 
-	private final static int MSG_INIT_SUCCESS = 0x0F1;
-	private final static int MSG_INIT_LOSE = 0x0F2;
-	/**
-	 * @category Ö÷Ïß³Ì´¦Àí
-	 */
-	@SuppressLint("HandlerLeak")
-	private Handler myHandle = new Handler() {
+    private final static int MSG_INIT_SUCCESS = 0x0F1;
+    private final static int MSG_INIT_LOSE = 0x0F2;
+    /**
+     * @category ä¸»çº¿ç¨‹å¤„ç†
+     */
+    @SuppressLint("HandlerLeak")
+    private Handler myHandle = new Handler() {
 
-		@Override
-		public void handleMessage(Message msg) {
-			// TODO Auto-generated method stub
-			super.handleMessage(msg);
-			switch (msg.what) {
-			case Config.SHOW_PROGRESS_DIALOG:
-				showProgressDialog("³õÊ¼ÖĞ¡­");
-				break;
-			case Config.DISMISS_PROGRESS_DIALOG:
-				dismissProgressDialog();
-				break;
-			case MSG_INIT_SUCCESS:
-				initViews();
-				break;
-			case MSG_INIT_LOSE:
-				Toast.makeText(mContext, R.string.error_load_data,
-						Toast.LENGTH_LONG).show();
-				break;
-			}
+        @Override
+        public void handleMessage(Message msg) {
+            // TODO Auto-generated method stub
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case Config.SHOW_PROGRESS_DIALOG:
+                    showProgressDialog("åˆå§‹ä¸­â€¦");
+                    break;
+                case Config.DISMISS_PROGRESS_DIALOG:
+                    dismissProgressDialog();
+                    break;
+                case MSG_INIT_SUCCESS:
+                    initViews();
+                    break;
+                case MSG_INIT_LOSE:
+                    Toast.makeText(mContext, R.string.error_load_data,
+                            Toast.LENGTH_LONG).show();
+                    break;
+            }
 
-		}
+        }
 
-	};
-	private AdminApproveBean approveBean = AdministratorApproveListActivity.bean;
-	private TitleBar mTitleBar;
-	private ListView history_info_list;
+    };
+    private AdminApproveBean approveBean = AdministratorApproveListActivity.bean;
+    private TitleBar mTitleBar;
+    private ListView history_info_list;
 
 //	private List<FileBean> imageList;
 //
@@ -65,88 +65,88 @@ public class AdministratorApproveDetailActivity extends NormalBaseActivity{
 //	private ImageView h_media_p1, h_media_p2, h_media_p3, h_img_preview;
 //
 //	private boolean imgIsShow = false;
-	private List<Map<String, Object>> data;
-	private Message m;
-	Thread initThread = new Thread(new Runnable() {
+    private List<Map<String, Object>> data;
+    private Message m;
+    Thread initThread = new Thread(new Runnable() {
 
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-			m = new Message();
-			m.what = Config.SHOW_PROGRESS_DIALOG;
-			myHandle.sendMessage(m);
-			try {
-				readData();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				m = new Message();
-				m.what = MSG_INIT_LOSE;
-				myHandle.sendMessage(m);
-			} finally {
-				m = new Message();
-				m.what = Config.DISMISS_PROGRESS_DIALOG;
-				myHandle.sendMessage(m);
-			}
-		}
-	});
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            m = new Message();
+            m.what = Config.SHOW_PROGRESS_DIALOG;
+            myHandle.sendMessage(m);
+            try {
+                readData();
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                m = new Message();
+                m.what = MSG_INIT_LOSE;
+                myHandle.sendMessage(m);
+            } finally {
+                m = new Message();
+                m.what = Config.DISMISS_PROGRESS_DIALOG;
+                myHandle.sendMessage(m);
+            }
+        }
+    });
 
-	@Override
-	protected void installViews() {
-		// TODO Auto-generated method stub
-		setContentView(R.layout.activity_approve_detail);
-		initTitleBar();
-		initValues();
-		threadG = new Thread(initThread);
-		threadG.start();
+    @Override
+    protected void installViews() {
+        // TODO Auto-generated method stub
+        setContentView(R.layout.activity_approve_detail);
+        initTitleBar();
+        initValues();
+        threadG = new Thread(initThread);
+        threadG.start();
 
-	}
+    }
 
-	@Override
-	protected void registerEvents() {
-		// TODO Auto-generated method stub
+    @Override
+    protected void registerEvents() {
+        // TODO Auto-generated method stub
 //		h_media_p1.setOnClickListener(this);
 //		h_media_p2.setOnClickListener(this);
 //		h_media_p3.setOnClickListener(this);
 //		h_img_preview.setOnClickListener(this);
-	}
+    }
 
-	/**
-	 * @category ³õÊ¼»¯titleBar
-	 */
-	protected void initTitleBar() {
+    /**
+     * @category åˆå§‹åŒ–titleBar
+     */
+    protected void initTitleBar() {
 
-		mTitleBar = (TitleBar) findViewById(R.id.titlebar);
+        mTitleBar = (TitleBar) findViewById(R.id.titlebar);
 
-		mTitleBar.changeStyle(STYLE.NOT_BTN_AND_TITLE);
+        mTitleBar.changeStyle(STYLE.NOT_BTN_AND_TITLE);
 
-		mTitleBar.centerTextView.setText(R.string.function_sp_detail);
+        mTitleBar.centerTextView.setText(R.string.function_sp_detail);
 
-	}
+    }
 
-	protected void initValues() {
+    protected void initValues() {
 
-		mPProgressBar = (MPProgressBar) findViewById(R.id.mPProgressBar);
+        mPProgressBar = (MPProgressBar) findViewById(R.id.mPProgressBar);
 
-		history_info_list = (ListView) findViewById(R.id.history_info_list);
+        history_info_list = (ListView) findViewById(R.id.history_info_list);
 //		history_info_medio = findViewById(R.id.history_info_medio);
 //		h_media_p1 = (ImageView) findViewById(R.id.h_media_p1);
 //		h_media_p2 = (ImageView) findViewById(R.id.h_media_p2);
 //		h_media_p3 = (ImageView) findViewById(R.id.h_media_p3);
 //		h_img_preview = (ImageView) findViewById(R.id.h_img_preview);
 
-	}
+    }
 
-	@SuppressWarnings("deprecation")
-	private void initViews() {
-		// ³õÊ¼»¯ÄÚÈİ
-		history_info_list.setAdapter(new SimpleAdapter(mContext, data,
-				R.layout.view_history_value_item, LayoutStructure.from,
-				new int[] { R.id.h_i_title, R.id.h_i_value }));
+    @SuppressWarnings("deprecation")
+    private void initViews() {
+        // åˆå§‹åŒ–å†…å®¹
+        history_info_list.setAdapter(new SimpleAdapter(mContext, data,
+                R.layout.view_history_value_item, LayoutStructure.from,
+                new int[] { R.id.h_i_title, R.id.h_i_value }));
 //		Bitmap bm = null;
 //		Bitmap bm1 = null;
 //		Bitmap bm2 = null;
-//		// ³õÊ¼»¯Í¼Æ¬
+//		// åˆå§‹åŒ–å›¾ç‰‡
 //		if (null != imageList) {
 //			switch (imageList.size()) {
 //			case 1:
@@ -201,36 +201,36 @@ public class AdministratorApproveDetailActivity extends NormalBaseActivity{
 //			}
 //		}
 
-	}
+    }
 
-	/**
-	 * @category Í¼Æ¬´¦Àí ÖµµÄË³ĞòºÍÊÇ·ñĞèÒªÏÔÊ¾ HistoryDisposeBean-getList()·½·¨µÄÖµË³ĞòºÍÊÇ·ñ´«Èë¾ö¶¨
-	 */
-	private void readData() {
+    /**
+     * @category å›¾ç‰‡å¤„ç† å€¼çš„é¡ºåºå’Œæ˜¯å¦éœ€è¦æ˜¾ç¤º HistoryDisposeBean-getList()æ–¹æ³•çš„å€¼é¡ºåºå’Œæ˜¯å¦ä¼ å…¥å†³å®š
+     */
+    private void readData() {
 
-		// ÖµĞ´Èë
-		data = new ArrayList<Map<String, Object>>();
-		if(approveBean!=null&&approveBean.getList().size()>0){
-			for (int i = 0; i < approveBean.getList().size() / 2; i++) {
-				Map<String, Object> map = new HashMap<String, Object>();
-				map.put(LayoutStructure.from[0],
-						approveBean.getList().get(i * 2));
-				map.put(LayoutStructure.from[1],
-						approveBean.getList().get(i * 2 + 1));
-				data.add(map);
-			}
-		}
+        // å€¼å†™å…¥
+        data = new ArrayList<Map<String, Object>>();
+        if(approveBean!=null&&approveBean.getList().size()>0){
+            for (int i = 0; i < approveBean.getList().size() / 2; i++) {
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put(LayoutStructure.from[0],
+                        approveBean.getList().get(i * 2));
+                map.put(LayoutStructure.from[1],
+                        approveBean.getList().get(i * 2 + 1));
+                data.add(map);
+            }
+        }
 
-//		// Í¼Æ¬Ğ´Èë
+//		// å›¾ç‰‡å†™å…¥
 //		if (null != (imageList = approveBean.getApproveFileList())) {
 //			for (int i = 0; i < imageList.size(); i++) {
 //				ImageTool.writeFile(imageList.get(i));
 //			}
 //		}
-		m = new Message();
-		m.what = MSG_INIT_SUCCESS;
-		myHandle.sendMessage(m);
-	}
+        m = new Message();
+        m.what = MSG_INIT_SUCCESS;
+        myHandle.sendMessage(m);
+    }
 //
 //	@SuppressWarnings({ "deprecation", "unused" })
 //	@Override
@@ -277,22 +277,22 @@ public class AdministratorApproveDetailActivity extends NormalBaseActivity{
 //		}
 //	}
 
-	// private void recycleBitmap(Bitmap bm, Bitmap bm1, Bitmap bm2) {
-	// if (bm != null && !bm.isRecycled()) {
-	// bm.recycle();
-	// bm = null;
-	// System.gc();
-	// }
-	// if (bm1 != null && !bm1.isRecycled()) {
-	// bm1.recycle();
-	// bm1 = null;
-	// System.gc();
-	// }
-	// if (bm2 != null && !bm2.isRecycled()) {
-	// bm2.recycle();
-	// bm2 = null;
-	// System.gc();
-	// }
-	// }
+    // private void recycleBitmap(Bitmap bm, Bitmap bm1, Bitmap bm2) {
+    // if (bm != null && !bm.isRecycled()) {
+    // bm.recycle();
+    // bm = null;
+    // System.gc();
+    // }
+    // if (bm1 != null && !bm1.isRecycled()) {
+    // bm1.recycle();
+    // bm1 = null;
+    // System.gc();
+    // }
+    // if (bm2 != null && !bm2.isRecycled()) {
+    // bm2.recycle();
+    // bm2 = null;
+    // System.gc();
+    // }
+    // }
 
 }

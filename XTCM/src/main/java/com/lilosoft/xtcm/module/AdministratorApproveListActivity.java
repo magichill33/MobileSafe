@@ -45,327 +45,327 @@ import com.lilosoft.xtcm.views.TitleBar.STYLE;
 import com.lilosoft.xtcm.views.adapter.SmartWindowAdapter;
 
 /**
- * @category ––’˛…Û≈˙
+ * @category Ë°åÊîøÂÆ°Êâπ
  * @author William Liu
- * 
+ *
  */
 @SuppressLint("UseValueOf")
 public class AdministratorApproveListActivity extends NormalBaseActivity
-		implements OnClickListener, JsonParseInterface {
+        implements OnClickListener, JsonParseInterface {
 
-	/**
-	 * …œ±®≥…π¶
-	 */
-	private final static int MSG_HISTORY_SUCCESS_ORDER = 0x0FFFFFFF;
-	/**
-	 * …œ±® ß∞‹
-	 */
-	private final static int MSG_HISTORY_LOST_ORDER = 0x00FFFFFF;
-	// …Û≈˙œÍ«È
-	private final static int MSG_APPROVE_DETAIL_INFO = 111;
-	public static AdminApproveBean bean = null;
-	public static int recordCount = 0;
-	private final String TAG = "AdministratorApproveListActivity";
-	private TitleBar mTitleBar;
-	private ListView listView;
-	private Button up;
-	private Button down;
-	private List<? extends Map<String, ?>> data;
-	private int dataCount = 0;
-	private int pageNum = 1;
-	private int maxPage = 1;
-	private int typePosition;
-	private Message m;
-	/**
-	 * ––’˛…Û≈˙¡–±Ì
-	 */
-	private Thread approveThread = new Thread(new Runnable() {
+    /**
+     * ‰∏äÊä•ÊàêÂäü
+     */
+    private final static int MSG_HISTORY_SUCCESS_ORDER = 0x0FFFFFFF;
+    /**
+     * ‰∏äÊä•Â§±Ë¥•
+     */
+    private final static int MSG_HISTORY_LOST_ORDER = 0x00FFFFFF;
+    // ÂÆ°ÊâπËØ¶ÊÉÖ
+    private final static int MSG_APPROVE_DETAIL_INFO = 111;
+    public static AdminApproveBean bean = null;
+    public static int recordCount = 0;
+    private final String TAG = "AdministratorApproveListActivity";
+    private TitleBar mTitleBar;
+    private ListView listView;
+    private Button up;
+    private Button down;
+    private List<? extends Map<String, ?>> data;
+    private int dataCount = 0;
+    private int pageNum = 1;
+    private int maxPage = 1;
+    private int typePosition;
+    private Message m;
+    /**
+     * Ë°åÊîøÂÆ°ÊâπÂàóË°®
+     */
+    private Thread approveThread = new Thread(new Runnable() {
 
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-			HttpConnection httpConnection = new HttpConnection();
-			try {
-				action(httpConnection.getData(
-						HttpConnection.CONNECTION_ADMIN_APPROVE, User.username,
-						TypeContent.APPROVE_TYPE_VALUE[typePosition], pageNum
-								+ "",
-						TableStructure.V_ACT_QUESTION_HISTORY_LIST_MAX + ""));
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				LogFactory.e(TAG, "ClientProtocolException 404");
-				m = new Message();
-				m.what = Config.MSG_LOST_404;
-				myHandle.sendMessage(m);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				LogFactory.e(TAG, "IOException");
-				m = new Message();
-				m.what = Config.MSG_LOST_CONN;
-				myHandle.sendMessage(m);
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				LogFactory.e(TAG, "JSONException");
-				m = new Message();
-				m.what = Config.MSG_LOST_JSON;
-				myHandle.sendMessage(m);
-			} finally {
-				m = new Message();
-				m.what = Config.DISMISS_PROGRESS_DIALOG;
-				myHandle.sendMessage(m);
-				LogFactory.e(TAG, "report thread end");
-			}
-		}
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            HttpConnection httpConnection = new HttpConnection();
+            try {
+                action(httpConnection.getData(
+                        HttpConnection.CONNECTION_ADMIN_APPROVE, User.username,
+                        TypeContent.APPROVE_TYPE_VALUE[typePosition], pageNum
+                                + "",
+                        TableStructure.V_ACT_QUESTION_HISTORY_LIST_MAX + ""));
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                LogFactory.e(TAG, "ClientProtocolException 404");
+                m = new Message();
+                m.what = Config.MSG_LOST_404;
+                myHandle.sendMessage(m);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                LogFactory.e(TAG, "IOException");
+                m = new Message();
+                m.what = Config.MSG_LOST_CONN;
+                myHandle.sendMessage(m);
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                LogFactory.e(TAG, "JSONException");
+                m = new Message();
+                m.what = Config.MSG_LOST_JSON;
+                myHandle.sendMessage(m);
+            } finally {
+                m = new Message();
+                m.what = Config.DISMISS_PROGRESS_DIALOG;
+                myHandle.sendMessage(m);
+                LogFactory.e(TAG, "report thread end");
+            }
+        }
 
-	});
-	/**
-	 * ––’˛…Û≈˙œÍ«È
-	 */
-	private Thread xzspThread = new Thread(new Runnable() {
+    });
+    /**
+     * Ë°åÊîøÂÆ°ÊâπËØ¶ÊÉÖ
+     */
+    private Thread xzspThread = new Thread(new Runnable() {
 
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-			m = new Message();
-			m.what = Config.SHOW_PROGRESS_DIALOG;
-			myHandle.sendMessage(m);
-			try {
-				HttpConnection httpConnection = new HttpConnection();
-				AdminApproveBean AdminApproveListBean = (AdminApproveBean) data
-						.get(key).get("data");
-				action(httpConnection.getData(
-						HttpConnection.CONNECTION_ADMIN_APPROVE_DETAIL,
-						AdminApproveListBean.getADTIVEID()));
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				LogFactory.e(TAG, "ClientProtocolException 404");
-				m = new Message();
-				m.what = Config.MSG_LOST_404;
-				myHandle.sendMessage(m);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				LogFactory.e(TAG, "IOException");
-				m = new Message();
-				m.what = Config.MSG_LOST_CONN;
-				myHandle.sendMessage(m);
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				LogFactory.e(TAG, "JSONException");
-				m = new Message();
-				m.what = Config.MSG_LOST_JSON;
-				myHandle.sendMessage(m);
-			} finally {
-				m = new Message();
-				m.what = Config.DISMISS_PROGRESS_DIALOG;
-				myHandle.sendMessage(m);
-				LogFactory.e(TAG, "report thread end");
-			}
-		}
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            m = new Message();
+            m.what = Config.SHOW_PROGRESS_DIALOG;
+            myHandle.sendMessage(m);
+            try {
+                HttpConnection httpConnection = new HttpConnection();
+                AdminApproveBean AdminApproveListBean = (AdminApproveBean) data
+                        .get(key).get("data");
+                action(httpConnection.getData(
+                        HttpConnection.CONNECTION_ADMIN_APPROVE_DETAIL,
+                        AdminApproveListBean.getADTIVEID()));
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                LogFactory.e(TAG, "ClientProtocolException 404");
+                m = new Message();
+                m.what = Config.MSG_LOST_404;
+                myHandle.sendMessage(m);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                LogFactory.e(TAG, "IOException");
+                m = new Message();
+                m.what = Config.MSG_LOST_CONN;
+                myHandle.sendMessage(m);
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                LogFactory.e(TAG, "JSONException");
+                m = new Message();
+                m.what = Config.MSG_LOST_JSON;
+                myHandle.sendMessage(m);
+            } finally {
+                m = new Message();
+                m.what = Config.DISMISS_PROGRESS_DIALOG;
+                myHandle.sendMessage(m);
+                LogFactory.e(TAG, "report thread end");
+            }
+        }
 
-	});
-	private String err_Msg;
-	/**
-	 * @category ÷˜œﬂ≥Ã¥¶¿Ì
-	 */
-	@SuppressLint("HandlerLeak")
-	private Handler myHandle = new Handler() {
+    });
+    private String err_Msg;
+    /**
+     * @category ‰∏ªÁ∫øÁ®ãÂ§ÑÁêÜ
+     */
+    @SuppressLint("HandlerLeak")
+    private Handler myHandle = new Handler() {
 
-		@Override
-		public void handleMessage(Message msg) {
-			// TODO Auto-generated method stub
-			super.handleMessage(msg);
-			switch (msg.what) {
-			case Config.SHOW_PROGRESS_DIALOG:
-//				HomeBaseActivity.showProgressDialog("Ωªª•÷–°≠");
-				break;
-			case Config.DISMISS_PROGRESS_DIALOG:
+        @Override
+        public void handleMessage(Message msg) {
+            // TODO Auto-generated method stub
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case Config.SHOW_PROGRESS_DIALOG:
+//				HomeBaseActivity.showProgressDialog("‰∫§‰∫í‰∏≠‚Ä¶");
+                    break;
+                case Config.DISMISS_PROGRESS_DIALOG:
 //				HomeBaseActivity.dismissProgressDialog();
-				break;
-			case MSG_HISTORY_SUCCESS_ORDER:
-				LogFactory.e(TAG, "report Success");
-				SmartWindowAdapter adapter = new SmartWindowAdapter(mContext,
-						data, R.layout.view_admin_approve_item, null,
-						LayoutStructure.toAdminApproveItem);
-				listView.setAdapter(adapter);
-				break;
-			case MSG_HISTORY_LOST_ORDER:
-				if (null != err_Msg && !"".equals(err_Msg)) {
-					Toast.makeText(mContext, err_Msg, Toast.LENGTH_LONG).show();
-					err_Msg = "";
-				} else {
-					Toast.makeText(mContext, R.string.error_data,
-							Toast.LENGTH_LONG).show();
-				}
-				LogFactory.e(TAG, "report lost");
-				break;
-			case Config.MSG_LOST_404:
-				Toast.makeText(mContext, "Sorry 404", Toast.LENGTH_LONG).show();
-				break;
-			case Config.MSG_LOST_CONN:
-				Toast.makeText(mContext, R.string.error_connection,
-						Toast.LENGTH_LONG).show();
-				break;
-			case Config.MSG_LOST_JSON:
-				Toast.makeText(mContext, R.string.error_data, Toast.LENGTH_LONG)
-						.show();
-				break;
-			// ––’˛…Û≈˙œÍ«È–≈œ¢
-			case MSG_APPROVE_DETAIL_INFO:
-				LogFactory.e(TAG, "Data gather_done");
-				startActivity(new Intent(mContext,
-						AdministratorApproveDetailActivity.class));
-				break;
-			}
+                    break;
+                case MSG_HISTORY_SUCCESS_ORDER:
+                    LogFactory.e(TAG, "report Success");
+                    SmartWindowAdapter adapter = new SmartWindowAdapter(mContext,
+                            data, R.layout.view_admin_approve_item, null,
+                            LayoutStructure.toAdminApproveItem);
+                    listView.setAdapter(adapter);
+                    break;
+                case MSG_HISTORY_LOST_ORDER:
+                    if (null != err_Msg && !"".equals(err_Msg)) {
+                        Toast.makeText(mContext, err_Msg, Toast.LENGTH_LONG).show();
+                        err_Msg = "";
+                    } else {
+                        Toast.makeText(mContext, R.string.error_data,
+                                Toast.LENGTH_LONG).show();
+                    }
+                    LogFactory.e(TAG, "report lost");
+                    break;
+                case Config.MSG_LOST_404:
+                    Toast.makeText(mContext, "Sorry 404", Toast.LENGTH_LONG).show();
+                    break;
+                case Config.MSG_LOST_CONN:
+                    Toast.makeText(mContext, R.string.error_connection,
+                            Toast.LENGTH_LONG).show();
+                    break;
+                case Config.MSG_LOST_JSON:
+                    Toast.makeText(mContext, R.string.error_data, Toast.LENGTH_LONG)
+                            .show();
+                    break;
+                // Ë°åÊîøÂÆ°ÊâπËØ¶ÊÉÖ‰ø°ÊÅØ
+                case MSG_APPROVE_DETAIL_INFO:
+                    LogFactory.e(TAG, "Data gather_done");
+                    startActivity(new Intent(mContext,
+                            AdministratorApproveDetailActivity.class));
+                    break;
+            }
 
-		}
+        }
 
-	};
-	private int key = 0;
+    };
+    private int key = 0;
 
-	@Override
-	protected void installViews() {
-		// TODO Auto-generated method stub
-		setContentView(R.layout.activity_question_history_frame);
-		initTitleBar();
-		initValue();
-		initListView();
-	}
+    @Override
+    protected void installViews() {
+        // TODO Auto-generated method stub
+        setContentView(R.layout.activity_question_history_frame);
+        initTitleBar();
+        initValue();
+        initListView();
+    }
 
-	@Override
-	protected void registerEvents() {
-		// TODO Auto-generated method stub
-		listView.setOnItemClickListener(new OnItemClickListener() {
+    @Override
+    protected void registerEvents() {
+        // TODO Auto-generated method stub
+        listView.setOnItemClickListener(new OnItemClickListener() {
 
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				// TODO Auto-generated method stub
-				key = arg2;
-				threadG = new Thread(xzspThread);
-				threadG.start();
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                                    long arg3) {
+                // TODO Auto-generated method stub
+                key = arg2;
+                threadG = new Thread(xzspThread);
+                threadG.start();
 
-			}
+            }
 
-		});
-		up.setOnClickListener(this);
-		down.setOnClickListener(this);
-	}
+        });
+        up.setOnClickListener(this);
+        down.setOnClickListener(this);
+    }
 
-	@Override
-	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
-		switch (arg0.getId()) {
-		case R.id.page_up:
-			if (pageNum != 1) {
-				pageNum--;
-				initListView();
-			} else {
-				Toast.makeText(mContext, "√ª”–¡À", Toast.LENGTH_SHORT).show();
-			}
-			break;
-		case R.id.page_down:
-			if (0 == dataCount) {
-				Toast.makeText(mContext, "√ª”– ˝æ›", Toast.LENGTH_SHORT).show();
-			} else if (pageNum != maxPage) {
-				pageNum++;
-				initListView();
-			} else {
-				Toast.makeText(mContext, "√ª”–¡À", Toast.LENGTH_SHORT).show();
-			}
-			break;
-		default:
-			break;
-		}
-	}
+    @Override
+    public void onClick(View arg0) {
+        // TODO Auto-generated method stub
+        switch (arg0.getId()) {
+            case R.id.page_up:
+                if (pageNum != 1) {
+                    pageNum--;
+                    initListView();
+                } else {
+                    Toast.makeText(mContext, "Ê≤°Êúâ‰∫Ü", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.page_down:
+                if (0 == dataCount) {
+                    Toast.makeText(mContext, "Ê≤°ÊúâÊï∞ÊçÆ", Toast.LENGTH_SHORT).show();
+                } else if (pageNum != maxPage) {
+                    pageNum++;
+                    initListView();
+                } else {
+                    Toast.makeText(mContext, "Ê≤°Êúâ‰∫Ü", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+                break;
+        }
+    }
 
-	/**
-	 * @category ≥ı ºªØtitleBar
-	 */
-	protected void initTitleBar() {
+    /**
+     * @category ÂàùÂßãÂåñtitleBar
+     */
+    protected void initTitleBar() {
 
-		typePosition = getIntent().getIntExtra("searchType", 1);
+        typePosition = getIntent().getIntExtra("searchType", 1);
 
-		mTitleBar = (TitleBar) findViewById(R.id.titlebar);
+        mTitleBar = (TitleBar) findViewById(R.id.titlebar);
 
-		mTitleBar.changeStyle(STYLE.NOT_BTN_AND_TITLE);
+        mTitleBar.changeStyle(STYLE.NOT_BTN_AND_TITLE);
 
-		switch (typePosition) {
-		case 0:
-			mTitleBar.centerTextView.setText(R.string.function_sp_list);
-			break;
-		case 1:
-			mTitleBar.centerTextView.setText(R.string.function_ts_list);
-			break;
-		case 2:
-			mTitleBar.centerTextView.setText(R.string.function_tz_list);
-			break;
-		default:
-			mTitleBar.centerTextView.setText(R.string.function_xzsp);
-			break;
-		}
+        switch (typePosition) {
+            case 0:
+                mTitleBar.centerTextView.setText(R.string.function_sp_list);
+                break;
+            case 1:
+                mTitleBar.centerTextView.setText(R.string.function_ts_list);
+                break;
+            case 2:
+                mTitleBar.centerTextView.setText(R.string.function_tz_list);
+                break;
+            default:
+                mTitleBar.centerTextView.setText(R.string.function_xzsp);
+                break;
+        }
 
-	}
+    }
 
-	protected void initValue() {
+    protected void initValue() {
 
-		mPProgressBar = (MPProgressBar) findViewById(R.id.mPProgressBar);
-		listView = (ListView) findViewById(R.id.history_list);
-		up = (Button) findViewById(R.id.page_up);
-		down = (Button) findViewById(R.id.page_down);
+        mPProgressBar = (MPProgressBar) findViewById(R.id.mPProgressBar);
+        listView = (ListView) findViewById(R.id.history_list);
+        up = (Button) findViewById(R.id.page_up);
+        down = (Button) findViewById(R.id.page_down);
 
-	}
+    }
 
-	protected void initListView() {
-		// TODO Auto-generated method stub
-		threadG = new Thread(approveThread);
-		threadG.start();
+    protected void initListView() {
+        // TODO Auto-generated method stub
+        threadG = new Thread(approveThread);
+        threadG.start();
 
-	}
+    }
 
-	/**
-	 * @category ÷∏¡Ó∑÷∑¢
-	 * @param response
-	 */
-	private void action(String response) {
-		m = new Message();
-		try {
-			m = new Message();
-			m.what = jsonParseToOrder(response);
-			myHandle.sendMessage(m);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			LogFactory.e(TAG, "action JSONException");
-		}
-	}
+    /**
+     * @category Êåá‰ª§ÂàÜÂèë
+     * @param response
+     */
+    private void action(String response) {
+        m = new Message();
+        try {
+            m = new Message();
+            m.what = jsonParseToOrder(response);
+            myHandle.sendMessage(m);
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            LogFactory.e(TAG, "action JSONException");
+        }
+    }
 
-	@Override
-	public int jsonParseToOrder(String response) throws JSONException {
-		// TODO Auto-generated method stub
+    @Override
+    public int jsonParseToOrder(String response) throws JSONException {
+        // TODO Auto-generated method stub
 
-		if (null != response && !"".equals(response)) {
-			JSONObject jsobj = new JSONObject(response);
-			if (TableStructure.V_ACT_ADMINI_APPROVE_LIST.equals(jsobj
-					.getString(TableStructure.COVER_HEAD))) {
-				if (!"[]".equals(jsobj.getString(TableStructure.COVER_BODY))) {
-					JSONArray jsonTypeData = jsobj
-							.getJSONArray(TableStructure.COVER_BODY);
-					if (null != jsonTypeData) {
-						data = getListData(jsonTypeData);
-					}
-					recordCount = new Integer(
-							jsobj.getString(TableStructure.R_READY_HISTORY_LIST_RECORD_COUNT));
+        if (null != response && !"".equals(response)) {
+            JSONObject jsobj = new JSONObject(response);
+            if (TableStructure.V_ACT_ADMINI_APPROVE_LIST.equals(jsobj
+                    .getString(TableStructure.COVER_HEAD))) {
+                if (!"[]".equals(jsobj.getString(TableStructure.COVER_BODY))) {
+                    JSONArray jsonTypeData = jsobj
+                            .getJSONArray(TableStructure.COVER_BODY);
+                    if (null != jsonTypeData) {
+                        data = getListData(jsonTypeData);
+                    }
+                    recordCount = new Integer(
+                            jsobj.getString(TableStructure.R_READY_HISTORY_LIST_RECORD_COUNT));
 
-					return MSG_HISTORY_SUCCESS_ORDER;
+                    return MSG_HISTORY_SUCCESS_ORDER;
 
-				} else {
-					data = null;
-					err_Msg = "√ª”– ˝æ›!";
-				}
-			} else if (TableStructure.V_ACT_ADMINI_APPROVE_DETAIL.equals(jsobj
-					.getString(TableStructure.COVER_HEAD))) {
-				JSONObject dispose = jsobj
-						.getJSONObject(TableStructure.COVER_BODY);
+                } else {
+                    data = null;
+                    err_Msg = "Ê≤°ÊúâÊï∞ÊçÆ!";
+                }
+            } else if (TableStructure.V_ACT_ADMINI_APPROVE_DETAIL.equals(jsobj
+                    .getString(TableStructure.COVER_HEAD))) {
+                JSONObject dispose = jsobj
+                        .getJSONObject(TableStructure.COVER_BODY);
 				/*
 				 * List<FileBean> fileList = null; if
 				 * (!"[]".equals(dispose.getString("ApproveFileList"))) {
@@ -378,48 +378,48 @@ public class AdministratorApproveListActivity extends NormalBaseActivity
 				 * obj.getString("FData")); fileList.add(bean); } }
 				 */
 
-				bean = new AdminApproveBean(dispose.getString("ADTIVEID"),
-						dispose.getString("ADTIVETITLE"),
-						dispose.getString("ADTIVETYPE"),
-						dispose.getString("ADTIVECONTENT"),
-						dispose.getString("ADTIVEDATA"), "");
+                bean = new AdminApproveBean(dispose.getString("ADTIVEID"),
+                        dispose.getString("ADTIVETITLE"),
+                        dispose.getString("ADTIVETYPE"),
+                        dispose.getString("ADTIVECONTENT"),
+                        dispose.getString("ADTIVEDATA"), "");
 
-				return MSG_APPROVE_DETAIL_INFO;
-			} else {
-				err_Msg = " ˝æ›“Ï≥££°";
-				LogFactory.e(TAG, "not data!");
-			}
-		}
-		return MSG_HISTORY_LOST_ORDER;
-	}
+                return MSG_APPROVE_DETAIL_INFO;
+            } else {
+                err_Msg = "Êï∞ÊçÆÂºÇÂ∏∏ÔºÅ";
+                LogFactory.e(TAG, "not data!");
+            }
+        }
+        return MSG_HISTORY_LOST_ORDER;
+    }
 
-	private List<? extends Map<String, ?>> getListData(JSONArray jsonTypeData) {
+    private List<? extends Map<String, ?>> getListData(JSONArray jsonTypeData) {
 
-		List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
 
-		try {
-			for (int i = 0; i < jsonTypeData.length(); i++) {
-				JSONObject obj = jsonTypeData.getJSONObject(i);
+        try {
+            for (int i = 0; i < jsonTypeData.length(); i++) {
+                JSONObject obj = jsonTypeData.getJSONObject(i);
 
-				Map<String, Object> m = new HashMap<String, Object>();
-				m.put("data",
-						new AdminApproveBean(obj.getString("ADTIVEID"), obj
-								.getString("ADTIVETITLE"), obj
-								.getString("ADTIVETYPE"), obj
-								.getString("ADTIVECONTENT"), obj
-								.getString("ADTIVEDATA"), obj.getString("RN")));
+                Map<String, Object> m = new HashMap<String, Object>();
+                m.put("data",
+                        new AdminApproveBean(obj.getString("ADTIVEID"), obj
+                                .getString("ADTIVETITLE"), obj
+                                .getString("ADTIVETYPE"), obj
+                                .getString("ADTIVECONTENT"), obj
+                                .getString("ADTIVEDATA"), obj.getString("RN")));
 
-				data.add(m);
+                data.add(m);
 
-			}
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			Toast.makeText(mContext, R.string.error_data, Toast.LENGTH_LONG)
-					.show();
-		}
+            }
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            Toast.makeText(mContext, R.string.error_data, Toast.LENGTH_LONG)
+                    .show();
+        }
 
-		return data;
-	}
+        return data;
+    }
 
 }

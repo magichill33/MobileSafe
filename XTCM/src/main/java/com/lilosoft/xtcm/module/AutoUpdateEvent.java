@@ -27,7 +27,7 @@ import com.lilosoft.xtcm.network.HttpConnection;
 import com.lilosoft.xtcm.utils.LogFactory;
 
 /**
- * ×Ô¶¯¸üĞÂÊÂ¼ş·ÖÀàĞÅÏ¢
+ * è‡ªåŠ¨æ›´æ–°äº‹ä»¶åˆ†ç±»ä¿¡æ¯
  *
  * @author yzy
  *
@@ -49,7 +49,7 @@ public class AutoUpdateEvent {
     }
 
     /**
-     * ×Ô¶¯¸üĞÂÊÂ¼ş·ÖÀàĞÅÏ¢
+     * è‡ªåŠ¨æ›´æ–°äº‹ä»¶åˆ†ç±»ä¿¡æ¯
      */
     public void updateEvent(String typeVison) {
         HttpConnection httpConnection = new HttpConnection();
@@ -60,7 +60,7 @@ public class AutoUpdateEvent {
                 Log.i("AutoUpdateEvent", xml);
                 readStringXML(xml);
             } else {
-                Log.i("AutoUpdateEvent", "xmlÎª¿Õ");
+                Log.i("AutoUpdateEvent", "xmlä¸ºç©º");
             }
         } catch (ClientProtocolException e) {
             e.printStackTrace();
@@ -72,7 +72,7 @@ public class AutoUpdateEvent {
     }
 
     /**
-     * ½âÎö·şÎñÆ÷ÏìÓ¦µÄxml×Ö·û´®
+     * è§£ææœåŠ¡å™¨å“åº”çš„xmlå­—ç¬¦ä¸²
      *
      * @param xmlStr
      * @return
@@ -143,7 +143,7 @@ public class AutoUpdateEvent {
         }
 
         /**
-         * ½«µ±Ç°Êı¾İ´æµ½±¾µØÊı¾İ¿â
+         * å°†å½“å‰æ•°æ®å­˜åˆ°æœ¬åœ°æ•°æ®åº“
          */
         if (!context
                 .getSharedPreferences(Config.SHARED_PREFERENCES_NAME,
@@ -175,7 +175,7 @@ public class AutoUpdateEvent {
     }
 
     /**
-     * ´Ó±¾µØÊı¾İ¿â»ñÈ¡ÊÂ¼ş·ÖÀàĞÅÏ¢
+     * ä»æœ¬åœ°æ•°æ®åº“è·å–äº‹ä»¶åˆ†ç±»ä¿¡æ¯
      *
      * @param bigID
      * @return
@@ -185,7 +185,7 @@ public class AutoUpdateEvent {
     public String[] getBigEvent(String bigID) {
         DatabaseFactory data = new DatabaseFactory(context);
         eventList = data
-                .getEventSpinnerList(TableStructure.V_ACT_ADMINI_EVENT_TYPE);// »ñÈ¡×Ô¶¯¸üĞÂÊÂ¼ş·ÖÀàĞÅÏ¢
+                .getEventSpinnerList(TableStructure.V_ACT_ADMINI_EVENT_TYPE);// è·å–è‡ªåŠ¨æ›´æ–°äº‹ä»¶åˆ†ç±»ä¿¡æ¯
         List<String> bigList = new ArrayList<String>();
         for (int i = 0; i < eventList.size(); i++) {
             EventKings ek = eventList.get(i);

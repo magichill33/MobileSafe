@@ -7,13 +7,13 @@ import android.content.Intent;
 import com.lilosoft.xtcm.utils.LogFactory;
 
 public class BootBroadcastReceiver extends BroadcastReceiver {
-	// ÖØĞ´onReceive·½·¨
-	@Override
-	public void onReceive(Context context, Intent intent) {
-		Intent service = new Intent(
-				"COM.LILOSOFT.XTCM.MODULE.AUTO_LOCATION_REPORT_SERVICE");
-		context.startService(service);
-		LogFactory.v("³Ç¹ÜÍ¨", "×Ô¶¯Æô¶¯");
-		// Æô¶¯Ó¦ÓÃ£¬²ÎÊıÎªĞèÒª×Ô¶¯Æô¶¯µÄÓ¦ÓÃµÄ°üÃû
-	}
+    // é‡å†™onReceiveæ–¹æ³•
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        Intent service = new Intent(
+                "COM.LILOSOFT.XTCM.MODULE.AUTO_LOCATION_REPORT_SERVICE");
+        context.startService(service);
+        LogFactory.v("åŸç®¡é€š", "è‡ªåŠ¨å¯åŠ¨");
+        // å¯åŠ¨åº”ç”¨ï¼Œå‚æ•°ä¸ºéœ€è¦è‡ªåŠ¨å¯åŠ¨çš„åº”ç”¨çš„åŒ…å
+    }
 }

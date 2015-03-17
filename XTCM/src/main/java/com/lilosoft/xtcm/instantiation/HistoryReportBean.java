@@ -4,201 +4,201 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @category ¿˙ ∑“—…œ±®◊÷∂Œ
+ * @category ÂéÜÂè≤Â∑≤‰∏äÊä•Â≠óÊÆµ
  * @author William Liu
- * 
+ *
  */
 public class HistoryReportBean {
 
-	private List<String> list = null;
-	private String DISPATCHWARMINGTIME; // ≈…«≤‘§æØ ±º‰
-	private String CASEITEM; // ªÒ»°∞∏º˛µƒ∑÷¿‡
-	private String CASECODE; // ∞∏º˛±‡∫≈
-	private String CASEDESCRIPTION; // ∞∏º˛ƒ⁄»›
-	private String CASESOURCE; // ∞∏º˛¿¥‘¥
-	private String CASETITLE; // ∞∏º˛ºÚΩÈ
-	private String SIGNTIME; // «© ’ ±º‰
-	private String GRIDCODE; // Õ¯∏Ò±‡∫≈
-	private String CREATETIME; // ∞∏º˛¥¥Ω® ±º‰
-	private String PUTONRECORDWARNINGTIME; // ∞∏º˛‘§æØ ±º‰
-	private String PUTONRECORDTIME; // ¡¢∞∏ ±º‰
-	private String DeptName; // ¥¶÷√≤ø√≈
-	private String FEEDBACKDEALRESULT; // ∑¥¿°∞Ï¿ÌΩ·π˚
-	private List<FileBean> ApproveFileList;
+    private List<String> list = null;
+    private String DISPATCHWARMINGTIME; // Ê¥æÈÅ£È¢ÑË≠¶Êó∂Èó¥
+    private String CASEITEM; // Ëé∑ÂèñÊ°à‰ª∂ÁöÑÂàÜÁ±ª
+    private String CASECODE; // Ê°à‰ª∂ÁºñÂè∑
+    private String CASEDESCRIPTION; // Ê°à‰ª∂ÂÜÖÂÆπ
+    private String CASESOURCE; // Ê°à‰ª∂Êù•Ê∫ê
+    private String CASETITLE; // Ê°à‰ª∂ÁÆÄ‰ªã
+    private String SIGNTIME; // Á≠æÊî∂Êó∂Èó¥
+    private String GRIDCODE; // ÁΩëÊ†ºÁºñÂè∑
+    private String CREATETIME; // Ê°à‰ª∂ÂàõÂª∫Êó∂Èó¥
+    private String PUTONRECORDWARNINGTIME; // Ê°à‰ª∂È¢ÑË≠¶Êó∂Èó¥
+    private String PUTONRECORDTIME; // Á´ãÊ°àÊó∂Èó¥
+    private String DeptName; // Â§ÑÁΩÆÈÉ®Èó®
+    private String FEEDBACKDEALRESULT; // ÂèçÈ¶àÂäûÁêÜÁªìÊûú
+    private List<FileBean> ApproveFileList;
 
-	public HistoryReportBean(String dispatchwarmingtime, String caseitem,
-			String casecode, String casedescription, String casesource,
-			String casetitle, String signtime, String gridcode,
-			String createtime, String putonrecordwarningtime,
-			String putonrecordtime, String deptname, String feedbackdealresult,
-			List<FileBean> approvefilelist) {
-		// TODO Auto-generated constructor stub
-		this.DISPATCHWARMINGTIME = dispatchwarmingtime;
-		this.CASEITEM = caseitem;
-		this.CASECODE = casecode;
-		this.CASEDESCRIPTION = casedescription;
-		this.CASESOURCE = casesource;
-		this.CASETITLE = casetitle;
-		this.SIGNTIME = signtime;
-		this.GRIDCODE = gridcode;
-		this.CREATETIME = createtime;
-		this.PUTONRECORDWARNINGTIME = putonrecordwarningtime;
-		this.PUTONRECORDTIME = putonrecordtime;
-		this.DeptName = deptname;
-		this.FEEDBACKDEALRESULT = feedbackdealresult;
-		this.ApproveFileList = approvefilelist;
-		setList();
+    public HistoryReportBean(String dispatchwarmingtime, String caseitem,
+                             String casecode, String casedescription, String casesource,
+                             String casetitle, String signtime, String gridcode,
+                             String createtime, String putonrecordwarningtime,
+                             String putonrecordtime, String deptname, String feedbackdealresult,
+                             List<FileBean> approvefilelist) {
+        // TODO Auto-generated constructor stub
+        this.DISPATCHWARMINGTIME = dispatchwarmingtime;
+        this.CASEITEM = caseitem;
+        this.CASECODE = casecode;
+        this.CASEDESCRIPTION = casedescription;
+        this.CASESOURCE = casesource;
+        this.CASETITLE = casetitle;
+        this.SIGNTIME = signtime;
+        this.GRIDCODE = gridcode;
+        this.CREATETIME = createtime;
+        this.PUTONRECORDWARNINGTIME = putonrecordwarningtime;
+        this.PUTONRECORDTIME = putonrecordtime;
+        this.DeptName = deptname;
+        this.FEEDBACKDEALRESULT = feedbackdealresult;
+        this.ApproveFileList = approvefilelist;
+        setList();
 
-	}
+    }
 
-	public List<String> getList() {
-		return list;
-	}
+    public List<String> getList() {
+        return list;
+    }
 
-	public void setList() {
+    public void setList() {
 
-		if (null != CASECODE) {
-			list = new ArrayList<String>();
-			list.add("≈…«≤‘§æØ ±º‰:");
-			list.add(DISPATCHWARMINGTIME);
-			list.add("ªÒ»°∞∏º˛µƒ∑÷¿‡:");
-			list.add(CASEITEM);
-			list.add("∞∏º˛±‡∫≈:");
-			list.add(CASECODE);
-			list.add("∞∏º˛ƒ⁄»›:");
-			list.add(CASEDESCRIPTION);
-			list.add("∞∏º˛¿¥‘¥:");
-			list.add(CASESOURCE);
-			list.add("∞∏º˛ºÚΩÈ:");
-			list.add(CASETITLE);
-			list.add("«© ’ ±º‰:");
-			list.add(SIGNTIME);
-			list.add("Õ¯∏Ò±‡∫≈:");
-			list.add(GRIDCODE);
-			list.add("∞∏º˛¥¥Ω® ±º‰:");
-			list.add(CREATETIME);
-			list.add("∞∏º˛‘§æØ ±º‰:");
-			list.add(PUTONRECORDWARNINGTIME);
-			list.add("¡¢∞∏ ±º‰:");
-			list.add(PUTONRECORDTIME);
-			list.add("¥¶÷√≤ø√≈:");
-			list.add(DeptName);
-			list.add("∑¥¿°∞Ï¿ÌΩ·π˚:");
-			list.add(FEEDBACKDEALRESULT);
-		}
+        if (null != CASECODE) {
+            list = new ArrayList<String>();
+            list.add("Ê¥æÈÅ£È¢ÑË≠¶Êó∂Èó¥:");
+            list.add(DISPATCHWARMINGTIME);
+            list.add("Ëé∑ÂèñÊ°à‰ª∂ÁöÑÂàÜÁ±ª:");
+            list.add(CASEITEM);
+            list.add("Ê°à‰ª∂ÁºñÂè∑:");
+            list.add(CASECODE);
+            list.add("Ê°à‰ª∂ÂÜÖÂÆπ:");
+            list.add(CASEDESCRIPTION);
+            list.add("Ê°à‰ª∂Êù•Ê∫ê:");
+            list.add(CASESOURCE);
+            list.add("Ê°à‰ª∂ÁÆÄ‰ªã:");
+            list.add(CASETITLE);
+            list.add("Á≠æÊî∂Êó∂Èó¥:");
+            list.add(SIGNTIME);
+            list.add("ÁΩëÊ†ºÁºñÂè∑:");
+            list.add(GRIDCODE);
+            list.add("Ê°à‰ª∂ÂàõÂª∫Êó∂Èó¥:");
+            list.add(CREATETIME);
+            list.add("Ê°à‰ª∂È¢ÑË≠¶Êó∂Èó¥:");
+            list.add(PUTONRECORDWARNINGTIME);
+            list.add("Á´ãÊ°àÊó∂Èó¥:");
+            list.add(PUTONRECORDTIME);
+            list.add("Â§ÑÁΩÆÈÉ®Èó®:");
+            list.add(DeptName);
+            list.add("ÂèçÈ¶àÂäûÁêÜÁªìÊûú:");
+            list.add(FEEDBACKDEALRESULT);
+        }
 
-	}
+    }
 
-	public String getDISPATCHWARMINGTIME() {
-		return DISPATCHWARMINGTIME;
-	}
+    public String getDISPATCHWARMINGTIME() {
+        return DISPATCHWARMINGTIME;
+    }
 
-	public void setDISPATCHWARMINGTIME(String dISPATCHWARMINGTIME) {
-		DISPATCHWARMINGTIME = dISPATCHWARMINGTIME;
-	}
+    public void setDISPATCHWARMINGTIME(String dISPATCHWARMINGTIME) {
+        DISPATCHWARMINGTIME = dISPATCHWARMINGTIME;
+    }
 
-	public String getCASEITEM() {
-		return CASEITEM;
-	}
+    public String getCASEITEM() {
+        return CASEITEM;
+    }
 
-	public void setCASEITEM(String cASEITEM) {
-		CASEITEM = cASEITEM;
-	}
+    public void setCASEITEM(String cASEITEM) {
+        CASEITEM = cASEITEM;
+    }
 
-	public String getCASECODE() {
-		return CASECODE;
-	}
+    public String getCASECODE() {
+        return CASECODE;
+    }
 
-	public void setCASECODE(String cASECODE) {
-		CASECODE = cASECODE;
-	}
+    public void setCASECODE(String cASECODE) {
+        CASECODE = cASECODE;
+    }
 
-	public String getCASEDESCRIPTION() {
-		return CASEDESCRIPTION;
-	}
+    public String getCASEDESCRIPTION() {
+        return CASEDESCRIPTION;
+    }
 
-	public void setCASEDESCRIPTION(String cASEDESCRIPTION) {
-		CASEDESCRIPTION = cASEDESCRIPTION;
-	}
+    public void setCASEDESCRIPTION(String cASEDESCRIPTION) {
+        CASEDESCRIPTION = cASEDESCRIPTION;
+    }
 
-	public String getCASESOURCE() {
-		return CASESOURCE;
-	}
+    public String getCASESOURCE() {
+        return CASESOURCE;
+    }
 
-	public void setCASESOURCE(String cASESOURCE) {
-		CASESOURCE = cASESOURCE;
-	}
+    public void setCASESOURCE(String cASESOURCE) {
+        CASESOURCE = cASESOURCE;
+    }
 
-	public String getCASETITLE() {
-		return CASETITLE;
-	}
+    public String getCASETITLE() {
+        return CASETITLE;
+    }
 
-	public void setCASETITLE(String cASETITLE) {
-		CASETITLE = cASETITLE;
-	}
+    public void setCASETITLE(String cASETITLE) {
+        CASETITLE = cASETITLE;
+    }
 
-	public String getSIGNTIME() {
-		return SIGNTIME;
-	}
+    public String getSIGNTIME() {
+        return SIGNTIME;
+    }
 
-	public void setSIGNTIME(String sIGNTIME) {
-		SIGNTIME = sIGNTIME;
-	}
+    public void setSIGNTIME(String sIGNTIME) {
+        SIGNTIME = sIGNTIME;
+    }
 
-	public String getGRIDCODE() {
-		return GRIDCODE;
-	}
+    public String getGRIDCODE() {
+        return GRIDCODE;
+    }
 
-	public void setGRIDCODE(String gRIDCODE) {
-		GRIDCODE = gRIDCODE;
-	}
+    public void setGRIDCODE(String gRIDCODE) {
+        GRIDCODE = gRIDCODE;
+    }
 
-	public String getCREATETIME() {
-		return CREATETIME;
-	}
+    public String getCREATETIME() {
+        return CREATETIME;
+    }
 
-	public void setCREATETIME(String cREATETIME) {
-		CREATETIME = cREATETIME;
-	}
+    public void setCREATETIME(String cREATETIME) {
+        CREATETIME = cREATETIME;
+    }
 
-	public String getPUTONRECORDWARNINGTIME() {
-		return PUTONRECORDWARNINGTIME;
-	}
+    public String getPUTONRECORDWARNINGTIME() {
+        return PUTONRECORDWARNINGTIME;
+    }
 
-	public void setPUTONRECORDWARNINGTIME(String pUTONRECORDWARNINGTIME) {
-		PUTONRECORDWARNINGTIME = pUTONRECORDWARNINGTIME;
-	}
+    public void setPUTONRECORDWARNINGTIME(String pUTONRECORDWARNINGTIME) {
+        PUTONRECORDWARNINGTIME = pUTONRECORDWARNINGTIME;
+    }
 
-	public String getPUTONRECORDTIME() {
-		return PUTONRECORDTIME;
-	}
+    public String getPUTONRECORDTIME() {
+        return PUTONRECORDTIME;
+    }
 
-	public void setPUTONRECORDTIME(String pUTONRECORDTIME) {
-		PUTONRECORDTIME = pUTONRECORDTIME;
-	}
+    public void setPUTONRECORDTIME(String pUTONRECORDTIME) {
+        PUTONRECORDTIME = pUTONRECORDTIME;
+    }
 
-	public String getDeptName() {
-		return DeptName;
-	}
+    public String getDeptName() {
+        return DeptName;
+    }
 
-	public void setDeptName(String deptName) {
-		DeptName = deptName;
-	}
+    public void setDeptName(String deptName) {
+        DeptName = deptName;
+    }
 
-	public String getFEEDBACKDEALRESULT() {
-		return FEEDBACKDEALRESULT;
-	}
+    public String getFEEDBACKDEALRESULT() {
+        return FEEDBACKDEALRESULT;
+    }
 
-	public void setFEEDBACKDEALRESULT(String fEEDBACKDEALRESULT) {
-		FEEDBACKDEALRESULT = fEEDBACKDEALRESULT;
-	}
+    public void setFEEDBACKDEALRESULT(String fEEDBACKDEALRESULT) {
+        FEEDBACKDEALRESULT = fEEDBACKDEALRESULT;
+    }
 
-	public List<FileBean> getApproveFileList() {
-		return ApproveFileList;
-	}
+    public List<FileBean> getApproveFileList() {
+        return ApproveFileList;
+    }
 
-	public void setApproveFileList(List<FileBean> approveFileList) {
-		ApproveFileList = approveFileList;
-	}
+    public void setApproveFileList(List<FileBean> approveFileList) {
+        ApproveFileList = approveFileList;
+    }
 
 }

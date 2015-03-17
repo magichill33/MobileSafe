@@ -68,7 +68,7 @@ import com.lilosoft.xtcm.utils.JsonParseInterface;
 import com.lilosoft.xtcm.utils.LogFactory;
 
 /**
- * @category ÎÊÌâÉÏ±¨
+ * @category é—®é¢˜ä¸ŠæŠ¥
  * @author William Liu
  *
  */
@@ -77,16 +77,16 @@ public class QuestionReportActivity extends TabBaseActivity implements
         OnClickListener, OnLongClickListener, JsonParseInterface {
 
     /**
-     * ÉÏ±¨³É¹¦
+     * ä¸ŠæŠ¥æˆåŠŸ
      */
     private final static int MSG_REPORT_SUCCESS_ORDER = 0x0FFFFFFF;
     /**
-     * ÉÏ±¨Ê§°Ü
+     * ä¸ŠæŠ¥å¤±è´¥
      */
     private final static int MSG_REPORT_LOST_ORDER = 0x00FFFFFF;
     private final static int INIT = 0x0F1;
     /*
-     * ÊÂ¼ş·ÖÀàÊôĞÔ
+     * äº‹ä»¶åˆ†ç±»å±æ€§
      */
     public static String PID = "bigMC";
     public static String CID = "bigID";
@@ -101,7 +101,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
     String layer = null;
     private View layout_info;
     private View layout_media;
-    private Spinner type, type1, type2;// ÊÂ¼ş·ÖÀà
+    private Spinner type, type1, type2;// äº‹ä»¶åˆ†ç±»
     private int typePosition = 0;
     private int type1Position = 0;
     private int type2Position = 0;
@@ -140,7 +140,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
     });
     private String err_Msg;
     /**
-     * @category Ö÷Ïß³Ì´¦Àí
+     * @category ä¸»çº¿ç¨‹å¤„ç†
      */
     @SuppressLint("HandlerLeak")
     private Handler myHandle = new Handler() {
@@ -155,7 +155,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
                     hasDataThenInit();
                     break;
                 case Config.SHOW_PROGRESS_DIALOG:
-                    HomeBaseActivity.showProgressDialog("½»»¥ÖĞ¡­");
+                    HomeBaseActivity.showProgressDialog("äº¤äº’ä¸­â€¦");
                     break;
                 case Config.DISMISS_PROGRESS_DIALOG:
                     HomeBaseActivity.dismissProgressDialog();
@@ -194,13 +194,13 @@ public class QuestionReportActivity extends TabBaseActivity implements
     private View save;
     private EditText etCaseNum;
     private String casesNum;
-    // ×Ö·ûÊäÈë¼àÌıÆ÷
+    // å­—ç¬¦è¾“å…¥ç›‘å¬å™¨
     TextWatcher caseNumListener = new TextWatcher() {
         @Override
         public void afterTextChanged(Editable s) {
             String text = s.toString();
             int len = s.toString().length();
-            if (len == 1 && text.equals("0")) {// ÅĞ¶Ï²»ÄÜÊäÈë0»òÕß0¿ªÍ·µÄÊı×Ö
+            if (len == 1 && text.equals("0")) {// åˆ¤æ–­ä¸èƒ½è¾“å…¥0æˆ–è€…0å¼€å¤´çš„æ•°å­—
                 s.clear();
             } else {
                 casesNum = s.toString();
@@ -218,7 +218,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
         }
     };
     /**
-     * @category ÎÊÌâÉÏ±¨ÇëÇó´¦Àí
+     * @category é—®é¢˜ä¸ŠæŠ¥è¯·æ±‚å¤„ç†
      */
     private Thread reportThread = new Thread(new Runnable() {
 
@@ -275,18 +275,18 @@ public class QuestionReportActivity extends TabBaseActivity implements
                 }
 
                 /**
-                 * »ñÈ¡µÚÈı¼¶ÊÂ¼ş·ÖÀàID
+                 * è·å–ç¬¬ä¸‰çº§äº‹ä»¶åˆ†ç±»ID
                  */
-                List<String> middles = new ArrayList<String>();// µÚ¶ş¼¶ID¼¯ºÏ
-                List<String> middleNames = new ArrayList<String>();// µÚ¶ş¼¶Name¼¯ºÏ
-                List<String> smalls = new ArrayList<String>();// µÚÈı¼¶ID¼¯ºÏ
-                List<String> smallNames = new ArrayList<String>();// µÚÈı¼¶Name¼¯ºÏ
+                List<String> middles = new ArrayList<String>();// ç¬¬äºŒçº§IDé›†åˆ
+                List<String> middleNames = new ArrayList<String>();// ç¬¬äºŒçº§Nameé›†åˆ
+                List<String> smalls = new ArrayList<String>();// ç¬¬ä¸‰çº§IDé›†åˆ
+                List<String> smallNames = new ArrayList<String>();// ç¬¬ä¸‰çº§Nameé›†åˆ
                 String[] bigArray = new AutoUpdateEvent(
-                        QuestionReportActivity.this).getBigEvent(CID);// »ñÈ¡µÚÒ»¼¶IDÊı×é
+                        QuestionReportActivity.this).getBigEvent(CID);// è·å–ç¬¬ä¸€çº§IDæ•°ç»„
                 String[] bigNameArray = new AutoUpdateEvent(
-                        QuestionReportActivity.this).getBigEvent(PID);// »ñÈ¡µÚÒ»¼¶Ãû³ÆÊı×é
-                String bigID = bigArray[type.getSelectedItemPosition()];// »ñÈ¡µ±Ç°Ñ¡È¡µÄID
-                String bigName = bigNameArray[type.getSelectedItemPosition()];// »ñÈ¡µ±Ç°Ñ¡È¡µÄName
+                        QuestionReportActivity.this).getBigEvent(PID);// è·å–ç¬¬ä¸€çº§åç§°æ•°ç»„
+                String bigID = bigArray[type.getSelectedItemPosition()];// è·å–å½“å‰é€‰å–çš„ID
+                String bigName = bigNameArray[type.getSelectedItemPosition()];// è·å–å½“å‰é€‰å–çš„Name
                 for (int i = 0; i < eventList.size(); i++) {
                     EventKings event = eventList.get(i);
                     if (bigID.equals(event.getParentid())) {
@@ -296,7 +296,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
                 }
                 if (middles != null && middles.size() > 0) {
                     String middleID = middles.get(type1
-                            .getSelectedItemPosition());// »ñÈ¡µ±Ç°µÚ¶ş¼¶ID
+                            .getSelectedItemPosition());// è·å–å½“å‰ç¬¬äºŒçº§ID
                     for (int i = 0; i < eventList.size(); i++) {
                         EventKings event = eventList.get(i);
                         if (middleID.equals(event.getParentid())) {
@@ -305,12 +305,12 @@ public class QuestionReportActivity extends TabBaseActivity implements
                         }
                     }
                 }
-                String smallID = smalls.get(type2.getSelectedItemPosition());// µÚÈı¼¶ID
+                String smallID = smalls.get(type2.getSelectedItemPosition());// ç¬¬ä¸‰çº§ID
                 String middleName = middleNames.get(type1
-                        .getSelectedItemPosition());// µÚ¶ş¼¶Name
+                        .getSelectedItemPosition());// ç¬¬äºŒçº§Name
                 String smallName = smallNames.get(type2
-                        .getSelectedItemPosition());// µÚ¶ş¼¶Name
-                // °¸¼şÊıÁ¿
+                        .getSelectedItemPosition());// ç¬¬äºŒçº§Name
+                // æ¡ˆä»¶æ•°é‡
                 // casesNum = etCaseNum.getText().toString();
 
                 HttpConnection httpConnection = new HttpConnection();
@@ -358,7 +358,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
         }
 
     });
-    //´æ´¢²¿¼şÉÏ±¨ĞèÒª´«µİµÄĞÅÏ¢
+    //å­˜å‚¨éƒ¨ä»¶ä¸ŠæŠ¥éœ€è¦ä¼ é€’çš„ä¿¡æ¯
     private HashMap<String, String> events = new HashMap<String, String>();
     private HashMap<String, String> eventsLayer = new HashMap<String, String>();
     private String oBJECTID;
@@ -374,7 +374,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
     private String lon;
     private String lat;
     /**
-     * @category ÎÊÌâÉÏ±¨ÇëÇó´¦Àí
+     * @category é—®é¢˜ä¸ŠæŠ¥è¯·æ±‚å¤„ç†
      */
     private Thread partReportThread = new Thread(new Runnable() {
 
@@ -431,18 +431,18 @@ public class QuestionReportActivity extends TabBaseActivity implements
                 }
 
                 /**
-                 * »ñÈ¡µÚÈı¼¶ÊÂ¼ş·ÖÀàID
+                 * è·å–ç¬¬ä¸‰çº§äº‹ä»¶åˆ†ç±»ID
                  */
-                List<String> middles = new ArrayList<String>();// µÚ¶ş¼¶ID¼¯ºÏ
-                List<String> middleNames = new ArrayList<String>();// µÚ¶ş¼¶Name¼¯ºÏ
-                List<String> smalls = new ArrayList<String>();// µÚÈı¼¶ID¼¯ºÏ
-                List<String> smallNames = new ArrayList<String>();// µÚÈı¼¶Name¼¯ºÏ
+                List<String> middles = new ArrayList<String>();// ç¬¬äºŒçº§IDé›†åˆ
+                List<String> middleNames = new ArrayList<String>();// ç¬¬äºŒçº§Nameé›†åˆ
+                List<String> smalls = new ArrayList<String>();// ç¬¬ä¸‰çº§IDé›†åˆ
+                List<String> smallNames = new ArrayList<String>();// ç¬¬ä¸‰çº§Nameé›†åˆ
                 String[] bigArray = new AutoUpdateEvent(
-                        QuestionReportActivity.this).getBigEvent(CID);// »ñÈ¡µÚÒ»¼¶IDÊı×é
+                        QuestionReportActivity.this).getBigEvent(CID);// è·å–ç¬¬ä¸€çº§IDæ•°ç»„
                 String[] bigNameArray = new AutoUpdateEvent(
-                        QuestionReportActivity.this).getBigEvent(PID);// »ñÈ¡µÚÒ»¼¶Ãû³ÆÊı×é
-                String bigID = bigArray[type.getSelectedItemPosition()];// »ñÈ¡µ±Ç°Ñ¡È¡µÄID
-                String bigName = bigNameArray[type.getSelectedItemPosition()];// »ñÈ¡µ±Ç°Ñ¡È¡µÄName
+                        QuestionReportActivity.this).getBigEvent(PID);// è·å–ç¬¬ä¸€çº§åç§°æ•°ç»„
+                String bigID = bigArray[type.getSelectedItemPosition()];// è·å–å½“å‰é€‰å–çš„ID
+                String bigName = bigNameArray[type.getSelectedItemPosition()];// è·å–å½“å‰é€‰å–çš„Name
                 for (int i = 0; i < eventList.size(); i++) {
                     EventKings event = eventList.get(i);
                     if (bigID.equals(event.getParentid())) {
@@ -452,7 +452,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
                 }
                 if (middles != null && middles.size() > 0) {
                     String middleID = middles.get(type1
-                            .getSelectedItemPosition());// »ñÈ¡µ±Ç°µÚ¶ş¼¶ID
+                            .getSelectedItemPosition());// è·å–å½“å‰ç¬¬äºŒçº§ID
                     for (int i = 0; i < eventList.size(); i++) {
                         EventKings event = eventList.get(i);
                         if (middleID.equals(event.getParentid())) {
@@ -461,12 +461,12 @@ public class QuestionReportActivity extends TabBaseActivity implements
                         }
                     }
                 }
-                String smallID = smalls.get(type2.getSelectedItemPosition());// µÚÈı¼¶ID
+                String smallID = smalls.get(type2.getSelectedItemPosition());// ç¬¬ä¸‰çº§ID
                 String middleName = middleNames.get(type1
-                        .getSelectedItemPosition());// µÚ¶ş¼¶Name
+                        .getSelectedItemPosition());// ç¬¬äºŒçº§Name
                 String smallName = smallNames.get(type2
-                        .getSelectedItemPosition());// µÚ¶ş¼¶Name
-                // °¸¼şÊıÁ¿
+                        .getSelectedItemPosition());// ç¬¬äºŒçº§Name
+                // æ¡ˆä»¶æ•°é‡
                 // casesNum = etCaseNum.getText().toString();
 
                 HttpConnection httpConnection = new HttpConnection();
@@ -536,10 +536,10 @@ public class QuestionReportActivity extends TabBaseActivity implements
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        plusScaleAnimation = new ScaleAnimation(0f, 1f, 0f, // xÖáËõ·Å±ÈÀı£¬yÖáËõ·Å±ÈÀı
-                1f, 0f, 0f); // ×óÉÏ½Ç¿ªÊ¼
+        plusScaleAnimation = new ScaleAnimation(0f, 1f, 0f, // xè½´ç¼©æ”¾æ¯”ä¾‹ï¼Œyè½´ç¼©æ”¾æ¯”ä¾‹
+                1f, 0f, 0f); // å·¦ä¸Šè§’å¼€å§‹
         plusScaleAnimation.setDuration(200);
-        // ´¦ÀíÇ°
+        // å¤„ç†å‰
 
         media_p11 = (ImageView) findViewById(R.id.media_p11);
         media_p11.setAnimation(plusScaleAnimation);
@@ -550,7 +550,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
         media_p31 = (ImageView) findViewById(R.id.media_p31);
         media_p31.setAnimation(plusScaleAnimation);
 
-        // ÒôÆµ
+        // éŸ³é¢‘
         media_rt11 = (TextView) findViewById(R.id.media_rt11);
 
         media_rt21 = (TextView) findViewById(R.id.media_rt21);
@@ -571,7 +571,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
 
         map.setOnClickListener(this);
 
-        // ´¦ÀíÇ°
+        // å¤„ç†å‰
         media_p11.setOnClickListener(this);
         media_p11.setOnLongClickListener(this);
 
@@ -581,7 +581,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
         media_p31.setOnClickListener(this);
         media_p31.setOnLongClickListener(this);
 
-        // ÒôÆµ
+        // éŸ³é¢‘
 
         // media_r11.setOnClickListener(this);
         // media_r11.setOnLongClickListener(this);
@@ -604,7 +604,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
         // type1.setAdapter(adapter1);
         // type2.setAdapter(adapter2);
         // etCaseNum.setText("");
-        // map.setText("µã»÷Ñ¡Ôñ");
+        // map.setText("ç‚¹å‡»é€‰æ‹©");
         descript.setText("");
         // etCaseNum.setText("");
         drawable1 = null;
@@ -633,7 +633,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
     }
 
     /**
-     * @category Ö¸Áî·Ö·¢
+     * @category æŒ‡ä»¤åˆ†å‘
      * @param response
      */
     private void action(String response) {
@@ -652,7 +652,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
     @Override
     public int jsonParseToOrder(String response) throws JSONException {
         // TODO Auto-generated method stub
-        // {"head":"approve","body":{"isSuccess":"1","message":"Ìá½»³É¹¦"}}
+        // {"head":"approve","body":{"isSuccess":"1","message":"æäº¤æˆåŠŸ"}}
 
         if (null != response && !"".equals(response)) {
             JSONObject jsonObject = new JSONObject(response);
@@ -686,7 +686,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
                 }
             }
         } else {
-            err_Msg = "Êı¾İÒì³££¡";
+            err_Msg = "æ•°æ®å¼‚å¸¸ï¼";
             LogFactory.e(TAG, "not data!");
         }
 
@@ -698,14 +698,14 @@ public class QuestionReportActivity extends TabBaseActivity implements
         // TODO Auto-generated method stub
         switch (v.getId()) {
             case R.id.map:
-                if(!type.getSelectedItem().toString().equals("²¿¼ş·ÖÀà")){
+                if(!type.getSelectedItem().toString().equals("éƒ¨ä»¶åˆ†ç±»")){
                     startActivityForResult(new Intent(mContext, MapActivity.class),
                             R.id.map);
                 }else{
                     code = events.get(type2.getSelectedItem().toString());
                     layer = eventsLayer.get(type2.getSelectedItem().toString());
                     if (TextUtils.isEmpty(layer)) {
-                        Toast.makeText(this, "Í¼²ãÎª¿Õ", 1).show();
+                        Toast.makeText(this, "å›¾å±‚ä¸ºç©º", 1).show();
                         return;
                     } else {
                         LogFactory.e(TAG, "code = " + code);
@@ -722,27 +722,27 @@ public class QuestionReportActivity extends TabBaseActivity implements
             case R.id.submit:
                 boolean finishKey = true;
                 // if (0 == typePosition) {
-                // Toast.makeText(mContext, "ÇëÑ¡ÔñÀàĞÍ£¡£¡", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(mContext, "è¯·é€‰æ‹©ç±»å‹ï¼ï¼", Toast.LENGTH_SHORT).show();
                 // finishKey = false;
                 // }
                 if (-1 == type2.getSelectedItemPosition()) {
-                    Toast.makeText(mContext, "ÇëÑ¡ÔñÀàĞÍ£¡£¡", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "è¯·é€‰æ‹©ç±»å‹ï¼ï¼", Toast.LENGTH_SHORT).show();
                     finishKey = false;
-                } else if ("ÇëÑ¡ÔñÎ»ÖÃ".equals(map.getText().toString())) {
-                    Toast.makeText(mContext, "ÇëÔÚµØÍ¼ÉÏÑ¡ÔñÎ»ÖÃ£¡", Toast.LENGTH_SHORT)
+                } else if ("è¯·é€‰æ‹©ä½ç½®".equals(map.getText().toString())) {
+                    Toast.makeText(mContext, "è¯·åœ¨åœ°å›¾ä¸Šé€‰æ‹©ä½ç½®ï¼", Toast.LENGTH_SHORT)
                             .show();
                     finishKey = false;
                 } else if ("".equals(descript.getText().toString())) {
-                    Toast.makeText(mContext, "ÎÊÌâÃèÊö²»ÄÜÎª¿Õ£¡", Toast.LENGTH_SHORT)
+                    Toast.makeText(mContext, "é—®é¢˜æè¿°ä¸èƒ½ä¸ºç©ºï¼", Toast.LENGTH_SHORT)
                             .show();
                     finishKey = false;
                 } else if ("".equals(s1)) {
-                    Toast.makeText(mContext, "¶àÃ½Ìå²»ÄÜÎª¿Õ£¡", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "å¤šåª’ä½“ä¸èƒ½ä¸ºç©ºï¼", Toast.LENGTH_SHORT).show();
                     finishKey = false;
                 } else if (finishKey) {
                     if (Config.NETWORK) {
-                        showProgressDialog("ÕıÔÚÉÏ±¨°¸¼ş£¬ÇëÉÔµÈ£¡");
-                        if(type.getSelectedItem().toString().equals("²¿¼ş·ÖÀà")){
+                        showProgressDialog("æ­£åœ¨ä¸ŠæŠ¥æ¡ˆä»¶ï¼Œè¯·ç¨ç­‰ï¼");
+                        if(type.getSelectedItem().toString().equals("éƒ¨ä»¶åˆ†ç±»")){
                             threadG = new Thread(partReportThread);
                             threadG.start();
                         }else{
@@ -750,7 +750,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
                             threadG.start();
                         }
                     } else {
-                        Toast.makeText(mContext, "ÎŞÍøÄ£Ê½-ÉÏ±¨£¡", Toast.LENGTH_SHORT)
+                        Toast.makeText(mContext, "æ— ç½‘æ¨¡å¼-ä¸ŠæŠ¥ï¼", Toast.LENGTH_SHORT)
                                 .show();
                     }
 
@@ -771,36 +771,36 @@ public class QuestionReportActivity extends TabBaseActivity implements
             case R.id.save:
                 boolean saveKey = true;
                 // if (0 == typePosition) {
-                // Toast.makeText(mContext, "ÇëÑ¡ÔñÀàĞÍ£¡£¡", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(mContext, "è¯·é€‰æ‹©ç±»å‹ï¼ï¼", Toast.LENGTH_SHORT).show();
                 // saveKey = false;
                 // }
                 if (-1 == type2.getSelectedItemPosition()) {
-                    Toast.makeText(mContext, "ÇëÑ¡ÔñÀàĞÍ£¡£¡", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "è¯·é€‰æ‹©ç±»å‹ï¼ï¼", Toast.LENGTH_SHORT).show();
                     finishKey = false;
-                } else if ("ÇëÑ¡ÔñÎ»ÖÃ".equals(map.getText().toString())) {
-                    Toast.makeText(mContext, "ÇëÔÚµØÍ¼ÉÏÑ¡ÔñÎ»ÖÃ£¡", Toast.LENGTH_SHORT)
+                } else if ("è¯·é€‰æ‹©ä½ç½®".equals(map.getText().toString())) {
+                    Toast.makeText(mContext, "è¯·åœ¨åœ°å›¾ä¸Šé€‰æ‹©ä½ç½®ï¼", Toast.LENGTH_SHORT)
                             .show();
                     saveKey = false;
                 } else if ("".equals(descript.getText().toString())) {
-                    Toast.makeText(mContext, "ÎÊÌâÃèÊö²»ÄÜÎª¿Õ£¡", Toast.LENGTH_SHORT)
+                    Toast.makeText(mContext, "é—®é¢˜æè¿°ä¸èƒ½ä¸ºç©ºï¼", Toast.LENGTH_SHORT)
                             .show();
                     saveKey = false;
                 } else if ("".equals(s1)) {
-                    Toast.makeText(mContext, "´¦ÀíÇ°Í¼Æ¬²»ÄÜÎª¿Õ£¡", Toast.LENGTH_SHORT)
+                    Toast.makeText(mContext, "å¤„ç†å‰å›¾ç‰‡ä¸èƒ½ä¸ºç©ºï¼", Toast.LENGTH_SHORT)
                             .show();
                     saveKey = false;
                 }
                 if (saveKey) {
                     /**
-                     * »ñÈ¡µÚÈı¼¶ÊÂ¼ş·ÖÀàID
+                     * è·å–ç¬¬ä¸‰çº§äº‹ä»¶åˆ†ç±»ID
                      */
-                    List<String> middles = new ArrayList<String>();// µÚ¶ş¼¶ID¼¯ºÏ
-                    List<String> middleNames = new ArrayList<String>();// µÚ¶ş¼¶Name¼¯ºÏ
-                    List<String> smalls = new ArrayList<String>();// µÚÈı¼¶ID¼¯ºÏ
-                    List<String> smallNames = new ArrayList<String>();// µÚÈı¼¶Name¼¯ºÏ
+                    List<String> middles = new ArrayList<String>();// ç¬¬äºŒçº§IDé›†åˆ
+                    List<String> middleNames = new ArrayList<String>();// ç¬¬äºŒçº§Nameé›†åˆ
+                    List<String> smalls = new ArrayList<String>();// ç¬¬ä¸‰çº§IDé›†åˆ
+                    List<String> smallNames = new ArrayList<String>();// ç¬¬ä¸‰çº§Nameé›†åˆ
                     String[] bigArray = new AutoUpdateEvent(
-                            QuestionReportActivity.this).getBigEvent(CID);// »ñÈ¡µÚÒ»¼¶IDÊı×é
-                    String bigID = bigArray[type.getSelectedItemPosition()];// »ñÈ¡µ±Ç°Ñ¡È¡µÄID
+                            QuestionReportActivity.this).getBigEvent(CID);// è·å–ç¬¬ä¸€çº§IDæ•°ç»„
+                    String bigID = bigArray[type.getSelectedItemPosition()];// è·å–å½“å‰é€‰å–çš„ID
                     String middleID = null;
                     for (int i = 0; i < eventList.size(); i++) {
                         EventKings event = eventList.get(i);
@@ -810,7 +810,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
                         }
                     }
                     if (middles != null && middles.size() > 0) {
-                        middleID = middles.get(type1.getSelectedItemPosition());// »ñÈ¡µ±Ç°µÚ¶ş¼¶ID
+                        middleID = middles.get(type1.getSelectedItemPosition());// è·å–å½“å‰ç¬¬äºŒçº§ID
                         for (int i = 0; i < eventList.size(); i++) {
                             EventKings event = eventList.get(i);
                             if (middleID.equals(event.getParentid())) {
@@ -819,8 +819,8 @@ public class QuestionReportActivity extends TabBaseActivity implements
                             }
                         }
                     }
-                    String smallID = smalls.get(type2.getSelectedItemPosition());// µÚÈı¼¶ID
-                    // °¸¼şÊıÁ¿
+                    String smallID = smalls.get(type2.getSelectedItemPosition());// ç¬¬ä¸‰çº§ID
+                    // æ¡ˆä»¶æ•°é‡
                     // String casesNum = etCaseNum.getText().toString();
                     DatabaseFactory databaseFactory = new DatabaseFactory(this);
                     ReadyReportBean bean = new ReadyReportBean();
@@ -847,14 +847,14 @@ public class QuestionReportActivity extends TabBaseActivity implements
                         bean.setQ_QUESTION_ID(ReadyReportActivity.readyReportBean
                                 .getQ_QUESTION_ID());
                         databaseFactory.update(bean);
-                        Toast.makeText(mContext, "ÒÑĞŞ¸Ä£¡", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "å·²ä¿®æ”¹ï¼", Toast.LENGTH_SHORT).show();
                     } else {
                         if (!databaseFactory.check(bean)) {
                             databaseFactory.insert(bean);
-                            Toast.makeText(mContext, "ÒÑ±£´æ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(mContext, "å·²ä¿å­˜ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
-                            Toast.makeText(mContext, "²»ÄÜÖØ¸´±£´æ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(mContext, "ä¸èƒ½é‡å¤ä¿å­˜ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         }
 
@@ -870,7 +870,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
     }
 
     /***
-     * ÎŞÄÚÈİ²»²Ù×÷
+     * æ— å†…å®¹ä¸æ“ä½œ
      */
     @Override
     public boolean onLongClick(View v) {
@@ -937,14 +937,14 @@ public class QuestionReportActivity extends TabBaseActivity implements
         switch (item.getItemId()) {
 
             /**
-             * ÅÄÕÕ
+             * æ‹ç…§
              */
             case R.id.menu_take:
                 takePictureFromCameraIntent();
                 startActivityForResult(takePictureFromCameraIntent, 4);
                 break;
             /**
-             * ´ÓÏà²á»ñÈ¡
+             * ä»ç›¸å†Œè·å–
              */
             case R.id.menu_choose:
                 startActivityForResult(selectImgIntent, 3);
@@ -1035,10 +1035,10 @@ public class QuestionReportActivity extends TabBaseActivity implements
         selectImgIntent = new Intent(Intent.ACTION_GET_CONTENT);
         selectImgIntent.addCategory(Intent.CATEGORY_OPENABLE);
         selectImgIntent.setType("image/*");
-        // selectImgIntent.setType("audio/*"); // Ñ¡ÔñÒôÆµ
-        // selectImgIntent.setType("video/*"); // Ñ¡ÔñÊÓÆµ £¨mp4 3gp ÊÇandroidÖ§³ÖµÄÊÓÆµ¸ñÊ½£©
-        // selectImgIntent.setType("video/*;image/*");// Í¬Ê±Ñ¡ÔñÊÓÆµºÍÍ¼Æ¬
-        // selectImgIntent.putExtra("crop", "true"); // ²Ã¼ô
+        // selectImgIntent.setType("audio/*"); // é€‰æ‹©éŸ³é¢‘
+        // selectImgIntent.setType("video/*"); // é€‰æ‹©è§†é¢‘ ï¼ˆmp4 3gp æ˜¯androidæ”¯æŒçš„è§†é¢‘æ ¼å¼ï¼‰
+        // selectImgIntent.setType("video/*;image/*");// åŒæ—¶é€‰æ‹©è§†é¢‘å’Œå›¾ç‰‡
+        // selectImgIntent.putExtra("crop", "true"); // è£å‰ª
         // selectImgIntent.putExtra("aspectX", 1);
         // selectImgIntent.putExtra("aspectY", 1);
         // selectImgIntent.putExtra("outputX", 80);
@@ -1079,7 +1079,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,
                                        int arg2, long arg3) {
-                if(type.getSelectedItem().toString().equals("²¿¼ş·ÖÀà")){
+                if(type.getSelectedItem().toString().equals("éƒ¨ä»¶åˆ†ç±»")){
                     save.setVisibility(View.INVISIBLE);
                 }else{
                     save.setVisibility(View.VISIBLE);
@@ -1199,7 +1199,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
     private void takePictureFromCameraIntent() {
         if (!Environment.getExternalStorageState().equals(
                 Environment.MEDIA_MOUNTED)) {
-            Toast.makeText(this, "µ±Ç°Éè±¸ÎŞSD¿¨£¬ÎŞ·¨½øĞĞÅÄÕÕ£¡", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "å½“å‰è®¾å¤‡æ— SDå¡ï¼Œæ— æ³•è¿›è¡Œæ‹ç…§ï¼", Toast.LENGTH_SHORT).show();
             return;
         }
         String base = "LILOSOFT";
@@ -1221,7 +1221,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
     }
 
     /**
-     * µØÍ¼,ÅÄÕÕ·µ»ØÊı¾İ
+     * åœ°å›¾,æ‹ç…§è¿”å›æ•°æ®
      */
     @SuppressWarnings("deprecation")
     @Override
@@ -1255,7 +1255,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
                 lon = data.getStringExtra("Lon");
                 lat = data.getStringExtra("Lat");
                 if (null != oBJECTID) {
-                    map.setText("ÖØĞÂÑ¡Ôñ²¿¼ş");
+                    map.setText("é‡æ–°é€‰æ‹©éƒ¨ä»¶");
                 }
             }else if (R.id.map == requestCode) {
                 if (null != data.getStringExtra("local")
@@ -1284,7 +1284,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
                         break;
                 }
                 /**
-                 * ´ÓÏà²á»ñÈ¡·µ»ØÊı¾İ
+                 * ä»ç›¸å†Œè·å–è¿”å›æ•°æ®
                  */
             } else if (3 == requestCode) {
                 selectedImage = data.getData();
@@ -1347,7 +1347,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
                         break;
                     case R.id.media_p21:
                         if (media_p11text.equals(mediaPath)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             try {
@@ -1381,7 +1381,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
                     case R.id.media_p31:
                         if (media_p11text.equals(mediaPath)
                                 || media_p21text.equals(mediaPath)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             try {
@@ -1414,7 +1414,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
             }
 
             /**
-             * ÅÄÕÕ·µ»ØÊı¾İ
+             * æ‹ç…§è¿”å›æ•°æ®
              */
         } else if (4 == requestCode) {
             startPhotoZoom(Uri.fromFile(new File(SD_CARD_TEMP_DIR)));
@@ -1436,7 +1436,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
                     case R.id.media_p11:
                         if (media_p21text.equals(SD_CARD_TEMP_DIR)
                                 || media_p31text.equals(SD_CARD_TEMP_DIR)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             file = new File(SD_CARD_TEMP_DIR);
@@ -1471,7 +1471,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
                     case R.id.media_p21:
                         if (media_p11text.equals(SD_CARD_TEMP_DIR)
                                 || media_p31text.equals(SD_CARD_TEMP_DIR)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             file = new File(SD_CARD_TEMP_DIR);
@@ -1506,7 +1506,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
                     case R.id.media_p31:
                         if (media_p11text.equals(SD_CARD_TEMP_DIR)
                                 || media_p21text.equals(SD_CARD_TEMP_DIR)) {
-                            Toast.makeText(this, "ÕâÕÅÕÕÆ¬ÒÑ¾­´æÔÚ£¡", Toast.LENGTH_SHORT)
+                            Toast.makeText(this, "è¿™å¼ ç…§ç‰‡å·²ç»å­˜åœ¨ï¼", Toast.LENGTH_SHORT)
                                     .show();
                         } else {
                             file = new File(SD_CARD_TEMP_DIR);
@@ -1553,19 +1553,19 @@ public class QuestionReportActivity extends TabBaseActivity implements
     }
 
     /**
-     * ²Ã¼ôÍ¼Æ¬·½·¨ÊµÏÖ
+     * è£å‰ªå›¾ç‰‡æ–¹æ³•å®ç°
      *
      * @param uri
      */
     public void startPhotoZoom(Uri uri) {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
-        // ÏÂÃæÕâ¸öcrop=trueÊÇÉèÖÃÔÚ¿ªÆôµÄIntentÖĞÉèÖÃÏÔÊ¾µÄVIEW¿É²Ã¼ô
+        // ä¸‹é¢è¿™ä¸ªcrop=trueæ˜¯è®¾ç½®åœ¨å¼€å¯çš„Intentä¸­è®¾ç½®æ˜¾ç¤ºçš„VIEWå¯è£å‰ª
         intent.putExtra("crop", "true");
-        // aspectX aspectY ÊÇ¿í¸ßµÄ±ÈÀı
+        // aspectX aspectY æ˜¯å®½é«˜çš„æ¯”ä¾‹
         intent.putExtra("aspectX", 1);
         intent.putExtra("aspectY", 1);
-        // outputX outputY ÊÇ²Ã¼ôÍ¼Æ¬¿í¸ß
+        // outputX outputY æ˜¯è£å‰ªå›¾ç‰‡å®½é«˜
         intent.putExtra("outputX", 200);
         intent.putExtra("outputY", 200);
         intent.putExtra("return-data", true);
@@ -1573,7 +1573,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
     }
 
     /**
-     * »ñÈ¡listÖµµÄË÷Òı
+     * è·å–listå€¼çš„ç´¢å¼•
      *
      * @param strList
      * @param value
@@ -1592,7 +1592,7 @@ public class QuestionReportActivity extends TabBaseActivity implements
     }
 
     /**
-     * »ñÈ¡ArrayÖµµÄË÷Òı
+     * è·å–Arrayå€¼çš„ç´¢å¼•
      *
      * @param strList
      * @param value

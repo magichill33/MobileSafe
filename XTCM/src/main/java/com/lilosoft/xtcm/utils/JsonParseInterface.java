@@ -3,15 +3,15 @@ package com.lilosoft.xtcm.utils;
 import org.json.JSONException;
 
 /**
- * @category jsonÊı¾İ´¦Àí
+ * @category jsonæ•°æ®å¤„ç†
  * @author William Liu
  */
 public interface JsonParseInterface {
 
-	/**
-	 * @category ·şÎñÆ÷·µ»ØÖ¸Áî´¦Àí
-	 * @return
-	 */
-	abstract int jsonParseToOrder(String response) throws JSONException;
+    /**
+     * @category æœåŠ¡å™¨è¿”å›æŒ‡ä»¤å¤„ç†
+     * @return
+     */
+    abstract int jsonParseToOrder(String response) throws JSONException;
 
 }

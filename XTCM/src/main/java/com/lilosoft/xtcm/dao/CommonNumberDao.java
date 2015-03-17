@@ -19,138 +19,138 @@ import android.os.Environment;
 
 public class CommonNumberDao {
 
-	/**
-	 * ¸´ÖÆdb_contacts.db ´ÓAssetsÄ¿Â¼¸´ÖÆµ½sdcard
-	 * 
-	 * @param context
-	 */
-	public static void copyDB(Context context) {
-		try {
-			InputStream inputStream = context.getAssets()
-					.open("db_contacts.db");
-			File file = new File(Environment.getExternalStorageDirectory(),
-					"db_contacts.db");
-			FileOutputStream fos = new FileOutputStream(file);
-			byte[] buffer = new byte[1024];
-			int len = 0;
-			while ((len = inputStream.read(buffer)) != -1) {
-				fos.write(buffer, 0, len);
-			}
-			fos.close();
-			inputStream.close();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+    /**
+     * å¤åˆ¶db_contacts.db ä»Assetsç›®å½•å¤åˆ¶åˆ°sdcard
+     *
+     * @param context
+     */
+    public static void copyDB(Context context) {
+        try {
+            InputStream inputStream = context.getAssets()
+                    .open("db_contacts.db");
+            File file = new File(Environment.getExternalStorageDirectory(),
+                    "db_contacts.db");
+            FileOutputStream fos = new FileOutputStream(file);
+            byte[] buffer = new byte[1024];
+            int len = 0;
+            while ((len = inputStream.read(buffer)) != -1) {
+                fos.write(buffer, 0, len);
+            }
+            fos.close();
+            inputStream.close();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-	/**
-	 * ÅĞ¶ÏÎÄ¼şÊÇ·ñ´æÔÚ
-	 * 
-	 * @return
-	 */
-	public static boolean isExist() {
-		File file = new File(Environment.getExternalStorageDirectory(),
-				"db_contacts.db");
-		return file.exists();
-	}
+    /**
+     * åˆ¤æ–­æ–‡ä»¶æ˜¯å¦å­˜åœ¨
+     *
+     * @return
+     */
+    public static boolean isExist() {
+        File file = new File(Environment.getExternalStorageDirectory(),
+                "db_contacts.db");
+        return file.exists();
+    }
 
-	/**
-	 * »ñÈ¡×éÊı¾İ
-	 * 
-	 * @return
-	 */
-	public static List<Map<String, Object>> getGroupData(Context context) {
+    /**
+     * è·å–ç»„æ•°æ®
+     *
+     * @return
+     */
+    public static List<Map<String, Object>> getGroupData(Context context) {
 
-		List<Map<String, Object>> groupData = new ArrayList<Map<String, Object>>();
-		File file = new File(Environment.getExternalStorageDirectory(),
-				"db_contacts.db");
-		SQLiteDatabase db = new DatabaseHelper(context).getWritableDatabase();
-		if (db.isOpen()) {
-			Cursor cursor = db.query("ct", new String[] { "_id", "dept" },
-					null, null, "dept", null, "_id asc");
-			while (cursor.moveToNext()) {
-				String dept = cursor.getString(1);
+        List<Map<String, Object>> groupData = new ArrayList<Map<String, Object>>();
+        File file = new File(Environment.getExternalStorageDirectory(),
+                "db_contacts.db");
+        SQLiteDatabase db = new DatabaseHelper(context).getWritableDatabase();
+        if (db.isOpen()) {
+            Cursor cursor = db.query("ct", new String[] { "_id", "dept" },
+                    null, null, "dept", null, "_id asc");
+            while (cursor.moveToNext()) {
+                String dept = cursor.getString(1);
 
-				Map<String, Object> map = new HashMap<String, Object>();
-				map.put("dept", dept);
-				groupData.add(map);
-			}
-			cursor.close();
-			db.close();
-		}
-		return groupData;
-	}
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put("dept", dept);
+                groupData.add(map);
+            }
+            cursor.close();
+            db.close();
+        }
+        return groupData;
+    }
 
-	/**
-	 * »ñÈ¡×ÓÊı¾İ Ë¼Â·£º 1 È·¶¨×éÊı¾İ£¬¸ù¾İ×éÊı¾İÀïÃæµÄdeptÀ´²éÑ¯×ÓÊı¾İ
-	 * 
-	 * @return
-	 */
-	public static List<List<Map<String, Object>>> getChildData(Context context) {
-		List<List<Map<String, Object>>> childData = new ArrayList<List<Map<String, Object>>>();
+    /**
+     * è·å–å­æ•°æ® æ€è·¯ï¼š 1 ç¡®å®šç»„æ•°æ®ï¼Œæ ¹æ®ç»„æ•°æ®é‡Œé¢çš„deptæ¥æŸ¥è¯¢å­æ•°æ®
+     *
+     * @return
+     */
+    public static List<List<Map<String, Object>>> getChildData(Context context) {
+        List<List<Map<String, Object>>> childData = new ArrayList<List<Map<String, Object>>>();
 
-		List<Map<String, Object>> groupData = getGroupData(context);
-		for (Map<String, Object> map : groupData) {
-			List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> groupData = getGroupData(context);
+        for (Map<String, Object> map : groupData) {
+            List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 
-			String dept = (String) map.get("dept");
-			// È·¶¨×Ó±í
-			String table = "ct";
-			File file = new File(Environment.getExternalStorageDirectory(),
-					"db_contacts.db");
-			SQLiteDatabase db = new DatabaseHelper(context).getWritableDatabase();
-			if (db.isOpen()) {
-				Cursor cursor = db.query(table, new String[] { "mobilephone",
-						"name", "shortnum" }, "dept=?", new String[] { dept },
-						null, null, null);
-				while (cursor.moveToNext()) {
-					String mobilephone = cursor.getString(0);
-					String name = cursor.getString(1);
-					String shortnum = cursor.getString(2);
+            String dept = (String) map.get("dept");
+            // ç¡®å®šå­è¡¨
+            String table = "ct";
+            File file = new File(Environment.getExternalStorageDirectory(),
+                    "db_contacts.db");
+            SQLiteDatabase db = new DatabaseHelper(context).getWritableDatabase();
+            if (db.isOpen()) {
+                Cursor cursor = db.query(table, new String[] { "mobilephone",
+                                "name", "shortnum" }, "dept=?", new String[] { dept },
+                        null, null, null);
+                while (cursor.moveToNext()) {
+                    String mobilephone = cursor.getString(0);
+                    String name = cursor.getString(1);
+                    String shortnum = cursor.getString(2);
 
-					Map<String, Object> hashMap = new HashMap<String, Object>();
-					hashMap.put("phone", "°ìÀíºÅÂë£º" + mobilephone + "  ¶ÌºÅ£º"
-							+ shortnum);
-					hashMap.put("name", name);
-					hashMap.put("shortnum", shortnum);
-					hashMap.put("mobilephone", mobilephone);
-					list.add(hashMap);
-				}
-				cursor.close();
-				db.close();
-			}
+                    Map<String, Object> hashMap = new HashMap<String, Object>();
+                    hashMap.put("phone", "åŠç†å·ç ï¼š" + mobilephone + "  çŸ­å·ï¼š"
+                            + shortnum);
+                    hashMap.put("name", name);
+                    hashMap.put("shortnum", shortnum);
+                    hashMap.put("mobilephone", mobilephone);
+                    list.add(hashMap);
+                }
+                cursor.close();
+                db.close();
+            }
 
-			childData.add(list);
-		}
+            childData.add(list);
+        }
 
-		return childData;
-	}
+        return childData;
+    }
 
-	public static boolean writeIntoDataBase(Context context,
-			List<ContactsInfo> infos) {
+    public static boolean writeIntoDataBase(Context context,
+                                            List<ContactsInfo> infos) {
 
-		SQLiteDatabase db = new DatabaseHelper(context).getWritableDatabase();
+        SQLiteDatabase db = new DatabaseHelper(context).getWritableDatabase();
 
-		if (db.isOpen()) {
-			// sqliteÖĞÃ»ÓĞtruncate
-			// db.execSQL("truncate table ct");
-			db.execSQL("DROP TABLE IF EXISTS ct");
-			String sql = "CREATE TABLE ct(_id integer primary key autoincrement,"
-					+ "dept varchar(50),name varchar(20),mobilephone varchar(20),shortnum varchar(20))";
-			db.execSQL(sql);
+        if (db.isOpen()) {
+            // sqliteä¸­æ²¡æœ‰truncate
+            // db.execSQL("truncate table ct");
+            db.execSQL("DROP TABLE IF EXISTS ct");
+            String sql = "CREATE TABLE ct(_id integer primary key autoincrement,"
+                    + "dept varchar(50),name varchar(20),mobilephone varchar(20),shortnum varchar(20))";
+            db.execSQL(sql);
 
-			for (ContactsInfo info : infos) {
-				ContentValues values = new ContentValues();
-				values.put("dept", info.deptName);
-				values.put("name", info.linkMan);
-				values.put("mobilephone", info.phoneNumber);
-				values.put("shortnum", info.shortNumber);
-				db.insert("ct", "name", values);
-			}
-			db.close();
-			return true;
-		}
-		return false;
-	}
+            for (ContactsInfo info : infos) {
+                ContentValues values = new ContentValues();
+                values.put("dept", info.deptName);
+                values.put("name", info.linkMan);
+                values.put("mobilephone", info.phoneNumber);
+                values.put("shortnum", info.shortNumber);
+                db.insert("ct", "name", values);
+            }
+            db.close();
+            return true;
+        }
+        return false;
+    }
 }

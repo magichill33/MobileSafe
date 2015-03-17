@@ -29,7 +29,7 @@ import com.lilosoft.xtcm.views.TitleBar;
 import com.lilosoft.xtcm.views.TitleBar.STYLE;
 
 /**
- * @category Ê×Ò³-È¨ÏŞLimit.limit[1]
+ * @category é¦–é¡µ-æƒé™Limit.limit[1]
  * @author William Liu
  *
  */
@@ -42,9 +42,9 @@ public class HomeLowPermissionActivity extends NormalBaseActivity implements
     private FunctionItem functionItem;
     private FunctionItem functionItem1,functionItem2,functionItem3,functionItem4;
     private void isUpdate() {
-        // ÑéÖ¤¸üĞÂµÄÍøÂç×´Ì¬
+        // éªŒè¯æ›´æ–°çš„ç½‘ç»œçŠ¶æ€
         if (GISCommonTools.CheckNet(this)) {
-            // µÚÒ»´ÎµÇÂ½³ÌĞòÊ±½øĞĞÑéÖ¤ÊÇ·ñÆô¶¯¸üĞÂ
+            // ç¬¬ä¸€æ¬¡ç™»é™†ç¨‹åºæ—¶è¿›è¡ŒéªŒè¯æ˜¯å¦å¯åŠ¨æ›´æ–°
             if (getIntent().getSerializableExtra("ifUpdate") == null) {
                 UpdateManager updateManager = new UpdateManager(this);
                 updateManager.checkUpdate();
@@ -80,7 +80,7 @@ public class HomeLowPermissionActivity extends NormalBaseActivity implements
     }
 
     /**
-     * @category ³õÊ¼»¯titleBar
+     * @category åˆå§‹åŒ–titleBar
      */
     protected void initTitleBar() {
 
@@ -168,7 +168,7 @@ public class HomeLowPermissionActivity extends NormalBaseActivity implements
             if (!isExit) {
                 if (!hasTask) {
                     hasTask = true;
-                    Toast.makeText(this, "ÔÙ°´Ò»´ÎÍË³ö", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "å†æŒ‰ä¸€æ¬¡é€€å‡º", Toast.LENGTH_SHORT).show();
                     timer.schedule(task, 2000);
                 } else {
                     ActivityManager.removeAllActivity();
@@ -183,8 +183,8 @@ public class HomeLowPermissionActivity extends NormalBaseActivity implements
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, 0, 0, "µÇ³ö");
-        menu.add(0, 1, 0, "ÍË³ö");
+        menu.add(0, 0, 0, "ç™»å‡º");
+        menu.add(0, 1, 0, "é€€å‡º");
         return super.onCreateOptionsMenu(menu);
     }
 

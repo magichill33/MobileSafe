@@ -2,17 +2,17 @@ package com.lilosoft.xtcm.views;
 
 
 /**
-  * @ClassName IViewStyle
-  * @category À©Õ¹ViewµÄ²»Í¬ÑùÊ½
-  * @author William Liu
-  *
-  */
+ * @ClassName IViewStyle
+ * @category æ‰©å±•Viewçš„ä¸åŒæ ·å¼
+ * @author William Liu
+ *
+ */
 public interface IViewStyle {
-	
-	/**
-	 * @category ¸Ä±äViewµÄÑùÊ½
-	 * @param style View¶ÔÓ¦µÄÑùÊ½
-	 */
-	void changeStyle(int style);
+
+    /**
+     * @category æ”¹å˜Viewçš„æ ·å¼
+     * @param style Viewå¯¹åº”çš„æ ·å¼
+     */
+    void changeStyle(int style);
 
 }

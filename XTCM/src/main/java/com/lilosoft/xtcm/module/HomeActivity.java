@@ -29,261 +29,261 @@ import com.lilosoft.xtcm.utils.ActivityManager;
 import com.lilosoft.xtcm.views.FunctionItem;
 
 /**
- * @category ÷˜“≥
+ * @category ‰∏ªÈ°µ
  * @author William Liu
- * 
+ *
  */
 public class HomeActivity extends TabBaseActivity implements OnClickListener {
 
-	private boolean isExit = false;
-	private boolean hasTask = false;
+    private boolean isExit = false;
+    private boolean hasTask = false;
 
-	private FunctionItem functionItem;
-	private FunctionItem functionItem1;
-	private FunctionItem functionItem2;
-	private FunctionItem functionItem3;
-	private FunctionItem functionItem4;
-	private FunctionItem functionItem5;
-	private FunctionItem functionItem6;
-	private FunctionItem functionItem7;
-	private FunctionItem functionItem8;
-	private FunctionItem functionItem10;
-	//≤øº˛…œ±®£¨¡™œµ»À
-	private FunctionItem functionItem11;
-//	private FunctionItem functionItem12;
-	// ÷∂Ø¥Úø®
-	private FunctionItem functionItem13;
+    private FunctionItem functionItem;
+    private FunctionItem functionItem1;
+    private FunctionItem functionItem2;
+    private FunctionItem functionItem3;
+    private FunctionItem functionItem4;
+    private FunctionItem functionItem5;
+    private FunctionItem functionItem6;
+    private FunctionItem functionItem7;
+    private FunctionItem functionItem8;
+    private FunctionItem functionItem10;
+    //ÈÉ®‰ª∂‰∏äÊä•ÔºåËÅîÁ≥ª‰∫∫
+    private FunctionItem functionItem11;
+    //	private FunctionItem functionItem12;
+    //ÊâãÂä®ÊâìÂç°
+    private FunctionItem functionItem13;
 
-	@Override
-	protected void initListView() {
-		// TODO Auto-generated method stub
+    @Override
+    protected void initListView() {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	@Override
-	protected void installViews() {
-		// TODO Auto-generated method stub
-		setContentView(R.layout.activity_home);
-		setViewsSize();
-		functionItem = (FunctionItem) findViewById(R.id.f_qreport);
-		functionItem1 = (FunctionItem) findViewById(R.id.f_qreport1);
-		functionItem2 = (FunctionItem) findViewById(R.id.f_qreport2);
-		functionItem3 = (FunctionItem) findViewById(R.id.f_qreport3);
-		// functionItem4 = (FunctionItem) findViewById(R.id.f_qreport4);
-		functionItem5 = (FunctionItem) findViewById(R.id.f_qreport5);
-		functionItem6 = (FunctionItem) findViewById(R.id.f_qreport6);
-		functionItem7 = (FunctionItem) findViewById(R.id.f_qreport7);
-		functionItem8 = (FunctionItem) findViewById(R.id.f_qreport8);
-		functionItem10 = (FunctionItem) findViewById(R.id.f_qreport10);
-		functionItem11 = (FunctionItem) findViewById(R.id.f_qreport11);
+    @Override
+    protected void installViews() {
+        // TODO Auto-generated method stub
+        setContentView(R.layout.activity_home);
+        setViewsSize();
+        functionItem = (FunctionItem) findViewById(R.id.f_qreport);
+        functionItem1 = (FunctionItem) findViewById(R.id.f_qreport1);
+        functionItem2 = (FunctionItem) findViewById(R.id.f_qreport2);
+        functionItem3 = (FunctionItem) findViewById(R.id.f_qreport3);
+        // functionItem4 = (FunctionItem) findViewById(R.id.f_qreport4);
+        functionItem5 = (FunctionItem) findViewById(R.id.f_qreport5);
+        functionItem6 = (FunctionItem) findViewById(R.id.f_qreport6);
+        functionItem7 = (FunctionItem) findViewById(R.id.f_qreport7);
+        functionItem8 = (FunctionItem) findViewById(R.id.f_qreport8);
+        functionItem10 = (FunctionItem) findViewById(R.id.f_qreport10);
+        functionItem11 = (FunctionItem) findViewById(R.id.f_qreport11);
 //		functionItem12 = (FunctionItem) findViewById(R.id.f_qreport12);
-		functionItem13 = (FunctionItem) findViewById(R.id.f_qreport13);
-		// showAndRegisterEventsItemWithPermission();
+        functionItem13 = (FunctionItem) findViewById(R.id.f_qreport13);
+        // showAndRegisterEventsItemWithPermission();
 
-	}
+    }
 
-	// private void showAndRegisterEventsItemWithPermission() {
-	// if (Config.LOGLEVEL) {
-	// functionItem8.setVisibility(View.INVISIBLE);
-	// functionItem8.setOnClickListener(this);
-	// }
-	//
-	// }
+    // private void showAndRegisterEventsItemWithPermission() {
+    // if (Config.LOGLEVEL) {
+    // functionItem8.setVisibility(View.INVISIBLE);
+    // functionItem8.setOnClickListener(this);
+    // }
+    //
+    // }
 
-	@Override
-	protected void registerEvents() {
-		// TODO Auto-generated method stub
-		functionItem.setOnClickListener(this);
-		functionItem1.setOnClickListener(this);
-		functionItem2.setOnClickListener(this);
-		functionItem3.setOnClickListener(this);
-		// functionItem4.setOnClickListener(this);
-		functionItem5.setOnClickListener(this);
-		functionItem6.setOnClickListener(this);
-		functionItem7.setOnClickListener(this);
-		functionItem8.setOnClickListener(this);
-		functionItem10.setOnClickListener(this);
-		functionItem11.setOnClickListener(this);
+    @Override
+    protected void registerEvents() {
+        // TODO Auto-generated method stub
+        functionItem.setOnClickListener(this);
+        functionItem1.setOnClickListener(this);
+        functionItem2.setOnClickListener(this);
+        functionItem3.setOnClickListener(this);
+        // functionItem4.setOnClickListener(this);
+        functionItem5.setOnClickListener(this);
+        functionItem6.setOnClickListener(this);
+        functionItem7.setOnClickListener(this);
+        functionItem8.setOnClickListener(this);
+        functionItem10.setOnClickListener(this);
+        functionItem11.setOnClickListener(this);
 //		functionItem12.setOnClickListener(this);
-		functionItem13.setOnClickListener(this);
-	}
+        functionItem13.setOnClickListener(this);
+    }
 
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		// TODO Auto-generated method stub
-		Timer timer = new Timer();
-		TimerTask task = new TimerTask() {
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
 
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				isExit = false;
-				hasTask = false;
-			}
-		};
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                isExit = false;
+                hasTask = false;
+            }
+        };
 
-		if (KeyEvent.KEYCODE_BACK == keyCode) {
-			if (!isExit) {
-				if (!hasTask) {
-					hasTask = true;
-					Toast.makeText(this, "‘Ÿ∞¥“ª¥ŒÕÀ≥ˆ", Toast.LENGTH_SHORT).show();
-					timer.schedule(task, 2000);
-				} else {
-					ActivityManager.removeAllActivity();
-					finish();
-				}
-			}
-		} else if (KeyEvent.KEYCODE_MENU == keyCode) {
-			return super.onKeyDown(keyCode, event);
-		}
-		return false;
-	}
+        if (KeyEvent.KEYCODE_BACK == keyCode) {
+            if (!isExit) {
+                if (!hasTask) {
+                    hasTask = true;
+                    Toast.makeText(this, "ÂÜçÊåâ‰∏ÄÊ¨°ÈÄÄÂá∫", Toast.LENGTH_SHORT).show();
+                    timer.schedule(task, 2000);
+                } else {
+                    ActivityManager.removeAllActivity();
+                    finish();
+                }
+            }
+        } else if (KeyEvent.KEYCODE_MENU == keyCode) {
+            return super.onKeyDown(keyCode, event);
+        }
+        return false;
+    }
 
-	private void setViewsSize() {
+    private void setViewsSize() {
 
-		DisplayMetrics dm = new DisplayMetrics();
-		dm = getResources().getDisplayMetrics();
+        DisplayMetrics dm = new DisplayMetrics();
+        dm = getResources().getDisplayMetrics();
 
-		int topPx = (int) TypedValue.applyDimension(
-				TypedValue.COMPLEX_UNIT_DIP, 130, getResources()
-						.getDisplayMetrics());
+        int topPx = (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, 130, getResources()
+                        .getDisplayMetrics());
 
-		int layoutHeight = (dm.heightPixels - topPx) / 4;
+        int layoutHeight = (dm.heightPixels - topPx) / 4;
 
-		LinearLayout functionLayout = (LinearLayout) findViewById(R.id.home_layout);
-		LinearLayout functionLayout1 = (LinearLayout) findViewById(R.id.home_layout1);
-		LinearLayout functionLayout2 = (LinearLayout) findViewById(R.id.home_layout2);
-		// LinearLayout functionLayout3 = (LinearLayout)
-		// findViewById(R.id.home_layout3);
+        LinearLayout functionLayout = (LinearLayout) findViewById(R.id.home_layout);
+        LinearLayout functionLayout1 = (LinearLayout) findViewById(R.id.home_layout1);
+        LinearLayout functionLayout2 = (LinearLayout) findViewById(R.id.home_layout2);
+        // LinearLayout functionLayout3 = (LinearLayout)
+        // findViewById(R.id.home_layout3);
 
-		// functionLayout.setLayoutParams(new LinearLayout.LayoutParams(
-		// LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		// functionLayout1.setLayoutParams(new LinearLayout.LayoutParams(
-		// LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		// functionLayout2.setLayoutParams(new LinearLayout.LayoutParams(
-		// LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		// functionLayout3.setLayoutParams(new LinearLayout.LayoutParams(
-		// LayoutParams.WRAP_CONTENT, layoutHeight));
-	}
+        // functionLayout.setLayoutParams(new LinearLayout.LayoutParams(
+        // LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        // functionLayout1.setLayoutParams(new LinearLayout.LayoutParams(
+        // LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        // functionLayout2.setLayoutParams(new LinearLayout.LayoutParams(
+        // LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        // functionLayout3.setLayoutParams(new LinearLayout.LayoutParams(
+        // LayoutParams.WRAP_CONTENT, layoutHeight));
+    }
 
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		// Client»®œﬁøÿ÷∆
-		if (User.limit.equals(Limit.limits[0]) || !Config.NETWORK) {
-			switch (v.getId()) {
-			case R.id.f_qreport:
-				HomeBaseActivity.tabHost.setCurrentTabByTag(Config.B_TAB);
-				HomeBaseActivity.tabBt2.setChecked(true);
-				break;
-			case R.id.f_qreport1:
-				HomeBaseActivity.tabHost.setCurrentTabByTag(Config.C_TAB);
-				HomeBaseActivity.tabBt3.setChecked(true);
-				break;
-			case R.id.f_qreport2:
-				HomeBaseActivity.tabHost.setCurrentTabByTag(Config.D_TAB);
-				HomeBaseActivity.tabBt4.setChecked(true);
-				break;
-			case R.id.f_qreport3:
-				HomeBaseActivity.tabHost.setCurrentTabByTag(Config.E_TAB);
-				HomeBaseActivity.tabBt5.setChecked(true);
-				break;
+    @Override
+    public void onClick(View v) {
+        // TODO Auto-generated method stub
+        // ClientÊùÉÈôêÊéßÂà∂
+        if (User.limit.equals(Limit.limits[0]) || !Config.NETWORK) {
+            switch (v.getId()) {
+                case R.id.f_qreport:
+                    HomeBaseActivity.tabHost.setCurrentTabByTag(Config.B_TAB);
+                    HomeBaseActivity.tabBt2.setChecked(true);
+                    break;
+                case R.id.f_qreport1:
+                    HomeBaseActivity.tabHost.setCurrentTabByTag(Config.C_TAB);
+                    HomeBaseActivity.tabBt3.setChecked(true);
+                    break;
+                case R.id.f_qreport2:
+                    HomeBaseActivity.tabHost.setCurrentTabByTag(Config.D_TAB);
+                    HomeBaseActivity.tabBt4.setChecked(true);
+                    break;
+                case R.id.f_qreport3:
+                    HomeBaseActivity.tabHost.setCurrentTabByTag(Config.E_TAB);
+                    HomeBaseActivity.tabBt5.setChecked(true);
+                    break;
 			/*
-			 * case R.id.f_qreport4: // ¥˝∞Ï¿Ì»ŒŒÒ startActivity(new
+			 * case R.id.f_qreport4: // ÂæÖÂäûÁêÜ‰ªªÂä° startActivity(new
 			 * Intent(HomeActivity.this, ReadyDisposeActivity.class)); break;
 			 */
-			case R.id.f_qreport5:
-				startActivity(new Intent(HomeActivity.this,
-						QuestionHistoryActivity.class));
-				break;
-			case R.id.f_qreport6:
-				// “ªº¸≤¶∫≈
-				startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:"
-						+ Config.TELNUM)));
-				break;
-			case R.id.f_qreport7:
-				startActivity(new Intent(HomeActivity.this,
-						QuestionOwnDisposeActivity.class));
-				break;
-			case R.id.f_qreport8:// ––’˛…Û≈˙
-				startActivity(new Intent(HomeActivity.this,
-						AdministratorApproveMenuActivity.class));
-				break;
-			case R.id.f_qreport10:// ÕÀ≥ˆ
-				exit(this);
-				break;
-			case R.id.f_qreport11:// ¡™œµ»À
-				startActivity(new Intent(HomeActivity.this,
-						ContactsActivity.class));
-				break;
-//			case R.id.f_qreport12:// ≤øº˛…œ±®
+                case R.id.f_qreport5:
+                    startActivity(new Intent(HomeActivity.this,
+                            QuestionHistoryActivity.class));
+                    break;
+                case R.id.f_qreport6:
+                    // ‰∏ÄÈîÆÊã®Âè∑
+                    startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:"
+                            + Config.TELNUM)));
+                    break;
+                case R.id.f_qreport7:
+                    startActivity(new Intent(HomeActivity.this,
+                            QuestionOwnDisposeActivity.class));
+                    break;
+                case R.id.f_qreport8:// Ë°åÊîøÂÆ°Êâπ
+                    startActivity(new Intent(HomeActivity.this,
+                            AdministratorApproveMenuActivity.class));
+                    break;
+                case R.id.f_qreport10:// ÈÄÄÂá∫
+                    exit(this);
+                    break;
+                case R.id.f_qreport11:// ËÅîÁ≥ª‰∫∫
+                    startActivity(new Intent(HomeActivity.this,
+                            ContactsActivity.class));
+                    break;
+//			case R.id.f_qreport12:// ÈÉ®‰ª∂‰∏äÊä•
 //				startActivity(new Intent(HomeActivity.this,
 //						PartReportActivity.class));
 //				break;
-			case R.id.f_qreport13://  ÷∂Ø¥Úø®
-				startActivity(new Intent(HomeActivity.this,
-						PunchCardActivity.class));
-				break;
-			default:
-				Toast.makeText(mContext, R.string.no_permission,
-						Toast.LENGTH_SHORT).show();
-				break;
-			}
-		} else {
-			Toast.makeText(mContext, R.string.no_permission, Toast.LENGTH_SHORT)
-					.show();
-		}
-	}
+                case R.id.f_qreport13:// ÊâãÂä®ÊâìÂç°
+                    startActivity(new Intent(HomeActivity.this,
+                            PunchCardActivity.class));
+                    break;
+                default:
+                    Toast.makeText(mContext, R.string.no_permission,
+                            Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        } else {
+            Toast.makeText(mContext, R.string.no_permission, Toast.LENGTH_SHORT)
+                    .show();
+        }
+    }
 
-	/**
-	 * ÕÀ≥ˆ≥Ã–Ú
-	 * 
-	 * @param cont
-	 */
-	private void exit(final Context cont) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(cont);
-		builder.setIcon(android.R.drawable.ic_dialog_info);
-		builder.setTitle(R.string.app_menu_surelogout);
-		builder.setPositiveButton(R.string.sure,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-						// ÕÀ≥ˆ
-						finish();
-					}
-				});
-		builder.setNegativeButton(R.string.cancle,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-					}
-				});
-		builder.show();
-	}
+    /**
+     * ÈÄÄÂá∫Á®ãÂ∫è
+     *
+     * @param cont
+     */
+    private void exit(final Context cont) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(cont);
+        builder.setIcon(android.R.drawable.ic_dialog_info);
+        builder.setTitle(R.string.app_menu_surelogout);
+        builder.setPositiveButton(R.string.sure,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        // ÈÄÄÂá∫
+                        finish();
+                    }
+                });
+        builder.setNegativeButton(R.string.cancle,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        builder.show();
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-//		menu.add(0, 0, 0, "µ«≥ˆ");
-		menu.add(0, 1, 0, "ÕÀ≥ˆ");
-		return super.onCreateOptionsMenu(menu);
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+//		menu.add(0, 0, 0, "ÁôªÂá∫");
+        menu.add(0, 1, 0, "ÈÄÄÂá∫");
+        return super.onCreateOptionsMenu(menu);
+    }
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case 0:
-			Intent intent = new Intent(mContext, LoginActivity.class);
-			intent.putExtra("ifUpdate", "NO");
-			intent.putExtra("unlogin", true);
-			startActivity(intent);
-			finish();
-			break;
-		case 1:
-			finish();
-			break;
-		default:
-			break;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case 0:
+                Intent intent = new Intent(mContext, LoginActivity.class);
+                intent.putExtra("ifUpdate", "NO");
+                intent.putExtra("unlogin", true);
+                startActivity(intent);
+                finish();
+                break;
+            case 1:
+                finish();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
