@@ -17,12 +17,13 @@
       <module fileurl="file://$PROJECT_DIR$/MyScrollView/MyScrollView.iml" filepath="$PROJECT_DIR$/MyScrollView/MyScrollView.iml" />
       <module fileurl="file://$PROJECT_DIR$/SlideMenuCase/SlideMenuCase.iml" filepath="$PROJECT_DIR$/SlideMenuCase/SlideMenuCase.iml" />
       <module fileurl="file://$PROJECT_DIR$/VideoPlayer/VideoPlayer.iml" filepath="$PROJECT_DIR$/VideoPlayer/VideoPlayer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WuduMap/WuduMap.iml" filepath="$PROJECT_DIR$/WuduMap/WuduMap.iml" />
       <module fileurl="file://$PROJECT_DIR$/XTCM/XTCM.iml" filepath="$PROJECT_DIR$/XTCM/XTCM.iml" />
       <module fileurl="file://$PROJECT_DIR$/YouKuMenu/YouKuMenu.iml" filepath="$PROJECT_DIR$/YouKuMenu/YouKuMenu.iml" />
       <module fileurl="file://$PROJECT_DIR$/actionbarsherlock/actionbarsherlock.iml" filepath="$PROJECT_DIR$/actionbarsherlock/actionbarsherlock.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo2/demo2.iml" filepath="$PROJECT_DIR$/demo2/demo2.iml" />
       <module fileurl="file://$PROJECT_DIR$/drawbitmap/drawbitmap.iml" filepath="$PROJECT_DIR$/drawbitmap/drawbitmap.iml" />
-      <module fileurl="file://$PROJECT_DIR$/exrlib/exrlib.iml" filepath="$PROJECT_DIR$/exrlib/exrlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/exrlib/exrlib.iml" filepath="$PROJECT_DIR$/exrlib/exrlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/gisutil/gisutil.iml" filepath="$PROJECT_DIR$/gisutil/gisutil.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />

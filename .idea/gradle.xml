@@ -5,7 +5,7 @@
       <GradleProjectSettings>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="D:\linux\android\studio\gradle\gradle-2.2.1" />
+        <option name="gradleHome" value="D:\linux\Android Studio\gradle\gradle-2.2.1" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -22,10 +22,12 @@
             <option value="$PROJECT_DIR$/MyScrollView" />
             <option value="$PROJECT_DIR$/SlideMenuCase" />
             <option value="$PROJECT_DIR$/VideoPlayer" />
+            <option value="$PROJECT_DIR$/WuduMap" />
             <option value="$PROJECT_DIR$/XTCM" />
             <option value="$PROJECT_DIR$/YouKuMenu" />
             <option value="$PROJECT_DIR$/actionbarsherlock" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/demo2" />
             <option value="$PROJECT_DIR$/drawbitmap" />
             <option value="$PROJECT_DIR$/exrlib" />
             <option value="$PROJECT_DIR$/gisutil" />
