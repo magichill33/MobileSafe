@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="abc_max_action_buttons">2</integer>
+    <integer name="slide_animation_duration">300</integer>
+    <integer name="fade_animation_duration">300</integer>
+    <integer name="polymeric_slide_left_out_duration">400</integer>
+    <integer name="edittext_max_count">200</integer>
+</resources>

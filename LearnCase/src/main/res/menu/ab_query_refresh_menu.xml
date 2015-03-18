@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/action_search" android:icon="@drawable/actionbar_search_icon" android:showAsAction="ifRoom" android:title="@string/action_bar_add" />
+    <item android:id="@id/action_refresh" android:icon="@drawable/actionbar_refresh_icon" android:showAsAction="ifRoom" android:title="@string/action_bar_refresh" />
+</menu>
