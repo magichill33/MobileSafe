@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/container"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+   
+    <com.leador.TV.TrueVision.TrueVision
+  		 	android:id="@+id/LDTVView"
+   			android:layout_width ="fill_parent"
+  			android:layout_height="wrap_content"
+  			android:layout_weight="1"/>
+     <RelativeLayout 
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight="1">
+	    <com.supermap.android.maps.MapView
+		    android:id="@+id/mapview"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:clickable="true"
+		    android:enabled="true"
+			/>
+	    <ImageView 
+	        android:id="@+id/imgVista"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:src="@drawable/vista"/>
+	    <ImageButton android:id="@+id/btnBack"
+	    	android:layout_width="40dip"
+	    	android:layout_height="40dip"
+	    	android:layout_alignParentRight="true"
+	    	android:layout_alignParentTop="true"
+	    	android:layout_marginRight="5dip"
+	    	android:layout_marginTop="5dip"
+	    	android:src="@drawable/back"/>
+     </RelativeLayout>
+    
+    
+</LinearLayout>

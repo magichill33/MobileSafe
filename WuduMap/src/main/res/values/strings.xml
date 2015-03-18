@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, WuduMap!</string>
+    <string name="app_name">WuduMap</string>
+    <string name="title_activity_lilo_map">LiloMapActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_lilo_street">LiloStreetActivity</string>
+    <string name="mainUrl">http://10.1.1.8:8090/iserver/services</string>
+    <string name="map2d">map-wudu/rest/maps/map2d</string>
+    <string name="dataUrl">data-WuduElements/rest/data</string>
+    <string name="partsUrl">data-WuduParts/rest/data</string>
+    <string name="networkUrl">transportationAnalyst-WuduPathWS/rest/networkanalyst/BuildNetwork@ORCL_supermap</string>
+    <string name="ld_link">ORCL_supermap:wudu_LD_NAV_LINK</string>
+    <string name="treating">处理中...</string>
+    <string name="querying">正在查询，请稍候...</string>
+    <string name="gridCode">WGBM</string>
+    <string name="houseCode">FWDBM</string>
+    <string name="title_activity_lilo_parts">LiloPartsActivity</string>
+    <string name="parts_update">部件更新</string>
+    <string name="house_update">房屋更新</string>
+    <string name="region_grid">ORCL_supermap:wudu_sm_grid</string>
+    <string name="region_dist">ORCL_supermap:wudu_dist</string>
+    <string name="sm_house">ORCL_supermap:wudu_sm_house</string>
+    <string name="wudu_cmp">ORCL:WD</string>
+    <string name="title_activity_lilo_path_analyz">LiloPathAnalyzActivity</string>
+    <string name="part_legend1">map-WuduParts/rest/maps/cm_parts/layers/WD_</string>
+    <string name="part_legend2">ORCL6_supermap@@cm_parts/legend</string>
+    <string name="title_activity_lilo_vista">LiloVistaActivity</string>
+    <string name="title_activity_case_detail">CaseDetailActivity</string>
+
+</resources>

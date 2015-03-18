@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LiloMapActivity" >
+
+    <com.supermap.android.maps.MapView
+	    android:id="@+id/mapview"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1"
+	    android:clickable="true"
+	    android:enabled="true"
+	/>
+    <LinearLayout 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentRight="true"
+	    android:layout_alignParentTop="true"
+	    android:layout_marginRight="5dip"
+	    android:layout_marginTop="5dip"
+	    android:orientation="vertical"
+	    >
+	    <ImageButton 
+	    	android:id="@+id/mapVista"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_marginTop="5dip"
+	    	android:background="#ffffff"
+	    	android:src="@drawable/mapvista"
+	    	android:visibility="invisible"
+    		/>
+	     <ImageButton 
+	    	android:id="@+id/mapSplit"
+	    	android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_marginTop="5dip"
+	    	android:background="#ffffff"
+	    	android:src="@drawable/mapsplit"
+	    	android:visibility="invisible"
+    		/>
+	</LinearLayout>
+	<ImageButton 
+  	    android:id="@+id/btnLocate"
+  	    android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="10dip"
+        android:layout_marginLeft="10dip"
+        android:background="#ccffffff"
+        android:src="@drawable/gps"
+        android:visibility="invisible"/>
+
+</RelativeLayout>
