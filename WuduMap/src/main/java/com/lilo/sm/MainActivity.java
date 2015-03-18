@@ -181,4 +181,9 @@ public class MainActivity extends Activity {
         super.onConfigurationChanged(newConfig);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

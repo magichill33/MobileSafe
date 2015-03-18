@@ -847,4 +847,9 @@ public class LiloSplitActivity extends Activity implements ImageGetListener,
         ldTV.destroyDrawingCache();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

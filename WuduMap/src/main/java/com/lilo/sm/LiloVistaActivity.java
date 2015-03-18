@@ -607,4 +607,10 @@ public class LiloVistaActivity extends Activity implements ImageTouchListener,
         // TODO Auto-generated method stub
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

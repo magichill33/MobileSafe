@@ -296,5 +296,9 @@ public class LiloMapActivity extends Activity {
         this.titleBarHeight = titleBarHeight;
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }
