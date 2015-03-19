@@ -210,6 +210,6 @@ public class Config {
     public static void refreshMapURL_(String url) {
         MAPURL_ = url;
         MAP = MAPURL_ + "arcgis/rest/services/xiantao2d/MapServer";
-        ARCGIS = MAPURL_ + "arcgis/rest/services/cm_grid_0811/MapServer/0";
+        ARCGIS = MAPURL_ + "arcgis/rest/services/xiantao/cm_grid/MapServer/0";
     }
 }
