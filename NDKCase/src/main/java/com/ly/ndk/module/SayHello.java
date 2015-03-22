@@ -5,4 +5,7 @@ package com.ly.ndk.module;
  */
 public class SayHello {
     public native String getHelloFromC();
+    static{
+        System.loadLibrary("JniTest");
+    }
 }
