@@ -83,16 +83,16 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="ldtv" level="project" />
-    <orderEntry type="library" exported="" name="appcompat-v7-21.0.3" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-21.0.3" level="project" />
-    <orderEntry type="library" exported="" name="iclient_android_7.0.1_11326_1757" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-21.0.3" level="project" />
-    <orderEntry type="library" exported="" name="LDDataConfig" level="project" />
     <orderEntry type="library" exported="" name="cloud" level="project" />
+    <orderEntry type="library" exported="" name="appcompat-v7-21.0.3" level="project" />
+    <orderEntry type="library" exported="" name="LDDataConfig" level="project" />
+    <orderEntry type="library" exported="" name="baidumapapi" level="project" />
     <orderEntry type="library" exported="" name="locSDK_2.6" level="project" />
     <orderEntry type="library" exported="" name="LDNav" level="project" />
-    <orderEntry type="library" exported="" name="baidumapapi" level="project" />
+    <orderEntry type="library" exported="" name="iclient_android_7.0.1_11326_1757" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-21.0.3" level="project" />
+    <orderEntry type="library" exported="" name="support-annotations-21.0.3" level="project" />
+    <orderEntry type="library" exported="" name="ldtv" level="project" />
     <orderEntry type="library" exported="" name="LDMap" level="project" />
   </component>
 </module>

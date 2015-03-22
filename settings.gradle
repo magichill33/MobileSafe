@@ -1,1 +1,2 @@
-include ':app',':drawbitmap', ':VideoPlayer', ':MyScrollView', ':HttpTest', ':MutiDownload', ':XTCM', ':KuPlayer', ':KMPlayer1', ':WuduMap' ,':YouKuMenu' ,':gisutil' ,':CustomUI' ,':LotteryApp', ':pulltorefress_library', ':actionbarsherlock' ,':SlideMenuCase', ':exrlib', ':library', ':LazyList', ':CloudTrack', ':LearnCase', ':KuMi'
+include ':app',':drawbitmap', ':VideoPlayer', ':MyScrollView', ':HttpTest', ':MutiDownload', ':XTCM', ':KuPlayer', ':KMPlayer1', ':WuduMap', ':PhoneGapCase' ,':YouKuMenu' ,':gisutil' ,':CustomUI' ,':LotteryApp', ':pulltorefress_library', ':actionbarsherlock' ,':SlideMenuCase',':library', ':LazyList', ':CloudTrack', ':LearnCase', ':KuMi',':NDKCase'
+include ':phoneGap'
