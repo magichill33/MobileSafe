@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -17,9 +17,9 @@
  specific language governing permissions and limitations
  under the License.
 -->
-<widget id        = "io.cordova.helloCordova"
-        version   = "2.0.0"
-        xmlns     = "http://www.w3.org/ns/widgets">
+<widget
+        id        = "io.cordova.helloCordova"
+        version   = "2.0.0">
     <name>Hello Cordova</name>
 
     <description>
