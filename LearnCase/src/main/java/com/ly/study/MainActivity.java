@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
     private final int MSG_HELLO = 0;
     private Handler mHandler;
     private TextView textView;
+    private MyConnection myConnection = new MyConnection();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,24 +61,22 @@ public class MainActivity extends Activity {
     {
         Intent intent = new Intent();
         intent.setClass(this,MyService.class);
-        startService(new Intent());
+        startService(intent);
     }
 
     public void bindMyService(View view)
     {
         Intent intent = new Intent();
         intent.setClass(this,MyService.class);
-        bindService(intent,new ServiceConnection() {
-            @Override
-            public void onServiceConnected(ComponentName name, IBinder service) {
+        bindService(intent,myConnection,BIND_AUTO_CREATE);
+    }
 
-            }
-
-            @Override
-            public void onServiceDisconnected(ComponentName name) {
-
-            }
-        },BIND_AUTO_CREATE);
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Log.d("Activity","onBack");
+        unbindService(myConnection);
+        finish();
     }
 
     class CustomThread extends Thread {
@@ -102,5 +101,16 @@ public class MainActivity extends Activity {
         }
     }
 
+   class MyConnection implements ServiceConnection {
 
+       @Override
+       public void onServiceConnected(ComponentName name, IBinder service) {
+
+       }
+
+       @Override
+       public void onServiceDisconnected(ComponentName name) {
+
+       }
+   }
 }

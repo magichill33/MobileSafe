@@ -18,6 +18,12 @@ public class MyService extends Service {
     }
 
     @Override
+    public boolean onUnbind(Intent intent) {
+        Log.d(Tag,"onUnBind");
+        return super.onUnbind(intent);
+    }
+
+    @Override
     public void onCreate() {
         super.onCreate();
         Log.d(Tag,"onCreate");
