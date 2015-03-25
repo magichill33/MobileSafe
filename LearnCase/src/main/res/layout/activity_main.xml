@@ -9,5 +9,18 @@
         android:layout_height="wrap_content"
         android:text="hello"
         />
-    <Button android:id="@+id/send_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="发送消息"></Button>
+    <Button android:id="@+id/send_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发送消息"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="startService"
+        android:text="启动服务"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="bindMyService"
+        android:text="绑定服务"/>
 </LinearLayout>

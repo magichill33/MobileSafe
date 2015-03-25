@@ -2,8 +2,12 @@ package com.ly.study;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
@@ -50,6 +54,30 @@ public class MainActivity extends Activity {
                 }
             }
         }).start();
+    }
+
+    public void startService(View view)
+    {
+        Intent intent = new Intent();
+        intent.setClass(this,MyService.class);
+        startService(new Intent());
+    }
+
+    public void bindMyService(View view)
+    {
+        Intent intent = new Intent();
+        intent.setClass(this,MyService.class);
+        bindService(intent,new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+
+            }
+        },BIND_AUTO_CREATE);
     }
 
     class CustomThread extends Thread {
