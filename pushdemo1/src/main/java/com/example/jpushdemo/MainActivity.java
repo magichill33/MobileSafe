@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import cn.jpush.android.api.InstrumentedActivity;
 import cn.jpush.android.api.JPushInterface;
- import  com.ly.push.R;
+import  com.ly.push.R;
 
 
 public class MainActivity extends InstrumentedActivity implements OnClickListener{
