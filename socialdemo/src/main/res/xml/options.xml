@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:key="@string/option_push_notification_key"
+        android:title="@string/option_push_notification_title"
+        android:summary="@string/option_push_notification_summary"
+        android:defaultValue="@bool/option_push_notification_default_value" />
+
+    <CheckBoxPreference
+        android:key="@string/option_auto_update_key"
+        android:title="@string/option_auto_update_title"
+        android:summary="@string/option_auto_update_summary"
+        android:defaultValue="@bool/option_auto_update_default_value" />
+
+    <Preference
+        android:key="@string/option_support_account_key"
+        android:title="@string/option_support_account_title"
+        android:summary="@string/option_support_account_summary">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="@string/option_support_account_uri" />
+
+    </Preference>
+
+    <Preference
+        android:key="@string/option_project_page_key"
+        android:title="@string/option_project_page_title"
+        android:summary="@string/option_project_page_summary">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="@string/option_project_page_summary" />
+
+    </Preference>
+
+    <Preference
+        android:key="@string/option_about_key"
+        android:title="@string/option_about_title" />
+
+</PreferenceScreen>

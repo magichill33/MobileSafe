@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/list_padding">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_gravity="center_vertical"
+        android:id="@+id/image"
+        android:layout_width="@dimen/head_width"
+        android:layout_height="@dimen/head_height"
+
+        android:layout_marginRight="@dimen/list_padding"
+        android:src="@drawable/ic_head"
+        app:border_width="2dp"
+        app:border_color="#ffffff" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/holo_secondary"
+            android:textSize="@dimen/text_size_large"
+            android:text="title"
+            android:singleLine="true"
+            android:padding="4dp" />
+
+
+        <ImageView
+            android:id="@+id/lock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/title"
+            android:layout_alignTop="@id/title"
+            android:padding="2dp"
+            android:src="@drawable/ic_mini_protected" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/title"
+            android:text="content"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:padding="4dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_size_small"
+            android:ellipsize="end" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/list_padding"
+        android:singleLine="true"
+        android:text="Follow"
+        android:layout_margin="0dp"
+        android:textColor="@color/text_secondary"
+        android:background="@drawable/state_off"
+        android:textSize="@dimen/text_size_small"
+        android:duplicateParentState="true" />
+</LinearLayout>

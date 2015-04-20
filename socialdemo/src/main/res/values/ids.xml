@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item type="id" name="ptr_layout" />
+    <item type="id" name="list" />
+
+    <item name="list_header" type="id" />
+    <item name="list_header_text" type="id" />
+    <item name="list_header_progress" type="id" />
+    <item name="list_footer" type="id" />
+    <item name="list_footer_text" type="id" />
+    <item name="list_footer_progress" type="id" />
+    <item type="id" name="menu_refresh" />
+
+
+    <item name="list_item" type="id" />
+
+</resources>

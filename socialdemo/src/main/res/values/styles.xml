@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ProfileButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingLeft">@dimen/profile_row_horizontal_padding</item>
+        <item name="android:paddingRight">@dimen/profile_row_horizontal_padding</item>
+        <item name="android:paddingTop">@dimen/profile_row_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/profile_row_vertical_padding</item>
+        <item name="android:background">@drawable/selector</item>
+    </style>
+
+    <style name="ProfileItemStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">@dimen/profile_item_padding</item>
+        <item name="android:background">@drawable/selector</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="ProfileItemTextStyle">
+        <item name="android:duplicateParentState">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:shadowColor">@color/solid_black</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:padding">@dimen/profile_item_padding</item>
+    </style>
+
+    <style name="ProfileButtonTextStyle">
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:padding">@dimen/status_header_padding</item>
+    </style>
+
+    <style name="ProfileItemTextMetaStyle">
+        <item name="android:duplicateParentState">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:padding">1dp</item>
+    </style>
+
+    <style name="StatusTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:padding">@dimen/list_padding</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <!--<item name="android:typeface">serif</item>-->
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
+    <style name="StatusMetaInfoStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:padding">@dimen/list_padding</item>
+        <!--<item name="android:typeface">serif</item>-->
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="EditText" />
+
+    <style name="EditText.Login">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/edittext_background</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+
+    <style name="Button" />
+
+    <style name="Button.Login">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_xlarge</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:background">@drawable/button_blue</item>
+    </style>
+
+    <style name="ActionItem">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">@dimen/list_padding</item>
+        <item name="android:background">@drawable/button_blue</item>
+    </style>
+
+    <style name="Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Item.TextStyle">
+        <item name="android:padding">3dp</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">#ff131313</item>
+    </style>
+
+    <style name="Item.TextBoldStyle">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Item.MetaInfoStyle">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">@dimen/text_size_tiny</item>
+    </style>
+
+
+    <style name="ListRow">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:background">@null</item>
+        <item name="android:padding">@dimen/list_row_padding</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/list_row_preferred_height</item>
+    </style>
+
+    <style name="Animations" />
+
+    <style name="Animations.Move">
+        <item name="@android:windowEnterAnimation">@anim/move_left_to_right</item>
+        <item name="@android:windowExitAnimation">@anim/move_right_to_left</item>
+    </style>
+
+    <style name="ActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_open_enter_right_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_open_exit_scale_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_close_enter_scale_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_close_exit_right_out</item>
+    </style>
+
+</resources>
