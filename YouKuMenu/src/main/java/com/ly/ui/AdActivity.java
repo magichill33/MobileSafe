@@ -73,8 +73,8 @@ public class AdActivity extends Activity {
             imageList.add(imageView);
             //添加指示点
             ImageView point = new ImageView(this);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
             params.rightMargin = px;
             point.setLayoutParams(params); //给控件设置布局
             point.setBackgroundResource(R.drawable.point_bg);
@@ -131,8 +131,8 @@ public class AdActivity extends Activity {
          * 2.开子线程while true循环
          * 3.用handler 发送延时信息，实现循环
          */
-        isRunning = true;
-        handler.sendEmptyMessageDelayed(0, 2000);
+        //isRunning = true;
+       // handler.sendEmptyMessageDelayed(0, 2000);
     }
 
     @Override
