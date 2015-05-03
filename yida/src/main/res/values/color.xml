@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="background">#FF000000</color>
+	<color name="dialog_back">#330000FF</color>
+	<color name="control_back">#AA00003D</color>
+	<color name="link_color">#ff0000ff</color>
+	
+	
+	<drawable name="darkgray">#404040ff</drawable>
+	<drawable name="red">#ff00ff</drawable>
+	<drawable name="green">#0ff0ff</drawable>
+	<drawable name="lightgray">#c0c0c0ff</drawable>
+	<drawable name="yellow">#ffFF33ff</drawable>
+	<drawable name="blue">#00ffff</drawable>
+	<drawable name="gray">#808080ff</drawable>
+	<drawable name="magenta">#ff6699ff</drawable>
+	<drawable name="cyan">#66ffffff</drawable>
+	<drawable name="black">#000000</drawable>
+	<drawable name="white">#FFFFFF</drawable>
+</resources>
